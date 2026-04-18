@@ -1,3 +1,4 @@
+import { useLocation } from "wouter";
 import AppShell from "@/components/AppShell";
 import PageHeader from "@/components/PageHeader";
 
@@ -12,6 +13,9 @@ const PHASES = [
       "Source reliability is scored and reviewed — not assumed",
       "Collection scope is bounded — domains are defined before sources are added",
     ],
+    relatedPath: "/signals",
+    relatedLabel: "SIGNALS",
+    relatedNote: "See signal categories →",
   },
   {
     id: "02",
@@ -23,6 +27,9 @@ const PHASES = [
       "Classification includes source type, domain, and triage outcome",
       "Dismissal is a logged outcome — signals are not silently discarded",
     ],
+    relatedPath: "/signals",
+    relatedLabel: "SIGNALS",
+    relatedNote: "Intake log →",
   },
   {
     id: "03",
@@ -34,6 +41,9 @@ const PHASES = [
       "Source attribution is applied at structuring, not inferred later",
       "Structured entries are validated before dataset assignment",
     ],
+    relatedPath: "/datasets",
+    relatedLabel: "DATASETS",
+    relatedNote: "Domain schemas →",
   },
   {
     id: "04",
@@ -45,109 +55,179 @@ const PHASES = [
       "Cross-domain signals require explicit classification before assignment",
       "Dataset scope is reviewed when new signal types emerge",
     ],
+    relatedPath: "/datasets",
+    relatedLabel: "DATASETS",
+    relatedNote: "Coverage map →",
   },
   {
     id: "05",
     label: "Index Commitment",
     headline: "Committed records are fixed entries in the searchable data layer.",
-    body: "When a structured, dataset-assigned entry meets all criteria, it is committed to the INDEX layer. Committed records are discrete, searchable entries with defined status. Once committed, records are not overwritten — revisions are versioned. The index reflects what was known, when, and from what source.",
+    body: "When a structured, dataset-assigned entry meets all criteria, it is committed to the INDEX layer. Committed records are discrete, searchable entries with defined status. Once committed, records are not overwritten — revisions are versioned.",
     rules: [
       "Committed records are not overwritten — revisions are versioned",
       "Each record carries a commit timestamp and source attribution",
       "Records with expired sources are flagged, not deleted",
     ],
+    relatedPath: "/records",
+    relatedLabel: "INDEX",
+    relatedNote: "Record layer →",
   },
   {
     id: "06",
     label: "Synthesis Layer",
     headline: "Synthesis flows from indexed records outward — not from raw signals.",
-    body: "Synthesis is not part of the intake pipeline. It is the output layer — analysis drawn from indexed records, across datasets, with stated confidence. Synthesis products reference their record sources explicitly. Inference is separated from observation. The synthesis layer exists at the boundary between the public INDEX and the restricted operational environment.",
+    body: "Synthesis is not part of the intake pipeline. It is the output layer — analysis drawn from indexed records, across datasets, with stated confidence. Synthesis products reference their record sources explicitly.",
     rules: [
       "Synthesis references indexed records — not raw signal logs",
       "Analytical confidence is stated, not implied",
       "Inference and sourced observation are kept in separate layers",
     ],
+    relatedPath: "/records",
+    relatedLabel: "INDEX",
+    relatedNote: "Committed records →",
   },
 ];
 
 export default function MethodPage() {
+  const [, setLocation] = useLocation();
+
   return (
     <AppShell>
       <div className="flex flex-col" style={{ minHeight: "calc(100vh - 84px)" }}>
         <PageHeader
           module="MODULE / METHOD"
           title="METHOD"
-          subtitle="How INDEX collects, classifies, structures, and synthesizes — process architecture, not tool inventory"
+          subtitle="How INDEX collects, classifies, structures, and synthesises — process architecture, not tool inventory"
           badge="6 PHASES"
+          badgeActive={true}
         />
 
-        <div className="flex-1 p-6 md:p-8 max-w-4xl space-y-4">
+        <div className="flex-1 p-6 md:p-7 space-y-4 overflow-y-auto">
           {/* Context block */}
-          <div className="rounded p-4 md:p-5"
-            style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(0,8,4,0.45)" }}>
+          <div className="rounded p-5"
+            style={{ border: "1px solid rgba(34,197,94,0.09)", background: "rgba(0,0,0,0.18)" }}>
             <p className="font-mono-tactical leading-relaxed"
-              style={{ color: "rgba(185,205,200,0.65)", lineHeight: "1.92", fontSize: "10.5px" }}>
+              style={{ color: "rgba(185,205,200,0.72)", lineHeight: "1.95", fontSize: "11px" }}>
               INDEX operates a defined methodology for turning monitored signals into structured, indexed records.
               Each phase has explicit rules — not guidelines. This page documents the process architecture, not the tools that run it.
             </p>
           </div>
 
-          {PHASES.map((phase) => (
-            <div key={phase.id} data-testid={`phase-${phase.id}`}
-              className="rounded p-5 idx-card"
-              style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(0,0,0,0.2)" }}>
-              <div className="flex items-start gap-4">
-                {/* Phase number */}
-                <div className="w-9 h-9 rounded flex items-center justify-center font-mono-tactical font-bold flex-shrink-0"
-                  style={{
-                    background: "rgba(34,197,94,0.05)",
-                    border: "1px solid rgba(34,197,94,0.22)",
-                    color: "rgba(34,197,94,0.68)",
-                    fontSize: "9.5px",
-                  }}>
-                  {phase.id}
-                </div>
-
-                <div className="flex-1 space-y-3 min-w-0">
-                  {/* Label + headline */}
-                  <div>
-                    <div className="font-orbitron text-sm font-bold tracking-wider" style={{ color: "#22c55e" }}>
-                      {phase.label}
+          {/* Phase cards */}
+          <div className="space-y-3 max-w-4xl">
+            {PHASES.map((phase) => (
+              <div key={phase.id} className="rounded idx-card"
+                style={{ border: "1px solid rgba(34,197,94,0.09)", background: "rgba(0,0,0,0.18)" }}>
+                {/* Phase header */}
+                <div className="flex items-start justify-between gap-4 px-5 pt-4 pb-3.5"
+                  style={{ borderBottom: "1px solid rgba(34,197,94,0.07)" }}>
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 flex-shrink-0 rounded flex items-center justify-center font-mono-tactical font-bold"
+                      style={{
+                        background: "rgba(0,0,0,0.5)",
+                        border: "1px solid rgba(34,197,94,0.2)",
+                        color: "rgba(34,197,94,0.72)",
+                        fontSize: "9px",
+                      }}>
+                      {phase.id}
                     </div>
-                    <div className="font-mono-tactical mt-1 italic"
-                      style={{ color: "rgba(185,205,200,0.72)", fontSize: "10.5px", lineHeight: "1.7" }}>
-                      {phase.headline}
+                    <div>
+                      <div className="font-orbitron text-sm font-bold tracking-wider" style={{ color: "#22c55e" }}>
+                        {phase.label}
+                      </div>
+                      <div className="font-mono-tactical mt-0.5 italic"
+                        style={{ color: "rgba(185,205,200,0.72)", fontSize: "10.5px", lineHeight: "1.7" }}>
+                        {phase.headline}
+                      </div>
                     </div>
                   </div>
+                  {phase.relatedPath && (
+                    <button
+                      onClick={() => setLocation(phase.relatedPath)}
+                      className="font-mono-tactical tracking-widest flex-shrink-0 rounded px-2.5 py-1.5"
+                      style={{
+                        color: "rgba(34,197,94,0.42)",
+                        fontSize: "8px",
+                        letterSpacing: "0.1em",
+                        border: "1px solid rgba(34,197,94,0.12)",
+                        background: "rgba(34,197,94,0.03)",
+                        cursor: "pointer",
+                      }}>
+                      {phase.relatedLabel} →
+                    </button>
+                  )}
+                </div>
 
-                  {/* Body */}
-                  <p className="font-mono-tactical leading-relaxed"
-                    style={{ color: "rgba(185,205,200,0.62)", lineHeight: "1.9", fontSize: "10.5px" }}>
-                    {phase.body}
-                  </p>
+                {/* Phase body */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x"
+                  style={{ borderColor: "rgba(34,197,94,0.07)" }}>
+                  {/* Left: body text */}
+                  <div className="px-5 py-4">
+                    <p className="font-mono-tactical leading-relaxed"
+                      style={{ color: "rgba(185,205,200,0.72)", lineHeight: "1.9", fontSize: "10.5px" }}>
+                      {phase.body}
+                    </p>
+                  </div>
 
-                  {/* Rules */}
-                  <div className="rounded p-3.5 space-y-2"
-                    style={{ background: "rgba(34,197,94,0.025)", border: "1px solid rgba(34,197,94,0.08)" }}>
-                    <div className="font-mono-tactical tracking-widest uppercase mb-2"
-                      style={{ color: "rgba(34,197,94,0.45)", fontSize: "8.5px", letterSpacing: "0.14em" }}>
+                  {/* Right: rules */}
+                  <div className="px-5 py-4">
+                    <div className="font-mono-tactical tracking-widest uppercase mb-3"
+                      style={{ color: "rgba(34,197,94,0.42)", fontSize: "8.5px", letterSpacing: "0.16em" }}>
                       Rules
                     </div>
-                    {phase.rules.map((rule, ri) => (
-                      <div key={ri} className="flex items-start gap-2.5">
-                        <div className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
-                          style={{ background: "rgba(34,197,94,0.42)" }} />
-                        <span className="font-mono-tactical"
-                          style={{ color: "rgba(185,205,200,0.72)", lineHeight: "1.8", fontSize: "10.5px" }}>
-                          {rule}
-                        </span>
-                      </div>
-                    ))}
+                    <div className="space-y-2.5">
+                      {phase.rules.map((rule, ri) => (
+                        <div key={ri} className="flex items-start gap-2.5">
+                          <div className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
+                            style={{ background: "rgba(34,197,94,0.42)" }} />
+                          <span className="font-mono-tactical"
+                            style={{ color: "rgba(185,205,200,0.72)", lineHeight: "1.8", fontSize: "10.5px" }}>
+                            {rule}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+
+          {/* System navigation */}
+          <div className="max-w-4xl rounded px-5 py-4"
+            style={{ border: "1px solid rgba(34,197,94,0.07)", background: "rgba(0,0,0,0.12)" }}>
+            <div className="font-mono-tactical tracking-widest uppercase mb-3"
+              style={{ color: "rgba(34,197,94,0.42)", fontSize: "9px", letterSpacing: "0.16em" }}>
+              Follow the Pipeline
             </div>
-          ))}
+            <div className="flex flex-wrap gap-3">
+              {[
+                { label: "SIGNALS",  path: "/signals",  note: "Intake layer" },
+                { label: "DATASETS", path: "/datasets", note: "Domain structure" },
+                { label: "INDEX",    path: "/records",  note: "Committed records" },
+                { label: "ACCESS",   path: "/access",   note: "Tier structure" },
+              ].map((link) => (
+                <button key={link.path}
+                  onClick={() => setLocation(link.path)}
+                  className="rounded px-3 py-2 flex items-center gap-2"
+                  style={{
+                    border: "1px solid rgba(34,197,94,0.1)",
+                    background: "rgba(34,197,94,0.03)",
+                    cursor: "pointer",
+                  }}>
+                  <span className="font-orbitron font-bold tracking-wider"
+                    style={{ color: "rgba(34,197,94,0.62)", fontSize: "8.5px" }}>
+                    {link.label}
+                  </span>
+                  <span className="font-mono-tactical"
+                    style={{ color: "rgba(155,175,170,0.38)", fontSize: "8.5px" }}>
+                    {link.note} →
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </AppShell>

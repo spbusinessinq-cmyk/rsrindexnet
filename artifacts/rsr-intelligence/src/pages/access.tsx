@@ -103,7 +103,7 @@ export default function AccessPage() {
             <div className="rounded p-4 md:p-5"
               style={{ border: "1px solid rgba(100,120,115,0.13)", background: "rgba(5,8,7,0.5)" }}>
               <p className="font-mono-tactical leading-relaxed"
-                style={{ color: "rgba(185,205,200,0.62)", lineHeight: "1.92", fontSize: "10.5px" }}>
+                style={{ color: "rgba(185,205,200,0.72)", lineHeight: "1.92", fontSize: "10.5px" }}>
                 INDEX operates three access tiers. The public layer — this site — is open and unrestricted.
                 It documents the architecture, methodology, and analytical structure of the INDEX Data Network
                 within the RSR Intelligence ecosystem. Restricted and operator access exist beyond this boundary.
@@ -270,7 +270,7 @@ export default function AccessPage() {
                       {tier.id}
                     </span>
                     <span className="flex-1 font-mono-tactical truncate"
-                      style={{ color: "rgba(185,205,200,0.62)", fontSize: "10px" }}>
+                      style={{ color: "rgba(185,205,200,0.72)", fontSize: "10px" }}>
                       {tier.label}
                     </span>
                     <span className="font-mono-tactical flex-shrink-0"
@@ -318,7 +318,7 @@ export default function AccessPage() {
             <div className="h-px" style={{ background: "rgba(100,120,115,0.08)" }} />
 
             <p className="font-mono-tactical leading-relaxed"
-              style={{ color: "rgba(185,205,200,0.58)", lineHeight: "1.85", fontSize: "10px" }}>
+              style={{ color: "rgba(185,205,200,0.68)", lineHeight: "1.85", fontSize: "10px" }}>
               This is not a waitlist. Restricted access is not queued. Requests are assessed individually when
               intake is active. Deeper access is governed by RSR — not INDEX's public interface.
             </p>

@@ -1,3 +1,4 @@
+import { useLocation } from "wouter";
 import AppShell from "@/components/AppShell";
 import PageHeader from "@/components/PageHeader";
 import { SIGNAL_CATEGORIES, TRIAGE_CRITERIA } from "@/data/config";
@@ -19,31 +20,31 @@ function SignalItem({ item, categoryId }: { item: FeedItem; categoryId: string }
       style={{ borderBottom: "1px solid rgba(34,197,94,0.05)" }}>
       <div className="flex-shrink-0 mt-0.5">
         <span className="font-mono-tactical rounded px-1.5 py-0.5"
-          style={{ border: "1px solid rgba(34,197,94,0.2)", color: "rgba(34,197,94,0.6)", fontSize: "7.5px", letterSpacing: "0.1em", background: "rgba(34,197,94,0.04)" }}>
+          style={{ border: "1px solid rgba(34,197,94,0.2)", color: "rgba(34,197,94,0.65)", fontSize: "7.5px", letterSpacing: "0.1em", background: "rgba(34,197,94,0.04)" }}>
           {categoryId}
         </span>
       </div>
       <div className="flex-1 min-w-0">
         <div className="font-mono-tactical leading-snug"
-          style={{ color: "rgba(185,205,200,0.75)", fontSize: "10px", lineHeight: "1.5" }}>
+          style={{ color: "rgba(185,205,200,0.78)", fontSize: "10px", lineHeight: "1.5" }}>
           {item.title.length > 120 ? item.title.slice(0, 120) + "…" : item.title}
         </div>
         <div className="flex items-center gap-3 mt-0.5">
           {item.url && (
             <a href={item.url} target="_blank" rel="noopener noreferrer"
               className="font-mono-tactical truncate"
-              style={{ color: "rgba(34,197,94,0.35)", fontSize: "8.5px", textDecoration: "none", maxWidth: 200 }}>
+              style={{ color: "rgba(34,197,94,0.4)", fontSize: "8.5px", textDecoration: "none", maxWidth: 200 }}>
               {new URL(item.url).hostname}
             </a>
           )}
           {item.date && (
             <span className="font-mono-tactical flex-shrink-0"
-              style={{ color: "rgba(155,175,170,0.3)", fontSize: "8px" }}>
+              style={{ color: "rgba(155,175,170,0.38)", fontSize: "8px" }}>
               {fmtRelative(item.date)}
             </span>
           )}
           <span className="font-mono-tactical flex-shrink-0 italic"
-            style={{ color: "rgba(155,175,170,0.3)", fontSize: "8.5px" }}>
+            style={{ color: "rgba(155,175,170,0.38)", fontSize: "8.5px" }}>
             staged — awaiting classification
           </span>
         </div>
@@ -53,6 +54,8 @@ function SignalItem({ item, categoryId }: { item: FeedItem; categoryId: string }
 }
 
 export default function SignalsPage() {
+  const [, setLocation] = useLocation();
+
   const f0 = useFeed0(); // OPN
   const f1 = useFeed1(); // STR
   const f2 = useFeed2(); // FLG
@@ -69,7 +72,6 @@ export default function SignalsPage() {
   const connectedCount = feeds.filter((f) => f.state === "connected").length;
   const totalItems = feeds.reduce((n, f) => n + f.items.length, 0);
 
-  /* Merge all items for live intake log — sorted newest first */
   const allItems: FeedItem[] = feeds
     .flatMap((f) => f.items)
     .sort((a, b) => {
@@ -124,11 +126,11 @@ export default function SignalsPage() {
                       </div>
                       <div>
                         <div className="font-orbitron text-sm font-bold tracking-wider"
-                          style={{ color: isConn ? "#22c55e" : "rgba(200,220,215,0.72)" }}>
+                          style={{ color: isConn ? "#22c55e" : "rgba(200,220,215,0.75)" }}>
                           {cat.label}
                         </div>
                         <div className="font-mono-tactical mt-0.5"
-                          style={{ color: "rgba(155,175,170,0.5)", fontSize: "9px" }}>
+                          style={{ color: "rgba(155,175,170,0.55)", fontSize: "9px" }}>
                           {INTAKE_TYPE_LABELS[cat.intakeType]}
                         </div>
                       </div>
@@ -144,14 +146,15 @@ export default function SignalsPage() {
                           }} />
                         <span className="font-mono-tactical"
                           style={{ color: FEED_STATE_COLORS[feedState], fontSize: "9px", letterSpacing: "0.08em" }}>
-                          {FEED_STATE_LABELS[feedState]}
-                          {isConn && feed.items.length > 0 ? ` — ${feed.items.length} items` : ""}
+                          {isConn && feed.items.length > 0
+                            ? `${FEED_STATE_LABELS[feedState]} — ${feed.items.length} items staged`
+                            : FEED_STATE_LABELS[feedState]}
                         </span>
                       </div>
                       {lastChecked && (
                         <span className="font-mono-tactical"
-                          style={{ color: "rgba(155,175,170,0.3)", fontSize: "8.5px" }}>
-                          {fmtRelative(lastChecked)}
+                          style={{ color: "rgba(155,175,170,0.38)", fontSize: "8.5px" }}>
+                          Checked {fmtRelative(lastChecked)}
                         </span>
                       )}
                     </div>
@@ -163,7 +166,7 @@ export default function SignalsPage() {
                     {/* Left: description + intake logic */}
                     <div className="px-5 py-4 space-y-3">
                       <p className="font-mono-tactical leading-relaxed"
-                        style={{ color: "rgba(185,205,200,0.62)", lineHeight: "1.9", fontSize: "10.5px" }}>
+                        style={{ color: "rgba(185,205,200,0.72)", lineHeight: "1.9", fontSize: "10.5px" }}>
                         {cat.description}
                       </p>
                       <div className="flex items-start gap-2.5 pt-1"
@@ -171,38 +174,46 @@ export default function SignalsPage() {
                         <div className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0"
                           style={{ background: "rgba(34,197,94,0.42)" }} />
                         <span className="font-mono-tactical italic"
-                          style={{ color: "rgba(34,197,94,0.5)", fontSize: "10px", lineHeight: "1.7" }}>
+                          style={{ color: "rgba(34,197,94,0.55)", fontSize: "10px", lineHeight: "1.7" }}>
                           {cat.intakeLogic}
                         </span>
                       </div>
                     </div>
 
-                    {/* Right: source binding — live from feed state */}
+                    {/* Right: source binding */}
                     <div className="px-5 py-4 space-y-3">
                       <div className="font-mono-tactical tracking-widest uppercase"
-                        style={{ color: "rgba(34,197,94,0.45)", fontSize: "8.5px", letterSpacing: "0.16em" }}>
+                        style={{ color: "rgba(34,197,94,0.48)", fontSize: "8.5px", letterSpacing: "0.16em" }}>
                         Source Binding
                       </div>
                       <div className="rounded px-3.5 py-3 space-y-2.5"
                         style={{ border: "1px solid rgba(155,175,170,0.1)", background: "rgba(0,0,0,0.25)" }}>
                         {[
-                          { label: "Feed State",   value: isConn && feed.items.length > 0
+                          {
+                            label: "Feed State",
+                            value: isConn && feed.items.length > 0
                               ? `Connected — ${feed.items.length} items staged`
-                              : FEED_STATE_LABELS[feedState], dim: !isConn },
+                              : FEED_STATE_LABELS[feedState],
+                            dim: !isConn,
+                          },
                           { label: "Intake Type",  value: INTAKE_TYPE_LABELS[cat.intakeType], dim: false },
                           { label: "Validation",   value: cat.validationRule, dim: false },
                           { label: "Source ID",    value: source?.id ?? "—", dim: !source },
                           { label: "Last Checked", value: lastChecked ? fmtRelative(lastChecked) : "—", dim: !lastChecked },
-                          { label: "Latency",      value: feed?.health.latencyMs != null ? `${feed.health.latencyMs}ms` : "—", dim: true },
+                          {
+                            label: "Latency",
+                            value: feed?.health.latencyMs != null ? `${feed.health.latencyMs}ms` : "—",
+                            dim: true,
+                          },
                         ].map((row) => (
                           <div key={row.label} className="flex items-start gap-2">
                             <span className="font-mono-tactical flex-shrink-0 w-28"
-                              style={{ color: "rgba(155,175,170,0.42)", fontSize: "9px", letterSpacing: "0.05em" }}>
+                              style={{ color: "rgba(155,175,170,0.48)", fontSize: "9px", letterSpacing: "0.05em" }}>
                               {row.label}
                             </span>
                             <span className="font-mono-tactical"
                               style={{
-                                color: row.dim ? "rgba(155,175,170,0.42)" : "rgba(185,205,200,0.72)",
+                                color: row.dim ? "rgba(155,175,170,0.48)" : "rgba(185,205,200,0.78)",
                                 fontSize: "9.5px",
                                 fontStyle: row.dim ? "italic" : "normal",
                                 lineHeight: "1.5",
@@ -212,11 +223,12 @@ export default function SignalsPage() {
                           </div>
                         ))}
                         {feed?.health.error && feedState !== "unbound" && (
-                          <div className="flex items-start gap-2 pt-1" style={{ borderTop: "1px solid rgba(220,80,80,0.1)" }}>
+                          <div className="flex items-start gap-2 pt-1"
+                            style={{ borderTop: "1px solid rgba(220,80,80,0.1)" }}>
                             <span className="font-mono-tactical flex-shrink-0 w-28"
-                              style={{ color: "rgba(220,80,80,0.45)", fontSize: "9px" }}>Error</span>
+                              style={{ color: "rgba(220,80,80,0.5)", fontSize: "9px" }}>Error</span>
                             <span className="font-mono-tactical"
-                              style={{ color: "rgba(220,80,80,0.6)", fontSize: "9px", lineHeight: "1.5" }}>
+                              style={{ color: "rgba(220,80,80,0.65)", fontSize: "9px", lineHeight: "1.5" }}>
                               {feed.health.error.slice(0, 80)}
                             </span>
                           </div>
@@ -232,19 +244,19 @@ export default function SignalsPage() {
             <div className="rounded p-5"
               style={{ border: "1px solid rgba(34,197,94,0.08)", background: "rgba(0,0,0,0.15)" }}>
               <div className="font-mono-tactical tracking-widest uppercase mb-3.5"
-                style={{ color: "rgba(34,197,94,0.48)", fontSize: "9.5px", letterSpacing: "0.18em" }}>
+                style={{ color: "rgba(34,197,94,0.5)", fontSize: "9.5px", letterSpacing: "0.18em" }}>
                 Triage Criteria
               </div>
               <div className="space-y-2">
                 {TRIAGE_CRITERIA.map((rule, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <span className="font-mono-tactical flex-shrink-0 w-6 text-right"
-                      style={{ color: "rgba(34,197,94,0.3)", fontSize: "8.5px" }}>
+                      style={{ color: "rgba(34,197,94,0.35)", fontSize: "8.5px" }}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div className="w-px h-3.5 flex-shrink-0" style={{ background: "rgba(34,197,94,0.15)" }} />
                     <span className="font-mono-tactical"
-                      style={{ color: "rgba(185,205,200,0.62)", fontSize: "10.5px", lineHeight: "1.7" }}>
+                      style={{ color: "rgba(185,205,200,0.72)", fontSize: "10.5px", lineHeight: "1.7" }}>
                       {rule}
                     </span>
                   </div>
@@ -252,7 +264,7 @@ export default function SignalsPage() {
               </div>
             </div>
 
-            {/* ── Live Intake Log ─── */}
+            {/* Live Intake Log */}
             <div className="rounded" style={{ border: "1px solid rgba(34,197,94,0.09)", background: "rgba(0,0,0,0.15)" }}>
               <div className="flex items-center justify-between px-4 py-3"
                 style={{ borderBottom: "1px solid rgba(34,197,94,0.07)" }}>
@@ -263,33 +275,32 @@ export default function SignalsPage() {
                       boxShadow: connectedCount > 0 ? "0 0 4px #22c55e" : undefined,
                     }} />
                   <span className="font-mono-tactical tracking-widest uppercase"
-                    style={{ color: "rgba(34,197,94,0.48)", fontSize: "9px", letterSpacing: "0.16em" }}>
+                    style={{ color: "rgba(34,197,94,0.52)", fontSize: "9px", letterSpacing: "0.16em" }}>
                     Live Intake Log
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
                   {totalItems > 0 && (
                     <span className="font-mono-tactical"
-                      style={{ color: "rgba(34,197,94,0.45)", fontSize: "9px" }}>
-                      {totalItems} items staged — awaiting classification
+                      style={{ color: "rgba(34,197,94,0.5)", fontSize: "9px" }}>
+                      {totalItems} items staged
                     </span>
                   )}
                   <span className="font-mono-tactical italic"
-                    style={{ color: "rgba(155,175,170,0.28)", fontSize: "9px" }}>
-                    public read-only — no commit controls shown
+                    style={{ color: "rgba(155,175,170,0.32)", fontSize: "9px" }}>
+                    public read-only
                   </span>
                 </div>
               </div>
 
               {allItems.length > 0 ? (
                 <div>
-                  {/* Column headers */}
                   <div className="flex items-center gap-3 px-4 py-2"
                     style={{ borderBottom: "1px solid rgba(34,197,94,0.05)", background: "rgba(0,0,0,0.2)" }}>
                     {["CAT", "SIGNAL TITLE", "SOURCE / AGE", "STATUS"].map((h, i) => (
                       <span key={h} className="font-mono-tactical tracking-widest"
                         style={{
-                          color: "rgba(34,197,94,0.35)", fontSize: "8px", letterSpacing: "0.14em",
+                          color: "rgba(34,197,94,0.38)", fontSize: "8px", letterSpacing: "0.14em",
                           flex: i === 1 ? 1 : undefined,
                           width: i === 0 ? 32 : i === 2 ? 160 : i === 3 ? 120 : undefined,
                           flexShrink: i !== 1 ? 0 : undefined,
@@ -304,8 +315,8 @@ export default function SignalsPage() {
                   {allItems.length > 15 && (
                     <div className="px-4 py-3" style={{ borderTop: "1px solid rgba(34,197,94,0.05)" }}>
                       <span className="font-mono-tactical italic"
-                        style={{ color: "rgba(155,175,170,0.35)", fontSize: "9.5px" }}>
-                        +{allItems.length - 15} additional staged items — accessible via operator layer
+                        style={{ color: "rgba(155,175,170,0.4)", fontSize: "9.5px" }}>
+                        +{allItems.length - 15} additional staged items — visible in the operator layer
                       </span>
                     </div>
                   )}
@@ -313,25 +324,53 @@ export default function SignalsPage() {
                     style={{ borderTop: "1px solid rgba(34,197,94,0.05)", background: "rgba(0,0,0,0.15)" }}>
                     <div className="w-1 h-1 rounded-full" style={{ background: "rgba(155,175,170,0.28)" }} />
                     <span className="font-mono-tactical italic"
-                      style={{ color: "rgba(155,175,170,0.35)", fontSize: "9px" }}>
-                      Items shown are staged candidates — none have been classified or committed to the index.
-                      Classification and commit controls exist in the operator layer.
+                      style={{ color: "rgba(155,175,170,0.42)", fontSize: "9px" }}>
+                      Items shown are staged candidates. None have been classified or committed to the index.
+                      Classification controls exist in the operator layer.
                     </span>
                   </div>
                 </div>
               ) : (
                 <div className="px-4 py-8 flex flex-col items-center gap-2">
                   <span className="font-orbitron text-xl" style={{ color: "rgba(34,197,94,0.15)" }}>◈</span>
-                  <div className="font-mono-tactical" style={{ color: "rgba(155,175,170,0.42)", fontSize: "10px" }}>
-                    {feeds.some((f) => f.state === "loading") ? "Connecting to sources..." : "No live signals"}
+                  <div className="font-mono-tactical" style={{ color: "rgba(155,175,170,0.5)", fontSize: "10px" }}>
+                    {feeds.some((f) => f.state === "loading") ? "Connecting to sources..." : "No live signals received"}
                   </div>
-                  <div className="font-mono-tactical italic" style={{ color: "rgba(155,175,170,0.28)", fontSize: "9.5px" }}>
+                  <div className="font-mono-tactical italic" style={{ color: "rgba(155,175,170,0.32)", fontSize: "9.5px" }}>
                     {feeds.some((f) => f.state === "loading")
                       ? "Fetching intake sources — first poll in progress"
                       : "Intake layer ready — awaiting source binding"}
                   </div>
                 </div>
               )}
+            </div>
+
+            {/* Cross-link to Datasets */}
+            <div className="rounded px-5 py-4 flex items-center justify-between"
+              style={{ border: "1px solid rgba(34,197,94,0.08)", background: "rgba(0,0,0,0.12)" }}>
+              <div>
+                <div className="font-mono-tactical tracking-widest uppercase mb-1"
+                  style={{ color: "rgba(34,197,94,0.42)", fontSize: "8.5px", letterSpacing: "0.14em" }}>
+                  Next Layer
+                </div>
+                <p className="font-mono-tactical"
+                  style={{ color: "rgba(185,205,200,0.62)", fontSize: "10.5px" }}>
+                  Classified signals become domain records in the DATASETS layer.
+                </p>
+              </div>
+              <button
+                onClick={() => setLocation("/datasets")}
+                className="font-mono-tactical tracking-widest flex-shrink-0 ml-6 rounded px-3 py-2"
+                style={{
+                  color: "rgba(34,197,94,0.55)",
+                  fontSize: "8.5px",
+                  letterSpacing: "0.1em",
+                  border: "1px solid rgba(34,197,94,0.18)",
+                  background: "rgba(34,197,94,0.04)",
+                  cursor: "pointer",
+                }}>
+                DATASETS →
+              </button>
             </div>
           </div>
 
@@ -340,7 +379,7 @@ export default function SignalsPage() {
             style={{ borderLeft: "1px solid rgba(34,197,94,0.07)" }}>
             <div>
               <div className="font-mono-tactical tracking-widest uppercase mb-3"
-                style={{ color: "rgba(34,197,94,0.48)", fontSize: "9px", letterSpacing: "0.16em" }}>
+                style={{ color: "rgba(34,197,94,0.5)", fontSize: "9px", letterSpacing: "0.16em" }}>
                 Intake Status
               </div>
               <div className="space-y-3">
@@ -351,16 +390,19 @@ export default function SignalsPage() {
                   return (
                     <div key={cat.id} className="flex flex-col gap-0.5">
                       <span className="font-mono-tactical"
-                        style={{ fontSize: "8.5px", color: "rgba(155,175,170,0.42)", letterSpacing: "0.1em" }}>
+                        style={{ fontSize: "8.5px", color: "rgba(155,175,170,0.5)", letterSpacing: "0.1em" }}>
                         {cat.label.toUpperCase()}
                       </span>
                       <div className="flex items-center gap-1.5">
                         <div className="w-1 h-1 rounded-full"
-                          style={{ background: FEED_STATE_COLORS[state] }} />
+                          style={{
+                            background: FEED_STATE_COLORS[state],
+                            boxShadow: isConn ? `0 0 3px ${FEED_STATE_COLORS[state]}` : undefined,
+                          }} />
                         <span className="font-mono-tactical"
                           style={{ color: FEED_STATE_COLORS[state], fontSize: "10.5px" }}>
                           {isConn
-                            ? `${FEED_STATE_LABELS[state]} — ${feed.items.length} items`
+                            ? `${FEED_STATE_LABELS[state]} — ${feed.items.length} staged`
                             : FEED_STATE_LABELS[state]}
                         </span>
                       </div>
@@ -372,10 +414,11 @@ export default function SignalsPage() {
 
             <div className="h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
 
+            {/* State legend */}
             <div>
-              <div className="font-mono-tactical tracking-widest uppercase mb-2"
-                style={{ color: "rgba(34,197,94,0.45)", fontSize: "9px", letterSpacing: "0.14em" }}>
-                Feed States
+              <div className="font-mono-tactical tracking-widest uppercase mb-2.5"
+                style={{ color: "rgba(34,197,94,0.48)", fontSize: "9px", letterSpacing: "0.14em" }}>
+                Feed State Key
               </div>
               <div className="space-y-2">
                 {(Object.entries(FEED_STATE_LABELS) as [FeedState, string][]).map(([state, label]) => (
@@ -383,7 +426,7 @@ export default function SignalsPage() {
                     <div className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                       style={{ background: FEED_STATE_COLORS[state] }} />
                     <span className="font-mono-tactical"
-                      style={{ color: "rgba(185,205,200,0.52)", fontSize: "10px" }}>
+                      style={{ color: "rgba(185,205,200,0.65)", fontSize: "10px" }}>
                       {label}
                     </span>
                   </div>
@@ -394,14 +437,41 @@ export default function SignalsPage() {
             <div className="h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
 
             <p className="font-mono-tactical leading-relaxed"
-              style={{ color: "rgba(185,205,200,0.45)", fontSize: "10px", lineHeight: "1.85" }}>
-              Signal feeds are bound per source category. Each category operates independently.
-              Set{" "}
-              <span style={{ color: "rgba(34,197,94,0.45)", fontStyle: "normal" }}>
-                VITE_SOURCE_BASE_URL
-              </span>{" "}
-              to use an external API server. Leave unset for same-origin proxy routing.
+              style={{ color: "rgba(185,205,200,0.58)", fontSize: "10px", lineHeight: "1.85" }}>
+              Signal feeds are bound per category. Each category operates independently.
+              Same-origin proxy routing is active — no external API key required.
             </p>
+
+            <div className="h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
+
+            {/* Cross-link */}
+            <div>
+              <div className="font-mono-tactical tracking-widest uppercase mb-2"
+                style={{ color: "rgba(34,197,94,0.42)", fontSize: "8.5px", letterSpacing: "0.14em" }}>
+                Related Layers
+              </div>
+              <div className="space-y-1.5">
+                {[
+                  { label: "DATASETS", path: "/datasets", note: "Domain collections" },
+                  { label: "METHOD",   path: "/method",   note: "Collection logic" },
+                  { label: "ACCESS",   path: "/access",   note: "Tier structure" },
+                ].map((link) => (
+                  <button key={link.path}
+                    onClick={() => setLocation(link.path)}
+                    className="w-full flex items-center justify-between py-1.5"
+                    style={{ background: "none", border: "none", cursor: "pointer" }}>
+                    <span className="font-orbitron font-semibold tracking-wider"
+                      style={{ color: "rgba(34,197,94,0.55)", fontSize: "8.5px" }}>
+                      {link.label}
+                    </span>
+                    <span className="font-mono-tactical"
+                      style={{ color: "rgba(155,175,170,0.38)", fontSize: "8.5px" }}>
+                      {link.note}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

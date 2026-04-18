@@ -1,0 +1,357 @@
+We are continuing the INDEX Data Network build.
+
+Current state:
+- branding hierarchy is now correct
+- INDEX is clearly the data division / data network layer of the broader RSR Intelligence Network
+- the homepage wheel is strong
+- colliding wheel dots are removed
+- RSR Intel back-link exists
+- ACCESS is now informational instead of sales-oriented
+- readability is improved
+- live state foundations exist
+
+Now we need the next major pass:
+
+LIVE NETWORK CREDIBILITY + RELEASE HARDENING
+
+This is NOT a redesign.
+This is NOT a branding reset.
+This is NOT a fake dashboard pass.
+This is NOT a sales/monetization pass.
+
+This pass is about making INDEX feel like:
+- a real live public data network
+- a real RSR subsystem website
+- a real release-ready product
+- a site with operational credibility
+- a site whose live states feel trustworthy and visible
+
+Do NOT add fake data.
+Do NOT invent fake records.
+Do NOT invent fake feed volumes.
+Do NOT clutter the UI with random widgets.
+Do NOT break EdgeOne compatibility.
+Do NOT regress the clean design.
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Make INDEX feel more alive, more operational, more trustworthy, and more release-grade.
+
+This pass should focus on:
+
+1. HOMEPAGE LIVE CREDIBILITY
+2. STRONGER LIVE STATE PRESENTATION
+3. DATASET / SIGNAL / INDEX CROSS-LINKING
+4. CLEAN LIVE CHANNEL / X INTEGRATION OR HONEST FALLBACK
+5. OPERATOR / PUBLIC RELATIONSHIP TIGHTENING
+6. RELEASE HARDENING / FINAL UX POLISH
+
+━━━━━━━━━━━━━━━━━━
+1. HOMEPAGE — LIVE CREDIBILITY PASS
+━━━━━━━━━━━━━━━━━━
+
+The homepage looks strong, but it still needs a stronger sense of “this is a live network.”
+
+Do NOT clutter it.
+Do NOT turn it into a monitoring dashboard.
+Do NOT overwhelm the wheel.
+
+Add one or two tightly controlled live-credibility structures near the homepage wheel.
+
+Possible directions:
+- a compact live status band
+- a compact data network summary strip
+- a compact “current network state” panel
+- a compact “source state / dataset state / record state” indicator group
+- a compact “latest external channel” block if done cleanly
+
+Requirements:
+- the wheel remains the homepage centerpiece
+- support content should reinforce the sense that the network is real
+- the live layer should derive from actual runtime/config state wherever possible
+- no fake counts
+- no fake alert banners
+- no noisy telemetry wall
+
+We want the homepage to feel:
+“live, structured, and real”
+
+Not:
+“pretty but static”
+
+━━━━━━━━━━━━━━━━━━
+2. LIVE STATE PRESENTATION — MAKE IT TRUSTWORTHY
+━━━━━━━━━━━━━━━━━━
+
+Across the site, improve how live state is surfaced.
+
+Current issue:
+live states exist, but they still need to feel more clearly trustworthy and informative.
+
+Refine:
+- source connected / disconnected presentation
+- staged vs committed record presentation
+- last checked / last sync visibility
+- source binding visibility
+- active domains / inactive domains distinction
+- “awaiting first record” / “no source bound” language
+
+Make live state easier to understand at a glance.
+
+Requirements:
+- state labels must remain honest
+- no exaggerated activity
+- no fake urgency
+- no fake operational numbers
+- runtime-derived state should look deliberate, not incidental
+
+Use:
+- better state grouping
+- better status phrasing
+- more visible but restrained status indicators
+- cleaner derived summary blocks
+
+━━━━━━━━━━━━━━━━━━
+3. DATASETS / SIGNALS / INDEX — CROSS-LINK THE SYSTEM
+━━━━━━━━━━━━━━━━━━
+
+Right now the pages are clearer, but they still need stronger relationship logic.
+
+Improve cross-linking between:
+- Signals
+- Datasets
+- Index
+- Method
+- Access
+
+Examples:
+- signal categories should point toward dataset structure
+- dataset cards should point toward index/record logic
+- index page should reference originating signal/domain state
+- method page should point into the live system layers it describes
+- access page should reference the public/restricted system boundary more structurally
+
+Do not add link spam.
+Do add a clearer feeling that all pages belong to one network.
+
+Goal:
+the product should feel like an integrated data system, not separate pages.
+
+━━━━━━━━━━━━━━━━━━
+4. SIGNALS PAGE — LIVE INTAKE POLISH
+━━━━━━━━━━━━━━━━━━
+
+The Signals page is now live-aware.
+Now make it feel more authoritative and better organized.
+
+Improve:
+- intake card hierarchy
+- live feed shell readability
+- source binding table clarity
+- right-side intake status grouping
+- relationship between source status and category descriptions
+- active/unbound/error state visual distinction
+- staged item visibility if present
+
+If live items exist, surface them cleanly.
+If only some sources are active, show that clearly.
+If some sources are still honest-empty, keep that honest.
+
+Do NOT clutter this page into a dashboard.
+Keep it as a public-facing signal intake surface.
+
+━━━━━━━━━━━━━━━━━━
+5. DATASETS PAGE — MAKE THE DOMAIN LAYER FEEL REAL
+━━━━━━━━━━━━━━━━━━
+
+The Datasets page is structurally good, but it still needs to feel more obviously tied to live network state.
+
+Refine:
+- domain card hierarchy
+- schema visibility
+- binding state presentation
+- “first active” or bound-domain logic where it actually applies
+- right-side coverage summary
+- last updated logic visibility
+- live/unbound distinction
+
+Requirements:
+- the right panel must derive from real state
+- domain cards must not feel like decorative schema blocks
+- active domains should feel visibly different from unbound ones
+- if only one or two domains are active, make that clear and credible
+
+The page should feel like:
+real structured domain coverage
+
+Not:
+static documentation
+
+━━━━━━━━━━━━━━━━━━
+6. INDEX PAGE — MAKE THE RECORD LAYER FEEL CREDIBLE
+━━━━━━━━━━━━━━━━━━
+
+The Index page needs to feel like a real record layer even if committed records are still low or zero.
+
+Improve:
+- staged vs committed distinction
+- record schema reference clarity
+- empty state quality
+- record detail panel hierarchy
+- relationship between index state and upstream signals/datasets
+
+If real staged items exist:
+surface them carefully and honestly.
+
+Do NOT fake committed records.
+But do make the page feel alive if the upstream source pipeline is active.
+
+Goal:
+INDEX page should feel like the real destination of the system.
+
+━━━━━━━━━━━━━━━━━━
+7. HOMEPAGE + RIGHT/LEFT PANEL STRUCTURE
+━━━━━━━━━━━━━━━━━━
+
+Do one more composition pass around the homepage.
+
+Improve:
+- left panel content structure
+- right panel content structure
+- hierarchy of product identity vs live state vs sector explanation
+- spacing around wheel
+- panel containment and balance
+- support blocks that make the page feel more complete
+
+The homepage should now feel:
+- branded
+- alive
+- integrated
+- confident
+- finished
+
+Do not overload it.
+Do not create card spam.
+Do not reduce wheel dominance.
+
+━━━━━━━━━━━━━━━━━━
+8. LIVE X / EXTERNAL CHANNEL MODULE
+━━━━━━━━━━━━━━━━━━
+
+We want a supporting live channel presence for @RSRIntel.
+
+Implement the best realistic solution.
+
+Priority order:
+A. clean public-safe live module that actually works
+B. if robust live embedding is not feasible, create a strong fallback module
+
+Requirements:
+- do NOT fake posts
+- do NOT add broken brittle embeds
+- do NOT make X the main focus
+- do NOT break the design language
+
+Acceptable fallback:
+- “Latest from X” module
+- link to @RSRIntel on X
+- clearly presented as live external channel
+- optionally show last checked/feed availability state if using an adapter
+- keep it ready for future live enhancement
+
+This should support the ecosystem relationship, not dominate the homepage.
+
+━━━━━━━━━━━━━━━━━━
+9. OPERATOR / PUBLIC RELATIONSHIP TIGHTENING
+━━━━━━━━━━━━━━━━━━
+
+The public/operator split exists.
+Now tighten the language and structure further.
+
+Public layer should clearly feel like:
+- documentation
+- live public state
+- structural visibility
+- controlled transparency
+
+Operator layer should clearly feel like:
+- deeper environment
+- not public
+- provisioned / restricted
+- not described in operational detail on the public site
+
+Improve:
+- wording around restricted/operator references
+- clarity of what belongs to the public layer
+- clarity of what lies beyond it
+- navigation or utility cues between /access and /login if needed
+- ensure operator links remain subtle and controlled
+
+Do NOT make operator access the focal point.
+
+━━━━━━━━━━━━━━━━━━
+10. RELEASE HARDENING / DEAD-END CLEANUP
+━━━━━━━━━━━━━━━━━━
+
+Do a serious sweep for release polish.
+
+Fix:
+- dead-end copy
+- awkward layout gaps
+- weak CTA language
+- null states that feel unfinished
+- inconsistent status language
+- inconsistently bright or dim text
+- page sections that feel under-contained
+- minor responsive breaks
+- inconsistent side-panel treatment
+- any remaining “prototype feeling”
+
+We want the product to feel:
+shipped, not sketched
+
+━━━━━━━━━━━━━━━━━━
+11. KEEP DESIGN DISCIPLINE
+━━━━━━━━━━━━━━━━━━
+
+Keep:
+- black / graphite / steel base
+- restrained green accents
+- premium dark UI
+- wheel as centerpiece
+- honest live state
+- INDEX / RSR hierarchy
+- public vs restricted clarity
+
+Avoid:
+- over-greening
+- fake dashboards
+- random telemetry clutter
+- social feed spam
+- noisy monitoring visuals
+- consumer SaaS patterns
+
+━━━━━━━━━━━━━━━━━━
+12. FINAL GOAL
+━━━━━━━━━━━━━━━━━━
+
+At the end of this pass, INDEX should feel like:
+
+- a release-ready public data subsystem site
+- a real live-facing part of the RSR ecosystem
+- a data network whose state feels visible and credible
+- a site whose pages clearly belong to one integrated system
+- a product that is clean, honest, dark, premium, and operationally believable
+
+Deliver:
+- stronger homepage live credibility
+- better live state presentation
+- stronger cross-linking between signals/datasets/index
+- cleaner live X/external channel support or honest fallback
+- tighter operator/public relationship
+- final release hardening polish
+
+Do not explain what you will do.
+Implement the pass in code now.

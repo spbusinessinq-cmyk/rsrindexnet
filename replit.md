@@ -82,10 +82,23 @@ Copy `.env.example` to `.env` and configure:
 - `VITE_PORTAINER_URL` — Portainer container management (operator tool)
 - `VITE_DEV_AUTH_BYPASS` — dev only, never set true in production
 
+#### Release hardening pass (completed)
+- **Live credibility**: home.tsx imports useFeed0-3, derivePlatformState, fmtRelative — bottom bar shows "N SOURCES ACTIVE · N STAGED · SYNCED Xs ago" from real feed state. No hardcoded counts.
+- **LeftPanel.tsx**: Accepts optional `platform?: PlatformRuntimeState` prop. Shows live "Network State" card in footer (sources active count + staged items) instead of the weak "Hover a sector" hint. Platform Structure pillars replace placeholder copy.
+- **RightPanel.tsx**: Sector Index list buttons show green dots on SIGNALS/DATASETS/INDEX only when live (networkIsLive). Default body text improved. Enter CTA button added.
+- **signals.tsx**: Body text 0.72+, triage criteria readable, cross-link footer (→ DATASETS), sidebar "Related Layers" nav, improved Feed State Key presentation.
+- **datasets.tsx**: Body text 0.72+, context block mentions live staged count, cross-link footer (→ INDEX), sidebar "Related Layers" nav, domain binding list in sidebar.
+- **records.tsx**: Badge shows "35 STAGED — 0 COMMITTED" derived from real state. Staged candidates info card. Upstream cross-link buttons (← SIGNALS, ← DATASETS). Pipeline Position breadcrumb in sidebar.
+- **overview.tsx**: Pipeline "VIEW →" buttons on each phase. Sector cards have → arrow affordance. RSRINTEL.COM link added. Body text brightened.
+- **method.tsx**: Each phase has contextual cross-link button (SIGNALS → / DATASETS → / INDEX →). "Follow the Pipeline" footer nav. Body text 0.72+.
+- **access.tsx**: Context block, sidebar, body text brightness bumped to 0.68–0.72.
+- **Readability standard**: body 0.72–0.78, labels 0.48–0.55, meta 0.42–0.5. No copy below 0.42.
+
 #### Visual system
 - Color: black bg, green #22c55e active, steel rgba(155,175,170,*) passive
 - Fonts: Orbitron (display), Share Tech Mono (tactical/mono), Rajdhani (body)
 - All empty states are honest — no fake data, no invented counts
+- LIVE_SECTORS = {SIGNALS, DATASETS, INDEX} — only these show live green dots when networkIsLive
 
 ### API Server (`artifacts/api-server`)
 - **Type**: Express 5 API

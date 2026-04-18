@@ -3,6 +3,8 @@ import { useLocation } from "wouter";
 import CommandWheel from "@/components/CommandWheel";
 import LeftPanel from "@/components/LeftPanel";
 import RightPanel from "@/components/RightPanel";
+import { useFeed0, useFeed1, useFeed2, useFeed3 } from "@/hooks/useFeed";
+import { derivePlatformState, fmtRelative } from "@/lib/runtime";
 
 export const SEGMENTS = [
   {
@@ -53,7 +55,25 @@ export default function Home() {
   const [hoveredSegment, setHoveredSegment] = useState<string | null>(null);
   const [, setLocation] = useLocation();
 
+  const f0 = useFeed0();
+  const f1 = useFeed1();
+  const f2 = useFeed2();
+  const f3 = useFeed3();
+  const feeds = [f0, f1, f2, f3];
+  const platform = derivePlatformState(feeds);
+  const isConnecting = feeds.some((f) => f.state === "loading");
+
   const handleSegmentClick = (path: string) => setLocation(path);
+
+  const networkLabel = (() => {
+    if (platform.sourcesConnected > 0) {
+      const staged = platform.totalLiveItems > 0 ? ` · ${platform.totalLiveItems} STAGED` : "";
+      const sync = platform.lastSync ? ` · SYNCED ${fmtRelative(platform.lastSync).toUpperCase()}` : "";
+      return `${platform.sourcesConnected}/${platform.sourcesTotal} SOURCES ACTIVE${staged}${sync}`;
+    }
+    if (isConnecting) return "SOURCES CONNECTING — INITIALISING INTAKE";
+    return "PUBLIC LAYER — SOURCES UNBOUND";
+  })();
 
   return (
     <div className="relative min-h-screen w-full bg-background overflow-hidden grid-overlay flex flex-col">
@@ -92,7 +112,7 @@ export default function Home() {
             href="https://www.rsrintel.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono-tactical tracking-widest hidden sm:flex items-center gap-1.5"
+            className="font-mono-tactical tracking-widest hidden sm:flex items-center"
             style={{
               color: "rgba(34,197,94,0.42)",
               fontSize: "8.5px",
@@ -107,7 +127,7 @@ export default function Home() {
             RSR INTEL ↗
           </a>
           <span className="font-mono-tactical text-xs hidden md:block"
-            style={{ color: "rgba(155,175,170,0.38)", fontSize: "9.5px" }}>
+            style={{ color: "rgba(155,175,170,0.35)", fontSize: "9.5px" }}>
             {new Date().toISOString().slice(0, 19).replace("T", " ")} UTC
           </span>
         </div>
@@ -115,7 +135,7 @@ export default function Home() {
 
       {/* Main content */}
       <div className="relative z-10 flex flex-1 overflow-hidden">
-        <LeftPanel hoveredSegment={hoveredSegment} segments={SEGMENTS} />
+        <LeftPanel hoveredSegment={hoveredSegment} segments={SEGMENTS} platform={platform} />
         <div className="flex-1 flex items-center justify-center p-4 md:p-6">
           <CommandWheel
             segments={SEGMENTS}
@@ -123,28 +143,34 @@ export default function Home() {
             onSegmentClick={handleSegmentClick}
           />
         </div>
-        <RightPanel hoveredSegment={hoveredSegment} segments={SEGMENTS} />
+        <RightPanel hoveredSegment={hoveredSegment} segments={SEGMENTS} platform={platform} />
       </div>
 
-      {/* Bottom bar */}
+      {/* Live network state bottom bar */}
       <div className="relative z-10 flex items-center justify-between px-6 py-2"
         style={{ borderTop: "1px solid rgba(34,197,94,0.06)" }}>
         <span className="font-mono-tactical tracking-widest"
           style={{ color: "rgba(155,175,170,0.28)", fontSize: "9px", letterSpacing: "0.16em" }}>
           INDEX DATA NETWORK
         </span>
-        <div className="flex items-center gap-4">
-          <span className="font-mono-tactical" style={{ color: "rgba(155,175,170,0.28)", fontSize: "9px" }}>
-            RSR DATA SYSTEMS
-          </span>
-          <div className="w-1 h-1 rounded-full status-pulse" style={{ background: "rgba(34,197,94,0.35)" }} />
-          <span className="font-mono-tactical" style={{ color: "rgba(155,175,170,0.28)", fontSize: "9px" }}>
-            PUBLIC LAYER ACTIVE
+        <div className="flex items-center gap-3">
+          <div className="w-1 h-1 rounded-full flex-shrink-0"
+            style={{
+              background: platform.sourcesConnected > 0 ? "rgba(34,197,94,0.55)" : isConnecting ? "rgba(34,197,94,0.28)" : "rgba(155,175,170,0.22)",
+              boxShadow: platform.sourcesConnected > 0 ? "0 0 4px rgba(34,197,94,0.4)" : undefined,
+            }} />
+          <span className="font-mono-tactical"
+            style={{
+              color: platform.sourcesConnected > 0 ? "rgba(34,197,94,0.48)" : "rgba(155,175,170,0.3)",
+              fontSize: "9px",
+              letterSpacing: "0.06em",
+            }}>
+            {networkLabel}
           </span>
         </div>
         <span className="font-mono-tactical tracking-widest hidden md:block"
           style={{ color: "rgba(155,175,170,0.28)", fontSize: "9px", letterSpacing: "0.14em" }}>
-          v1.0
+          PUBLIC LAYER
         </span>
       </div>
     </div>

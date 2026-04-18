@@ -1,3 +1,6 @@
+import { useLocation } from "wouter";
+import type { PlatformRuntimeState } from "@/lib/feeds/types";
+
 interface Segment {
   label: string;
   path: string;
@@ -9,6 +12,7 @@ interface Segment {
 interface RightPanelProps {
   hoveredSegment: string | null;
   segments: Segment[];
+  platform?: PlatformRuntimeState;
 }
 
 const SECTOR_DETAILS: Record<string, { tagline: string; points: string[] }> = {
@@ -68,9 +72,15 @@ const SECTOR_DETAILS: Record<string, { tagline: string; points: string[] }> = {
   },
 };
 
-export default function RightPanel({ hoveredSegment, segments }: RightPanelProps) {
+/* Live state indicator used in sector list */
+const LIVE_SECTORS = new Set(["SIGNALS", "DATASETS", "INDEX"]);
+
+export default function RightPanel({ hoveredSegment, segments, platform }: RightPanelProps) {
+  const [, setLocation] = useLocation();
   const activeSegment = segments.find((s) => s.label === hoveredSegment);
   const sectorDetail = hoveredSegment ? SECTOR_DETAILS[hoveredSegment] : null;
+
+  const networkIsLive = platform && platform.sourcesConnected > 0;
 
   return (
     <div
@@ -115,7 +125,7 @@ export default function RightPanel({ hoveredSegment, segments }: RightPanelProps
               <div className="pt-1">
                 <div className="h-px mb-3" style={{ background: "rgba(34,197,94,0.07)" }} />
                 <div className="font-mono-tactical italic"
-                  style={{ color: "rgba(34,197,94,0.4)", fontSize: "10px" }}>
+                  style={{ color: "rgba(34,197,94,0.45)", fontSize: "10px" }}>
                   {activeSegment.methodology}
                 </div>
               </div>
@@ -124,17 +134,19 @@ export default function RightPanel({ hoveredSegment, segments }: RightPanelProps
 
           {/* Enter CTA */}
           <div className="px-6 py-4" style={{ borderTop: "1px solid rgba(34,197,94,0.07)" }}>
-            <div className="rounded px-4 py-2.5 flex items-center justify-between"
-              style={{ border: "1px solid rgba(34,197,94,0.16)", background: "rgba(34,197,94,0.04)" }}>
+            <button
+              onClick={() => setLocation(activeSegment.path)}
+              className="w-full rounded px-4 py-2.5 flex items-center justify-between"
+              style={{ border: "1px solid rgba(34,197,94,0.18)", background: "rgba(34,197,94,0.06)", cursor: "pointer" }}>
               <span className="font-mono-tactical tracking-widest"
-                style={{ color: "rgba(34,197,94,0.58)", fontSize: "9.5px", letterSpacing: "0.14em" }}>
+                style={{ color: "rgba(34,197,94,0.65)", fontSize: "9.5px", letterSpacing: "0.14em" }}>
                 ENTER SECTOR
               </span>
               <span className="font-mono-tactical"
-                style={{ color: "rgba(155,175,170,0.38)", fontSize: "9.5px" }}>
-                {activeSegment.path}
+                style={{ color: "rgba(34,197,94,0.38)", fontSize: "9.5px" }}>
+                {activeSegment.label} →
               </span>
-            </div>
+            </button>
           </div>
         </div>
       ) : (
@@ -146,7 +158,7 @@ export default function RightPanel({ hoveredSegment, segments }: RightPanelProps
               Platform Identity
             </div>
             <div className="font-orbitron text-sm font-bold tracking-wide leading-snug"
-              style={{ color: "rgba(34,197,94,0.62)" }}>
+              style={{ color: "rgba(34,197,94,0.65)" }}>
               INDEX — the data layer of the RSR Intelligence Network
             </div>
           </div>
@@ -160,61 +172,66 @@ export default function RightPanel({ hoveredSegment, segments }: RightPanelProps
               dataset structuring, and record indexing.
             </p>
             <p className="font-mono-tactical leading-relaxed"
-              style={{ color: "rgba(185,205,200,0.68)", lineHeight: "1.95", fontSize: "11px" }}>
+              style={{ color: "rgba(185,205,200,0.65)", lineHeight: "1.95", fontSize: "11px" }}>
               The command wheel maps the six public sectors. Each sector represents a distinct layer
               of the INDEX pipeline — from monitored signal intake to the access boundary.
             </p>
 
             <div className="h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
 
+            {/* Sector list with live state indicators */}
             <div>
               <div className="font-mono-tactical tracking-widest uppercase mb-3"
                 style={{ color: "rgba(34,197,94,0.45)", fontSize: "9px", letterSpacing: "0.18em" }}>
                 Sector Index
               </div>
-              {segments.map((seg, i) => (
-                <div key={seg.label} className="flex items-center gap-2.5 py-1.5">
-                  <span className="font-mono-tactical flex-shrink-0"
-                    style={{ color: "rgba(155,175,170,0.38)", fontSize: "9px" }}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div className="flex-1 h-px" style={{ background: "rgba(34,197,94,0.07)" }} />
-                  <span className="font-orbitron font-semibold tracking-wider flex-shrink-0"
-                    style={{ color: "rgba(34,197,94,0.55)", fontSize: "8.5px" }}>
-                    {seg.label}
-                  </span>
-                </div>
-              ))}
+              {segments.map((seg, i) => {
+                const isLive = LIVE_SECTORS.has(seg.label) && networkIsLive;
+                return (
+                  <button key={seg.label}
+                    onClick={() => setLocation(seg.path)}
+                    className="w-full flex items-center gap-2.5 py-1.5 text-left"
+                    style={{ background: "none", border: "none", cursor: "pointer", padding: "6px 0" }}>
+                    <span className="font-mono-tactical flex-shrink-0"
+                      style={{ color: "rgba(155,175,170,0.38)", fontSize: "9px", width: 18 }}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="flex-1 h-px" style={{ background: "rgba(34,197,94,0.07)" }} />
+                    {isLive && (
+                      <div className="w-1 h-1 rounded-full flex-shrink-0"
+                        style={{ background: "rgba(34,197,94,0.55)", boxShadow: "0 0 3px rgba(34,197,94,0.4)" }} />
+                    )}
+                    <span className="font-orbitron font-semibold tracking-wider flex-shrink-0"
+                      style={{ color: isLive ? "rgba(34,197,94,0.7)" : "rgba(34,197,94,0.52)", fontSize: "8.5px" }}>
+                      {seg.label}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
 
             <div className="h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
 
-            {/* Live channel + ecosystem */}
-            <div className="space-y-2">
-              <a
-                href="https://x.com/RSRIntel"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between rounded px-3 py-2.5"
-                style={{
-                  border: "1px solid rgba(155,175,170,0.1)",
-                  background: "rgba(0,0,0,0.2)",
-                  textDecoration: "none",
-                }}
-              >
-                <div>
-                  <div className="font-mono-tactical tracking-widest uppercase"
-                    style={{ color: "rgba(155,175,170,0.42)", fontSize: "7.5px", letterSpacing: "0.14em", marginBottom: 2 }}>
-                    Live Channel
-                  </div>
-                  <div className="font-mono-tactical"
-                    style={{ color: "rgba(185,205,200,0.65)", fontSize: "9.5px" }}>
-                    @RSRIntel on X
-                  </div>
+            {/* Live channel */}
+            <a
+              href="https://x.com/RSRIntel"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between rounded px-3 py-2.5"
+              style={{ border: "1px solid rgba(155,175,170,0.1)", background: "rgba(0,0,0,0.2)", textDecoration: "none" }}
+            >
+              <div>
+                <div className="font-mono-tactical tracking-widest uppercase"
+                  style={{ color: "rgba(155,175,170,0.42)", fontSize: "7.5px", letterSpacing: "0.14em", marginBottom: 2 }}>
+                  Live Channel
                 </div>
-                <span style={{ color: "rgba(155,175,170,0.32)", fontSize: "12px" }}>↗</span>
-              </a>
-            </div>
+                <div className="font-mono-tactical"
+                  style={{ color: "rgba(185,205,200,0.65)", fontSize: "9.5px" }}>
+                  @RSRIntel on X
+                </div>
+              </div>
+              <span style={{ color: "rgba(155,175,170,0.32)", fontSize: "12px" }}>↗</span>
+            </a>
           </div>
         </div>
       )}
