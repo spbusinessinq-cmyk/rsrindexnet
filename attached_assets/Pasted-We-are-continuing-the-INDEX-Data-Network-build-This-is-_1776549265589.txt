@@ -1,0 +1,444 @@
+We are continuing the INDEX Data Network build.
+
+This is a major activation pass.
+Not a cosmetic pass.
+Not a concept pass.
+Not a mockup pass.
+
+This build costs time and money, so this pass must move the product materially closer to a real releaseable self-hosted data platform.
+
+Do NOT redesign the product.
+Do NOT change the core identity.
+Do NOT duplicate the intel site.
+Do NOT add fake data.
+Do NOT fabricate live counts, fake records, or pretend activity.
+Do NOT expose sensitive internals on public pages.
+
+━━━━━━━━━━━━━━━━━━
+CORE OBJECTIVE
+━━━━━━━━━━━━━━━━━━
+
+Take INDEX from:
+“premium public data shell”
+
+to:
+“releaseable public-facing data platform with real live foundations”
+
+This pass must do ALL of the following in one coordinated step:
+
+1. ACTIVATE REAL LIVE DATA PATHS
+2. MAKE DATASETS PAGE USE REAL STATE, NOT JUST STATIC SHELLS
+3. MAKE SIGNALS PAGE ACTUALLY REFLECT LIVE SOURCE STATUS
+4. MAKE OPERATOR LOGIN / OPERATOR LAYER USABLE
+5. HARDEN FOR PORTAINER / SELF-HOSTING
+6. IMPROVE LAYOUT / LEGIBILITY WHERE NEEDED WITHOUT REDESIGNING
+
+We need a serious real-world step forward.
+
+━━━━━━━━━━━━━━━━━━
+NON-NEGOTIABLE PRODUCT TRUTH
+━━━━━━━━━━━━━━━━━━
+
+INDEX is:
+- the public-facing data network of the RSR Intelligence Network
+- the structured data / signal / index division
+- a real website
+- a real product
+- intended for self-hosted deployment in Portainer
+
+This means:
+- branding must stay clear
+- public pages must stay clean
+- operator tooling must stay controlled
+- live status must be honest
+- source bindings must become real
+- dataset state must come from actual source/config/runtime state
+
+━━━━━━━━━━━━━━━━━━
+PART 1 — FIRST REAL LIVE SOURCE ACTIVATION
+━━━━━━━━━━━━━━━━━━
+
+We need at least one real live source path working.
+
+Do NOT fake this.
+Do NOT simulate with random values.
+Do NOT create pretend “signals active” nonsense.
+
+Implement one real source path properly.
+
+Acceptable first source types:
+- RSS/Atom source through a normalized internal route
+- JSON feed
+- self-hosted internal endpoint
+- manual local structured endpoint served by the app/backend
+- internal API proxy returning normalized data
+
+Do NOT wire raw external data directly inside page components.
+Build a clean adapter layer.
+
+Requirements:
+- define at least one real source in config
+- implement actual fetch/poll behavior
+- normalize source response into typed signal items
+- support timeout / fetch failure / no source / parse error states
+- store last successful sync
+- store current source health
+- reflect source state honestly in the UI
+
+If the source is unavailable:
+show that honestly.
+If it is connected:
+show that honestly.
+If it errors:
+show that honestly.
+
+No fake activity.
+
+━━━━━━━━━━━━━━━━━━
+PART 2 — REAL SOURCE / FEED ARCHITECTURE CLEANUP
+━━━━━━━━━━━━━━━━━━
+
+Make the feed/source architecture truly usable.
+
+We need a clean structure for:
+- source definitions
+- source health
+- source adapter logic
+- polling
+- normalization
+- runtime state
+- UI consumption
+
+Suggested structure:
+- src/data/sources/
+- src/lib/feeds/
+- src/lib/adapters/
+- src/hooks/
+- src/lib/config/
+
+Create or refine typed contracts for:
+- SignalSource
+- SourceHealth
+- FeedItem
+- IngestedSignal
+- DatasetBindingState
+- RecordCommitState
+
+Each source should support fields like:
+- id
+- label
+- type
+- domain mapping
+- category mapping
+- endpoint
+- parser/adapter
+- polling mode
+- health state
+- last sync
+- last error
+- bindable datasets
+
+The pages should consume this cleanly, not from scattered inline logic.
+
+━━━━━━━━━━━━━━━━━━
+PART 3 — SIGNALS PAGE MUST BECOME ACTUALLY LIVE
+━━━━━━━━━━━━━━━━━━
+
+The Signals page cannot remain just descriptive cards.
+
+It needs to reflect runtime state from the real source architecture.
+
+Refactor the Signals page so that:
+- category cards render from live feed/source state
+- each category shows actual binding state
+- each category shows actual last checked timestamp
+- each category shows actual feed health
+- each category shows actual source count/binding state where known
+- live feed shell is driven by runtime status, not static text
+
+Allowed honest states:
+- Connected
+- No source bound
+- Disconnected
+- Error
+- Staged
+- Awaiting source attachment
+
+Do NOT show fake feed volume.
+Do NOT show fake throughput.
+Do NOT invent signal history.
+
+But do make the page feel alive through real state.
+
+━━━━━━━━━━━━━━━━━━
+PART 4 — DATASETS PAGE MUST BECOME REAL STATE-DRIVEN
+━━━━━━━━━━━━━━━━━━
+
+This is critical.
+
+The Datasets page currently looks structured, but it still feels too static.
+
+We need it to run from real config + binding state.
+
+Each domain card should render from actual runtime/config values:
+- schema version
+- field count
+- source binding state
+- last successful sync
+- update cadence if known
+- record count if actually known
+- awaiting first record if none exist
+- total entries if actually available
+- domain activation status
+- bound/unbound state
+
+No fake values.
+Only:
+- real values
+- or honest null/empty states
+
+The right-side coverage panel must also render from actual derived state, not dead UI text.
+
+Examples:
+- Domains defined = real config count
+- Schemas versioned = real count
+- Active sources = derived from actual live source bindings
+- Live records = derived from actual record store if any
+- Last updated = derived from actual sync timestamps if available
+
+This page must stop feeling like a decorative shell.
+
+━━━━━━━━━━━━━━━━━━
+PART 5 — FIRST REAL DATASET / DOMAIN ACTIVATION
+━━━━━━━━━━━━━━━━━━
+
+Pick one domain and make it the first genuinely activated domain.
+
+Do this cleanly.
+
+Requirements:
+- choose one real domain from the existing dataset structure
+- bind the first live source into that domain
+- show that domain as actually source-bound
+- reflect real binding state on the Datasets page
+- reflect real category/source state on the Signals page
+- if possible, surface a normalized staged item count or first live item state
+
+Do NOT fake a whole dataset.
+But do wire the first actual live domain flow.
+
+Goal:
+one domain becomes real first.
+The rest can remain honest but unbound.
+
+This is the bridge from shell to system.
+
+━━━━━━━━━━━━━━━━━━
+PART 6 — FIRST REAL RECORD PATH
+━━━━━━━━━━━━━━━━━━
+
+We need the beginning of a real record pipeline.
+
+Not a full production ingestion engine.
+But a real path.
+
+Implement a minimal honest path:
+
+source
+→ fetch
+→ normalize
+→ classify/category assign
+→ map into domain
+→ produce staged record candidates
+→ optionally expose committed records if actually supported
+
+Important:
+Do NOT invent committed data.
+If there are only staged items, say so.
+If there are no committed records, say so.
+
+The INDEX page must be ready to reflect:
+- no records committed
+- staged candidates available
+- first real normalized record shape
+- record schema reference
+- record detail shell
+
+If possible:
+add a small staged record state area to the operator layer or INDEX layer.
+But keep the public page clean and honest.
+
+━━━━━━━━━━━━━━━━━━
+PART 7 — OPERATOR LOGIN / OPERATOR LAYER MUST BE USABLE
+━━━━━━━━━━━━━━━━━━
+
+The operator architecture now needs to actually work for your self-hosted environment.
+
+Requirements:
+- /login route works cleanly
+- /operator (or /ops) protected route works cleanly
+- session logic is stable
+- passphrase or configured auth shell works honestly
+- proper behavior when operator key/config is absent
+- clear operator-only routing behavior
+- controlled, serious operator UX
+- no consumer auth language
+- no signup flows
+- no fake accounts
+
+Do not build a SaaS auth experience.
+Do not build cute user flows.
+This is provisioned operator access.
+
+The operator layer should provide:
+- source health monitor
+- dataset binding status
+- feed sync status
+- record pipeline state
+- internal system notices
+- optional internal tool links only if environment-configured
+
+Keep it isolated from the public layer.
+
+━━━━━━━━━━━━━━━━━━
+PART 8 — PUBLIC VS RESTRICTED SAFETY PASS
+━━━━━━━━━━━━━━━━━━
+
+Keep the public layer clean and safe.
+
+Public pages:
+- Overview
+- Signals
+- Datasets
+- Index
+- Method
+- Access
+
+Restricted/operator:
+- login
+- operator console
+- source health internals
+- binding controls / runtime internals
+- pipeline state details
+- internal system links if configured
+
+Audit the separation and tighten it.
+
+Do NOT allow raw internal endpoint details to leak into public pages unnecessarily.
+Do NOT turn public pages into backend dashboards.
+
+Public pages should feel like:
+a real branded data network website.
+
+Operator pages should feel like:
+a controlled internal environment.
+
+━━━━━━━━━━━━━━━━━━
+PART 9 — PORTAINER / SELF-HOSTING HARDENING
+━━━━━━━━━━━━━━━━━━
+
+This app will be self-hosted via Portainer.
+
+Build for that reality.
+
+Requirements:
+- clean environment config handling
+- .env.example updated and complete
+- no hardcoded localhost assumptions scattered everywhere
+- no secrets in client-visible config beyond what is intentionally public
+- source URLs and operator config resolved cleanly through config helpers
+- structure the app so internal API routes / source endpoints can be swapped by env without rewrites
+- support future reverse proxy/container networking
+
+If appropriate:
+- centralize environment resolution
+- create a config utility for source base URLs and operator settings
+- document required deployment variables in code comments or env example
+- keep production/dev behavior explicit and safe
+
+Do not overengineer.
+Do build it like something that is actually going into Portainer.
+
+━━━━━━━━━━━━━━━━━━
+PART 10 — LAYOUT / LEGIBILITY TOUCH-UP WHERE IT BLOCKS RELEASE
+━━━━━━━━━━━━━━━━━━
+
+Only refine what is necessary for releaseability.
+
+Specifically:
+- if wheel labels/icons still collide, fix them properly
+- if text is still too small in critical places, increase it
+- if pages need stronger panel containment to make live state readable, add it
+- if status sidebars feel too dead/static, refactor them to derive from live/config state
+- if schema/data blocks need clearer grouping, improve them
+
+Do NOT redesign.
+Do NOT do style experiments.
+Do only what materially improves usability and release readiness.
+
+━━━━━━━━━━━━━━━━━━
+PART 11 — KEEP BRAND DISCIPLINE
+━━━━━━━━━━━━━━━━━━
+
+Maintain the existing hierarchy:
+
+Primary product:
+INDEX Data Network
+
+Parent ecosystem:
+RSR Intelligence Network
+
+The product should still clearly read as:
+the data network / data systems division / structured data layer of RSR
+
+Do not lose this.
+Do not make the operator side look like a separate unrelated product either.
+
+━━━━━━━━━━━━━━━━━━
+PART 12 — HONESTY RULE
+━━━━━━━━━━━━━━━━━━
+
+Everything must remain honest.
+
+If one source is live:
+show one source live.
+
+If no records are committed:
+say no records committed.
+
+If one domain is bound and five are not:
+show that exactly.
+
+If operator auth is configured through a passphrase shell:
+say so cleanly.
+
+No fake:
+- live counts
+- record totals
+- operator sessions
+- source throughput
+- sync frequency
+- connected datasets
+- ingestion volume
+
+The point is to make INDEX real, not theatrical.
+
+━━━━━━━━━━━━━━━━━━
+DELIVERABLE
+━━━━━━━━━━━━━━━━━━
+
+Implement one major activation pass that delivers:
+
+- first real live source path
+- real feed/source architecture
+- Signals page driven by actual runtime source state
+- Datasets page driven by actual runtime/config binding state
+- first real dataset/domain activation
+- first real staged/record pathway foundation
+- usable operator login and protected operator shell
+- Portainer-safe config/deployment structure
+- public vs restricted separation preserved
+- only necessary layout/legibility fixes for release
+
+Do not explain what you will do.
+Implement the pass in code now.

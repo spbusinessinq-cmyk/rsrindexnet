@@ -4,16 +4,18 @@
    ──────────────────────────────────────────────────────────────────────────── */
 
 export type FeedState =
-  | "connected"
-  | "disconnected"
-  | "error"
-  | "loading"
-  | "unbound"
-  | "cors-restricted";
+  | "connected"        // source responding, items normalised
+  | "disconnected"     // source was connected, lost connection
+  | "staged"           // items received, awaiting classification
+  | "error"            // fetch or parse failure
+  | "loading"          // initial fetch in progress
+  | "unbound"          // no endpoint configured
+  | "cors-restricted"; // cross-origin block — proxy required
 
 export type SourceType = "rss" | "json" | "atom" | "api" | "internal";
 export type SignalCategoryId = "OPN" | "STR" | "FLG" | "MAN";
-export type TriageState = "pending" | "committed" | "dismissed" | "held";
+export type TriageState = "pending" | "committed" | "dismissed" | "held" | "staged";
+export type DomainId = "POL" | "ECO" | "INF" | "ORG" | "MED" | "GEO";
 
 /* ── Source definition — how a source is configured ──────────── */
 export interface SourceDefinition {
@@ -22,7 +24,8 @@ export interface SourceDefinition {
   description?: string;
   type: SourceType;
   categoryId: SignalCategoryId;
-  endpoint: string | null;       // null = unbound / not yet configured
+  domainIds: DomainId[];      // which dataset domains this source feeds into
+  endpoint: string | null;   // null = unbound / not yet configured
   pollingMs: number;
   headers?: Record<string, string>;
   parser?: "json-array" | "json-items" | "rss" | "atom";
@@ -49,6 +52,7 @@ export interface FeedItem {
   date: Date | null;
   sourceId: string;
   categoryId: SignalCategoryId;
+  meta?: Record<string, unknown>;
   raw?: unknown;
 }
 
@@ -57,6 +61,7 @@ export interface IngestedSignal {
   id: string;
   sourceId: string;
   categoryId: SignalCategoryId;
+  domainId?: DomainId;
   receivedAt: Date;
   item: FeedItem;
   triageState: TriageState;
@@ -64,11 +69,12 @@ export interface IngestedSignal {
 
 /* ── Dataset binding — relationship between source and domain ─── */
 export interface DatasetBinding {
-  domainId: string;
+  domainId: DomainId;
   sourceId: string;
   state: FeedState;
   lastSync: Date | null;
   recordCount: number;
+  stagedCount: number;
 }
 
 /* ── Combined feed result returned by useFeed hook ────────────── */
@@ -77,4 +83,17 @@ export interface FeedResult {
   items: FeedItem[];
   health: SourceHealth;
   refresh: () => void;
+}
+
+/* ── Runtime derived state for the platform ──────────────────── */
+export interface PlatformRuntimeState {
+  sourcesTotal: number;
+  sourcesConnected: number;
+  sourcesUnbound: number;
+  sourcesError: number;
+  totalLiveItems: number;
+  domainsTotal: number;
+  domainsBound: number;
+  committedRecords: number;
+  lastSync: Date | null;
 }

@@ -1,30 +1,22 @@
 import AppShell from "@/components/AppShell";
 import PageHeader from "@/components/PageHeader";
-import EmptyState from "@/components/EmptyState";
 import { DATASET_DOMAINS } from "@/data/config";
+import { useFeed0, useFeed1, useFeed2, useFeed3 } from "@/hooks/useFeed";
+import { deriveAllDomainBindings, derivePlatformState, FEED_STATE_COLORS, FEED_STATE_LABELS, fmtRelative, fmtTime } from "@/lib/runtime";
+import type { DomainId } from "@/lib/feeds/types";
 
-const STATUS_LABELS: Record<string, string> = {
-  defined: "Schema defined",
-  active: "Active",
-  inactive: "Inactive",
-  deprecated: "Deprecated",
-};
-
-const BINDING_LABELS: Record<string, string> = {
-  unbound: "No source bound",
-  bound: "Source bound",
-  partial: "Partially bound",
-};
-
-const CADENCE_LABELS: Record<string, string> = {
-  realtime: "Real-time",
-  hourly: "Hourly",
-  daily: "Daily",
-  weekly: "Weekly",
-  manual: "Manual",
-};
+const FIRST_ACTIVATED_DOMAIN = "INF";
 
 export default function DatasetsPage() {
+  const f0 = useFeed0();
+  const f1 = useFeed1();
+  const f2 = useFeed2();
+  const f3 = useFeed3();
+  const feeds = [f0, f1, f2, f3];
+
+  const bindings = deriveAllDomainBindings(feeds);
+  const platform = derivePlatformState(feeds);
+
   return (
     <AppShell>
       <div className="flex flex-col" style={{ minHeight: "calc(100vh - 84px)" }}>
@@ -32,174 +24,195 @@ export default function DatasetsPage() {
           module="MODULE / DATASETS"
           title="DATASETS"
           subtitle="Structured data collections organised by domain — analytical coverage categories and tracked subject areas"
-          badge={`${DATASET_DOMAINS.length} DOMAINS DEFINED`}
+          badge={platform.domainsBound > 0
+            ? `${platform.domainsBound} DOMAIN${platform.domainsBound > 1 ? "S" : ""} BOUND`
+            : `${DATASET_DOMAINS.length} DOMAINS DEFINED`}
+          badgeActive={platform.domainsBound > 0}
         />
 
         <div className="flex flex-1 overflow-hidden">
-          {/* Main content */}
-          <div className="flex-1 overflow-y-auto p-6 md:p-7 space-y-5">
-            <div className="rounded p-4"
+          <div className="flex-1 overflow-y-auto p-6 md:p-7 space-y-4">
+            {/* Context */}
+            <div className="rounded p-4 md:p-5"
               style={{ border: "1px solid rgba(34,197,94,0.09)", background: "rgba(0,0,0,0.18)" }}>
               <p className="font-mono-tactical leading-relaxed"
                 style={{ color: "rgba(185,205,200,0.65)", lineHeight: "1.95", fontSize: "11px" }}>
-                Dataset domains define the analytical coverage structure of INDEX. Each domain is a bounded collection — signals are classified into domains on intake, and records are appended as new data is structured and committed. Domain schema is defined; sources are not yet bound.
+                Dataset domains define the analytical coverage structure of INDEX. Each domain is a bounded collection —
+                signals are classified into domains on intake, and records are appended as data is structured and committed.
+                {platform.domainsBound > 0
+                  ? ` ${platform.domainsBound} domain${platform.domainsBound > 1 ? "s are" : " is"} currently source-bound with ${platform.totalLiveItems} items staged.`
+                  : " Domain schemas are defined — source binding is activating."}
               </p>
             </div>
 
+            {/* Domain cards */}
             <div className="space-y-3">
-              {DATASET_DOMAINS.map((ds) => (
-                <div key={ds.id} data-testid={`dataset-${ds.id.toLowerCase()}`}
-                  className="rounded idx-card"
-                  style={{ border: "1px solid rgba(34,197,94,0.09)", background: "rgba(0,0,0,0.18)" }}>
-                  {/* Domain header */}
-                  <div className="flex items-start justify-between gap-3 px-5 pt-4 pb-3.5"
-                    style={{ borderBottom: "1px solid rgba(34,197,94,0.07)" }}>
-                    <div className="flex items-center gap-3">
-                      <div className="font-mono-tactical px-2 py-1 rounded flex-shrink-0"
-                        style={{
-                          border: "1px solid rgba(34,197,94,0.22)",
-                          color: "rgba(34,197,94,0.72)",
-                          fontSize: "9px",
-                          letterSpacing: "0.1em",
-                          background: "rgba(34,197,94,0.04)",
-                        }}>
-                        {ds.id}
-                      </div>
-                      <div>
-                        <div className="font-orbitron text-sm font-bold tracking-wide"
-                          style={{ color: "#22c55e" }}>
-                          {ds.label}
-                        </div>
-                        <div className="font-mono-tactical mt-0.5"
-                          style={{ color: "rgba(155,175,170,0.5)", fontSize: "9px" }}>
-                          Schema v{ds.schemaVersion} — {ds.fields.length} fields defined
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
-                      <div className="font-mono-tactical px-2.5 py-1 rounded"
-                        style={{
-                          border: "1px solid rgba(34,197,94,0.18)",
-                          color: "rgba(34,197,94,0.55)",
-                          fontSize: "8.5px",
-                          background: "rgba(34,197,94,0.04)",
-                          letterSpacing: "0.08em",
-                        }}>
-                        {STATUS_LABELS[ds.status]}
-                      </div>
-                    </div>
-                  </div>
+              {DATASET_DOMAINS.map((ds) => {
+                const binding     = bindings.get(ds.id as DomainId);
+                const state       = binding?.state ?? "unbound";
+                const stateColor  = FEED_STATE_COLORS[state];
+                const stateLabel  = FEED_STATE_LABELS[state];
+                const isConnected = state === "connected";
+                const isFirst     = ds.id === FIRST_ACTIVATED_DOMAIN;
 
-                  {/* Domain body */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x"
-                    style={{ borderColor: "rgba(34,197,94,0.06)" }}>
-                    {/* Left: description + binding */}
-                    <div className="px-5 py-4 space-y-3">
-                      <p className="font-mono-tactical leading-relaxed"
-                        style={{ color: "rgba(185,205,200,0.6)", lineHeight: "1.9", fontSize: "10.5px" }}>
-                        {ds.description}
-                      </p>
-                      <div className="space-y-1.5 pt-1">
-                        {[
-                          {
-                            label: "Source Binding",
-                            value: BINDING_LABELS[ds.bindingStatus],
-                            dim: ds.bindingStatus === "unbound",
-                          },
-                          {
-                            label: "Update Cadence",
-                            value: ds.updateCadence ? CADENCE_LABELS[ds.updateCadence] : "Not yet assigned",
-                            dim: !ds.updateCadence,
-                          },
-                          {
-                            label: "Record Count",
-                            value: ds.recordCount === 0 ? "Awaiting first record" : ds.recordCount.toString(),
-                            dim: ds.recordCount === 0,
-                          },
-                          {
-                            label: "Last Updated",
-                            value: ds.lastUpdated ?? "—",
-                            dim: !ds.lastUpdated,
-                          },
-                        ].map((item) => (
-                          <div key={item.label} className="flex items-start gap-2">
-                            <span className="font-mono-tactical flex-shrink-0 w-28"
-                              style={{ color: "rgba(155,175,170,0.45)", fontSize: "9.5px", letterSpacing: "0.06em" }}>
-                              {item.label}
-                            </span>
-                            <span className="font-mono-tactical"
-                              style={{
-                                color: item.dim ? "rgba(155,175,170,0.4)" : "rgba(185,205,200,0.7)",
-                                fontSize: "10px",
-                                fontStyle: item.dim ? "italic" : "normal",
-                              }}>
-                              {item.value}
-                            </span>
+                return (
+                  <div key={ds.id} data-testid={`dataset-${ds.id.toLowerCase()}`}
+                    className="rounded idx-card"
+                    style={{
+                      border: isConnected
+                        ? "1px solid rgba(34,197,94,0.22)"
+                        : "1px solid rgba(34,197,94,0.09)",
+                      background: isConnected ? "rgba(6,14,9,0.5)" : "rgba(0,0,0,0.18)",
+                    }}>
+                    {/* Header */}
+                    <div className="flex items-start justify-between gap-3 px-5 pt-4 pb-3.5"
+                      style={{ borderBottom: `1px solid ${isConnected ? "rgba(34,197,94,0.12)" : "rgba(34,197,94,0.07)"}` }}>
+                      <div className="flex items-center gap-3">
+                        <div className="font-mono-tactical px-2 py-1 rounded flex-shrink-0"
+                          style={{
+                            border: `1px solid ${isConnected ? "rgba(34,197,94,0.38)" : "rgba(34,197,94,0.22)"}`,
+                            color: isConnected ? "rgba(34,197,94,0.9)" : "rgba(34,197,94,0.72)",
+                            fontSize: "9px", letterSpacing: "0.1em",
+                            background: isConnected ? "rgba(34,197,94,0.08)" : "rgba(34,197,94,0.04)",
+                          }}>
+                          {ds.id}
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <div className="font-orbitron text-sm font-bold tracking-wide"
+                              style={{ color: isConnected ? "#22c55e" : "rgba(200,220,215,0.72)" }}>
+                              {ds.label}
+                            </div>
+                            {isFirst && isConnected && (
+                              <span className="font-mono-tactical rounded px-1.5 py-0.5"
+                                style={{ border: "1px solid rgba(34,197,94,0.3)", color: "rgba(34,197,94,0.72)", fontSize: "7.5px", letterSpacing: "0.1em", background: "rgba(34,197,94,0.06)" }}>
+                                FIRST ACTIVE
+                              </span>
+                            )}
                           </div>
-                        ))}
+                          <div className="font-mono-tactical mt-0.5"
+                            style={{ color: "rgba(155,175,170,0.5)", fontSize: "9px" }}>
+                            Schema v{ds.schemaVersion} — {ds.fields.length} fields defined
+                          </div>
+                        </div>
                       </div>
-                    </div>
 
-                    {/* Right: field schema */}
-                    <div className="px-5 py-4">
-                      <div className="font-mono-tactical tracking-widest uppercase mb-3"
-                        style={{ color: "rgba(34,197,94,0.45)", fontSize: "8.5px", letterSpacing: "0.16em" }}>
-                        Record Schema — {ds.fields.length} Fields
-                      </div>
-                      <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
-                        {ds.fields.slice(0, 12).map((field) => (
-                          <div key={field.key} className="flex items-center gap-1.5">
-                            <div className="w-1 h-1 rounded-full flex-shrink-0"
-                              style={{
-                                background: field.required
-                                  ? "rgba(34,197,94,0.5)"
-                                  : "rgba(155,175,170,0.25)",
-                              }} />
-                            <span className="font-mono-tactical truncate"
-                              style={{
-                                color: field.required
-                                  ? "rgba(185,205,200,0.62)"
-                                  : "rgba(155,175,170,0.45)",
-                                fontSize: "9.5px",
-                              }}>
-                              {field.key}
-                            </span>
-                            <span className="font-mono-tactical flex-shrink-0"
-                              style={{ color: "rgba(155,175,170,0.3)", fontSize: "8.5px" }}>
-                              {field.type}
-                            </span>
-                          </div>
-                        ))}
-                        {ds.fields.length > 12 && (
-                          <div className="col-span-2 font-mono-tactical"
-                            style={{ color: "rgba(155,175,170,0.3)", fontSize: "9px" }}>
-                            +{ds.fields.length - 12} more fields
-                          </div>
+                      <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
+                        <div className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 rounded-full"
+                            style={{ background: stateColor, boxShadow: isConnected ? `0 0 4px ${stateColor}` : undefined }} />
+                          <span className="font-mono-tactical rounded px-2 py-1"
+                            style={{
+                              border: `1px solid ${isConnected ? "rgba(34,197,94,0.28)" : "rgba(155,175,170,0.12)"}`,
+                              color: stateColor, fontSize: "8.5px",
+                              background: "rgba(0,0,0,0.3)", letterSpacing: "0.08em",
+                            }}>
+                            {stateLabel}
+                          </span>
+                        </div>
+                        {isConnected && binding?.lastSync && (
+                          <span className="font-mono-tactical"
+                            style={{ color: "rgba(155,175,170,0.35)", fontSize: "8px" }}>
+                            Synced {fmtRelative(binding.lastSync)}
+                          </span>
                         )}
                       </div>
                     </div>
-                  </div>
-                </div>
-              ))}
-            </div>
 
-            <div className="rounded" style={{ border: "1px solid rgba(34,197,94,0.07)", background: "rgba(0,0,0,0.12)" }}>
-              <div className="px-4 py-2.5" style={{ borderBottom: "1px solid rgba(34,197,94,0.06)" }}>
-                <span className="font-mono-tactical tracking-widest uppercase"
-                  style={{ color: "rgba(34,197,94,0.45)", fontSize: "9px", letterSpacing: "0.16em" }}>
-                  Live Dataset Status
-                </span>
-              </div>
-              <EmptyState
-                icon="⊞"
-                title="No live dataset sources connected"
-                subtitle="Domain structure defined — source binding pending. Records will appear here when sources are attached and data is committed."
-                statusLine="Intake layer ready — awaiting source attachment"
-              />
+                    {/* Body — 2 columns */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x"
+                      style={{ borderColor: isConnected ? "rgba(34,197,94,0.1)" : "rgba(34,197,94,0.06)" }}>
+                      {/* Left: description + runtime binding state */}
+                      <div className="px-5 py-4 space-y-3">
+                        <p className="font-mono-tactical leading-relaxed"
+                          style={{ color: "rgba(185,205,200,0.62)", lineHeight: "1.9", fontSize: "10.5px" }}>
+                          {ds.description}
+                        </p>
+                        <div className="space-y-1.5 pt-1" style={{ borderTop: "1px solid rgba(34,197,94,0.06)" }}>
+                          {[
+                            {
+                              label: "Source Binding",
+                              value: isConnected
+                                ? (binding?.stagedCount ?? 0) > 0
+                                  ? `Connected — ${binding!.stagedCount} items staged`
+                                  : "Connected — polling"
+                                : state === "loading"
+                                  ? "Connecting..."
+                                  : state === "unbound" ? "No source bound" : stateLabel,
+                              bright: isConnected,
+                            },
+                            {
+                              label: "Update Cadence",
+                              value: isFirst ? "Polled — 60s interval" : "Not yet assigned",
+                              bright: isFirst,
+                            },
+                            {
+                              label: "Record Count",
+                              value: "Awaiting first record commit",
+                              bright: false,
+                            },
+                            {
+                              label: "Last Sync",
+                              value: binding?.lastSync ? fmtTime(binding.lastSync) : "—",
+                              bright: !!binding?.lastSync,
+                            },
+                          ].map((item) => (
+                            <div key={item.label} className="flex items-start gap-2">
+                              <span className="font-mono-tactical flex-shrink-0 w-28"
+                                style={{ color: "rgba(155,175,170,0.45)", fontSize: "9.5px", letterSpacing: "0.06em" }}>
+                                {item.label}
+                              </span>
+                              <span className="font-mono-tactical"
+                                style={{
+                                  color: item.bright ? "rgba(185,205,200,0.78)" : "rgba(155,175,170,0.45)",
+                                  fontSize: "10px",
+                                  fontStyle: item.bright ? "normal" : "italic",
+                                  lineHeight: "1.5",
+                                }}>
+                                {item.value}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Right: field schema */}
+                      <div className="px-5 py-4">
+                        <div className="font-mono-tactical tracking-widest uppercase mb-3"
+                          style={{ color: "rgba(34,197,94,0.45)", fontSize: "8.5px", letterSpacing: "0.16em" }}>
+                          Record Schema — {ds.fields.length} Fields
+                        </div>
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                          {ds.fields.slice(0, 12).map((field) => (
+                            <div key={field.key} className="flex items-center gap-1.5">
+                              <div className="w-1 h-1 rounded-full flex-shrink-0"
+                                style={{ background: field.required ? "rgba(34,197,94,0.55)" : "rgba(155,175,170,0.25)" }} />
+                              <span className="font-mono-tactical truncate"
+                                style={{ color: field.required ? "rgba(185,205,200,0.65)" : "rgba(155,175,170,0.45)", fontSize: "9.5px" }}>
+                                {field.key}
+                              </span>
+                              <span className="font-mono-tactical flex-shrink-0"
+                                style={{ color: "rgba(155,175,170,0.28)", fontSize: "8.5px" }}>
+                                {field.type}
+                              </span>
+                            </div>
+                          ))}
+                          {ds.fields.length > 12 && (
+                            <div className="col-span-2 font-mono-tactical"
+                              style={{ color: "rgba(155,175,170,0.3)", fontSize: "9px" }}>
+                              +{ds.fields.length - 12} more fields
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
-          {/* Status sidebar */}
+          {/* Sidebar — runtime-derived */}
           <div className="w-60 xl:w-64 shrink-0 p-5 space-y-5 overflow-y-auto hidden lg:block"
             style={{ borderLeft: "1px solid rgba(34,197,94,0.07)" }}>
             <div>
@@ -209,12 +222,19 @@ export default function DatasetsPage() {
               </div>
               <div className="space-y-3">
                 {[
-                  { label: "DOMAINS DEFINED",    value: DATASET_DOMAINS.length.toString() },
-                  { label: "SCHEMAS VERSIONED",  value: DATASET_DOMAINS.length.toString() },
-                  { label: "ACTIVE SOURCES",     value: "None" },
-                  { label: "LIVE RECORDS",       value: "—" },
-                  { label: "LAST UPDATED",       value: "—" },
-                  { label: "TOTAL ENTRIES",      value: "—" },
+                  { label: "DOMAINS DEFINED",   value: String(platform.domainsTotal) },
+                  { label: "SCHEMAS VERSIONED",  value: String(platform.domainsTotal) },
+                  { label: "ACTIVE SOURCES",
+                    value: platform.sourcesConnected > 0
+                      ? `${platform.sourcesConnected} / ${platform.sourcesTotal}`
+                      : feeds.some(f => f.state === "loading") ? "Connecting..." : "—" },
+                  { label: "STAGED ITEMS",
+                    value: platform.totalLiveItems > 0 ? String(platform.totalLiveItems) : "—" },
+                  { label: "DOMAINS BOUND",
+                    value: platform.domainsBound > 0 ? `${platform.domainsBound} / ${platform.domainsTotal}` : "—" },
+                  { label: "COMMITTED RECORDS",  value: "0" },
+                  { label: "LAST SYNC",
+                    value: platform.lastSync ? fmtRelative(platform.lastSync) : "—" },
                 ].map((item) => (
                   <div key={item.label} className="flex flex-col gap-0.5">
                     <span className="font-mono-tactical"
@@ -222,12 +242,43 @@ export default function DatasetsPage() {
                       {item.label}
                     </span>
                     <span className="font-mono-tactical"
-                      style={{ color: "rgba(185,205,200,0.68)", fontSize: "11px" }}>
+                      style={{ color: "rgba(185,205,200,0.72)", fontSize: "11px" }}>
                       {item.value}
                     </span>
                   </div>
                 ))}
               </div>
+            </div>
+
+            <div className="h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
+
+            {/* Per-domain binding */}
+            <div>
+              <div className="font-mono-tactical tracking-widest uppercase mb-2.5"
+                style={{ color: "rgba(34,197,94,0.45)", fontSize: "9px", letterSpacing: "0.14em" }}>
+                Domain Binding
+              </div>
+              {DATASET_DOMAINS.map((ds) => {
+                const binding = bindings.get(ds.id as DomainId);
+                const state   = binding?.state ?? "unbound";
+                return (
+                  <div key={ds.id} className="flex items-center gap-2.5 py-2"
+                    style={{ borderBottom: "1px solid rgba(34,197,94,0.05)" }}>
+                    <div className="w-1 h-1 rounded-full flex-shrink-0"
+                      style={{ background: FEED_STATE_COLORS[state] }} />
+                    <span className="font-mono-tactical"
+                      style={{ color: "rgba(155,175,170,0.45)", fontSize: "8.5px", width: 26 }}>
+                      {ds.id}
+                    </span>
+                    <span className="font-mono-tactical flex-1 truncate"
+                      style={{ color: state === "connected" ? "rgba(185,205,200,0.68)" : "rgba(155,175,170,0.35)", fontSize: "9.5px" }}>
+                      {state === "connected"
+                        ? `${binding?.stagedCount ?? 0} staged`
+                        : state === "loading" ? "Connecting..." : "Unbound"}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
 
             <div className="h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
@@ -239,14 +290,12 @@ export default function DatasetsPage() {
               </div>
               <div className="space-y-2">
                 {[
-                  { dot: "rgba(34,197,94,0.5)", label: "Required field" },
+                  { dot: "rgba(34,197,94,0.55)", label: "Required field" },
                   { dot: "rgba(155,175,170,0.25)", label: "Optional field" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                      style={{ background: item.dot }} />
-                    <span className="font-mono-tactical"
-                      style={{ color: "rgba(185,205,200,0.5)", fontSize: "10px" }}>
+                    <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: item.dot }} />
+                    <span className="font-mono-tactical" style={{ color: "rgba(185,205,200,0.52)", fontSize: "10px" }}>
                       {item.label}
                     </span>
                   </div>
@@ -257,9 +306,8 @@ export default function DatasetsPage() {
             <div className="h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
 
             <p className="font-mono-tactical leading-relaxed"
-              style={{ color: "rgba(185,205,200,0.45)", fontSize: "10px", lineHeight: "1.85" }}>
-              Datasets grow incrementally as signals are structured and committed to the record layer.
-              Domain schemas are versioned — field changes are tracked.
+              style={{ color: "rgba(185,205,200,0.42)", fontSize: "10px", lineHeight: "1.85" }}>
+              Datasets grow incrementally as signals are structured and committed. Schemas are versioned — field changes are tracked.
             </p>
           </div>
         </div>

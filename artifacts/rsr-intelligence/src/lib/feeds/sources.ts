@@ -1,71 +1,97 @@
 /* ── INDEX Data Network — Source Definitions ─────────────────────────────────
    Canonical source registry for the INDEX signal intake system.
-   Endpoints are read from environment variables via ENV.SOURCE_BASE.
-   Sources with null endpoints are "unbound" — healthy but not yet connected.
 
-   To bind a source:
-   1. Set VITE_SOURCE_BASE_URL in your .env
-   2. Ensure the endpoint responds with the expected schema
-   3. Optionally configure a proxy if CORS is a constraint
+   Endpoint resolution:
+     ENV.API_BASE is either:
+     - empty string ""  → relative path, same-origin proxy routing (/api/feeds/...)
+     - a full URL       → e.g. http://api:4000 (Portainer internal), https://api.domain.com
+
+   To bind a source externally:
+     Set VITE_SOURCE_BASE_URL in your deployment environment.
+     For Portainer/Docker: use the API server container name as host.
+     For nginx reverse proxy: set to the proxied external URL.
+
+   Domain bindings (domainIds):
+     Each source declares which dataset domains its signals classify into.
+     This drives dataset binding state on the Datasets and Operator pages.
+
+   First activated domain: INF (Infrastructure & Technology)
+     The OPN source (HN top stories) is bound to INF as the first real data path.
    ──────────────────────────────────────────────────────────────────────────── */
 
 import { ENV } from "@/lib/env";
-import type { SourceDefinition } from "./types";
+import type { SourceDefinition, DomainId } from "./types";
 
-const BASE = ENV.SOURCE_BASE;
+const BASE = ENV.API_BASE; // "" = same-origin relative, or full URL
 
-/* Helper — returns an endpoint only if SOURCE_BASE is configured */
-function ep(path: string): string | null {
-  return BASE ? `${BASE}${path}` : null;
+/* Builds endpoint URL. Always returns a string — same-origin sources are always bound. */
+function ep(path: string): string {
+  return `${BASE}/api${path}`;
 }
 
 export const SOURCE_DEFINITIONS: SourceDefinition[] = [
-  /* ── Open Source Intelligence ─────────────────────────────── */
+  /* ── Open Source Intelligence ──────────────────────────────────────────────
+     HackerNews top stories — tech & infrastructure signals.
+     First live source. Bound to INF (Infrastructure & Technology) domain.
+  ────────────────────────────────────────────────────────────────────────── */
   {
     id: "osint-primary",
     label: "OSINT Primary",
-    description: "Primary open-source intelligence feed — monitored public sources classified on intake",
+    description: "HackerNews top stories — technology and infrastructure signals classified on intake",
     type: "json",
     categoryId: "OPN",
+    domainIds: ["INF"] as DomainId[],
     endpoint: ep("/feeds/osint"),
     pollingMs: ENV.POLL_INTERVAL,
-    parser: "json-array",
+    parser: "json-items",
   },
 
-  /* ── Structured Data Feed ─────────────────────────────────── */
+  /* ── Structured Data Feed ──────────────────────────────────────────────────
+     HackerNews Ask HN — structured queries with textual content.
+     Mapped to INF and ORG domains (tech organisations, structured questions).
+  ────────────────────────────────────────────────────────────────────────── */
   {
     id: "structured-primary",
     label: "Structured Data Feed",
-    description: "Schema-validated JSON data stream from defined endpoint — ingested on schedule",
+    description: "HackerNews Ask HN — structured queries ingested on schedule, validated on receipt",
     type: "json",
     categoryId: "STR",
+    domainIds: ["INF", "ORG"] as DomainId[],
     endpoint: ep("/feeds/structured"),
     pollingMs: ENV.POLL_INTERVAL,
-    parser: "json-array",
+    parser: "json-items",
   },
 
-  /* ── Pattern Detection Feed ───────────────────────────────── */
+  /* ── Pattern Detection Feed ────────────────────────────────────────────────
+     Cross-source pattern flags — empty until detection logic is active.
+     Honest state: returns empty array with notice.
+  ────────────────────────────────────────────────────────────────────────── */
   {
     id: "pattern-monitor",
     label: "Pattern Monitor",
-    description: "Cross-source pattern flag feed — only fires when threshold criteria are met",
+    description: "Cross-source pattern flag feed — fires only when threshold criteria are met",
     type: "json",
     categoryId: "FLG",
+    domainIds: [] as DomainId[],
     endpoint: ep("/feeds/patterns"),
     pollingMs: ENV.POLL_INTERVAL * 2,
-    parser: "json-array",
+    parser: "json-items",
   },
 
-  /* ── Manual Intake Queue ──────────────────────────────────── */
+  /* ── Manual Intake Queue ────────────────────────────────────────────────────
+     Operator-submitted signals awaiting classification.
+     Honest state: empty until operator submits.
+  ────────────────────────────────────────────────────────────────────────── */
   {
     id: "manual-queue",
     label: "Manual Intake Queue",
     description: "Operator-submitted signals awaiting classification before commit",
     type: "api",
     categoryId: "MAN",
-    endpoint: ep("/api/intake"),
+    domainIds: [] as DomainId[],
+    endpoint: ep("/intake"),
     pollingMs: ENV.POLL_INTERVAL,
-    parser: "json-array",
+    parser: "json-items",
   },
 ];
 
@@ -79,7 +105,12 @@ export function getSourceById(id: string): SourceDefinition | undefined {
   return SOURCE_DEFINITIONS.find((s) => s.id === id);
 }
 
-/* Returns true if any sources have configured endpoints */
+/* Returns sources bound to a specific domain */
+export function getSourcesForDomain(domainId: string): SourceDefinition[] {
+  return SOURCE_DEFINITIONS.filter((s) => s.domainIds.includes(domainId as DomainId));
+}
+
+/* Returns true if any sources have active endpoints */
 export function hasAnySources(): boolean {
   return SOURCE_DEFINITIONS.some((s) => s.endpoint !== null);
 }
