@@ -6,7 +6,7 @@ interface AppShellProps {
 
 const NAV = [
   { label: "HOME",    path: "/",        icon: "⊕" },
-  { label: "SYSTEMS", path: "/systems", icon: "⬡" },
+  { label: "METHOD",  path: "/method",  icon: "◎" },
   { label: "SIGNALS", path: "/signals", icon: "◈" },
   { label: "ACCESS",  path: "/access",  icon: "⊟" },
   { label: "FILES",   path: "/files",   icon: "▣" },

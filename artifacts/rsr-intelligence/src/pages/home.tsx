@@ -6,11 +6,11 @@ import RightPanel from "@/components/RightPanel";
 
 export const SEGMENTS = [
   {
-    label: "SYSTEMS",
-    path: "/systems",
-    description: "Core intelligence architecture and analytical infrastructure",
-    detail: "RSR operates a layered stack of analytical systems — each with a defined role in the intelligence cycle. AXION handles AI orchestration and inference routing. ORION monitors infrastructure telemetry and operational health. SAGE manages conversational intelligence and document reasoning. These systems are not tools. They are the operating architecture.",
-    methodology: "System mapping. Role definition. Infrastructure integrity.",
+    label: "METHOD",
+    path: "/method",
+    description: "How RSR monitors signals, structures files, and produces synthesized intelligence",
+    detail: "METHOD documents the analytical discipline behind RSR Intelligence Network — how signals are captured and triaged, how information is classified and structured, how files are built from evidence, and how briefs are synthesized from files. This is not a systems inventory. It is a description of how the operation thinks.",
+    methodology: "Monitoring doctrine. Structuring discipline. Synthesis logic.",
   },
   {
     label: "SIGNALS",

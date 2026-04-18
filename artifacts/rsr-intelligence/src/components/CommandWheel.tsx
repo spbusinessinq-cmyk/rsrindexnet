@@ -63,15 +63,16 @@ function SegmentIcon({ label, x, y, active }: { label: string; x: number; y: num
   const s = 9;
 
   const icons: Record<string, JSX.Element> = {
-    SYSTEMS: (
+    METHOD: (
       <g>
-        {[0, 60, 120, 180, 240, 300].map((a) => {
+        <circle cx="0" cy="0" r={s * 0.85} fill="none" stroke={col} strokeWidth="1.1" />
+        <circle cx="0" cy="0" r={s * 0.5} fill="none" stroke={col} strokeWidth="1.1" />
+        <circle cx="0" cy="0" r={s * 0.15} fill={col} />
+        {[0, 90, 180, 270].map((a) => {
           const p1 = polar(0, 0, s * 0.5, a);
-          const p2 = polar(0, 0, s * 0.9, a);
-          return <line key={a} x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} stroke={col} strokeWidth="1.5" strokeLinecap="round" />;
+          const p2 = polar(0, 0, s * 0.85, a);
+          return <line key={a} x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} stroke={col} strokeWidth="1" strokeLinecap="round" />;
         })}
-        <circle cx="0" cy="0" r={s * 0.45} fill="none" stroke={col} strokeWidth="1.2" />
-        <circle cx="0" cy="0" r="2" fill={col} />
       </g>
     ),
     SIGNALS: (

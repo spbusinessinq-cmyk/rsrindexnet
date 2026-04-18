@@ -1,0 +1,192 @@
+We are continuing the public-facing RSR Intelligence Network build.
+
+IMPORTANT CORRECTION:
+
+We already have a broader SYSTEMS page on the main RSR Intel site.
+
+So this site should NOT duplicate that material.
+
+Do not make this site another copy of the RSR Intel systems architecture page.
+
+This site needs its own lane:
+It is the public-facing DATA / INTELLIGENCE OPERATIONS / ANALYTICAL INFRASTRUCTURE side of the ecosystem.
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Refactor the site architecture so it no longer relies on a SYSTEMS page that overlaps with the main intel site.
+
+Keep the command wheel.
+Keep the public-facing intelligence/data company direction.
+But replace the duplicated SYSTEMS logic with a more unique section for this site.
+
+━━━━━━━━━━━━━━━━━━
+REQUIRED CHANGE
+━━━━━━━━━━━━━━━━━━
+
+Remove SYSTEMS from the homepage wheel and route structure.
+
+Replace it with:
+
+METHOD
+
+New homepage wheel sectors should be:
+
+- SIGNALS
+- FILES
+- BRIEFS
+- NETWORK
+- METHOD
+- ACCESS
+
+Do not keep SYSTEMS on this site unless there is a very small cross-link reference.
+This site should stand on its own without copying the main intel site.
+
+━━━━━━━━━━━━━━━━━━
+WHAT METHOD SHOULD MEAN
+━━━━━━━━━━━━━━━━━━
+
+METHOD should explain:
+
+- how RSR Intelligence Network handles signal monitoring
+- how information is structured
+- how files and briefs are produced
+- how analytical discipline is maintained
+- how verification / synthesis / mapping work at a high level
+- how the operation thinks, not just what tools exist
+
+This page should feel like:
+- intelligence methodology
+- analytical workflow doctrine
+- systems discipline
+- process architecture
+
+It should NOT feel like:
+- a duplicate systems inventory
+- a product brochure
+- a generic “about us” page
+
+━━━━━━━━━━━━━━━━━━
+SITE STRUCTURE NOW
+━━━━━━━━━━━━━━━━━━
+
+The public-facing routes should become:
+
+/signals
+/files
+/briefs
+/network
+/method
+/access
+
+The homepage wheel should route into these sections.
+
+━━━━━━━━━━━━━━━━━━
+HOMEPAGE CHANGES
+━━━━━━━━━━━━━━━━━━
+
+Update the homepage wheel and surrounding content accordingly.
+
+Requirements:
+
+- replace SYSTEMS segment with METHOD
+- update hover/selection content to explain METHOD clearly
+- ensure the homepage messaging supports this site's real purpose:
+  a public-facing intelligence/data operations platform
+
+Do not describe this site as the entire RSR ecosystem.
+Do not describe it as the same thing as the main intel site.
+
+Instead, position it as:
+the structured data, signal, file, brief, and access layer.
+
+━━━━━━━━━━━━━━━━━━
+POSITIONING GOAL
+━━━━━━━━━━━━━━━━━━
+
+The public should understand this site as:
+
+a front-facing intelligence operations interface showing how monitored signals become structured files, synthesized briefs, networked understanding, and controlled access layers.
+
+Avoid overlap with the broader intel site's systems overview.
+
+━━━━━━━━━━━━━━━━━━
+METHOD PAGE REQUIREMENTS
+━━━━━━━━━━━━━━━━━━
+
+Build /method as a strong, clean page.
+
+Suggested sections:
+- core methodology intro
+- monitoring discipline
+- structuring and classification
+- synthesis and briefing logic
+- networked analytical flow
+- access boundary / operator separation
+
+If no live data is connected, do not fake anything.
+Use honest language only.
+
+No fake statistics.
+No fake report counts.
+No fake pipeline volume.
+
+━━━━━━━━━━━━━━━━━━
+NETWORK PAGE
+━━━━━━━━━━━━━━━━━━
+
+Keep NETWORK, but make sure it focuses on:
+- architecture relationships
+- layer-to-layer flow
+- operational structure
+- how outputs connect
+
+Not a duplicate systems directory.
+
+━━━━━━━━━━━━━━━━━━
+ACCESS PAGE
+━━━━━━━━━━━━━━━━━━
+
+ACCESS should be the only place where deeper operational tools or restricted layers are referenced.
+
+Do not foreground internal tooling on the homepage.
+Do not foreground internal tooling on METHOD.
+Do not make the public site feel like a raw launcher.
+
+━━━━━━━━━━━━━━━━━━
+DESIGN RULES
+━━━━━━━━━━━━━━━━━━
+
+Keep:
+- black / near-black base
+- green accent only
+- subtle grid
+- premium tactical UI
+- clean geometry
+- serious typography
+- restrained glow
+- strong wheel focal point
+
+Avoid:
+- dashboard clutter
+- duplicated system explanations
+- generic corporate copy
+- startup buzzword language
+- fake operational claims
+
+━━━━━━━━━━━━━━━━━━
+DELIVERABLE
+━━━━━━━━━━━━━━━━━━
+
+Implement this in code.
+
+Update:
+- homepage wheel labels
+- routes
+- hover/selection info
+- page structure
+- content hierarchy
+
+Goal:
+This site should now feel distinct from the main intel site and own a unique role in the ecosystem.

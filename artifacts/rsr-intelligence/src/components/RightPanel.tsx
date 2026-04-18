@@ -21,13 +21,13 @@ const DEFAULT_CONTENT = {
 };
 
 const SECTOR_DETAILS: Record<string, { tagline: string; points: string[] }> = {
-  SYSTEMS: {
-    tagline: "How the intelligence infrastructure is structured",
+  METHOD: {
+    tagline: "How the operation thinks, not just what tools exist",
     points: [
-      "Each system has a defined role in the analytical workflow",
-      "AXION, ORION, and SAGE form the operational core",
-      "System health and integration state are continuously monitored",
-      "Infrastructure is containerized and stack-managed",
+      "Signals are triaged before entering the analytical cycle",
+      "Classification determines routing into files or archive",
+      "Files require traceable evidence — no unsourced conclusions",
+      "Briefs synthesize across multiple files with stated confidence",
     ],
   },
   SIGNALS: {

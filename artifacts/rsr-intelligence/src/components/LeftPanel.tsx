@@ -15,17 +15,17 @@ const CAPABILITIES = [
   {
     id: "SIG",
     label: "Signal Monitoring",
-    text: "We track structured and open-source information streams, applying triage logic to surface patterns before they become noise.",
+    text: "Structured and open-source information streams are continuously monitored. Triage logic separates pattern from noise before anything enters the analytical record.",
+  },
+  {
+    id: "STR",
+    label: "Information Structuring",
+    text: "Signals that clear triage become files — scoped analytical records with traceable evidence, defined sources, and documented classification rationale.",
   },
   {
     id: "SYN",
-    label: "Intelligence Synthesis",
-    text: "Raw signals are transformed into structured analytical products — files, briefs, and records that carry traceable evidentiary chains.",
-  },
-  {
-    id: "SYS",
-    label: "Systems Mapping",
-    text: "We document the architecture of complex systems — how components relate, how data flows, how operations sustain themselves.",
+    label: "Brief Synthesis",
+    text: "Files are synthesized into intelligence briefs — structured outputs built for decision-making, not documentation. Each brief carries a confidence level and source lineage.",
   },
 ];
 
@@ -42,12 +42,11 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
           RSR Intelligence Network
         </div>
         <h1 className="font-orbitron text-2xl font-bold tracking-wide leading-tight" style={{ color: "#22c55e", textShadow: "0 0 24px rgba(34,197,94,0.25)" }}>
-          Intelligence<br />Infrastructure
+          Intelligence<br />Operations
         </h1>
         <p className="mt-4 font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)", lineHeight: "1.9" }}>
-          RSR Intelligence Network is a data and intelligence operation focused on signal monitoring,
-          analytical synthesis, and systems mapping — structured to produce operational understanding
-          from complex information environments.
+          The data and analytical layer of the RSR ecosystem — covering how signals are monitored,
+          how information is structured into files, and how files are synthesized into intelligence briefs.
         </p>
       </div>
 
