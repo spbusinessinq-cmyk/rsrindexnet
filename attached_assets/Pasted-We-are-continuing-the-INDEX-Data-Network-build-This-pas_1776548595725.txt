@@ -1,0 +1,290 @@
+We are continuing the INDEX Data Network build.
+
+This pass is NOT a redesign.
+This pass is NOT a new feature spree.
+This pass is about making INDEX feel release-ready from a product, UX, and visual polish standpoint.
+
+We want INDEX to feel:
+- cleaner
+- sharper
+- more legible
+- more coherent
+- more obviously branded
+- more premium
+- less cramped
+- more website-ready
+- closer to release quality
+
+Do NOT change the core direction.
+Do NOT duplicate the intel site.
+Do NOT remove the wheel.
+Do NOT add fake data.
+Do NOT add fake metrics.
+Do NOT turn this into a dashboard product.
+Do NOT introduce a bunch of new pages.
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Take the current INDEX build and make it feel like a real release candidate.
+
+This pass must focus on:
+
+1. wheel geometry and label cleanup
+2. smoother page layout rhythm
+3. brand reinforcement
+4. readability refinement
+5. content hierarchy refinement
+6. mobile / smaller viewport stability
+7. consistent visual system cleanup
+
+━━━━━━━━━━━━━━━━━━
+1. WHEEL GEOMETRY / LABEL CLEANUP — CRITICAL
+━━━━━━━━━━━━━━━━━━
+
+The command wheel is working, but it still has spacing and readability issues.
+
+Specifically:
+- dots/icons are colliding with text
+- some labels feel cramped
+- the segment layout is not fully mathematically clean yet
+- some visual elements inside the wheel compete for space
+
+Fix the wheel layout cleanly.
+
+Requirements:
+- rebalance icon position vs label position
+- ensure icons do not collide with text
+- ensure labels are centered properly within sectors
+- adjust label spacing, icon scale, and anchor position so every sector reads cleanly
+- keep the wheel dark and premium
+- keep hover/active states
+- keep motion restrained
+- do not over-green the wheel again
+
+Goal:
+The wheel should feel precise, intentional, and easy to read.
+
+If needed:
+- slightly increase sector inner padding
+- slightly reduce icon size
+- move icons upward and labels downward
+- tighten the active trace arc behavior if it interferes with legibility
+- rebalance the wheel ring stack if the moving lines compete with the labels
+
+━━━━━━━━━━━━━━━━━━
+2. PAGE LAYOUT RHYTHM PASS
+━━━━━━━━━━━━━━━━━━
+
+Several pages now have the right content, but the layout rhythm still feels too stiff or too stacked.
+
+Refine the layout of all core pages:
+- Overview
+- Signals
+- Datasets
+- Index
+- Method
+- Access
+
+Improve:
+- vertical spacing between sections
+- content grouping
+- section rhythm
+- panel heights
+- whitespace balance
+- alignment to a consistent grid
+- readability of long-form sections
+
+We want the pages to feel less like:
+“stacked boxes in a shell”
+
+And more like:
+“deliberately composed product pages”
+
+Do NOT make pages sparse and empty.
+Do NOT overfill them either.
+We want controlled density.
+
+━━━━━━━━━━━━━━━━━━
+3. BRAND REINFORCEMENT PASS
+━━━━━━━━━━━━━━━━━━
+
+This is a website.
+The branding must reinforce identity clearly.
+
+We need INDEX to read as:
+- the product
+- the data division / data network layer
+- a subsystem of the broader RSR Intelligence Network
+
+Keep the current hierarchy:
+- INDEX is dominant
+- RSR is parent
+- relationship is visible
+
+Improve:
+- consistency of the INDEX Data Network naming
+- consistency of the RSR parent/subsystem messaging
+- brand lockup placement
+- headline hierarchy
+- top bar and bottom bar polish
+- homepage identity language
+- page intro hierarchy
+
+Do NOT plaster RSR everywhere.
+Do NOT make INDEX feel secondary.
+Make it feel like a proper sub-brand / division with clear lineage.
+
+━━━━━━━━━━━━━━━━━━
+4. READABILITY PASS
+━━━━━━━━━━━━━━━━━━
+
+Keep the dark premium aesthetic, but improve usability.
+
+Refine:
+- small text contrast
+- paragraph readability
+- mono metadata readability
+- sidebar/support text clarity
+- line-height in dense sections
+- heading-to-body contrast
+- passive text tone
+
+Green should remain:
+- headings
+- active labels
+- highlights
+- important status markers
+
+Passive reading text should use more readable steel/gray-white values.
+Do not let readability slip back into “too dim to use.”
+
+━━━━━━━━━━━━━━━━━━
+5. VISUAL SYSTEM CLEANUP
+━━━━━━━━━━━━━━━━━━
+
+Standardize the UI further.
+
+Review and unify:
+- border opacities
+- panel corner radius consistency
+- panel padding
+- card hover behavior
+- empty state treatment
+- sidebar icon treatment
+- button sizes
+- CTA hierarchy
+- label casing / tracking consistency
+- status pill style
+
+We want the whole product to feel like one clean visual system.
+
+Not:
+- a homepage style
+- plus another style on interior pages
+- plus another style on access/operator sections
+
+━━━━━━━━━━━━━━━━━━
+6. HOME PAGE HERO / INTERACTION REFINEMENT
+━━━━━━━━━━━━━━━━━━
+
+The homepage already works.
+Now make it feel more intentional and polished.
+
+Improve:
+- relationship between left panel, wheel, and right panel
+- visual dominance of the wheel
+- supporting role of the side panels
+- hover state transitions for sector content
+- bottom status strip / CTA legibility
+- central hub branding clarity
+- homepage “signature feel”
+
+Goal:
+The homepage should feel like a product homepage with a unique interaction model.
+
+Not just:
+“cool wheel in the middle”
+
+━━━━━━━━━━━━━━━━━━
+7. MOBILE / SMALLER VIEWPORT STABILITY
+━━━━━━━━━━━━━━━━━━
+
+This site is a website.
+It needs to degrade cleanly on narrower widths.
+
+Do a practical responsive pass.
+
+Requirements:
+- ensure the homepage does not collapse awkwardly on medium widths
+- ensure side panels stack cleanly when needed
+- ensure wheel area remains usable and legible
+- ensure text blocks do not become unreadably narrow
+- ensure cards on inner pages wrap and stack sensibly
+- ensure nav / side rail / content relationships don’t break
+
+Do NOT aim for perfect mobile app design.
+Do aim for:
+stable, clean, releaseable website responsiveness.
+
+━━━━━━━━━━━━━━━━━━
+8. CTA / NAVIGATION CLARITY PASS
+━━━━━━━━━━━━━━━━━━
+
+Improve clarity of how users move through the site.
+
+Refine:
+- homepage sector CTA language
+- “enter sector” / “click to inspect” / similar instruction wording
+- page-level navigation cues
+- access/login pathway discoverability
+- consistency of sector links vs page CTAs
+
+We want the site to feel intuitive without becoming generic.
+
+━━━━━━━━━━━━━━━━━━
+9. ACCESS PAGE POLISH
+━━━━━━━━━━━━━━━━━━
+
+The Access page is strong, but refine it further for release.
+
+Improve:
+- tier separation clarity
+- intake area layout
+- restricted/operator tone
+- readability of explanatory copy
+- spacing between access sections
+- visibility of the login / operator pathway
+- premium “controlled access” feel
+
+Keep:
+- no waitlist vibe
+- no SaaS signup vibe
+- no consumer auth vibe
+
+━━━━━━━━━━━━━━━━━━
+10. CODE / STRUCTURE CLEANUP
+━━━━━━━━━━━━━━━━━━
+
+As part of this pass:
+- reduce one-off styles if possible
+- reuse common layout primitives
+- ensure config-driven sections are clean
+- remove stray experiments or dead visual leftovers
+- make the codebase easier to hand off into deployment work next pass
+
+━━━━━━━━━━━━━━━━━━
+DELIVERABLE
+━━━━━━━━━━━━━━━━━━
+
+Implement a release-candidate polish pass that makes INDEX feel:
+- more coherent
+- more readable
+- more branded
+- more mathematically clean
+- more stable as a website
+- more premium and release-ready
+
+Do not explain.
+Implement the pass in code now.

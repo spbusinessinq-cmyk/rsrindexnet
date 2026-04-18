@@ -82,11 +82,13 @@ export default function RecordsPage() {
           {/* Table area */}
           <div className="flex-1 flex flex-col overflow-hidden">
             {/* Column headers */}
-            <div className="grid gap-0 px-5 py-2.5 shrink-0"
+            <div className="idx-col-header shrink-0">
+            <div className="grid gap-0 px-5 py-2.5"
               style={{
                 gridTemplateColumns: COL_TEMPLATE,
                 borderBottom: "1px solid rgba(34,197,94,0.08)",
                 background: "rgba(0,0,0,0.28)",
+                minWidth: 640,
               }}>
               {COLUMNS.map((col) => (
                 <div key={col.key} className="font-mono-tactical tracking-widest uppercase"
@@ -94,6 +96,7 @@ export default function RecordsPage() {
                   {col.label}
                 </div>
               ))}
+            </div>
             </div>
 
             {/* Empty state */}

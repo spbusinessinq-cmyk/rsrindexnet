@@ -82,55 +82,63 @@ export default function MethodPage() {
         />
 
         <div className="flex-1 p-6 md:p-8 max-w-4xl space-y-4">
-          <div className="rounded p-4"
-            style={{ border: "1px solid rgba(34,197,94,0.09)", background: "rgba(34,197,94,0.025)" }}>
+          {/* Context block */}
+          <div className="rounded p-4 md:p-5"
+            style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(0,8,4,0.45)" }}>
             <p className="font-mono-tactical leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.4)", lineHeight: "1.9", fontSize: "10.5px" }}>
+              style={{ color: "rgba(185,205,200,0.65)", lineHeight: "1.92", fontSize: "10.5px" }}>
               INDEX operates a defined methodology for turning monitored signals into structured, indexed records.
               Each phase has explicit rules — not guidelines. This page documents the process architecture, not the tools that run it.
             </p>
           </div>
 
-          {PHASES.map((phase, i) => (
+          {PHASES.map((phase) => (
             <div key={phase.id} data-testid={`phase-${phase.id}`}
               className="rounded p-5 idx-card"
               style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(0,0,0,0.2)" }}>
               <div className="flex items-start gap-4">
+                {/* Phase number */}
                 <div className="w-9 h-9 rounded flex items-center justify-center font-mono-tactical font-bold flex-shrink-0"
                   style={{
                     background: "rgba(34,197,94,0.05)",
-                    border: "1px solid rgba(34,197,94,0.2)",
-                    color: "rgba(34,197,94,0.65)",
+                    border: "1px solid rgba(34,197,94,0.22)",
+                    color: "rgba(34,197,94,0.68)",
                     fontSize: "9.5px",
                   }}>
                   {phase.id}
                 </div>
-                <div className="flex-1 space-y-2.5 min-w-0">
+
+                <div className="flex-1 space-y-3 min-w-0">
+                  {/* Label + headline */}
                   <div>
                     <div className="font-orbitron text-sm font-bold tracking-wider" style={{ color: "#22c55e" }}>
                       {phase.label}
                     </div>
-                    <div className="font-mono-tactical mt-0.5 italic"
-                      style={{ color: "rgba(255,255,255,0.3)", fontSize: "10.5px" }}>
+                    <div className="font-mono-tactical mt-1 italic"
+                      style={{ color: "rgba(185,205,200,0.52)", fontSize: "10.5px", lineHeight: "1.7" }}>
                       {phase.headline}
                     </div>
                   </div>
+
+                  {/* Body */}
                   <p className="font-mono-tactical leading-relaxed"
-                    style={{ color: "rgba(255,255,255,0.38)", lineHeight: "1.88", fontSize: "10.5px" }}>
+                    style={{ color: "rgba(185,205,200,0.62)", lineHeight: "1.9", fontSize: "10.5px" }}>
                     {phase.body}
                   </p>
-                  <div className="rounded p-3 space-y-1.5"
-                    style={{ background: "rgba(34,197,94,0.025)", border: "1px solid rgba(34,197,94,0.07)" }}>
+
+                  {/* Rules */}
+                  <div className="rounded p-3.5 space-y-2"
+                    style={{ background: "rgba(34,197,94,0.025)", border: "1px solid rgba(34,197,94,0.08)" }}>
                     <div className="font-mono-tactical tracking-widest uppercase mb-2"
-                      style={{ color: "rgba(34,197,94,0.25)", fontSize: "8.5px", letterSpacing: "0.14em" }}>
+                      style={{ color: "rgba(34,197,94,0.45)", fontSize: "8.5px", letterSpacing: "0.14em" }}>
                       Rules
                     </div>
                     {phase.rules.map((rule, ri) => (
                       <div key={ri} className="flex items-start gap-2.5">
                         <div className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
-                          style={{ background: "rgba(34,197,94,0.35)" }} />
+                          style={{ background: "rgba(34,197,94,0.42)" }} />
                         <span className="font-mono-tactical"
-                          style={{ color: "rgba(255,255,255,0.27)", lineHeight: "1.8", fontSize: "10.5px" }}>
+                          style={{ color: "rgba(185,205,200,0.58)", lineHeight: "1.8", fontSize: "10.5px" }}>
                           {rule}
                         </span>
                       </div>
