@@ -11,21 +11,21 @@ interface LeftPanelProps {
   segments: Segment[];
 }
 
-const CAPABILITIES = [
+const PILLARS = [
   {
-    id: "SIG",
-    label: "Signal Monitoring",
-    text: "Structured and open-source information streams are continuously monitored. Triage logic separates pattern from noise before anything enters the analytical record.",
+    id: "01",
+    label: "Signal Intake",
+    text: "Monitored sources deliver signals into the INDEX architecture continuously. Intake is structured — sources are classified, signals are logged, and triage determines what enters the record.",
   },
   {
-    id: "STR",
-    label: "Information Structuring",
-    text: "Signals that clear triage become files — scoped analytical records with traceable evidence, defined sources, and documented classification rationale.",
+    id: "02",
+    label: "Data Structuring",
+    text: "Validated signals are structured into datasets and indexed records. Structuring imposes classification, scope definition, and source attribution on raw input.",
   },
   {
-    id: "SYN",
-    label: "Brief Synthesis",
-    text: "Files are synthesized into intelligence briefs — structured outputs built for decision-making, not documentation. Each brief carries a confidence level and source lineage.",
+    id: "03",
+    label: "Record Index",
+    text: "Structured data accumulates into a searchable, traversable index. Records are discrete, scoped entries — not notes, not drafts. Each carries defined status and evidence attribution.",
   },
 ];
 
@@ -37,74 +37,72 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
       <div>
         <div
           className="font-mono-tactical text-xs tracking-widest uppercase mb-3"
-          style={{ color: "rgba(34,197,94,0.4)", letterSpacing: "0.2em" }}
+          style={{ color: "rgba(34,197,94,0.35)", letterSpacing: "0.22em" }}
         >
-          RSR Intelligence Network
+          Public Data Network
         </div>
-        <h1 className="font-orbitron text-2xl font-bold tracking-wide leading-tight" style={{ color: "#22c55e", textShadow: "0 0 24px rgba(34,197,94,0.25)" }}>
-          Intelligence<br />Operations
+        <h1
+          className="font-orbitron text-3xl font-bold tracking-wide leading-none"
+          style={{ color: "#22c55e", textShadow: "0 0 24px rgba(34,197,94,0.2)" }}
+        >
+          INDEX
         </h1>
-        <p className="mt-4 font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)", lineHeight: "1.9" }}>
-          The data and analytical layer of the RSR ecosystem — covering how signals are monitored,
-          how information is structured into files, and how files are synthesized into intelligence briefs.
+        <p className="mt-4 font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.4)", lineHeight: "1.9" }}>
+          A structured data and signal network. INDEX monitors inputs, structures them into classified datasets,
+          and builds a traversable record index — the public-facing layer of a larger analytical infrastructure.
         </p>
       </div>
 
-      <div className="h-px" style={{ background: "rgba(34,197,94,0.08)" }} />
+      <div className="h-px" style={{ background: "rgba(34,197,94,0.07)" }} />
 
       {activeSegment ? (
         <div
           className="rounded p-4 space-y-2 transition-all duration-300"
-          style={{
-            border: "1px solid rgba(34,197,94,0.25)",
-            background: "rgba(34,197,94,0.04)",
-            boxShadow: "0 0 20px rgba(34,197,94,0.06)",
-          }}
+          style={{ border: "1px solid rgba(34,197,94,0.22)", background: "rgba(34,197,94,0.04)" }}
         >
-          <div className="font-mono-tactical text-xs tracking-widest uppercase" style={{ color: "rgba(34,197,94,0.45)" }}>
-            Selected Sector
+          <div className="font-mono-tactical text-xs tracking-widest uppercase" style={{ color: "rgba(34,197,94,0.4)" }}>
+            Sector Selected
           </div>
           <div className="font-orbitron text-sm font-bold tracking-wider" style={{ color: "#22c55e" }}>
             {activeSegment.label}
           </div>
-          <div className="font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)", lineHeight: "1.8" }}>
+          <div className="font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.4)", lineHeight: "1.8" }}>
             {activeSegment.description}
           </div>
           {activeSegment.methodology && (
-            <div className="pt-1 font-mono-tactical text-xs tracking-widest" style={{ color: "rgba(34,197,94,0.35)" }}>
+            <div className="pt-1 font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.32)", letterSpacing: "0.04em" }}>
               — {activeSegment.methodology}
             </div>
           )}
         </div>
       ) : (
         <div className="space-y-5">
-          <div className="font-mono-tactical text-xs tracking-widest uppercase" style={{ color: "rgba(34,197,94,0.35)", letterSpacing: "0.18em" }}>
-            Core Capabilities
+          <div className="font-mono-tactical text-xs tracking-widest uppercase" style={{ color: "rgba(34,197,94,0.3)", letterSpacing: "0.2em" }}>
+            Platform Structure
           </div>
-          {CAPABILITIES.map((cap) => (
-            <div key={cap.id} className="space-y-1.5">
+          {PILLARS.map((p) => (
+            <div key={p.id} className="space-y-1.5">
               <div className="flex items-center gap-2.5">
-                <div
-                  className="w-px h-3 flex-shrink-0"
-                  style={{ background: "rgba(34,197,94,0.5)" }}
-                />
-                <span className="font-orbitron text-xs font-semibold tracking-wider" style={{ color: "rgba(34,197,94,0.8)", fontSize: "9.5px" }}>
-                  {cap.label}
+                <span className="font-mono-tactical text-xs flex-shrink-0" style={{ color: "rgba(34,197,94,0.3)", fontSize: "9px" }}>
+                  {p.id}
+                </span>
+                <div className="w-px h-3 flex-shrink-0" style={{ background: "rgba(34,197,94,0.45)" }} />
+                <span className="font-orbitron text-xs font-semibold tracking-wider" style={{ color: "rgba(34,197,94,0.75)", fontSize: "9.5px" }}>
+                  {p.label}
                 </span>
               </div>
-              <p className="font-mono-tactical text-xs leading-relaxed pl-4" style={{ color: "rgba(255,255,255,0.35)", lineHeight: "1.85", fontSize: "10.5px" }}>
-                {cap.text}
+              <p className="font-mono-tactical text-xs leading-relaxed pl-8" style={{ color: "rgba(255,255,255,0.3)", lineHeight: "1.85", fontSize: "10.5px" }}>
+                {p.text}
               </p>
             </div>
           ))}
         </div>
       )}
 
-      <div className="mt-auto pt-4" style={{ borderTop: "1px solid rgba(34,197,94,0.07)" }}>
-        <div className="font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.22)", letterSpacing: "0.04em", lineHeight: "1.8" }}>
-          Use the command wheel to navigate the intelligence architecture.
-          Hover any sector to review its scope.
-        </div>
+      <div className="mt-auto pt-4" style={{ borderTop: "1px solid rgba(34,197,94,0.06)" }}>
+        <p className="font-mono-tactical text-xs" style={{ color: "rgba(255,255,255,0.18)", lineHeight: "1.8", fontSize: "10px" }}>
+          Navigate the command wheel to explore INDEX sectors. Hover to preview. Click to enter.
+        </p>
       </div>
     </div>
   );

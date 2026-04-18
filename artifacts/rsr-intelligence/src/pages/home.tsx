@@ -6,46 +6,46 @@ import RightPanel from "@/components/RightPanel";
 
 export const SEGMENTS = [
   {
-    label: "METHOD",
-    path: "/method",
-    description: "How RSR monitors signals, structures files, and produces synthesized intelligence",
-    detail: "METHOD documents the analytical discipline behind RSR Intelligence Network — how signals are captured and triaged, how information is classified and structured, how files are built from evidence, and how briefs are synthesized from files. This is not a systems inventory. It is a description of how the operation thinks.",
-    methodology: "Monitoring doctrine. Structuring discipline. Synthesis logic.",
+    label: "OVERVIEW",
+    path: "/overview",
+    description: "What INDEX is and how signal-to-structure works",
+    detail: "OVERVIEW documents the INDEX platform — what it monitors, how it structures incoming signals into usable data, and how structured data becomes indexed records. This is the entry point for understanding the architecture before navigating into its component layers.",
+    methodology: "Platform scope. Signal-to-structure flow. Layer introduction.",
   },
   {
     label: "SIGNALS",
     path: "/signals",
-    description: "Signal monitoring, ingestion methodology, and watch surfaces",
-    detail: "Signals are the raw material of intelligence. This layer captures, categorizes, and routes incoming information from monitored sources — open feeds, structured data streams, and flagged patterns. Before a signal becomes a file, it passes through triage, classification, and source validation.",
-    methodology: "Signal capture. Source triage. Pattern classification.",
+    description: "Monitored signal classes, intake categories, and source structure",
+    detail: "SIGNALS is where monitored input enters the INDEX architecture. Signal categories are defined, sources are classified, and intake logic determines what gets structured versus what gets held or dismissed. This layer exists at the boundary between the outside world and the indexed record.",
+    methodology: "Signal classification. Intake routing. Source assessment.",
   },
   {
-    label: "FILES",
-    path: "/files",
-    description: "Investigations, structured records, and analytical evidence",
-    detail: "Files represent completed units of analytical work — structured records built from validated signals. Each file has a defined scope, documented sources, and traceable evidence chains. This is where pattern becomes record, and observation becomes structured understanding.",
-    methodology: "Record structure. Evidence mapping. Source documentation.",
+    label: "DATASETS",
+    path: "/datasets",
+    description: "Structured data collections and tracked analytical domains",
+    detail: "DATASETS are the organized output of signal structuring — collections of data grouped by domain, subject class, or tracked activity type. A dataset is not a file. It is a living collection that grows as new signals are structured, classified, and appended to its scope.",
+    methodology: "Domain grouping. Collection management. Analytical coverage.",
   },
   {
-    label: "BRIEFS",
-    path: "/briefs",
-    description: "Synthesized intelligence outputs and recurring reporting products",
-    detail: "Briefs are the synthesis layer — distilled analytical conclusions drawn from signals and files. They are written for decision-making, not consumption. Each brief carries a defined subject, analytical confidence level, and source lineage. The goal is structured understanding delivered with precision.",
-    methodology: "Synthesis. Confidence assessment. Actionable framing.",
+    label: "INDEX",
+    path: "/records",
+    description: "Indexed records, structured entries, and searchable data layer",
+    detail: "The INDEX layer is the core of what this platform produces — a structured, searchable record of everything that has been monitored, classified, and committed to the analytical archive. Records are discrete entries with defined scope, source attribution, and classification status.",
+    methodology: "Record structure. Search architecture. Data integrity.",
   },
   {
-    label: "NETWORK",
-    path: "/network",
-    description: "Organizational architecture and intelligence layer topology",
-    detail: "The network layer maps how RSR's intelligence systems, data flows, and analytical components relate to each other. This is not a social graph. It is a structural diagram of how information moves — from signal intake through analysis to output. Understanding the network means understanding how the operation functions.",
-    methodology: "Topology mapping. Flow documentation. Dependency modeling.",
+    label: "METHOD",
+    path: "/method",
+    description: "How INDEX collects, classifies, structures, and synthesizes",
+    detail: "METHOD explains the operational logic behind INDEX — the discipline rules that govern signal intake, the classification logic that routes data into datasets, the structuring process that builds records, and the synthesis layer that produces analysis-ready output. This is process, not product.",
+    methodology: "Collection discipline. Classification logic. Synthesis flow.",
   },
   {
     label: "ACCESS",
     path: "/access",
-    description: "Controlled operator layer and restricted environment entry",
-    detail: "Behind the public interface sits an operational layer built for direct system interaction. ACCESS is the threshold between public architecture and internal operations. Entry requires verification. The tools, dashboards, and live environments available through this layer are not public-facing — they are operator-grade infrastructure.",
-    methodology: "Verified access. Operator authentication. Restricted environment.",
+    description: "Controlled entry to deeper data layers and restricted environments",
+    detail: "ACCESS is the boundary between the public INDEX interface and the operational layer behind it. Deeper datasets, live signal feeds, and analytical tools exist behind this threshold. Public documentation describes what the platform does. ACCESS is where it is operated.",
+    methodology: "Verified entry. Tier separation. Restricted data layer.",
   },
 ];
 
@@ -61,37 +61,26 @@ export default function Home() {
     <div className="relative min-h-screen w-full bg-background overflow-hidden grid-overlay flex flex-col">
       <div
         className="pointer-events-none absolute inset-0"
-        style={{
-          background: "radial-gradient(ellipse 55% 55% at 50% 50%, rgba(0,255,100,0.03) 0%, transparent 70%)",
-        }}
+        style={{ background: "radial-gradient(ellipse 55% 55% at 50% 50%, rgba(0,255,100,0.025) 0%, transparent 70%)" }}
       />
-      <div
-        className="pointer-events-none absolute top-0 left-0 w-full h-px"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(0,255,100,0.35), transparent)" }}
-      />
-      <div
-        className="pointer-events-none absolute bottom-0 left-0 w-full h-px"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(0,255,100,0.35), transparent)" }}
-      />
+      <div className="pointer-events-none absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(0,255,100,0.3), transparent)" }} />
+      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(0,255,100,0.3), transparent)" }} />
 
       <div className="relative z-10 flex items-center justify-between px-6 py-3 border-b border-border">
         <div className="flex items-center gap-3">
           <div className="w-1.5 h-1.5 rounded-full bg-green-400 status-pulse glow-green" />
-          <span className="font-mono-tactical text-xs text-muted-foreground tracking-widest uppercase">RSR-NET // ACTIVE</span>
+          <span className="font-mono-tactical text-xs text-muted-foreground tracking-widest uppercase">INDEX // ACTIVE</span>
         </div>
-        <div className="font-mono-tactical text-xs text-muted-foreground/60 tracking-widest hidden md:block">
-          RSR INTELLIGENCE NETWORK
+        <div className="font-mono-tactical text-xs text-muted-foreground/50 tracking-widest hidden md:block">
+          STRUCTURED DATA NETWORK
         </div>
-        <div className="flex items-center gap-2">
-          <span className="font-mono-tactical text-xs text-muted-foreground/50">
-            {new Date().toISOString().slice(0, 19).replace("T", " ")} UTC
-          </span>
-        </div>
+        <span className="font-mono-tactical text-xs text-muted-foreground/40">
+          {new Date().toISOString().slice(0, 19).replace("T", " ")} UTC
+        </span>
       </div>
 
       <div className="relative z-10 flex flex-1 overflow-hidden">
         <LeftPanel hoveredSegment={hoveredSegment} segments={SEGMENTS} />
-
         <div className="flex-1 flex items-center justify-center p-4 md:p-6">
           <CommandWheel
             segments={SEGMENTS}
@@ -99,22 +88,17 @@ export default function Home() {
             onSegmentClick={handleSegmentClick}
           />
         </div>
-
         <RightPanel hoveredSegment={hoveredSegment} segments={SEGMENTS} />
       </div>
 
       <div className="relative z-10 flex items-center justify-between px-6 py-2 border-t border-border">
-        <span className="font-mono-tactical text-xs text-muted-foreground/40 tracking-widest">
-          RSR INTELLIGENCE NETWORK // v2.1
-        </span>
+        <span className="font-mono-tactical text-xs text-muted-foreground/35 tracking-widest">INDEX // v1.0</span>
         <div className="flex items-center gap-4">
-          <span className="font-mono-tactical text-xs text-muted-foreground/40">PUBLIC INTERFACE</span>
-          <div className="w-1 h-1 rounded-full bg-green-400/40 status-pulse" />
-          <span className="font-mono-tactical text-xs text-muted-foreground/40">SIGNAL LAYER ACTIVE</span>
+          <span className="font-mono-tactical text-xs text-muted-foreground/35">DATA NETWORK</span>
+          <div className="w-1 h-1 rounded-full bg-green-400/35 status-pulse" />
+          <span className="font-mono-tactical text-xs text-muted-foreground/35">SIGNAL LAYER ACTIVE</span>
         </div>
-        <span className="font-mono-tactical text-xs text-muted-foreground/40 tracking-widest hidden md:block">
-          6 SECTORS MAPPED
-        </span>
+        <span className="font-mono-tactical text-xs text-muted-foreground/35 tracking-widest hidden md:block">6 SECTORS</span>
       </div>
     </div>
   );

@@ -4,11 +4,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
-import MethodPage from "@/pages/method";
+import OverviewPage from "@/pages/overview";
 import SignalsPage from "@/pages/signals";
-import FilesPage from "@/pages/files";
-import BriefsPage from "@/pages/briefs";
-import NetworkPage from "@/pages/network";
+import DatasetsPage from "@/pages/datasets";
+import RecordsPage from "@/pages/records";
+import MethodPage from "@/pages/method";
 import AccessPage from "@/pages/access";
 
 const queryClient = new QueryClient();
@@ -17,11 +17,11 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/method" component={MethodPage} />
+      <Route path="/overview" component={OverviewPage} />
       <Route path="/signals" component={SignalsPage} />
-      <Route path="/files" component={FilesPage} />
-      <Route path="/briefs" component={BriefsPage} />
-      <Route path="/network" component={NetworkPage} />
+      <Route path="/datasets" component={DatasetsPage} />
+      <Route path="/records" component={RecordsPage} />
+      <Route path="/method" component={MethodPage} />
       <Route path="/access" component={AccessPage} />
       <Route component={NotFound} />
     </Switch>

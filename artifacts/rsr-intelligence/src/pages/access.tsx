@@ -1,200 +1,150 @@
 import AppShell from "@/components/AppShell";
 
-const OPERATOR_SYSTEMS = [
+const ACCESS_TIERS = [
   {
-    id: "AXION",
-    label: "AXION",
-    role: "AI Orchestration",
-    description: "LLM inference routing, prompt pipeline management, and AI workflow orchestration. Flowise-powered visual node builder for building and testing agent architectures.",
-    endpoint: "http://192.168.12.228:3025",
-    tag: "FLOWISE",
-    restricted: true,
+    id: "PUBLIC",
+    label: "Public Layer",
+    description: "This site. The INDEX public interface documents the platform's structure, methodology, and analytical architecture. No account required. No restrictions.",
+    available: [
+      "Platform overview and sector documentation",
+      "Signal category definitions and intake structure",
+      "Dataset domain descriptions and coverage map",
+      "Methodology and process architecture",
+    ],
+    status: "current",
+    badge: "Active",
   },
   {
-    id: "ORION",
-    label: "ORION",
-    role: "Observability Platform",
-    description: "Infrastructure telemetry, dashboard monitoring, alert management, and operational metrics. Live view of system health across the RSR stack.",
-    endpoint: "http://192.168.12.228:3000",
-    tag: "GRAFANA",
-    restricted: true,
+    id: "RESTRICTED",
+    label: "Restricted Data",
+    description: "Curated datasets, live signal feeds, and deeper record access beyond the public index. Restricted data requires account verification and is not available in the public layer.",
+    available: [
+      "Expanded dataset coverage across all domains",
+      "Live signal feed access and intake visibility",
+      "Full record index — active and archived",
+      "Cross-dataset query and export",
+    ],
+    status: "coming",
+    badge: "Planned",
   },
   {
-    id: "SAGE",
-    label: "SAGE",
-    role: "Conversational Intelligence",
-    description: "Self-hosted LLM interface for operator sessions, document analysis, Q&A workflows, and model interaction. Multi-model support with session history.",
-    endpoint: "http://192.168.12.228:3001",
-    tag: "OPEN-WEBUI",
-    restricted: true,
-  },
-  {
-    id: "STACK",
-    label: "STACK",
-    role: "Container Management",
-    description: "Docker container orchestration via Portainer. Stack deployment, service management, volume inspection, and infrastructure control for the full RSR environment.",
-    endpoint: "http://192.168.12.228:9000",
-    tag: "PORTAINER",
-    restricted: true,
+    id: "OPERATOR",
+    label: "Operator Access",
+    description: "Direct environment access for operators — live dashboards, analytical tools, data management, and system-level interaction. Operator access is not publicly available.",
+    available: [
+      "Live operational dashboards and monitoring",
+      "Analytical tooling and inference environments",
+      "Data pipeline management and source configuration",
+      "Index administration and record management",
+    ],
+    status: "restricted",
+    badge: "Restricted",
   },
 ];
 
 export default function AccessPage() {
   return (
     <AppShell>
-      <div className="p-6 md:p-8 space-y-8 max-w-4xl mx-auto">
+      <div className="p-6 md:p-8 space-y-8 max-w-4xl">
         <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
-            <div
-              className="font-mono-tactical text-xs tracking-widest uppercase mb-2"
-              style={{ color: "rgba(34,197,94,0.4)" }}
-            >
+            <div className="font-mono-tactical text-xs tracking-widest uppercase mb-2" style={{ color: "rgba(34,197,94,0.4)" }}>
               MODULE / ACCESS
             </div>
-            <h1
-              className="font-orbitron text-3xl font-bold tracking-wider"
-              style={{ color: "#22c55e", textShadow: "0 0 20px rgba(34,197,94,0.2)" }}
-            >
+            <h1 className="font-orbitron text-3xl font-bold tracking-wider" style={{ color: "#22c55e", textShadow: "0 0 20px rgba(34,197,94,0.2)" }}>
               ACCESS
             </h1>
             <p className="mt-2 font-mono-tactical text-xs" style={{ color: "rgba(255,255,255,0.35)", lineHeight: "1.9" }}>
-              Operator layer — restricted environments and internal system access
+              Access tiers, data boundaries, and the separation between public documentation and restricted operation
             </p>
-          </div>
-          <div
-            className="flex items-center gap-2 px-3 py-1.5 rounded font-mono-tactical text-xs tracking-widest"
-            style={{ border: "1px solid rgba(34,197,94,0.2)", color: "rgba(34,197,94,0.6)", background: "rgba(34,197,94,0.04)" }}
-          >
-            <div className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(34,197,94,0.5)" }} />
-            OPERATOR LAYER
           </div>
         </div>
 
-        <div
-          className="rounded p-5 space-y-2"
-          style={{ border: "1px solid rgba(34,197,94,0.15)", background: "rgba(34,197,94,0.03)" }}
-        >
-          <div
-            className="font-mono-tactical text-xs tracking-widest uppercase"
-            style={{ color: "rgba(34,197,94,0.4)" }}
-          >
-            Restricted Zone
-          </div>
-          <p className="font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.4)", lineHeight: "1.9" }}>
-            The systems accessible from this layer are internal operational environments. They are not
-            public-facing products. Access is intended for RSR operators working directly with the
-            intelligence infrastructure. If you are not an RSR operator, the public architecture
-            documentation is available across the other modules.
+        <div className="rounded p-4" style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(34,197,94,0.03)" }}>
+          <p className="font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.42)", lineHeight: "1.9", fontSize: "11px" }}>
+            INDEX operates across three defined access tiers. The public interface — this site — documents the platform's architecture, methodology, and sector structure. Deeper data layers, live feeds, and operational environments exist behind controlled access thresholds. The distinction between public documentation and operational access is a design decision, not a security gap.
           </p>
         </div>
 
-        <div className="space-y-3">
-          <div
-            className="font-mono-tactical text-xs tracking-widest uppercase"
-            style={{ color: "rgba(34,197,94,0.35)" }}
-          >
-            Internal Systems
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {OPERATOR_SYSTEMS.map((sys) => (
-              <div
-                key={sys.id}
-                className="rounded p-5 space-y-3 flex flex-col"
-                style={{ border: "1px solid rgba(34,197,94,0.12)", background: "rgba(0,0,0,0.25)" }}
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <div>
-                    <div className="flex items-center gap-2.5">
-                      <div
-                        className="font-mono-tactical text-xs px-1.5 py-0.5 rounded"
-                        style={{ border: "1px solid rgba(34,197,94,0.25)", color: "rgba(34,197,94,0.7)", fontSize: "8.5px", letterSpacing: "0.1em" }}
-                      >
-                        {sys.tag}
-                      </div>
-                    </div>
-                    <div
-                      className="mt-2 font-orbitron text-base font-bold tracking-wider"
-                      style={{ color: "#22c55e" }}
-                    >
-                      {sys.label}
-                    </div>
-                    <div
-                      className="font-mono-tactical text-xs tracking-wider"
-                      style={{ color: "rgba(34,197,94,0.5)", fontSize: "9.5px" }}
-                    >
-                      {sys.role}
-                    </div>
+        <div className="space-y-4">
+          {ACCESS_TIERS.map((tier) => (
+            <div key={tier.id} className="rounded p-5 space-y-4"
+              style={{
+                border: tier.status === "current"
+                  ? "1px solid rgba(34,197,94,0.22)"
+                  : "1px solid rgba(34,197,94,0.1)",
+                background: tier.status === "current" ? "rgba(34,197,94,0.04)" : "rgba(0,0,0,0.2)",
+              }}>
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <div className="font-mono-tactical text-xs px-1.5 py-0.5 rounded inline-block mb-2"
+                    style={{ border: "1px solid rgba(34,197,94,0.2)", color: "rgba(34,197,94,0.5)", fontSize: "9px", letterSpacing: "0.1em" }}>
+                    {tier.id}
                   </div>
-                  <div
-                    className="flex-shrink-0 w-1.5 h-1.5 rounded-full mt-1 status-pulse"
-                    style={{ background: "rgba(34,197,94,0.6)" }}
-                  />
+                  <div className="font-orbitron text-base font-bold tracking-wider" style={{ color: "#22c55e" }}>
+                    {tier.label}
+                  </div>
                 </div>
-
-                <p
-                  className="font-mono-tactical text-xs leading-relaxed flex-1"
-                  style={{ color: "rgba(255,255,255,0.38)", lineHeight: "1.85", fontSize: "10.5px" }}
-                >
-                  {sys.description}
-                </p>
-
-                <div className="flex items-center justify-between pt-1" style={{ borderTop: "1px solid rgba(34,197,94,0.08)" }}>
-                  <span
-                    className="font-mono-tactical text-xs"
-                    style={{ color: "rgba(34,197,94,0.3)", fontSize: "9.5px" }}
-                  >
-                    {sys.endpoint}
-                  </span>
-                  <a
-                    href={sys.endpoint}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono-tactical text-xs px-3 py-1.5 rounded tracking-widest transition-all duration-200"
-                    style={{
-                      border: "1px solid rgba(34,197,94,0.3)",
-                      color: "rgba(34,197,94,0.8)",
-                      background: "rgba(34,197,94,0.05)",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.background = "rgba(34,197,94,0.12)";
-                      (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(34,197,94,0.5)";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.background = "rgba(34,197,94,0.05)";
-                      (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(34,197,94,0.3)";
-                    }}
-                  >
-                    OPEN
-                  </a>
+                <div className="font-mono-tactical text-xs px-2.5 py-1 rounded flex-shrink-0"
+                  style={{
+                    border: `1px solid ${tier.status === "current" ? "rgba(34,197,94,0.35)" : tier.status === "coming" ? "rgba(34,197,94,0.18)" : "rgba(34,197,94,0.1)"}`,
+                    color: tier.status === "current" ? "rgba(34,197,94,0.8)" : tier.status === "coming" ? "rgba(34,197,94,0.45)" : "rgba(34,197,94,0.3)",
+                    fontSize: "9.5px",
+                    letterSpacing: "0.1em",
+                  }}>
+                  {tier.badge}
                 </div>
               </div>
-            ))}
-          </div>
+
+              <p className="font-mono-tactical text-xs leading-relaxed"
+                style={{ color: "rgba(255,255,255,0.4)", lineHeight: "1.88", fontSize: "11px" }}>
+                {tier.description}
+              </p>
+
+              <div>
+                <div className="font-mono-tactical text-xs tracking-widest uppercase mb-2"
+                  style={{ color: "rgba(34,197,94,0.28)", fontSize: "9px" }}>
+                  Includes
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+                  {tier.available.map((item) => (
+                    <div key={item} className="flex items-center gap-2.5">
+                      <div className="w-1 h-1 rounded-full flex-shrink-0"
+                        style={{ background: tier.status === "current" ? "rgba(34,197,94,0.55)" : "rgba(34,197,94,0.2)" }} />
+                      <span className="font-mono-tactical text-xs" style={{ color: "rgba(255,255,255,0.3)", fontSize: "10.5px" }}>
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div
-          className="rounded p-4 space-y-1"
-          style={{ border: "1px solid rgba(34,197,94,0.08)", background: "rgba(0,0,0,0.15)" }}
-        >
-          <div className="font-mono-tactical text-xs tracking-widest uppercase mb-2" style={{ color: "rgba(34,197,94,0.3)" }}>
-            Access Policy
+        <div className="rounded p-5 space-y-4" style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(0,0,0,0.15)" }}>
+          <div className="font-orbitron text-sm font-bold tracking-wider" style={{ color: "rgba(34,197,94,0.7)" }}>
+            Request Access
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            {[
-              { label: "Authentication", value: "Local network required" },
-              { label: "Environment", value: "Internal / non-public" },
-              { label: "Classification", value: "Operator-restricted" },
-            ].map((item) => (
-              <div key={item.label} className="flex flex-col gap-0.5">
-                <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.4)", fontSize: "9.5px" }}>
-                  {item.label}
-                </span>
-                <span className="font-mono-tactical text-xs" style={{ color: "rgba(255,255,255,0.35)", fontSize: "10px" }}>
-                  {item.value}
-                </span>
-              </div>
-            ))}
+          <p className="font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.35)", lineHeight: "1.9", fontSize: "11px" }}>
+            Restricted and operator-level access is not publicly available. If you represent an organization with a
+            legitimate analytical use case, access requests will be reviewed individually. No automated sign-up flow exists yet.
+          </p>
+          <div className="flex items-center gap-3">
+            <div className="flex-1 rounded px-3 py-2.5"
+              style={{ border: "1px solid rgba(34,197,94,0.12)", background: "rgba(0,0,0,0.3)" }}>
+              <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.2)", fontSize: "10px" }}>
+                Access request intake — not yet active
+              </span>
+            </div>
+            <div className="font-mono-tactical text-xs px-4 py-2.5 rounded"
+              style={{ border: "1px solid rgba(34,197,94,0.15)", color: "rgba(34,197,94,0.35)", letterSpacing: "0.1em" }}>
+              SUBMIT
+            </div>
           </div>
+          <p className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.25)", fontSize: "9.5px" }}>
+            Access intake form not yet active. This field is structural.
+          </p>
         </div>
       </div>
     </AppShell>

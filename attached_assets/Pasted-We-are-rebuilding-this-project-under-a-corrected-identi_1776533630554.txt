@@ -1,0 +1,327 @@
+We are rebuilding this project under a corrected identity.
+
+New system name:
+
+INDEX
+
+This is NOT RSR Intelligence Network.
+This is NOT the intel/news/investigation platform.
+
+This is:
+
+INDEX — the public-facing DATA NETWORK layer of the ecosystem.
+
+━━━━━━━━━━━━━━━━━━
+CORE IDENTITY
+━━━━━━━━━━━━━━━━━━
+
+INDEX is a structured data and signal network.
+
+It exists to:
+- monitor signals
+- structure information
+- build indexed records
+- produce synthesis-ready data layers
+
+This is NOT:
+- a newsroom
+- a content site
+- a systems catalog
+- a tool launcher
+
+This IS:
+- a data infrastructure interface
+- a signal-to-structure pipeline
+- a public-facing analytical data layer
+
+━━━━━━━━━━━━━━━━━━
+CRITICAL RULE
+━━━━━━━━━━━━━━━━━━
+
+We already have a separate INTEL SITE.
+
+That site owns:
+- systems (AXION, SAGE, ORION, etc.)
+- investigations
+- dossiers
+- world monitoring
+- editorial intelligence
+
+INDEX must NOT replicate ANY of that.
+
+Do NOT:
+- reuse AXION / SAGE / ORION cards as the main UI
+- recreate “core systems layer”
+- copy navigation (Home / Systems / Files / Dossiers / World)
+- reuse messaging like “mapping power / exposing reality”
+
+If this looks like a second intel site, it is WRONG.
+
+━━━━━━━━━━━━━━━━━━
+INDEX POSITIONING
+━━━━━━━━━━━━━━━━━━
+
+INDEX should feel like:
+
+a public interface into a structured intelligence data network
+
+The user should understand:
+
+- signals are monitored
+- signals are structured into data
+- data becomes indexed records
+- records feed analysis and briefs
+- deeper layers exist behind controlled access
+
+━━━━━━━━━━━━━━━━━━
+NEW NAVIGATION (MANDATORY)
+━━━━━━━━━━━━━━━━━━
+
+Replace the current navigation with:
+
+- OVERVIEW
+- SIGNALS
+- DATASETS
+- INDEX
+- METHOD
+- ACCESS
+
+(You may use FILES instead of INDEX if needed, but INDEX is preferred)
+
+━━━━━━━━━━━━━━━━━━
+SECTION DEFINITIONS
+━━━━━━━━━━━━━━━━━━
+
+OVERVIEW
+= what INDEX is
+= what it does
+= how signals → data → records → synthesis works
+
+SIGNALS
+= monitored signal classes
+= intake structure
+= categories of tracked activity
+= no fake counts
+
+DATASETS
+= structured collections of data
+= tracked domains
+= organized analytical layers
+
+INDEX (or FILES)
+= indexed records
+= structured data entries
+= search/index architecture
+= no fake files, only structural UI if empty
+
+METHOD
+= how INDEX works
+= collection discipline
+= classification logic
+= structuring process
+= synthesis flow
+
+ACCESS
+= boundary between public and restricted layers
+= request access
+= explanation of deeper system
+
+━━━━━━━━━━━━━━━━━━
+HOMEPAGE — CRITICAL
+━━━━━━━━━━━━━━━━━━
+
+The homepage must be rebuilt around INDEX identity.
+
+You may KEEP the radial wheel IF:
+- it supports clarity
+- it reflects INDEX sections
+- it feels like a structured selector
+
+If the wheel causes confusion, replace it with a better interactive system.
+
+The homepage should:
+
+- clearly introduce INDEX
+- show its purpose
+- feel powerful but understandable
+- guide users into sections
+
+━━━━━━━━━━━━━━━━━━
+HOMEPAGE COPY DIRECTION
+━━━━━━━━━━━━━━━━━━
+
+DO NOT reuse intel site language.
+
+DO NOT say:
+- mapping power
+- exposing reality
+- narrative-based messaging
+
+USE:
+
+- structuring signals
+- building records
+- indexing information
+- monitoring inputs
+- analytical data layers
+- synthesis-ready structure
+
+Tone:
+- clean
+- analytical
+- cold
+- serious
+- system-oriented
+- no hype
+- no startup fluff
+- no military cosplay
+
+━━━━━━━━━━━━━━━━━━
+INTERACTION SYSTEM
+━━━━━━━━━━━━━━━━━━
+
+We want a unique interface.
+
+Options:
+- refined radial selector (if wheel is kept)
+- data layer map
+- structured node grid
+- indexed navigation surface
+
+Requirements:
+- must be clear
+- must feel premium
+- must not feel gimmicky
+- must not be confusing
+
+━━━━━━━━━━━━━━━━━━
+REMOVE THESE IMMEDIATELY
+━━━━━━━━━━━━━━━━━━
+
+- Live tool links on homepage
+- Flowise / Portainer / WebUI as public features
+- fake stats (signals active, modules loaded, etc.)
+- placeholder system cards
+- duplicated intel system structure
+- raw backend exposure
+
+━━━━━━━━━━━━━━━━━━
+DESIGN SYSTEM
+━━━━━━━━━━━━━━━━━━
+
+Keep:
+
+- black / near-black base
+- green accent ONLY
+- thin borders
+- subtle grid
+- minimal glow
+- sharp typography
+- clean spacing
+
+Avoid:
+
+- dashboard clutter
+- fake “AI startup” look
+- heavy sci-fi effects
+- neon overload
+- duplicated intel layout
+
+This should feel like:
+a high-end analytical data system
+
+━━━━━━━━━━━━━━━━━━
+PAGE BUILD REQUIREMENTS
+━━━━━━━━━━━━━━━━━━
+
+Each page must be real and usable:
+
+SIGNALS:
+- signal categories
+- intake structure
+- empty states if no data
+
+DATASETS:
+- structured groupings
+- categories
+- conceptual layout
+
+INDEX:
+- table/list layout
+- search-ready UI shell
+- no fake records
+
+METHOD:
+- structured explanation
+- sections for:
+  - intake
+  - structuring
+  - classification
+  - synthesis
+
+ACCESS:
+- restricted layer explanation
+- request access UI
+- optional tool references ONLY here
+
+━━━━━━━━━━━━━━━━━━
+MONETIZATION FOUNDATION
+━━━━━━━━━━━━━━━━━━
+
+Design ACCESS so it can later support:
+
+- paid tiers
+- restricted data
+- advanced datasets
+- deeper tools
+
+Do NOT build pricing UI yet.
+But structure ACCESS so it can support it.
+
+━━━━━━━━━━━━━━━━━━
+COMPONENT STRUCTURE
+━━━━━━━━━━━━━━━━━━
+
+Refactor cleanly:
+
+- AppShell
+- NavBar
+- PageLayout
+- SectionHeader
+- DataPanel
+- EmptyState
+- IndexTable
+- SignalCategoryList
+- DatasetGrid
+- MethodSections
+- AccessGate
+
+Keep code clean and modular for Docker/Portainer deployment.
+
+━━━━━━━━━━━━━━━━━━
+DELIVERABLE
+━━━━━━━━━━━━━━━━━━
+
+Produce REAL code.
+
+Update:
+- branding to INDEX
+- navigation
+- homepage
+- pages
+- interaction system
+- layout
+- copy tone
+
+End result must:
+
+- feel distinct from the intel site
+- feel like a real data platform
+- have no duplicated system content
+- clearly explain what INDEX does
+- feel unique and premium
+- be ready for public-facing deployment
+
+Do NOT explain.
+Do NOT describe.
+IMPLEMENT.
