@@ -50,38 +50,40 @@ const TIERS = [
   },
 ];
 
-const STATUS_COLORS = {
-  ACTIVE:     { border: "rgba(34,197,94,0.32)", text: "rgba(34,197,94,0.9)",  bg: "rgba(34,197,94,0.07)" },
-  CONTROLLED: { border: "rgba(34,197,94,0.16)", text: "rgba(34,197,94,0.48)", bg: "rgba(34,197,94,0.035)" },
-  RESTRICTED: { border: "rgba(100,120,115,0.18)", text: "rgba(155,175,170,0.48)", bg: "rgba(0,0,0,0.2)" },
+type TierStatus = "ACTIVE" | "CONTROLLED" | "RESTRICTED";
+
+const STATUS_COLORS: Record<TierStatus, { border: string; text: string; bg: string }> = {
+  ACTIVE:     { border: "rgba(34,197,94,0.35)", text: "rgba(34,197,94,0.92)",  bg: "rgba(34,197,94,0.07)" },
+  CONTROLLED: { border: "rgba(34,197,94,0.18)", text: "rgba(34,197,94,0.52)", bg: "rgba(34,197,94,0.035)" },
+  RESTRICTED: { border: "rgba(100,120,115,0.2)", text: "rgba(155,175,170,0.5)", bg: "rgba(0,0,0,0.2)" },
 };
 
-const TIER_BORDERS = {
-  ACTIVE:     "rgba(34,197,94,0.22)",
-  CONTROLLED: "rgba(34,197,94,0.11)",
-  RESTRICTED: "rgba(100,120,115,0.14)",
+const TIER_BORDERS: Record<TierStatus, string> = {
+  ACTIVE:     "rgba(34,197,94,0.25)",
+  CONTROLLED: "rgba(34,197,94,0.12)",
+  RESTRICTED: "rgba(100,120,115,0.15)",
 };
 
-const TIER_BG = {
-  ACTIVE:     "rgba(12,24,16,0.5)",
-  CONTROLLED: "rgba(8,14,10,0.4)",
-  RESTRICTED: "rgba(5,8,7,0.5)",
+const TIER_BG: Record<TierStatus, string> = {
+  ACTIVE:     "rgba(12,24,16,0.55)",
+  CONTROLLED: "rgba(8,14,10,0.42)",
+  RESTRICTED: "rgba(4,6,5,0.55)",
 };
 
-const DESC_COLORS = {
-  ACTIVE:     "rgba(185,205,200,0.8)",
+const DESC_COLORS: Record<TierStatus, string> = {
+  ACTIVE:     "rgba(185,205,200,0.82)",
   CONTROLLED: "rgba(185,205,200,0.7)",
   RESTRICTED: "rgba(185,205,200,0.62)",
 };
 
-const SCOPE_COLORS = {
-  ACTIVE:     "rgba(185,205,200,0.74)",
+const SCOPE_COLORS: Record<TierStatus, string> = {
+  ACTIVE:     "rgba(185,205,200,0.75)",
   CONTROLLED: "rgba(185,205,200,0.65)",
   RESTRICTED: "rgba(185,205,200,0.58)",
 };
 
-const DOT_COLORS = {
-  ACTIVE:     "rgba(34,197,94,0.7)",
+const DOT_COLORS: Record<TierStatus, string> = {
+  ACTIVE:     "rgba(34,197,94,0.72)",
   CONTROLLED: "rgba(34,197,94,0.32)",
   RESTRICTED: "rgba(100,120,115,0.3)",
 };
@@ -99,9 +101,64 @@ export default function AccessPage() {
         <div className="flex flex-1 overflow-hidden">
           {/* Main content */}
           <div className="flex-1 p-6 md:p-8 space-y-4 overflow-y-auto max-w-3xl">
-            {/* Context block */}
-            <div className="rounded p-4 md:p-5"
-              style={{ border: "1px solid rgba(100,120,115,0.13)", background: "rgba(5,8,7,0.5)" }}>
+
+            {/* Tier overview block */}
+            <div className="rounded"
+              style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(0,8,4,0.45)" }}>
+              <div className="flex items-center gap-2.5 px-5 py-3"
+                style={{ borderBottom: "1px solid rgba(34,197,94,0.07)" }}>
+                <div className="w-1 h-1 rounded-full" style={{ background: "rgba(34,197,94,0.45)" }} />
+                <span className="font-mono-tactical tracking-widest uppercase"
+                  style={{ color: "rgba(34,197,94,0.5)", fontSize: "9px", letterSpacing: "0.18em" }}>
+                  Access Architecture — Three Tiers
+                </span>
+              </div>
+              <div className="flex items-stretch divide-x px-0 py-0"
+                style={{ borderColor: "rgba(34,197,94,0.07)" }}>
+                {TIERS.map((tier, i) => {
+                  const sc = STATUS_COLORS[tier.status as TierStatus];
+                  return (
+                    <div key={tier.id} className="flex-1 px-4 py-4">
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <div className="w-1.5 h-1.5 rounded-full"
+                          style={{
+                            background: sc.text,
+                            boxShadow: tier.active ? `0 0 4px rgba(34,197,94,0.5)` : undefined,
+                          }} />
+                        <span className="font-mono-tactical"
+                          style={{ color: "rgba(155,175,170,0.38)", fontSize: "8px" }}>
+                          {tier.id}
+                        </span>
+                      </div>
+                      <div className="font-orbitron font-bold tracking-wide mb-1"
+                        style={{ color: tier.active ? "#22c55e" : "rgba(185,205,200,0.5)", fontSize: "9.5px" }}>
+                        {tier.label}
+                      </div>
+                      <div className="font-mono-tactical rounded px-2 py-0.5 inline-block"
+                        style={{
+                          border: `1px solid ${sc.border}`,
+                          color: sc.text,
+                          background: sc.bg,
+                          fontSize: "7.5px",
+                          letterSpacing: "0.1em",
+                        }}>
+                        {tier.status}
+                      </div>
+                      {tier.active && (
+                        <div className="font-mono-tactical mt-1.5"
+                          style={{ color: "rgba(34,197,94,0.45)", fontSize: "7.5px", letterSpacing: "0.08em" }}>
+                          ← you are here
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Context */}
+            <div className="rounded p-5"
+              style={{ border: "1px solid rgba(100,120,115,0.12)", background: "rgba(5,8,7,0.5)" }}>
               <p className="font-mono-tactical leading-relaxed"
                 style={{ color: "rgba(185,205,200,0.72)", lineHeight: "1.92", fontSize: "10.5px" }}>
                 INDEX operates three access tiers. The public layer — this site — is open and unrestricted.
@@ -112,19 +169,22 @@ export default function AccessPage() {
               </p>
             </div>
 
-            {/* Three tiers */}
+            {/* Three tier cards */}
             {TIERS.map((tier) => {
-              const sc = STATUS_COLORS[tier.status as keyof typeof STATUS_COLORS];
-              const tb = TIER_BORDERS[tier.status as keyof typeof TIER_BORDERS];
+              const sc = STATUS_COLORS[tier.status as TierStatus];
+              const tb = TIER_BORDERS[tier.status as TierStatus];
               return (
-                <div key={tier.id} className="rounded access-tier-restricted"
+                <div key={tier.id} className="rounded"
                   style={{
                     border: `1px solid ${tb}`,
-                    background: TIER_BG[tier.status as keyof typeof TIER_BG],
+                    background: TIER_BG[tier.status as TierStatus],
                   }}>
                   {/* Header */}
                   <div className="flex items-start justify-between gap-4 px-5 pt-4 pb-3.5"
-                    style={{ borderBottom: `1px solid ${tb}` }}>
+                    style={{
+                      borderBottom: `1px solid ${tb}`,
+                      background: tier.active ? "rgba(34,197,94,0.025)" : undefined,
+                    }}>
                     <div className="flex items-center gap-3">
                       <span className="font-mono-tactical flex-shrink-0"
                         style={{ color: "rgba(100,120,115,0.4)", fontSize: "9px" }}>
@@ -133,12 +193,24 @@ export default function AccessPage() {
                       <div className="w-px h-4 flex-shrink-0" style={{ background: "rgba(100,120,115,0.18)" }} />
                       <div>
                         <div className="font-mono-tactical tracking-widest uppercase"
-                          style={{ color: "rgba(100,120,115,0.52)", fontSize: "8.5px", letterSpacing: "0.16em" }}>
+                          style={{ color: "rgba(100,120,115,0.55)", fontSize: "8.5px", letterSpacing: "0.16em" }}>
                           {tier.code}
                         </div>
-                        <div className="font-orbitron font-bold tracking-wide mt-0.5"
-                          style={{ color: tier.active ? "#22c55e" : "rgba(185,205,200,0.52)", fontSize: "13px" }}>
-                          {tier.label}
+                        <div className="flex items-center gap-2.5 mt-0.5">
+                          <div className="font-orbitron font-bold tracking-wide"
+                            style={{ color: tier.active ? "#22c55e" : "rgba(185,205,200,0.52)", fontSize: "13px" }}>
+                            {tier.label}
+                          </div>
+                          {tier.active && (
+                            <div className="flex items-center gap-1.5">
+                              <div className="w-1.5 h-1.5 rounded-full"
+                                style={{ background: "#22c55e", boxShadow: "0 0 4px rgba(34,197,94,0.6)" }} />
+                              <span className="font-mono-tactical"
+                                style={{ color: "rgba(34,197,94,0.55)", fontSize: "8px", letterSpacing: "0.1em" }}>
+                                ACTIVE — YOU ARE HERE
+                              </span>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -164,31 +236,33 @@ export default function AccessPage() {
                   <div className="px-5 py-4 space-y-4">
                     <p className="font-mono-tactical leading-relaxed"
                       style={{
-                        color: DESC_COLORS[tier.status as keyof typeof DESC_COLORS],
+                        color: DESC_COLORS[tier.status as TierStatus],
                         lineHeight: "1.9",
                         fontSize: "10.5px",
                       }}>
                       {tier.description}
                     </p>
-                    <div className="space-y-1.5">
+                    <div>
                       <div className="font-mono-tactical tracking-widest uppercase mb-2.5"
-                        style={{ color: "rgba(100,120,115,0.4)", fontSize: "8.5px", letterSpacing: "0.14em" }}>
+                        style={{ color: "rgba(100,120,115,0.42)", fontSize: "8.5px", letterSpacing: "0.14em" }}>
                         Scope
                       </div>
-                      {tier.scope.map((item) => (
-                        <div key={item} className="flex items-start gap-2.5">
-                          <div className="w-1 h-1 rounded-full flex-shrink-0 mt-1.5"
-                            style={{ background: DOT_COLORS[tier.status as keyof typeof DOT_COLORS] }} />
-                          <span className="font-mono-tactical"
-                            style={{
-                              color: SCOPE_COLORS[tier.status as keyof typeof SCOPE_COLORS],
-                              fontSize: "10.5px",
-                              lineHeight: "1.75",
-                            }}>
-                            {item}
-                          </span>
-                        </div>
-                      ))}
+                      <div className="space-y-1.5">
+                        {tier.scope.map((item) => (
+                          <div key={item} className="flex items-start gap-2.5">
+                            <div className="w-1 h-1 rounded-full flex-shrink-0 mt-1.5"
+                              style={{ background: DOT_COLORS[tier.status as TierStatus] }} />
+                            <span className="font-mono-tactical"
+                              style={{
+                                color: SCOPE_COLORS[tier.status as TierStatus],
+                                fontSize: "10.5px",
+                                lineHeight: "1.75",
+                              }}>
+                              {item}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -197,12 +271,12 @@ export default function AccessPage() {
 
             {/* Access structure note */}
             <div className="rounded"
-              style={{ border: "1px solid rgba(100,120,115,0.15)", background: "rgba(4,7,5,0.7)" }}>
+              style={{ border: "1px solid rgba(100,120,115,0.15)", background: "rgba(4,7,5,0.72)" }}>
               <div className="flex items-center gap-2.5 px-5 py-3"
                 style={{ borderBottom: "1px solid rgba(100,120,115,0.1)" }}>
-                <div className="w-1 h-1 rounded-full" style={{ background: "rgba(100,120,115,0.35)" }} />
+                <div className="w-1 h-1 rounded-full" style={{ background: "rgba(100,120,115,0.38)" }} />
                 <span className="font-mono-tactical tracking-widest uppercase"
-                  style={{ color: "rgba(100,120,115,0.48)", fontSize: "9px", letterSpacing: "0.18em" }}>
+                  style={{ color: "rgba(100,120,115,0.52)", fontSize: "9px", letterSpacing: "0.18em" }}>
                   Access Structure — RSR Operational Layer
                 </span>
               </div>
@@ -212,11 +286,11 @@ export default function AccessPage() {
                   style={{ color: "rgba(185,205,200,0.68)", lineHeight: "1.9", fontSize: "10.5px" }}>
                   Restricted and operator-level access belongs to the RSR operational layer — it is not
                   publicly available and is not accessible through this interface. These environments are
-                  internal to the RSR ecosystem. They are not described further here.
+                  internal to the RSR ecosystem.
                 </p>
 
-                <div className="rounded p-4 space-y-2.5"
-                  style={{ border: "1px solid rgba(100,120,115,0.1)", background: "rgba(0,0,0,0.3)" }}>
+                <div className="rounded px-4 py-4 space-y-2.5"
+                  style={{ border: "1px solid rgba(100,120,115,0.1)", background: "rgba(0,0,0,0.32)" }}>
                   {[
                     "This public interface documents architecture — it does not grant or manage access",
                     "Restricted environments are controlled by RSR — not by INDEX's public layer",
@@ -225,7 +299,7 @@ export default function AccessPage() {
                   ].map((note) => (
                     <div key={note} className="flex items-start gap-2.5">
                       <span className="font-mono-tactical flex-shrink-0 mt-0.5"
-                        style={{ color: "rgba(100,120,115,0.4)", fontSize: "10px" }}>—</span>
+                        style={{ color: "rgba(100,120,115,0.42)", fontSize: "10px" }}>—</span>
                       <span className="font-mono-tactical"
                         style={{ color: "rgba(185,205,200,0.65)", fontSize: "10.5px", lineHeight: "1.8" }}>
                         {note}
@@ -240,12 +314,9 @@ export default function AccessPage() {
                     style={{ color: "rgba(100,120,115,0.45)", fontSize: "9.5px" }}>
                     External enquiries — RSR Intelligence Network
                   </span>
-                  <a
-                    href="https://www.rsrintel.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <a href="https://www.rsrintel.com" target="_blank" rel="noopener noreferrer"
                     className="font-mono-tactical tracking-widest"
-                    style={{ color: "rgba(34,197,94,0.45)", fontSize: "8.5px", letterSpacing: "0.12em", textDecoration: "none" }}>
+                    style={{ color: "rgba(34,197,94,0.48)", fontSize: "8.5px", letterSpacing: "0.12em", textDecoration: "none" }}>
                     RSRINTEL.COM ↗
                   </a>
                 </div>
@@ -258,30 +329,31 @@ export default function AccessPage() {
             style={{ borderLeft: "1px solid rgba(100,120,115,0.08)" }}>
             <div>
               <div className="font-mono-tactical tracking-widest uppercase mb-3"
-                style={{ color: "rgba(100,120,115,0.35)", fontSize: "9px", letterSpacing: "0.16em" }}>
+                style={{ color: "rgba(100,120,115,0.38)", fontSize: "9px", letterSpacing: "0.16em" }}>
                 Tier Summary
               </div>
-              <div className="space-y-0">
-                {TIERS.map((tier) => (
-                  <div key={tier.id} className="flex items-center gap-3 py-2.5"
-                    style={{ borderBottom: "1px solid rgba(100,120,115,0.07)" }}>
-                    <span className="font-mono-tactical flex-shrink-0"
-                      style={{ color: "rgba(100,120,115,0.28)", fontSize: "9px" }}>
-                      {tier.id}
-                    </span>
-                    <span className="flex-1 font-mono-tactical truncate"
-                      style={{ color: "rgba(185,205,200,0.72)", fontSize: "10px" }}>
-                      {tier.label}
-                    </span>
-                    <span className="font-mono-tactical flex-shrink-0"
+              <div className="space-y-1.5">
+                {TIERS.map((tier) => {
+                  const sc = STATUS_COLORS[tier.status as TierStatus];
+                  return (
+                    <div key={tier.id} className="flex items-center gap-3 py-2 rounded px-2.5"
                       style={{
-                        color: STATUS_COLORS[tier.status as keyof typeof STATUS_COLORS].text,
-                        fontSize: "8.5px",
+                        border: tier.active ? "1px solid rgba(34,197,94,0.14)" : "1px solid rgba(100,120,115,0.07)",
+                        background: tier.active ? "rgba(34,197,94,0.04)" : "rgba(0,0,0,0.15)",
                       }}>
-                      {tier.status}
-                    </span>
-                  </div>
-                ))}
+                      <div className="w-1 h-1 rounded-full flex-shrink-0"
+                        style={{ background: sc.text }} />
+                      <span className="flex-1 font-mono-tactical truncate"
+                        style={{ color: tier.active ? "rgba(185,205,200,0.82)" : "rgba(185,205,200,0.62)", fontSize: "10px" }}>
+                        {tier.label}
+                      </span>
+                      <span className="font-mono-tactical flex-shrink-0"
+                        style={{ color: sc.text, fontSize: "8px" }}>
+                        {tier.status}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -289,21 +361,21 @@ export default function AccessPage() {
 
             <div>
               <div className="font-mono-tactical tracking-widest uppercase mb-3"
-                style={{ color: "rgba(100,120,115,0.35)", fontSize: "9px", letterSpacing: "0.16em" }}>
+                style={{ color: "rgba(100,120,115,0.38)", fontSize: "9px", letterSpacing: "0.16em" }}>
                 Access Model
               </div>
               <div className="space-y-2.5">
                 {[
-                  { label: "PUBLIC ACCESS",  value: "Open" },
-                  { label: "RESTRICTED",     value: "By review" },
-                  { label: "OPERATOR",       value: "Provisioned" },
+                  { label: "PUBLIC ACCESS",  value: "Open — no account" },
+                  { label: "RESTRICTED",     value: "By individual review" },
+                  { label: "OPERATOR",       value: "Manually provisioned" },
                   { label: "SIGN-UP",        value: "None" },
                   { label: "AUTO-GRANT",     value: "None" },
                   { label: "INTAKE STATUS",  value: "Not active" },
                 ].map((item) => (
                   <div key={item.label} className="flex flex-col gap-0.5">
                     <span className="font-mono-tactical"
-                      style={{ fontSize: "8.5px", color: "rgba(100,120,115,0.32)", letterSpacing: "0.1em" }}>
+                      style={{ fontSize: "8px", color: "rgba(100,120,115,0.32)", letterSpacing: "0.1em" }}>
                       {item.label}
                     </span>
                     <span className="font-mono-tactical"
@@ -318,9 +390,9 @@ export default function AccessPage() {
             <div className="h-px" style={{ background: "rgba(100,120,115,0.08)" }} />
 
             <p className="font-mono-tactical leading-relaxed"
-              style={{ color: "rgba(185,205,200,0.68)", lineHeight: "1.85", fontSize: "10px" }}>
-              This is not a waitlist. Restricted access is not queued. Requests are assessed individually when
-              intake is active. Deeper access is governed by RSR — not INDEX's public interface.
+              style={{ color: "rgba(185,205,200,0.65)", fontSize: "10px", lineHeight: "1.85" }}>
+              This is not a waitlist. Restricted access is not queued. Deeper access is governed by RSR
+              — not INDEX's public interface. External enquiries via the RSR Intelligence site.
             </p>
 
             <div className="h-px" style={{ background: "rgba(100,120,115,0.07)" }} />
@@ -332,7 +404,7 @@ export default function AccessPage() {
               </span>
               <a href="/login"
                 className="font-mono-tactical tracking-widest"
-                style={{ color: "rgba(34,197,94,0.42)", fontSize: "9px", letterSpacing: "0.12em", textDecoration: "none" }}>
+                style={{ color: "rgba(34,197,94,0.45)", fontSize: "9px", letterSpacing: "0.12em", textDecoration: "none" }}>
                 OPERATOR LOGIN →
               </a>
             </div>

@@ -1,0 +1,357 @@
+We are continuing the INDEX Data Network build.
+
+Current state:
+- INDEX / RSR hierarchy is correct
+- homepage wheel is strong
+- live state is now partially surfaced
+- page cross-linking is working
+- readability is much better
+- ACCESS is properly informational
+- the product is starting to feel integrated
+
+Now we need the next major pass:
+
+FINAL LIVE PRODUCT DENSITY + RELEASE FINISHING
+
+This is NOT a redesign.
+This is NOT a branding reset.
+This is NOT a fake dashboard pass.
+This is NOT a new feature spree.
+
+This pass is about making INDEX feel:
+- more finished
+- more complete
+- more alive
+- more operational
+- more substantial
+- more product-grade
+- more release-ready
+
+Do NOT add fake data.
+Do NOT add fake records.
+Do NOT add clutter.
+Do NOT break EdgeOne compatibility.
+Do NOT regress the clean design system.
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Take the current build and make it feel like a real, finished, public-facing live data network website.
+
+This pass must focus on:
+
+1. HOMEPAGE COMPLETENESS
+2. LIVE SYSTEM VISIBILITY
+3. WHEEL + PANEL INTEGRATION
+4. STRONGER OPERATIONAL FEEL ON SIGNALS / DATASETS / INDEX
+5. FINAL LAYOUT DENSITY / PANELING
+6. RELEASE FINISHING
+
+━━━━━━━━━━━━━━━━━━
+1. HOMEPAGE — MAKE IT FEEL FULLY BUILT
+━━━━━━━━━━━━━━━━━━
+
+The homepage is strong, but it still needs to feel more complete and intentional as a real website homepage.
+
+Improve:
+- relationship between left panel, wheel, and right panel
+- content density around the wheel
+- support structure around the live state
+- ecosystem framing
+- homepage panel containment
+- overall “this is a real product homepage” feel
+
+Add one or two tightly controlled supporting structures if needed:
+- a compact live network status strip
+- a compact source/domain/record summary band
+- a compact “current public layer state” module
+- a compact “latest external channel” / X block if already present and useful
+- a compact “network layers” explainer block
+
+Important:
+- the wheel remains the centerpiece
+- the homepage must not turn into a widget board
+- the support panels should make the page feel substantial, not busy
+
+Goal:
+the homepage should feel like a finished branded entry into a live data network
+
+━━━━━━━━━━━━━━━━━━
+2. LIVE SYSTEM VISIBILITY — MAKE IT MORE OBVIOUS
+━━━━━━━━━━━━━━━━━━
+
+The live state exists.
+Now make it more visible, more trustworthy, and better integrated.
+
+Refine how the system communicates:
+- active source count
+- staged item count
+- last sync / last checked
+- bound vs unbound domains
+- staged vs committed records
+- live feed status
+
+Requirements:
+- all values must remain honest
+- all summaries must derive from real runtime/config state
+- no fake urgency
+- no fake alert language
+- no dashboard spam
+
+Possible improvements:
+- better derived summary bands
+- better visibility of live system state on homepage
+- more consistent status summary on Datasets / Signals / Index
+- subtle but clearer live-state framing
+
+We want:
+“this network is actually running”
+not
+“this page is describing a system in theory”
+
+━━━━━━━━━━━━━━━━━━
+3. COMMAND WHEEL + SIDE PANEL INTEGRATION
+━━━━━━━━━━━━━━━━━━
+
+The wheel is strong.
+Now tighten its relationship with the surrounding interface.
+
+Improve:
+- selected sector explanation flow
+- bottom active-sector card
+- left panel sector preview / live state relationship
+- right panel explanatory hierarchy
+- clarity of current inspected sector
+- consistency between wheel state and support panel state
+
+If helpful:
+- make active sector information more prominent
+- improve sector card/header hierarchy
+- slightly strengthen “enter sector” affordance
+- ensure the selected sector feels like the whole homepage is reacting to it
+
+Goal:
+the wheel should feel embedded in the page system, not floating between two text columns
+
+━━━━━━━━━━━━━━━━━━
+4. SIGNALS PAGE — MAKE IT FEEL MORE OPERATIONAL
+━━━━━━━━━━━━━━━━━━
+
+The Signals page is now live-aware.
+Now make it feel more authoritative and product-grade.
+
+Improve:
+- source binding card structure
+- intake logic presentation
+- staged/live state grouping
+- live feed shell readability
+- right-side status panel clarity
+- relation between category descriptions and runtime state
+- visible distinction between live categories and empty/unbound categories
+
+Add more contained structure if needed:
+- source summary sub-panels
+- last checked / last sync grouping
+- intake routing / validation grouping
+- cleaner live-state bands
+
+Do NOT turn it into an internal dashboard.
+Keep it public-facing, but make it feel clearly live and real.
+
+━━━━━━━━━━━━━━━━━━
+5. DATASETS PAGE — INCREASE REALNESS / STRUCTURE
+━━━━━━━━━━━━━━━━━━
+
+The Datasets page is good, but it still needs to feel more like a living domain layer.
+
+Improve:
+- domain card structure
+- active domain emphasis
+- schema presentation
+- binding state visibility
+- coverage summary clarity
+- right-side panel usefulness
+- real-state connection between sources and domains
+
+Possible additions:
+- more structured domain metadata blocks
+- clearer active/unbound grouping
+- more obvious domain status distinctions
+- stronger summary of active domain coverage
+
+Goal:
+the page should feel like a real domain coverage layer, not a polished schema catalog
+
+━━━━━━━━━━━━━━━━━━
+6. INDEX PAGE — MAKE THE RECORD DESTINATION FEEL REAL
+━━━━━━━━━━━━━━━━━━
+
+The INDEX page should feel like the true destination of the system.
+
+Improve:
+- staged candidate explanation
+- committed vs staged presentation
+- relationship to upstream signals and datasets
+- record detail shell
+- empty state quality
+- overall sense that this is where the network resolves into records
+
+If staged items exist:
+surface them clearly but honestly.
+
+Do NOT fake committed records.
+But do make the page feel alive if the pipeline upstream is active.
+
+Possible additions:
+- stronger staged candidates container
+- clearer pipeline state explanation
+- more structured record schema summary
+- clearer route from Signals → Datasets → Index
+
+━━━━━━━━━━━━━━━━━━
+7. OVERVIEW + METHOD — MAKE THEM FEEL FLAGSHIP
+━━━━━━━━━━━━━━━━━━
+
+Overview and Method are already strong.
+Now make them feel like flagship explanatory pages.
+
+Improve:
+- section rhythm
+- panel containment
+- progression from section to section
+- internal sub-panels
+- clarity of flow
+- relationship to live pages
+
+For Overview:
+- strengthen the “Where INDEX fits” section
+- strengthen the pipeline presentation
+- make links deeper into live pages feel more intentional
+
+For Method:
+- make the doctrine/process cards feel more substantial
+- strengthen rules blocks
+- improve flow between phases
+- make “Follow the Pipeline” feel more integrated
+
+We want these pages to feel like:
+the best explanation of the system
+not just supporting documentation
+
+━━━━━━━━━━━━━━━━━━
+8. ACCESS PAGE — FINAL STRUCTURAL PASS
+━━━━━━━━━━━━━━━━━━
+
+The Access page is now directionally right.
+Now make it feel like a finished structural boundary page.
+
+Improve:
+- visual hierarchy between Public / Restricted / Operator layers
+- explanatory copy rhythm
+- containment of boundary notes
+- clarity of where external inquiries should go
+- subtle integration with the broader RSR system
+- overall seriousness and polish
+
+Do NOT add forms back.
+Do NOT add monetization.
+Do NOT add waitlist language.
+
+This page should feel like:
+a controlled architectural boundary explanation
+
+━━━━━━━━━━━━━━━━━━
+9. PANELING / CONTENT DENSITY PASS
+━━━━━━━━━━━━━━━━━━
+
+Across the entire product, increase the feeling of substantiality without adding clutter.
+
+Refine:
+- section containment
+- panel hierarchy
+- internal spacing
+- support blocks
+- information grouping
+- sidebars
+- footer support bands
+- page-level density
+
+The product should feel:
+- packed-out
+- deliberate
+- finished
+- premium
+- operational
+
+Not:
+- sparse
+- prototype-like
+- or overloaded
+
+━━━━━━━━━━━━━━━━━━
+10. FINAL RELEASE POLISH
+━━━━━━━━━━━━━━━━━━
+
+Do a serious sweep for anything that still feels unfinished.
+
+Fix:
+- weak copy transitions
+- awkward null state phrasing
+- inconsistent labels
+- inconsistent badge treatment
+- uneven padding
+- dead zones on pages
+- support text that still feels too dim
+- any remaining places where layout feels stiff
+- minor responsive glitches
+- any place where the page still feels like a shell instead of a product
+
+Goal:
+the site should feel ship-ready
+
+━━━━━━━━━━━━━━━━━━
+11. KEEP DESIGN DISCIPLINE
+━━━━━━━━━━━━━━━━━━
+
+Keep:
+- dark premium UI
+- restrained green
+- steel / graphite support tones
+- honest live state
+- wheel as homepage centerpiece
+- INDEX / RSR hierarchy
+- informational ACCESS
+- EdgeOne-compatible same-origin approach
+
+Avoid:
+- fake metrics
+- random widgets
+- telemetry spam
+- visual clutter
+- reintroducing decorative junk
+- consumer SaaS patterns
+
+━━━━━━━━━━━━━━━━━━
+12. FINAL GOAL
+━━━━━━━━━━━━━━━━━━
+
+At the end of this pass, INDEX should feel like:
+
+- a finished public-facing RSR data subsystem website
+- a real live data network
+- a coherent product with clear internal relationships
+- a darker, premium, operationally believable platform
+- something that feels ready to release publicly
+
+Deliver:
+- more complete homepage
+- stronger live-state visibility
+- tighter wheel/panel integration
+- more operational Signals / Datasets / Index pages
+- stronger Overview / Method / Access pages
+- denser and more finished panel structure
+- final release polish
+
+Do not explain what you will do.
+Implement the pass in code now.
