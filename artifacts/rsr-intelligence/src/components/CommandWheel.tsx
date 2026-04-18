@@ -448,7 +448,7 @@ export default function CommandWheel({ segments, onHover, onSegmentClick }: Comm
                   {activeSeg.label}
                 </span>
                 <span className="font-mono-tactical" style={{ color: "rgba(34,197,94,0.28)", fontSize: "9px" }}>
-                  {activeSeg.path}
+                  {activeIdx !== null ? String(activeIdx + 1).padStart(2, "0") : "01"}/{String(n).padStart(2, "0")}
                 </span>
               </div>
               <span className="font-mono-tactical truncate block" style={{ color: "rgba(175,195,190,0.48)", fontSize: "9.5px" }}>

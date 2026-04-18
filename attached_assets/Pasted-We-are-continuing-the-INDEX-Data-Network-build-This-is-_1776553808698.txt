@@ -1,0 +1,337 @@
+We are continuing the INDEX Data Network build.
+
+This is the FINAL WRAP-UP PASS.
+
+Do NOT redesign the product.
+Do NOT change the brand hierarchy.
+Do NOT duplicate the intel site.
+Do NOT add fake data.
+Do NOT add fake metrics.
+Do NOT add new speculative features unless they directly support release readiness.
+Do NOT regress the clean dark visual system.
+
+Current state:
+- brand hierarchy is correct
+- INDEX clearly reads as the data systems division / data network layer of the broader RSR Intelligence Network
+- homepage wheel is strong
+- Overview / Signals / Datasets / Index / Method / Access are coherent
+- live state is visible
+- cross-linking exists
+- ACCESS is informational
+- RSR Intel backlink exists
+- runtime/live data foundations exist
+
+Now we need to finish this properly.
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Make INDEX release-ready.
+
+This pass is about:
+1. final QA and cleanup
+2. runtime truth verification
+3. layout and responsive hardening
+4. EdgeOne deployment safety
+5. public/private separation audit
+6. final consistency sweep
+7. release confidence
+
+Goal:
+When this pass is done, INDEX should feel like a finished public-facing RSR data subsystem website that is actually ready to deploy.
+
+━━━━━━━━━━━━━━━━━━
+1. FINAL RUNTIME TRUTH PASS
+━━━━━━━━━━━━━━━━━━
+
+Audit every place where the UI claims something is live, active, connected, staged, bound, or synced.
+
+Requirements:
+- verify every live-state claim is derived from real runtime/config state
+- remove or correct any claim that is not truly backed by actual state
+- ensure active source counts are real
+- ensure staged counts are real
+- ensure domain binding counts are real
+- ensure committed record counts are real
+- ensure “last sync” / “last checked” are real where displayed
+- ensure live badges only appear where justified
+
+Do NOT exaggerate.
+Do NOT infer fake system health.
+Do NOT leave any misleading wording.
+
+If the truth is:
+- 4 sources connected
+- 35 staged
+- 0 committed
+Then show exactly that.
+Nothing more.
+
+━━━━━━━━━━━━━━━━━━
+2. FINAL WHEEL QA PASS
+━━━━━━━━━━━━━━━━━━
+
+The wheel is the flagship interaction.
+Do one last hard QA pass on it.
+
+Requirements:
+- verify no labels collide
+- verify no icons collide
+- verify removed dots are truly gone
+- verify hover states remain readable
+- verify selected/active sector state is clear
+- verify the wheel remains centered and balanced
+- verify motion is restrained and not distracting
+- verify the wheel holds up at common desktop widths
+- verify it still feels premium and uncluttered
+
+Do not redesign it.
+Only fix anything that still interferes with release quality.
+
+━━━━━━━━━━━━━━━━━━
+3. FINAL LAYOUT / RESPONSIVE HARDENING
+━━━━━━━━━━━━━━━━━━
+
+This is a website.
+Do a serious responsive and layout hardening pass.
+
+Audit and fix:
+- homepage at narrower desktop widths
+- medium-width stacking behavior
+- sidebar alignment
+- top bar wrapping/collapse issues
+- bottom bar wrapping/collapse issues
+- card overflow
+- schema blocks on narrower widths
+- grid behavior on Signals / Datasets / Index / Access
+- awkward empty space or crushed columns
+- small-screen scroll handling
+
+Goal:
+The site does not need to become a perfect mobile app.
+But it does need to be stable, readable, and polished across realistic website widths.
+
+━━━━━━━━━━━━━━━━━━
+4. FINAL PAGE CONSISTENCY SWEEP
+━━━━━━━━━━━━━━━━━━
+
+Review all pages and enforce consistency.
+
+Pages:
+- Home
+- Overview
+- Signals
+- Datasets
+- Index
+- Method
+- Access
+- Login / Operator if present
+
+Standardize:
+- panel padding
+- panel border treatments
+- section header styling
+- status badge treatment
+- label casing and tracking
+- CTA styling
+- sidebar hierarchy
+- support card styling
+- empty state styling
+- live-state phrasing
+- footer/header rhythm
+
+We want:
+one product
+one system
+one language
+
+Not:
+slightly different treatment page to page
+
+━━━━━━━━━━━━━━━━━━
+5. COPY / LANGUAGE FINAL SWEEP
+━━━━━━━━━━━━━━━━━━
+
+Do a final content and phrasing audit.
+
+Requirements:
+- remove weak or leftover placeholder phrasing
+- tighten any sentences that still feel clunky
+- standardize vocabulary across the product
+- ensure INDEX / RSR relationship is described consistently
+- ensure public / restricted / operator language is consistent
+- ensure live-state language is consistent
+- ensure empty states sound intentional and premium
+
+Tone:
+- analytical
+- controlled
+- structural
+- premium
+- clear
+
+Avoid:
+- startup buzzwords
+- vague system language
+- repetitive filler
+- inconsistent operational wording
+
+━━━━━━━━━━━━━━━━━━
+6. PUBLIC / RESTRICTED SEPARATION AUDIT
+━━━━━━━━━━━━━━━━━━
+
+Do a final separation audit.
+
+Public layer must remain:
+- clean
+- informative
+- structurally honest
+- safe to expose
+- branded
+
+Restricted/operator layer must remain:
+- clearly separate
+- subtle in public references
+- not overexposed on public pages
+- provisioned/controlled in tone
+
+Verify:
+- no sensitive internal details leak into public pages
+- no raw internal endpoint exposure where it should not appear
+- no operator-specific UI accidentally visible in public contexts
+- /access and /login relationship is clear and controlled
+- public site still feels public-facing, not backend-facing
+
+━━━━━━━━━━━━━━━━━━
+7. EDGEONE DEPLOYMENT HARDENING
+━━━━━━━━━━━━━━━━━━
+
+This app is primarily deployed via EdgeOne.
+
+Do a final deployment-safety pass for EdgeOne and same-origin routing.
+
+Requirements:
+- keep same-origin /api/* routing as the default where appropriate
+- ensure VITE_SOURCE_BASE_URL remains optional
+- ensure environment fallback behavior is explicit and safe
+- ensure no localhost assumptions remain in user-facing code
+- ensure public routes work cleanly in static hosting + same-origin API environments
+- ensure operator/login routing does not break in deployed environments
+- ensure all config resolution is centralized and clean
+
+If useful:
+- tighten env/config helpers
+- clean up .env.example
+- clarify comments around expected deployment variables
+- ensure the app can still remain portable to self-hosted/containerized environments later
+
+Do not overengineer.
+Do make it reliable.
+
+━━━━━━━━━━━━━━━━━━
+8. FINAL LIVE CHANNEL / EXTERNAL LINK QA
+━━━━━━━━━━━━━━━━━━
+
+Verify external ecosystem linking is clean and intentional.
+
+Requirements:
+- RSR Intel backlink works and opens correctly in a new tab
+- X / external channel link works and is framed honestly
+- no broken embed logic
+- no dead external CTA placements
+- no duplicate ecosystem links fighting each other
+
+Keep external ecosystem references:
+- useful
+- restrained
+- clearly intentional
+
+━━━━━━━━━━━━━━━━━━
+9. FINAL EMPTY STATE / NULL STATE HARDENING
+━━━━━━━━━━━━━━━━━━
+
+Audit all empty, null, or pre-live states.
+
+Requirements:
+- make sure empty states still feel intentional
+- make sure null runtime states do not break layout
+- make sure zero states read clearly
+- make sure “awaiting first record,” “no source bound,” etc. are consistent
+- make sure empty states do not feel like broken UI
+
+This is especially important on:
+- Signals
+- Datasets
+- Index
+- Access
+- Operator shell if present
+
+━━━━━━━━━━━━━━━━━━
+10. RELEASE CANDIDATE FINISHING PASS
+━━━━━━━━━━━━━━━━━━
+
+Do a last visual and structural polish sweep for:
+- tiny spacing issues
+- inconsistent dividers
+- weak panel headers
+- uneven margins
+- misaligned grid items
+- awkward CTA placement
+- inconsistent opacities
+- minor overflow / clipping issues
+- anything that still feels prototype-grade
+
+This is the “shipped, not sketched” sweep.
+
+Do not start new design experiments.
+Do not add unnecessary features.
+Just finish it properly.
+
+━━━━━━━━━━━━━━━━━━
+11. KEEP DESIGN DISCIPLINE
+━━━━━━━━━━━━━━━━━━
+
+Keep:
+- dark premium UI
+- restrained green
+- steel / graphite support tones
+- honest live state
+- wheel as homepage centerpiece
+- INDEX / RSR hierarchy
+- informational ACCESS page
+- same-origin/EdgeOne-friendly architecture
+
+Avoid:
+- fake dashboards
+- random widgets
+- extra decorative clutter
+- more bright green wash
+- startup/SaaS patterns
+- unnecessary motion gimmicks
+
+━━━━━━━━━━━━━━━━━━
+12. FINAL GOAL
+━━━━━━━━━━━━━━━━━━
+
+At the end of this pass, INDEX should feel like:
+
+- a finished public-facing RSR data subsystem website
+- a real live-facing data network
+- a cleanly branded INDEX Data Network product
+- a site with trustworthy runtime state
+- a site safe and ready to deploy through EdgeOne
+- a site whose pages feel complete, polished, and release-ready
+
+Deliver:
+- final runtime truth audit
+- final wheel QA
+- final responsive/layout hardening
+- final consistency sweep
+- final copy/language cleanup
+- final public/restricted separation audit
+- final EdgeOne deployment hardening
+- final release-candidate polish
+
+Do not explain what you will do.
+Implement the pass in code now.
