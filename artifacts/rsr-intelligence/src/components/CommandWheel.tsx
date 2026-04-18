@@ -14,8 +14,8 @@ interface CommandWheelProps {
 
 /* ── Palette ─────────────────────────────────────────────────── */
 const G        = "#22c55e";
-const G_DIM    = "rgba(34,197,94,0.42)";
-const G_FAINT  = "rgba(34,197,94,0.10)";
+const G_DIM    = "rgba(34,197,94,0.58)";   /* brighter passive icons */
+const G_FAINT  = "rgba(34,197,94,0.12)";
 const G_FILL_H = "rgba(18,40,26,0.88)";
 const G_FILL_A = "rgba(22,50,32,0.92)";
 const SEG_FILL = "rgba(7,11,9,0.78)";
@@ -348,7 +348,7 @@ export default function CommandWheel({ segments, onHover, onSegmentClick }: Comm
                 textAnchor="middle" dominantBaseline="middle"
                 fontSize="9" fontFamily="'Orbitron', sans-serif"
                 fontWeight={active ? "700" : "500"}
-                fill={active ? G : "rgba(140,162,158,0.45)"}
+                fill={active ? G : "rgba(175,195,190,0.65)"}
                 letterSpacing="0.18em"
                 filter={active ? "url(#f-glow)" : undefined}
                 style={{ transition: "fill 0.2s ease", pointerEvents: "none", userSelect: "none" }}
@@ -418,7 +418,7 @@ export default function CommandWheel({ segments, onHover, onSegmentClick }: Comm
           <text x={cx} y={cy - 27}
             textAnchor="middle" dominantBaseline="middle"
             fontSize="6" fontFamily="'Share Tech Mono', monospace"
-            fill={G} fillOpacity={hubActive ? 0.5 : 0.22}
+            fill={G} fillOpacity={hubActive ? 0.58 : 0.35}
             letterSpacing="0.42em"
             style={{ transition: "fill-opacity 0.35s ease" }}>
             SYSTEM
@@ -436,7 +436,7 @@ export default function CommandWheel({ segments, onHover, onSegmentClick }: Comm
           <text x={cx} y={cy + 19}
             textAnchor="middle" dominantBaseline="middle"
             fontSize="5.5" fontFamily="'Share Tech Mono', monospace"
-            fill={G} fillOpacity={hubActive ? 0.48 : 0.2}
+            fill={G} fillOpacity={hubActive ? 0.55 : 0.32}
             letterSpacing="0.3em"
             style={{ transition: "fill-opacity 0.35s ease" }}>
             DATA·NETWORK

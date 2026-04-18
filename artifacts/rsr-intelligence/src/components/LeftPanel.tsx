@@ -33,22 +33,28 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
   const activeSegment = segments.find((s) => s.label === hoveredSegment);
 
   return (
-    <div className="hidden lg:flex flex-col w-68 xl:w-76 shrink-0 overflow-y-auto"
-      style={{ borderRight: "1px solid rgba(34,197,94,0.08)", width: 272 }}>
+    <div
+      className="hidden lg:flex flex-col shrink-0 overflow-y-auto"
+      style={{ borderRight: "1px solid rgba(34,197,94,0.07)", width: 272 }}
+    >
       {/* Identity block */}
       <div className="px-6 pt-7 pb-5" style={{ borderBottom: "1px solid rgba(34,197,94,0.07)" }}>
-        <div className="font-mono-tactical tracking-widest uppercase mb-2.5"
-          style={{ color: "rgba(34,197,94,0.3)", letterSpacing: "0.22em", fontSize: "9px" }}>
-          Public Data Network
+        <div className="font-mono-tactical tracking-widest uppercase mb-1"
+          style={{ color: "rgba(34,197,94,0.48)", letterSpacing: "0.2em", fontSize: "9px" }}>
+          Data Network
         </div>
-        <h2 className="font-orbitron text-4xl font-bold tracking-wide leading-none mb-4"
-          style={{ color: "#22c55e", textShadow: "0 0 28px rgba(34,197,94,0.18)", letterSpacing: "0.04em" }}>
+        <h2 className="font-orbitron text-4xl font-bold tracking-wide leading-none mb-1"
+          style={{ color: "#22c55e", textShadow: "0 0 24px rgba(34,197,94,0.16)", letterSpacing: "0.04em" }}>
           INDEX
         </h2>
+        <div className="font-mono-tactical mb-4"
+          style={{ color: "rgba(155,175,170,0.5)", fontSize: "9px", letterSpacing: "0.16em" }}>
+          Structured Signal Network
+        </div>
         <p className="font-mono-tactical leading-relaxed"
-          style={{ color: "rgba(255,255,255,0.35)", lineHeight: "1.88", fontSize: "10.5px" }}>
-          A structured data and signal network. INDEX monitors inputs, structures them into classified datasets,
-          and builds a traversable record index.
+          style={{ color: "rgba(185,205,200,0.6)", lineHeight: "1.92", fontSize: "11px" }}>
+          A structured data and signal network. INDEX monitors inputs, structures them into classified
+          datasets, and builds a traversable record index.
         </p>
       </div>
 
@@ -57,15 +63,16 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
         {activeSegment ? (
           <div key={activeSegment.label} className="panel-fade-in space-y-4">
             <div className="font-mono-tactical tracking-widest uppercase"
-              style={{ color: "rgba(34,197,94,0.32)", fontSize: "9px", letterSpacing: "0.2em" }}>
+              style={{ color: "rgba(34,197,94,0.5)", fontSize: "9px", letterSpacing: "0.2em" }}>
               Sector Preview
             </div>
             <div>
-              <div className="font-orbitron text-base font-bold tracking-wider mb-1.5" style={{ color: "#22c55e" }}>
+              <div className="font-orbitron text-sm font-bold tracking-wider mb-2"
+                style={{ color: "#22c55e" }}>
                 {activeSegment.label}
               </div>
               <div className="font-mono-tactical leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.38)", lineHeight: "1.9", fontSize: "10.5px" }}>
+                style={{ color: "rgba(185,205,200,0.62)", lineHeight: "1.92", fontSize: "11px" }}>
                 {activeSegment.description}
               </div>
             </div>
@@ -73,15 +80,17 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
               <div className="pt-1">
                 <div className="h-px mb-3" style={{ background: "rgba(34,197,94,0.07)" }} />
                 <div className="font-mono-tactical italic"
-                  style={{ color: "rgba(34,197,94,0.35)", fontSize: "10px", lineHeight: "1.7" }}>
+                  style={{ color: "rgba(34,197,94,0.42)", fontSize: "10px", lineHeight: "1.75" }}>
                   {activeSegment.methodology}
                 </div>
               </div>
             )}
-            <div className="rounded px-3 py-2 flex items-center gap-2"
-              style={{ border: "1px solid rgba(34,197,94,0.14)", background: "rgba(34,197,94,0.03)" }}>
-              <div className="w-1 h-1 rounded-full" style={{ background: "#22c55e", boxShadow: "0 0 4px #22c55e" }} />
-              <span className="font-mono-tactical" style={{ color: "rgba(34,197,94,0.5)", fontSize: "9.5px", letterSpacing: "0.1em" }}>
+            <div className="rounded px-3 py-2 flex items-center gap-2 mt-1"
+              style={{ border: "1px solid rgba(34,197,94,0.15)", background: "rgba(34,197,94,0.04)" }}>
+              <div className="w-1 h-1 rounded-full flex-shrink-0"
+                style={{ background: "#22c55e", boxShadow: "0 0 4px #22c55e" }} />
+              <span className="font-mono-tactical"
+                style={{ color: "rgba(34,197,94,0.58)", fontSize: "9.5px", letterSpacing: "0.08em" }}>
                 Click to enter {activeSegment.label}
               </span>
             </div>
@@ -89,20 +98,21 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
         ) : (
           <div className="space-y-5">
             <div className="font-mono-tactical tracking-widest uppercase"
-              style={{ color: "rgba(34,197,94,0.28)", fontSize: "9px", letterSpacing: "0.2em" }}>
+              style={{ color: "rgba(34,197,94,0.48)", fontSize: "9px", letterSpacing: "0.2em" }}>
               Platform Structure
             </div>
             {PILLARS.map((p) => (
               <div key={p.id} className="space-y-1.5">
                 <div className="flex items-center gap-2.5">
                   <span className="font-mono-tactical flex-shrink-0"
-                    style={{ color: "rgba(34,197,94,0.25)", fontSize: "8.5px" }}>{p.id}</span>
-                  <div className="w-px h-3 flex-shrink-0" style={{ background: "rgba(34,197,94,0.4)" }} />
+                    style={{ color: "rgba(34,197,94,0.32)", fontSize: "8.5px" }}>{p.id}</span>
+                  <div className="w-px h-3 flex-shrink-0"
+                    style={{ background: "rgba(34,197,94,0.38)" }} />
                   <span className="font-orbitron font-semibold tracking-wider"
-                    style={{ color: "rgba(34,197,94,0.7)", fontSize: "9.5px" }}>{p.label}</span>
+                    style={{ color: "rgba(34,197,94,0.72)", fontSize: "9.5px" }}>{p.label}</span>
                 </div>
                 <p className="font-mono-tactical leading-relaxed pl-7"
-                  style={{ color: "rgba(255,255,255,0.28)", lineHeight: "1.85", fontSize: "10px" }}>
+                  style={{ color: "rgba(185,205,200,0.55)", lineHeight: "1.88", fontSize: "10.5px" }}>
                   {p.text}
                 </p>
               </div>
@@ -113,7 +123,7 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
 
       {/* Footer hint */}
       <div className="px-6 py-4" style={{ borderTop: "1px solid rgba(34,197,94,0.06)" }}>
-        <p className="font-mono-tactical" style={{ color: "rgba(255,255,255,0.15)", lineHeight: "1.8", fontSize: "9.5px" }}>
+        <p className="font-mono-tactical" style={{ color: "rgba(155,175,170,0.38)", lineHeight: "1.8", fontSize: "10px" }}>
           Hover a sector to inspect. Click to enter.
         </p>
       </div>

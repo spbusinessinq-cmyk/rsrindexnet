@@ -1,0 +1,377 @@
+We are continuing the INDEX build.
+
+Current state:
+- the overall direction is correct
+- the homepage wheel looks strong
+- the motion system is working
+- the product identity is mostly correct
+- the access layer is improving
+
+Now we need the next major pass:
+
+LEGIBILITY + BRANDING + REAL DATA FOUNDATION
+
+Do NOT redesign the entire site.
+Do NOT revert to the old RSR Intel direction.
+Do NOT duplicate the intel site.
+Do NOT remove the wheel.
+Do NOT add fake data.
+Do NOT add fake metrics.
+
+This pass is about making INDEX:
+- easier to read
+- more clearly branded
+- more obviously a real data platform
+- more ready for live datasets and live bindings
+- stronger as a public-facing product
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Refine INDEX so it feels like a branded public data network, not just a cool interface.
+
+Primary goals:
+1. improve text legibility everywhere
+2. strengthen the INDEX branding and naming
+3. make the homepage clearly say INDEX Data Network or INDEX Data Systems
+4. begin replacing “empty shell” feeling with real structural data surfaces
+5. prepare the UI for real live datasets, real records, and real source bindings
+
+━━━━━━━━━━━━━━━━━━
+1. LEGIBILITY PASS — CRITICAL
+━━━━━━━━━━━━━━━━━━
+
+The current UI looks strong but too much text is difficult to read.
+
+Fix legibility across the entire app.
+
+Improve:
+- body text contrast
+- paragraph readability
+- small label readability
+- sidebar text clarity
+- right-panel explainer clarity
+- muted text contrast
+- spacing between lines
+- max line length where needed
+- thin green text that is too dim
+
+Rules:
+- keep the dark aesthetic
+- do not make it bright or generic
+- keep the black/green identity
+- but make content actually readable on normal screens
+
+Specific changes:
+- increase body text brightness slightly
+- use more steel/gray-white for passive reading text
+- reserve green for headings, labels, active states, and highlights
+- reduce ultra-low-contrast gray-on-black text where it hurts readability
+- slightly increase line-height on dense text blocks
+- slightly improve font sizing on supporting paragraphs and side notes
+- make the small text readable without zooming
+
+Goal:
+The UI should still feel dark and premium, but readable enough for actual daily use.
+
+━━━━━━━━━━━━━━━━━━
+2. BRANDING PASS — INDEX MUST BE CLEARER
+━━━━━━━━━━━━━━━━━━
+
+Right now the styling is there, but the branding is not locked hard enough.
+
+We need clearer naming and positioning.
+
+The site should consistently present itself as one of these:
+
+Preferred:
+- INDEX Data Network
+
+Acceptable:
+- INDEX Data Systems
+- INDEX Structured Data Network
+
+Pick one primary public-facing brand phrase and apply it consistently.
+
+Recommended:
+INDEX Data Network
+
+Requirements:
+- update top bars / headers / homepage identity so the name is clearer
+- make sure the homepage does not just say INDEX vaguely
+- reinforce the brand as a data platform
+- use “INDEX Data Network” in key places where identity matters
+- keep it restrained, not repetitive
+
+The public should immediately understand:
+INDEX = data network / structured signal network / record infrastructure
+
+Not just:
+INDEX = cool sci-fi wheel
+
+━━━━━━━━━━━━━━━━━━
+3. HOMEPAGE COPY + BRAND HIERARCHY PASS
+━━━━━━━━━━━━━━━━━━
+
+The homepage needs to communicate the brand more clearly.
+
+Refine:
+- left panel identity block
+- center hub naming
+- right panel title logic
+- any top-level descriptors
+
+Make sure the homepage says, in a clear and premium way:
+- this is INDEX
+- this is a data network
+- it structures signals into datasets and indexed records
+- it is the public-facing data layer
+
+Do NOT use vague branding.
+Do NOT rely on visuals alone.
+
+But also do NOT turn the page into a marketing landing page.
+
+Keep it product-like, not ad-like.
+
+Possible direction:
+- top identity: INDEX Data Network
+- descriptor: Structured signal intake, classified datasets, indexed records
+- center hub: INDEX
+- supporting line: Data Network
+
+━━━━━━━━━━━━━━━━━━
+4. HOMEPAGE WHEEL — LEGIBILITY + UX PASS
+━━━━━━━━━━━━━━━━━━
+
+The wheel looks sick.
+Now make it easier to use and easier to read.
+
+Improve:
+- segment label readability
+- icon size/placement balance
+- active segment contrast
+- hovered sector clarity
+- center hub text clarity
+- spacing between label and icon
+- edge contrast between segments and surrounding rings
+
+Make sure:
+- labels are readable at rest
+- labels become clearly readable on hover
+- the selected state is obvious without flooding the wheel with green
+- the wheel still feels dark and premium
+
+If needed:
+- slightly increase sector label brightness at rest
+- slightly increase icon stroke contrast
+- refine the balance between outer ring motion and text legibility
+- reduce any motion or glow that competes with labels
+
+━━━━━━━━━━━━━━━━━━
+5. REAL DATA FOUNDATION — START THE TRANSITION
+━━━━━━━━━━━━━━━━━━
+
+This is important.
+
+We need to begin shifting INDEX from:
+“beautiful static product shell”
+to
+“real public data platform ready to receive live information”
+
+Do NOT fake data.
+Do NOT invent records.
+Do NOT make up datasets.
+
+Instead, add real structural support for live data.
+
+Requirements:
+Create a data/config architecture that can later bind to real sources.
+
+Examples:
+- central config for dataset domains
+- central config for signal categories
+- central config for access tiers
+- central config for method phases
+- typed record shape for INDEX entries
+- typed dataset metadata shape
+- typed signal source shape
+
+If the app does not already have this, add it cleanly.
+
+Goal:
+future real data can plug in without rewriting the UI.
+
+━━━━━━━━━━━━━━━━━━
+6. DATASETS PAGE — MAKE IT FEEL CLOSER TO LIVE
+━━━━━━━━━━━━━━━━━━
+
+The Datasets page should start feeling like a real data layer.
+
+Without faking content, improve it by adding real structural UI for future data binding.
+
+Possible additions:
+- dataset schema shell
+- dataset metadata fields
+- source binding status area
+- record scope fields
+- update cadence field
+- domain definition structure
+- “bound / unbound” architecture
+- source attachment placeholders
+
+Important:
+Do not invent fake values.
+Use honest placeholders like:
+- No source bound
+- Schema defined
+- Awaiting first record
+- Update cadence not yet assigned
+- Domain structure active
+
+The page should feel:
+real
+structured
+ready
+not dead
+
+━━━━━━━━━━━━━━━━━━
+7. INDEX PAGE — PREP FOR REAL RECORDS
+━━━━━━━━━━━━━━━━━━
+
+The INDEX page should feel like the core searchable record layer.
+
+Improve it so it is more ready for real data.
+
+Add/refine:
+- clearer index table structure
+- better record detail panel layout
+- typed empty state
+- clearer metadata shell
+- search/filter architecture that can bind to real records later
+- maybe a small field list for what a real record contains:
+  ID / subject / domain / classification / indexed date / status / source attribution
+
+Do not fake rows if no live records exist.
+But make the page obviously ready for real records.
+
+━━━━━━━━━━━━━━━━━━
+8. SIGNALS PAGE — PREP FOR LIVE SIGNALS
+━━━━━━━━━━━━━━━━━━
+
+The Signals page should begin to feel like a true intake layer.
+
+Without inventing feeds, make room for:
+- source definition structure
+- feed state model
+- signal ingestion fields
+- intake type
+- triage logic
+- validation state
+- source binding area
+
+Goal:
+a real live signal system could drop into this page later without redesign.
+
+━━━━━━━━━━━━━━━━━━
+9. REAL DATA / LIVE BINDING STRATEGY
+━━━━━━━━━━━━━━━━━━
+
+Prepare the app for future live data in a clean way.
+
+If not already done:
+- separate UI presentation from content config
+- create data modules or config files
+- define placeholder adapters or source contracts
+- keep the current page content modular and replaceable
+
+Do NOT implement fake APIs.
+Do NOT simulate fake live behavior.
+But do prepare the UI for real data wiring.
+
+Think:
+product foundation
+not mockup theater
+
+━━━━━━━━━━━━━━━━━━
+10. EMPTY STATES — UPGRADE THEM AGAIN
+━━━━━━━━━━━━━━━━━━
+
+The empty states are cleaner now, but they should feel more product-grade.
+
+Refine empty states so they communicate:
+- the system is ready
+- the structure exists
+- live binding has not happened yet
+- this is intentional, not broken
+
+Tone examples:
+- No live dataset sources connected
+- Domain structure defined — source binding pending
+- No records committed
+- Awaiting source attachment
+- Intake layer ready — no live signals bound
+
+Make sure empty states are:
+- readable
+- visually balanced
+- consistent
+- restrained
+- clearly intentional
+
+━━━━━━━━━━━━━━━━━━
+11. KEEP ACCESS STRONG
+━━━━━━━━━━━━━━━━━━
+
+Do not undo the ACCESS improvements.
+
+But ensure ACCESS also benefits from the legibility and branding pass:
+- improve text readability
+- ensure “Restricted and Operator Access” remains clear
+- maintain controlled tone
+- keep the request zone readable and premium
+
+━━━━━━━━━━━━━━━━━━
+12. DESIGN RULES
+━━━━━━━━━━━━━━━━━━
+
+Keep:
+- black / near-black base
+- subtle grid
+- restrained green accents
+- steel / graphite / dark glass support tones
+- premium typography
+- controlled motion
+- clean product system feel
+
+Avoid:
+- neon overload
+- unreadable dim text
+- vague branding
+- fake data
+- startup fluff
+- duplicated intel-site identity
+- dashboard clutter
+
+━━━━━━━━━━━━━━━━━━
+IMPLEMENTATION GOAL
+━━━━━━━━━━━━━━━━━━
+
+Deliver a serious refinement pass that makes INDEX:
+- easier to read
+- more clearly branded as INDEX Data Network
+- more ready for real live datasets and records
+- more obviously a real public data platform
+- still dark, premium, and unique
+
+End result should:
+- improve readability across all pages
+- strengthen top-level branding
+- clarify homepage identity
+- make data pages feel closer to live
+- add real structural data/config foundations
+- preserve the strong visual direction
+
+Do not explain what you will do.
+Implement the pass in code now.
