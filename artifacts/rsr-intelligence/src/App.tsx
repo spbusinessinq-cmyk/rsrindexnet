@@ -4,14 +4,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
-import {
-  SystemsPage,
-  SignalsPage,
-  ToolsPage,
-  FilesPage,
-  BriefsPage,
-  NetworkPage,
-} from "@/pages/module";
+import SystemsPage from "@/pages/systems";
+import SignalsPage from "@/pages/signals";
+import ToolsPage from "@/pages/tools";
+import FilesPage from "@/pages/files";
+import BriefsPage from "@/pages/briefs";
+import NetworkPage from "@/pages/network";
 
 const queryClient = new QueryClient();
 

@@ -1,0 +1,310 @@
+We are continuing the RSR Intelligence Network build.
+
+The homepage command wheel direction is now approved.
+Do NOT replace it.
+Do NOT redesign the entire aesthetic.
+Do NOT revert to generic cards or SaaS layouts.
+
+We are now moving from “cool concept UI” into a cleaner, real, usable multi-page shell.
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Take the current homepage + module pages and turn them into a cleaner, more usable, more operational structure.
+
+The site should no longer feel like mock pages.
+It should feel like a real intelligence interface with real destinations.
+
+━━━━━━━━━━━━━━━━━━
+PRIORITIES
+━━━━━━━━━━━━━━━━━━
+
+1. REMOVE MOCK / PLACEHOLDER FEEL
+2. LOAD REAL PAGE STRUCTURE
+3. CLEAN THE LAYOUT
+4. KEEP THE BLACK / GREEN COMMAND AESTHETIC
+5. PRESERVE THE COMMAND WHEEL AS THE MAIN ENTRY POINT
+
+━━━━━━━━━━━━━━━━━━
+IMPORTANT RULE
+━━━━━━━━━━━━━━━━━━
+
+No fake stats.
+No fake article counts.
+No fake reports.
+No fake “signals processed” style numbers.
+No lorem ipsum.
+No pretend operational claims.
+
+If real content is not available yet, use:
+- clean empty states
+- “No data connected”
+- “Awaiting source binding”
+- “No reports loaded”
+- “No feeds connected”
+- “Tool endpoint available”
+- “Module ready for integration”
+
+The UI must be honest.
+
+━━━━━━━━━━━━━━━━━━
+ROUTES TO BUILD CLEANLY
+━━━━━━━━━━━━━━━━━━
+
+We need these pages fully laid out:
+
+/                  → Command Wheel homepage
+/systems           → systems overview
+/signals           → signals workspace
+/tools             → tool launcher page
+/files             → files / reports shell
+/briefs            → briefs shell
+/network           → network module shell
+
+━━━━━━━━━━━━━━━━━━
+PAGE GOAL
+━━━━━━━━━━━━━━━━━━
+
+Each page should feel like a real module panel with:
+- strong header
+- module label
+- short operational description
+- clear section layout
+- empty states where data is not yet connected
+- clean spacing
+- consistent visual system
+
+Each page should NOT be a huge empty center with one sentence.
+Each page should also NOT be cluttered.
+
+We want:
+clean
+serious
+usable
+modular
+honest
+
+━━━━━━━━━━━━━━━━━━
+GLOBAL LAYOUT IMPROVEMENTS
+━━━━━━━━━━━━━━━━━━
+
+Refine overall layout across the site:
+
+- cleaner panel spacing
+- better hierarchy
+- better use of width
+- less awkward empty space
+- cleaner alignment between left / center / right regions
+- more deliberate padding and section grouping
+- keep the tactical grid background subtle
+
+Use a consistent shell structure where appropriate:
+- top status bar
+- page title row
+- content grid
+- left utility / summary area when useful
+- main workspace
+- right contextual panel when useful
+
+Do not make every page identical, but make them clearly part of one system.
+
+━━━━━━━━━━━━━━━━━━
+HOMEPAGE REQUIREMENTS
+━━━━━━━━━━━━━━━━━━
+
+Keep the command wheel as the focal point.
+
+But improve homepage usability:
+
+- keep the wheel centered and dominant
+- clean up surrounding panel balance
+- reduce any awkward dead space
+- make the right panel reflect hovered or selected segment
+- make the left panel more useful and less decorative
+- keep live tool links real and clickable
+
+The homepage should feel like:
+“enter the system here”
+
+━━━━━━━━━━━━━━━━━━
+SYSTEMS PAGE
+━━━━━━━━━━━━━━━━━━
+
+Build /systems as a real systems overview page.
+
+Include sections for:
+- AXION
+- ORION
+- SAGE
+
+Each system block should show:
+- name
+- purpose
+- status state
+- integration state
+- destination or module action
+
+If no live data yet, use honest states like:
+- Ready for integration
+- Endpoint not connected
+- Local module pending
+- UI shell active
+
+No fake intelligence summaries.
+
+━━━━━━━━━━━━━━━━━━
+SIGNALS PAGE
+━━━━━━━━━━━━━━━━━━
+
+Build /signals as a signals workspace shell.
+
+Layout should include:
+- page header
+- filter/control strip area
+- main signals list area
+- right-side detail/inspector panel or status panel
+
+If there is no data connected yet:
+- show “No signal feeds connected”
+- show where signal rows will populate
+- show empty state cleanly
+
+This page should look ready for feeds, not fake-populated.
+
+━━━━━━━━━━━━━━━━━━
+TOOLS PAGE
+━━━━━━━━━━━━━━━━━━
+
+Build /tools as a real launcher panel.
+
+This page should prominently show actual live local tools:
+
+- Flowise → http://192.168.12.228:3025
+- Intel Board → http://192.168.12.228:3000
+- Open WebUI → http://192.168.12.228:3001
+- Portainer → http://192.168.12.228:9000
+
+Requirements:
+- these must be real links
+- each tool gets a clean launcher card/panel
+- include label, purpose, endpoint, launch action
+- this page should feel genuinely useful right now
+
+This page should probably become the strongest loaded page first.
+
+━━━━━━━━━━━━━━━━━━
+FILES PAGE
+━━━━━━━━━━━━━━━━━━
+
+Build /files as a real files/reports shell.
+
+Include:
+- header
+- search bar area
+- file list/table shell
+- metadata/detail panel or info strip
+
+Since no data is connected yet, use honest empty states such as:
+- No reports loaded
+- Awaiting file source connection
+- File index ready
+
+No fake filenames unless clearly marked as UI placeholder structure only.
+
+Better approach:
+show table headers and an empty state row.
+
+━━━━━━━━━━━━━━━━━━
+BRIEFS PAGE
+━━━━━━━━━━━━━━━━━━
+
+Build /briefs as an intelligence brief shell.
+
+Include:
+- header
+- brief selector/list area
+- main brief viewing area
+- metadata/status strip
+
+If no briefs are connected:
+- No briefs available
+- Awaiting brief source
+- Brief viewer ready
+
+Keep it clean and premium.
+
+━━━━━━━━━━━━━━━━━━
+NETWORK PAGE
+━━━━━━━━━━━━━━━━━━
+
+Build /network as a proper network module page.
+
+Do not leave it as one floating title in empty space.
+
+It should include:
+- header
+- network overview panel
+- topology/status panel
+- connectivity/integration section
+- empty state for live network visualization if not connected yet
+
+Use honest states like:
+- Network topology not connected
+- Monitoring source not bound
+- Visualization shell ready
+
+━━━━━━━━━━━━━━━━━━
+DESIGN RULES
+━━━━━━━━━━━━━━━━━━
+
+Keep all brand rules:
+
+- black / near-black base
+- green only as accent
+- subtle borders
+- sharp typography
+- tactical grid background
+- no bright gradients
+- no fake glossy startup look
+- no excessive glow
+- no overdesigned sci-fi clutter
+
+Think:
+clean operator terminal
+serious system shell
+premium tactical UI
+
+━━━━━━━━━━━━━━━━━━
+COMPONENT STRUCTURE
+━━━━━━━━━━━━━━━━━━
+
+Refactor into reusable components if helpful, such as:
+
+- AppShell
+- PageHeader
+- ModulePanel
+- EmptyStatePanel
+- StatusPill
+- ToolCard
+- RouteInspector
+- CommandWheel
+
+Keep code clean and organized for later transfer to Docker / Portainer.
+
+━━━━━━━━━━━━━━━━━━
+DELIVERABLE
+━━━━━━━━━━━━━━━━━━
+
+Produce actual code, not explanation.
+
+Update the app so that:
+- the homepage remains the wheel entry point
+- all main routes exist
+- each route has a clean, real layout
+- no fake data is used
+- empty states are honest
+- the tools page is genuinely usable immediately
+
+Do not stop at concept text.
+Implement the full route shell now.
