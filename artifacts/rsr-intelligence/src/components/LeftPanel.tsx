@@ -40,7 +40,7 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
       {/* Identity block */}
       <div className="px-6 pt-7 pb-5" style={{ borderBottom: "1px solid rgba(34,197,94,0.07)" }}>
         <div className="font-mono-tactical tracking-widest uppercase mb-1"
-          style={{ color: "rgba(34,197,94,0.42)", letterSpacing: "0.2em", fontSize: "9px" }}>
+          style={{ color: "rgba(34,197,94,0.45)", letterSpacing: "0.2em", fontSize: "9px" }}>
           RSR Intelligence Network
         </div>
         <h2 className="font-orbitron text-4xl font-bold tracking-wide leading-none mb-1"
@@ -48,11 +48,11 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
           INDEX
         </h2>
         <div className="font-mono-tactical mb-4"
-          style={{ color: "rgba(155,175,170,0.5)", fontSize: "9px", letterSpacing: "0.16em" }}>
+          style={{ color: "rgba(155,175,170,0.58)", fontSize: "9px", letterSpacing: "0.16em" }}>
           Data Systems Division
         </div>
         <p className="font-mono-tactical leading-relaxed"
-          style={{ color: "rgba(185,205,200,0.6)", lineHeight: "1.92", fontSize: "11px" }}>
+          style={{ color: "rgba(185,205,200,0.75)", lineHeight: "1.92", fontSize: "11px" }}>
           The public-facing data network of the RSR Intelligence Network. INDEX monitors signals,
           structures them into classified datasets, and builds a traversable record index.
         </p>
@@ -63,7 +63,7 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
         {activeSegment ? (
           <div key={activeSegment.label} className="panel-fade-in space-y-4">
             <div className="font-mono-tactical tracking-widest uppercase"
-              style={{ color: "rgba(34,197,94,0.5)", fontSize: "9px", letterSpacing: "0.2em" }}>
+              style={{ color: "rgba(34,197,94,0.52)", fontSize: "9px", letterSpacing: "0.2em" }}>
               Sector Preview
             </div>
             <div>
@@ -72,7 +72,7 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
                 {activeSegment.label}
               </div>
               <div className="font-mono-tactical leading-relaxed"
-                style={{ color: "rgba(185,205,200,0.62)", lineHeight: "1.92", fontSize: "11px" }}>
+                style={{ color: "rgba(185,205,200,0.76)", lineHeight: "1.92", fontSize: "11px" }}>
                 {activeSegment.description}
               </div>
             </div>
@@ -80,7 +80,7 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
               <div className="pt-1">
                 <div className="h-px mb-3" style={{ background: "rgba(34,197,94,0.07)" }} />
                 <div className="font-mono-tactical italic"
-                  style={{ color: "rgba(34,197,94,0.42)", fontSize: "10px", lineHeight: "1.75" }}>
+                  style={{ color: "rgba(34,197,94,0.48)", fontSize: "10px", lineHeight: "1.75" }}>
                   {activeSegment.methodology}
                 </div>
               </div>
@@ -90,7 +90,7 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
               <div className="w-1 h-1 rounded-full flex-shrink-0"
                 style={{ background: "#22c55e", boxShadow: "0 0 4px #22c55e" }} />
               <span className="font-mono-tactical"
-                style={{ color: "rgba(34,197,94,0.58)", fontSize: "9.5px", letterSpacing: "0.08em" }}>
+                style={{ color: "rgba(34,197,94,0.62)", fontSize: "9.5px", letterSpacing: "0.08em" }}>
                 Click to enter {activeSegment.label}
               </span>
             </div>
@@ -98,21 +98,21 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
         ) : (
           <div className="space-y-5">
             <div className="font-mono-tactical tracking-widest uppercase"
-              style={{ color: "rgba(34,197,94,0.48)", fontSize: "9px", letterSpacing: "0.2em" }}>
+              style={{ color: "rgba(34,197,94,0.5)", fontSize: "9px", letterSpacing: "0.2em" }}>
               Platform Structure
             </div>
             {PILLARS.map((p) => (
               <div key={p.id} className="space-y-1.5">
                 <div className="flex items-center gap-2.5">
                   <span className="font-mono-tactical flex-shrink-0"
-                    style={{ color: "rgba(34,197,94,0.32)", fontSize: "8.5px" }}>{p.id}</span>
+                    style={{ color: "rgba(34,197,94,0.35)", fontSize: "8.5px" }}>{p.id}</span>
                   <div className="w-px h-3 flex-shrink-0"
                     style={{ background: "rgba(34,197,94,0.38)" }} />
                   <span className="font-orbitron font-semibold tracking-wider"
-                    style={{ color: "rgba(34,197,94,0.72)", fontSize: "9.5px" }}>{p.label}</span>
+                    style={{ color: "rgba(34,197,94,0.75)", fontSize: "9.5px" }}>{p.label}</span>
                 </div>
                 <p className="font-mono-tactical leading-relaxed pl-7"
-                  style={{ color: "rgba(185,205,200,0.55)", lineHeight: "1.88", fontSize: "10.5px" }}>
+                  style={{ color: "rgba(185,205,200,0.68)", lineHeight: "1.88", fontSize: "10.5px" }}>
                   {p.text}
                 </p>
               </div>
@@ -121,11 +121,57 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
         )}
       </div>
 
-      {/* Footer hint */}
-      <div className="px-6 py-4" style={{ borderTop: "1px solid rgba(34,197,94,0.06)" }}>
-        <p className="font-mono-tactical" style={{ color: "rgba(155,175,170,0.38)", lineHeight: "1.8", fontSize: "10px" }}>
-          Hover a sector to inspect. Click to enter.
-        </p>
+      {/* Ecosystem + X channel footer */}
+      <div className="px-6 py-4 space-y-3" style={{ borderTop: "1px solid rgba(34,197,94,0.06)" }}>
+        {/* Back to Intel Site */}
+        <a
+          href="https://www.rsrintel.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-between rounded px-3 py-2.5 group"
+          style={{
+            border: "1px solid rgba(34,197,94,0.14)",
+            background: "rgba(34,197,94,0.04)",
+            textDecoration: "none",
+          }}
+        >
+          <div>
+            <div className="font-mono-tactical tracking-widest uppercase"
+              style={{ color: "rgba(34,197,94,0.5)", fontSize: "8px", letterSpacing: "0.14em", marginBottom: 2 }}>
+              RSR Intelligence
+            </div>
+            <div className="font-orbitron font-bold"
+              style={{ color: "rgba(34,197,94,0.7)", fontSize: "9.5px" }}>
+              Back to Intel Site
+            </div>
+          </div>
+          <span style={{ color: "rgba(34,197,94,0.42)", fontSize: "12px" }}>↗</span>
+        </a>
+
+        {/* X / Twitter channel */}
+        <a
+          href="https://x.com/RSRIntel"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-between rounded px-3 py-2.5"
+          style={{
+            border: "1px solid rgba(155,175,170,0.1)",
+            background: "rgba(0,0,0,0.2)",
+            textDecoration: "none",
+          }}
+        >
+          <div>
+            <div className="font-mono-tactical tracking-widest uppercase"
+              style={{ color: "rgba(155,175,170,0.4)", fontSize: "8px", letterSpacing: "0.14em", marginBottom: 2 }}>
+              Live Channel
+            </div>
+            <div className="font-mono-tactical"
+              style={{ color: "rgba(185,205,200,0.62)", fontSize: "9.5px" }}>
+              @RSRIntel on X
+            </div>
+          </div>
+          <span style={{ color: "rgba(155,175,170,0.3)", fontSize: "12px" }}>↗</span>
+        </a>
       </div>
     </div>
   );

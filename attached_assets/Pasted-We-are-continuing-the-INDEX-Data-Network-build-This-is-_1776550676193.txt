@@ -1,0 +1,323 @@
+We are continuing the INDEX Data Network build.
+
+This is a serious release/activation pass.
+Do NOT redesign the product.
+Do NOT duplicate the intel site.
+Do NOT add fake data.
+Do NOT invent fake live metrics.
+Do NOT create noisy dashboard clutter.
+Do NOT break EdgeOne deployment compatibility.
+
+Important correction:
+Remove all monetization thinking from this pass.
+
+INDEX is NOT being positioned right now as a paid product, subscription platform, or sales funnel.
+
+This site should function as:
+- an information site
+- a live public-facing data network interface
+- a branded RSR subsystem website
+- a structured public data layer for the broader RSR ecosystem
+
+ACCESS should remain in the site, but only as:
+- an informational page about public / restricted / operator layers
+- a structural explanation of access boundaries
+- a controlled-environment explanation
+- not a monetization page
+- not a pricing page
+- not a “premium upgrade” page
+- not a SaaS funnel
+
+━━━━━━━━━━━━━━━━━━
+CORE OBJECTIVE
+━━━━━━━━━━━━━━━━━━
+
+Take the current INDEX build and improve all of the following in one pass:
+
+1. FIX THE COMMAND WHEEL LABEL COLLISION / REMOVE THE DOTS
+2. IMPROVE TEXT BRIGHTNESS / GLOBAL READABILITY
+3. ADD A “BACK TO INTEL SITE” BUTTON / LINK THAT OPENS THE MAIN SITE IN A NEW TAB
+4. KEEP DEPLOYMENT CONGRUENT WITH EDGEONE
+5. MAKE LIVE DATA STATE CLEARER AND MORE BELIEVABLE IN THE UI
+6. ADD A REALISTIC LIVE X / POSTS SECTION FOR RSRINTEL IF POSSIBLE
+7. KEEP ACCESS AS AN INFORMATIONAL ACCESS-BOUNDARY PAGE ONLY
+
+━━━━━━━━━━━━━━━━━━
+1. COMMAND WHEEL — REMOVE COLLIDING DOTS
+━━━━━━━━━━━━━━━━━━
+
+The dots on the wheel are messing up the labels and hurting legibility.
+
+Fix this cleanly.
+
+Requirements:
+- remove the decorative/indicator dots that collide with sector text
+- preserve the premium look of the wheel
+- keep the wheel dark, precise, and readable
+- keep the active segment state
+- keep motion restrained
+- keep the homepage signature feel
+
+Also:
+- revisit icon/text spacing one more time
+- ensure the sector labels have clean breathing room
+- make sure icons do not visually crowd the labels
+- prioritize label readability over decorative micro-elements
+
+Do NOT reintroduce clutter through other small marks.
+Do NOT make the wheel busier.
+We want cleaner, sharper, more readable sectors.
+
+━━━━━━━━━━━━━━━━━━
+2. GLOBAL READABILITY / BRIGHTNESS PASS
+━━━━━━━━━━━━━━━━━━
+
+The product still feels too dim in several places.
+
+We need a brightness/legibility lift without breaking the dark premium aesthetic.
+
+Improve across the site:
+- body text contrast
+- panel text contrast
+- sidebar/support text visibility
+- schema text readability
+- right-side panel readability
+- small mono labels
+- access page notes
+- dataset status panels
+
+Rules:
+- keep the black / steel / green identity
+- do NOT brighten the whole UI generically
+- do NOT turn passive text fully white
+- keep green reserved for active labels, important headings, and true status emphasis
+
+Use better steel-white values for passive body copy and support text.
+The site should still feel dark, but users should not have to strain to read it.
+
+━━━━━━━━━━━━━━━━━━
+3. ADD “BACK TO INTEL SITE” BUTTON
+━━━━━━━━━━━━━━━━━━
+
+We need a clear, branded pathway back to the main intel site.
+
+Add a “Back to Intel Site” action somewhere appropriate in the public layer.
+
+Requirements:
+- open https://www.rsrintel.com in a new tab
+- use target=\"_blank\" and proper rel attributes
+- do NOT make it feel like a generic browser link
+- make it feel like part of the INDEX / RSR ecosystem navigation
+- use clean product language like:
+  - Back to Intel Site
+  - Return to RSR Intel
+  - Open RSR Intel
+
+Best placement options:
+- top bar utility area
+- homepage side panel utility section
+- persistent ecosystem nav area
+- footer utility link
+
+Choose one or two placements max. Keep it restrained and intentional.
+
+This should reinforce the relationship:
+INDEX is the data network layer
+RSR Intel is the main intel/editorial site
+
+━━━━━━━━━━━━━━━━━━
+4. EDGEONE / DEPLOYMENT CONGRUENCE
+━━━━━━━━━━━━━━━━━━
+
+We mainly deploy through EdgeOne.
+Keep this build congruent with that deployment model.
+
+Requirements:
+- prefer same-origin /api/* routing where appropriate
+- do not force awkward localhost assumptions
+- keep frontend/public API calls compatible with static hosting + same-origin serverless/API routes
+- keep VITE_SOURCE_BASE_URL optional, not mandatory
+- if no explicit external base URL is set, default to same-origin /api/*
+- maintain environment/config structure that can still work later in Portainer
+- do not break compatibility with self-hosted deployment either
+
+Goal:
+This should work cleanly in EdgeOne now, while still being portable later if needed.
+
+If helpful:
+- centralize API base resolution
+- make environment fallback logic explicit and safe
+- ensure no source URLs are duplicated in many places
+
+━━━━━━━━━━━━━━━━━━
+5. MAKE LIVE DATA STATUS FEEL CLEAR AND REAL
+━━━━━━━━━━━━━━━━━━
+
+The system now has live data foundations.
+Good.
+Now make that more clearly visible and trustworthy in the UI.
+
+Requirements:
+- clearly show when live data is actually connected
+- clearly show when data is staged vs committed
+- clearly show when a source is unbound or inactive
+- clearly show last sync / last checked / current feed state
+- ensure datasets page right-side summary is derived from live/config state, not dead static copy
+- ensure signals page reflects real runtime source state clearly
+
+Do NOT exaggerate.
+Do NOT invent activity.
+But do make it obvious when the system is actually live.
+
+If one or more feeds are truly connected:
+- surface that clearly
+- make the live state feel visible and credible
+- use honest labels like:
+  - Connected
+  - Staged
+  - Last checked just now
+  - Awaiting first commit
+  - No source bound
+
+The live state should feel present without turning the product into a noisy monitoring dashboard.
+
+━━━━━━━━━━━━━━━━━━
+6. LIVE X / POSTS SECTION — RSRINTEL ACCOUNT
+━━━━━━━━━━━━━━━━━━
+
+We want some way to surface the live X activity from the RSRintel account if possible.
+
+Account context:
+- X handle / page reference is RSRINTEL
+
+Important:
+Do NOT invent X posts.
+Do NOT fake a social feed.
+Do NOT embed something that obviously breaks or requires impossible auth.
+
+Implement the most realistic public-safe solution possible.
+
+Acceptable options, in order of preference:
+
+A. Official X timeline embed if it can be integrated cleanly into the site and styled acceptably
+B. A same-origin /api/ social feed adapter that can safely normalize a public feed source if available
+C. A dedicated “Latest from X” section shell that is real-ready and explicitly states feed availability if public retrieval is not currently possible
+D. A fallback “Open on X” live link section if direct feed embedding cannot be done reliably
+
+Requirements:
+- it must be honest
+- it must not silently fail badly
+- it must not wreck the design system
+- it must not become the main focus of the site
+- it should feel like a supporting live channel, not the identity of the platform
+
+If a live X feed cannot be implemented robustly in this pass:
+- create a clean, branded “Latest from X” module
+- include a live/open link to the RSRINTEL X page
+- clearly label the section as external / live channel / latest dispatches
+- keep it ready for future enhancement
+
+Do NOT force a brittle hack just to claim it exists.
+
+━━━━━━━━━━━━━━━━━━
+7. ACCESS PAGE — INFORMATIONAL ONLY
+━━━━━━━━━━━━━━━━━━
+
+Keep ACCESS in the site, but reposition it strictly as an informational boundary page.
+
+ACCESS should explain:
+- the public layer
+- the restricted layer
+- the operator layer
+- that deeper environments exist within the RSR ecosystem
+- that this public site documents the structure, not the internals
+
+Do NOT add:
+- pricing language
+- premium access language
+- upgrade language
+- conversion language
+- subscription logic
+- monetization framing
+
+Allowed tone:
+- controlled
+- structural
+- architectural
+- informational
+- serious
+
+The page should feel like:
+“how access is structured inside the INDEX / RSR environment”
+
+Not:
+“how to buy or unlock more”
+
+If request language remains, keep it minimal and structural only.
+It should not feel like a lead form or sales capture flow.
+
+━━━━━━━━━━━━━━━━━━
+8. HOMEPAGE SUPPORT STRUCTURE
+━━━━━━━━━━━━━━━━━━
+
+The homepage should feel slightly more complete and purposeful after this pass.
+
+Improve:
+- relationship between live state and the wheel
+- relationship between platform identity and ecosystem link back to RSR Intel
+- relationship between live data status and sector inspection
+- support content density without cluttering the homepage
+
+Optional additions:
+- a compact live system state band
+- a compact latest-from-X module
+- a compact ecosystem utility block including Back to Intel Site
+
+Keep it clean.
+Do NOT turn the homepage into a widget wall.
+
+━━━━━━━━━━━━━━━━━━
+9. KEEP DESIGN DISCIPLINE
+━━━━━━━━━━━━━━━━━━
+
+Keep:
+- dark premium UI
+- black / graphite / steel base
+- restrained green
+- wheel as homepage centerpiece
+- INDEX / RSR hierarchy
+- honest runtime state
+- public vs restricted separation
+
+Avoid:
+- over-greening
+- social feed clutter
+- bright widget spam
+- fake dashboard metrics
+- unnecessary decorative dots
+- brittle hacks
+
+━━━━━━━━━━━━━━━━━━
+10. FINAL GOAL OF THIS PASS
+━━━━━━━━━━━━━━━━━━
+
+At the end of this pass, INDEX should feel:
+- more legible
+- more obviously live
+- more clearly connected to the main intel site
+- more deployment-safe for EdgeOne
+- more credible as a real public data platform
+- cleaner on the wheel
+- clearly informational in its access structure
+
+Deliver:
+- wheel collision fix by removing the problematic dots
+- readability/brightness improvements
+- Back to Intel Site action
+- EdgeOne-friendly API congruence
+- clearer live state presentation
+- best possible realistic live X / RSRintel section or fallback
+- ACCESS page kept informational, not monetized
+
+Do not explain what you will do.
+Implement the pass in code now.

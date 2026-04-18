@@ -69,15 +69,15 @@ const TIER_BG = {
 };
 
 const DESC_COLORS = {
-  ACTIVE:     "rgba(185,205,200,0.68)",
-  CONTROLLED: "rgba(185,205,200,0.58)",
-  RESTRICTED: "rgba(185,205,200,0.52)",
+  ACTIVE:     "rgba(185,205,200,0.8)",
+  CONTROLLED: "rgba(185,205,200,0.7)",
+  RESTRICTED: "rgba(185,205,200,0.62)",
 };
 
 const SCOPE_COLORS = {
-  ACTIVE:     "rgba(185,205,200,0.6)",
-  CONTROLLED: "rgba(185,205,200,0.5)",
-  RESTRICTED: "rgba(185,205,200,0.45)",
+  ACTIVE:     "rgba(185,205,200,0.74)",
+  CONTROLLED: "rgba(185,205,200,0.65)",
+  RESTRICTED: "rgba(185,205,200,0.58)",
 };
 
 const DOT_COLORS = {
@@ -195,105 +195,59 @@ export default function AccessPage() {
               );
             })}
 
-            {/* Access intake terminal */}
+            {/* Access structure note */}
             <div className="rounded"
               style={{ border: "1px solid rgba(100,120,115,0.15)", background: "rgba(4,7,5,0.7)" }}>
-              <div className="flex items-center justify-between px-5 py-3"
+              <div className="flex items-center gap-2.5 px-5 py-3"
                 style={{ borderBottom: "1px solid rgba(100,120,115,0.1)" }}>
-                <div className="flex items-center gap-2.5">
-                  <div className="w-1 h-1 rounded-full" style={{ background: "rgba(100,120,115,0.35)" }} />
-                  <span className="font-mono-tactical tracking-widest uppercase"
-                    style={{ color: "rgba(100,120,115,0.45)", fontSize: "9px", letterSpacing: "0.18em" }}>
-                    Access Request Intake
-                  </span>
-                </div>
-                <span className="font-mono-tactical"
-                  style={{ color: "rgba(100,120,115,0.28)", fontSize: "9px" }}>
-                  INTAKE-001
+                <div className="w-1 h-1 rounded-full" style={{ background: "rgba(100,120,115,0.35)" }} />
+                <span className="font-mono-tactical tracking-widest uppercase"
+                  style={{ color: "rgba(100,120,115,0.48)", fontSize: "9px", letterSpacing: "0.18em" }}>
+                  Access Structure — RSR Operational Layer
                 </span>
               </div>
 
-              <div className="px-5 py-5 space-y-5">
-                <div className="space-y-2.5">
-                  <div className="font-orbitron font-bold tracking-wide"
-                    style={{ color: "rgba(185,205,200,0.52)", fontSize: "11px" }}>
-                    Restricted and Operator Access
-                  </div>
-                  <p className="font-mono-tactical leading-relaxed"
-                    style={{ color: "rgba(185,205,200,0.55)", lineHeight: "1.9", fontSize: "10.5px" }}>
-                    Restricted and operator-level access belongs to the RSR operational layer — it is not publicly
-                    available. Requests from organisations with a documented analytical use case may be reviewed
-                    individually. There is no automated sign-up flow. Operator environments are provisioned within
-                    the RSR system and are not self-serve.
-                  </p>
-                </div>
+              <div className="px-5 py-5 space-y-4">
+                <p className="font-mono-tactical leading-relaxed"
+                  style={{ color: "rgba(185,205,200,0.68)", lineHeight: "1.9", fontSize: "10.5px" }}>
+                  Restricted and operator-level access belongs to the RSR operational layer — it is not
+                  publicly available and is not accessible through this interface. These environments are
+                  internal to the RSR ecosystem. They are not described further here.
+                </p>
 
                 <div className="rounded p-4 space-y-2.5"
-                  style={{ border: "1px solid rgba(100,120,115,0.1)", background: "rgba(0,0,0,0.35)" }}>
+                  style={{ border: "1px solid rgba(100,120,115,0.1)", background: "rgba(0,0,0,0.3)" }}>
                   {[
-                    "Access requests are reviewed individually — not processed automatically",
-                    "Restricted data access requires documented organisational context",
-                    "Operator environments are provisioned manually — not assigned on approval",
-                    "No timeline for review can be given — requests are assessed on merit",
+                    "This public interface documents architecture — it does not grant or manage access",
+                    "Restricted environments are controlled by RSR — not by INDEX's public layer",
+                    "Operator access is provisioned internally — there is no application process here",
+                    "The RSR Intelligence site is the appropriate point of contact for external enquiries",
                   ].map((note) => (
                     <div key={note} className="flex items-start gap-2.5">
                       <span className="font-mono-tactical flex-shrink-0 mt-0.5"
-                        style={{ color: "rgba(100,120,115,0.35)", fontSize: "10px" }}>—</span>
+                        style={{ color: "rgba(100,120,115,0.4)", fontSize: "10px" }}>—</span>
                       <span className="font-mono-tactical"
-                        style={{ color: "rgba(185,205,200,0.52)", fontSize: "10.5px", lineHeight: "1.8" }}>
+                        style={{ color: "rgba(185,205,200,0.65)", fontSize: "10.5px", lineHeight: "1.8" }}>
                         {note}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                {/* Input shell */}
-                <div className="space-y-2.5">
-                  <div className="flex items-center gap-2.5 rounded px-3.5 py-3"
-                    style={{
-                      border: "1px solid rgba(100,120,115,0.14)",
-                      background: "rgba(0,0,0,0.5)",
-                    }}>
-                    <span className="font-mono-tactical flex-shrink-0"
-                      style={{ color: "rgba(100,120,115,0.28)", fontSize: "10px" }}>
-                      &gt;
-                    </span>
-                    <span className="font-mono-tactical"
-                      style={{ color: "rgba(100,120,115,0.22)", fontSize: "9.5px" }}>
-                      access request intake — not yet active
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="flex-1 rounded px-3.5 py-2.5"
-                      style={{ border: "1px solid rgba(100,120,115,0.1)", background: "rgba(0,0,0,0.4)" }}>
-                      <span className="font-mono-tactical"
-                        style={{ color: "rgba(100,120,115,0.18)", fontSize: "9.5px" }}>
-                        contact endpoint — pending configuration
-                      </span>
-                    </div>
-                    <div className="rounded px-4 py-2.5 flex-shrink-0"
-                      style={{
-                        border: "1px solid rgba(100,120,115,0.15)",
-                        background: "rgba(0,0,0,0.5)",
-                        cursor: "default",
-                      }}>
-                      <span className="font-mono-tactical tracking-widest"
-                        style={{ color: "rgba(100,120,115,0.28)", fontSize: "9.5px", letterSpacing: "0.1em" }}>
-                        SUBMIT
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2.5 pt-1"
-                  style={{ borderTop: "1px solid rgba(100,120,115,0.07)" }}>
-                  <div className="w-1 h-1 rounded-full flex-shrink-0"
-                    style={{ background: "rgba(100,120,115,0.3)" }} />
-                  <span className="font-mono-tactical"
-                    style={{ color: "rgba(100,120,115,0.35)", fontSize: "9px" }}>
-                    Intake not active — access model in controlled rollout.
+                <div className="flex items-center justify-between pt-1"
+                  style={{ borderTop: "1px solid rgba(100,120,115,0.08)" }}>
+                  <span className="font-mono-tactical italic"
+                    style={{ color: "rgba(100,120,115,0.45)", fontSize: "9.5px" }}>
+                    External enquiries — RSR Intelligence Network
                   </span>
+                  <a
+                    href="https://www.rsrintel.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono-tactical tracking-widest"
+                    style={{ color: "rgba(34,197,94,0.45)", fontSize: "8.5px", letterSpacing: "0.12em", textDecoration: "none" }}>
+                    RSRINTEL.COM ↗
+                  </a>
                 </div>
               </div>
             </div>
@@ -316,7 +270,7 @@ export default function AccessPage() {
                       {tier.id}
                     </span>
                     <span className="flex-1 font-mono-tactical truncate"
-                      style={{ color: "rgba(185,205,200,0.42)", fontSize: "10px" }}>
+                      style={{ color: "rgba(185,205,200,0.62)", fontSize: "10px" }}>
                       {tier.label}
                     </span>
                     <span className="font-mono-tactical flex-shrink-0"
@@ -353,7 +307,7 @@ export default function AccessPage() {
                       {item.label}
                     </span>
                     <span className="font-mono-tactical"
-                      style={{ color: "rgba(185,205,200,0.5)", fontSize: "10px" }}>
+                      style={{ color: "rgba(185,205,200,0.72)", fontSize: "10px" }}>
                       {item.value}
                     </span>
                   </div>
@@ -364,7 +318,7 @@ export default function AccessPage() {
             <div className="h-px" style={{ background: "rgba(100,120,115,0.08)" }} />
 
             <p className="font-mono-tactical leading-relaxed"
-              style={{ color: "rgba(155,175,170,0.48)", lineHeight: "1.85", fontSize: "10px" }}>
+              style={{ color: "rgba(185,205,200,0.58)", lineHeight: "1.85", fontSize: "10px" }}>
               This is not a waitlist. Restricted access is not queued. Requests are assessed individually when
               intake is active. Deeper access is governed by RSR — not INDEX's public interface.
             </p>

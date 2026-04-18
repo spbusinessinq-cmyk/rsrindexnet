@@ -338,7 +338,7 @@ export default function CommandWheel({ segments, onHover, onSegmentClick }: Comm
                 fontSize="8.5"
                 fontFamily="'Orbitron', sans-serif"
                 fontWeight={active ? "700" : "500"}
-                fill={active ? G : "rgba(175,195,190,0.62)"}
+                fill={active ? G : "rgba(190,210,205,0.84)"}
                 letterSpacing="0.2em"
                 filter={active ? "url(#f-glow)" : undefined}
                 style={{ transition: "fill 0.2s ease", pointerEvents: "none", userSelect: "none" }}
@@ -346,14 +346,6 @@ export default function CommandWheel({ segments, onHover, onSegmentClick }: Comm
                 {seg.label}
               </text>
 
-              {/* Active inner dot */}
-              {active && (() => {
-                const dp = polar(cx, cy, OUTER - 18, midDeg);
-                return (
-                  <circle cx={dp.x} cy={dp.y} r={2.8}
-                    fill={G} filter="url(#f-glow)" />
-                );
-              })()}
             </g>
           );
         })}

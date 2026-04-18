@@ -115,7 +115,7 @@ export default function MethodPage() {
                       {phase.label}
                     </div>
                     <div className="font-mono-tactical mt-1 italic"
-                      style={{ color: "rgba(185,205,200,0.52)", fontSize: "10.5px", lineHeight: "1.7" }}>
+                      style={{ color: "rgba(185,205,200,0.72)", fontSize: "10.5px", lineHeight: "1.7" }}>
                       {phase.headline}
                     </div>
                   </div>
@@ -138,7 +138,7 @@ export default function MethodPage() {
                         <div className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
                           style={{ background: "rgba(34,197,94,0.42)" }} />
                         <span className="font-mono-tactical"
-                          style={{ color: "rgba(185,205,200,0.58)", lineHeight: "1.8", fontSize: "10.5px" }}>
+                          style={{ color: "rgba(185,205,200,0.72)", lineHeight: "1.8", fontSize: "10.5px" }}>
                           {rule}
                         </span>
                       </div>

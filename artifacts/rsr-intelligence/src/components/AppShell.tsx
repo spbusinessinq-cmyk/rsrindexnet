@@ -58,11 +58,38 @@ export default function AppShell({ children }: AppShellProps) {
         </div>
 
         <div className="flex items-center gap-4">
+          <a
+            href="https://www.rsrintel.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono-tactical tracking-widest hidden sm:flex items-center gap-1.5"
+            style={{
+              color: "rgba(34,197,94,0.42)",
+              fontSize: "8.5px",
+              letterSpacing: "0.12em",
+              textDecoration: "none",
+              border: "1px solid rgba(34,197,94,0.15)",
+              padding: "3px 10px",
+              borderRadius: 3,
+              background: "rgba(34,197,94,0.04)",
+              transition: "color 0.15s ease, border-color 0.15s ease",
+            }}
+            onMouseOver={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.color = "rgba(34,197,94,0.7)";
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(34,197,94,0.28)";
+            }}
+            onMouseOut={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.color = "rgba(34,197,94,0.42)";
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(34,197,94,0.15)";
+            }}
+          >
+            RSR INTEL ↗
+          </a>
           <span className="font-mono-tactical"
             style={{ color: "rgba(155,175,170,0.4)", fontSize: "9.5px", letterSpacing: "0.1em" }}>
             PUBLIC LAYER
           </span>
-          <span className="font-mono-tactical"
+          <span className="font-mono-tactical hidden lg:block"
             style={{ color: "rgba(155,175,170,0.28)", fontSize: "9.5px" }}>
             {new Date().toISOString().slice(0, 19).replace("T", " ")} UTC
           </span>

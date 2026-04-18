@@ -95,7 +95,7 @@ export default function RightPanel({ hoveredSegment, segments }: RightPanelProps
           <div className="flex-1 px-6 py-5 space-y-4">
             {activeSegment.detail && (
               <p className="font-mono-tactical leading-relaxed"
-                style={{ color: "rgba(185,205,200,0.65)", lineHeight: "1.95", fontSize: "11px" }}>
+                style={{ color: "rgba(185,205,200,0.76)", lineHeight: "1.95", fontSize: "11px" }}>
                 {activeSegment.detail}
               </p>
             )}
@@ -105,7 +105,7 @@ export default function RightPanel({ hoveredSegment, segments }: RightPanelProps
                   <div className="mt-2 w-1 h-1 rounded-full flex-shrink-0"
                     style={{ background: "rgba(34,197,94,0.45)" }} />
                   <span className="font-mono-tactical leading-relaxed"
-                    style={{ color: "rgba(185,205,200,0.58)", lineHeight: "1.85", fontSize: "10.5px" }}>
+                    style={{ color: "rgba(185,205,200,0.72)", lineHeight: "1.85", fontSize: "10.5px" }}>
                     {point}
                   </span>
                 </div>
@@ -154,13 +154,13 @@ export default function RightPanel({ hoveredSegment, segments }: RightPanelProps
           {/* Default body */}
           <div className="flex-1 px-6 py-5 space-y-4">
             <p className="font-mono-tactical leading-relaxed"
-              style={{ color: "rgba(185,205,200,0.6)", lineHeight: "1.95", fontSize: "11px" }}>
+              style={{ color: "rgba(185,205,200,0.78)", lineHeight: "1.95", fontSize: "11px" }}>
               INDEX is the structured data division of the RSR Intelligence Network. It is not the
               editorial or investigative arm — it is the data architecture layer: signal intake,
               dataset structuring, and record indexing.
             </p>
             <p className="font-mono-tactical leading-relaxed"
-              style={{ color: "rgba(185,205,200,0.55)", lineHeight: "1.95", fontSize: "11px" }}>
+              style={{ color: "rgba(185,205,200,0.68)", lineHeight: "1.95", fontSize: "11px" }}>
               The command wheel maps the six public sectors. Each sector represents a distinct layer
               of the INDEX pipeline — from monitored signal intake to the access boundary.
             </p>
@@ -175,16 +175,45 @@ export default function RightPanel({ hoveredSegment, segments }: RightPanelProps
               {segments.map((seg, i) => (
                 <div key={seg.label} className="flex items-center gap-2.5 py-1.5">
                   <span className="font-mono-tactical flex-shrink-0"
-                    style={{ color: "rgba(155,175,170,0.32)", fontSize: "9px" }}>
+                    style={{ color: "rgba(155,175,170,0.38)", fontSize: "9px" }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="flex-1 h-px" style={{ background: "rgba(34,197,94,0.07)" }} />
                   <span className="font-orbitron font-semibold tracking-wider flex-shrink-0"
-                    style={{ color: "rgba(34,197,94,0.48)", fontSize: "8.5px" }}>
+                    style={{ color: "rgba(34,197,94,0.55)", fontSize: "8.5px" }}>
                     {seg.label}
                   </span>
                 </div>
               ))}
+            </div>
+
+            <div className="h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
+
+            {/* Live channel + ecosystem */}
+            <div className="space-y-2">
+              <a
+                href="https://x.com/RSRIntel"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between rounded px-3 py-2.5"
+                style={{
+                  border: "1px solid rgba(155,175,170,0.1)",
+                  background: "rgba(0,0,0,0.2)",
+                  textDecoration: "none",
+                }}
+              >
+                <div>
+                  <div className="font-mono-tactical tracking-widest uppercase"
+                    style={{ color: "rgba(155,175,170,0.42)", fontSize: "7.5px", letterSpacing: "0.14em", marginBottom: 2 }}>
+                    Live Channel
+                  </div>
+                  <div className="font-mono-tactical"
+                    style={{ color: "rgba(185,205,200,0.65)", fontSize: "9.5px" }}>
+                    @RSRIntel on X
+                  </div>
+                </div>
+                <span style={{ color: "rgba(155,175,170,0.32)", fontSize: "12px" }}>↗</span>
+              </a>
             </div>
           </div>
         </div>

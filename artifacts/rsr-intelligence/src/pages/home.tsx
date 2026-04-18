@@ -87,10 +87,30 @@ export default function Home() {
             RSR INTELLIGENCE NETWORK — DATA SYSTEMS
           </span>
         </div>
-        <span className="font-mono-tactical text-xs"
-          style={{ color: "rgba(155,175,170,0.38)", fontSize: "9.5px" }}>
-          {new Date().toISOString().slice(0, 19).replace("T", " ")} UTC
-        </span>
+        <div className="flex items-center gap-3">
+          <a
+            href="https://www.rsrintel.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono-tactical tracking-widest hidden sm:flex items-center gap-1.5"
+            style={{
+              color: "rgba(34,197,94,0.42)",
+              fontSize: "8.5px",
+              letterSpacing: "0.12em",
+              textDecoration: "none",
+              border: "1px solid rgba(34,197,94,0.15)",
+              padding: "3px 10px",
+              borderRadius: 3,
+              background: "rgba(34,197,94,0.04)",
+            }}
+          >
+            RSR INTEL ↗
+          </a>
+          <span className="font-mono-tactical text-xs hidden md:block"
+            style={{ color: "rgba(155,175,170,0.38)", fontSize: "9.5px" }}>
+            {new Date().toISOString().slice(0, 19).replace("T", " ")} UTC
+          </span>
+        </div>
       </div>
 
       {/* Main content */}

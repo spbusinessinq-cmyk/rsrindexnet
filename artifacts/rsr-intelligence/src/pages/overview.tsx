@@ -70,7 +70,7 @@ export default function OverviewPage() {
                   RSR Intelligence Network
                 </div>
                 <div className="font-mono-tactical"
-                  style={{ color: "rgba(155,175,170,0.48)", fontSize: "10px", lineHeight: "1.75" }}>
+                  style={{ color: "rgba(185,205,200,0.65)", fontSize: "10px", lineHeight: "1.75" }}>
                   The broader intelligence and analytical ecosystem. RSR encompasses editorial analysis, investigations, and the data layer.
                 </div>
               </div>
@@ -110,13 +110,13 @@ export default function OverviewPage() {
                 What INDEX is
               </div>
               <p className="font-mono-tactical leading-relaxed"
-                style={{ color: "rgba(185,205,200,0.62)", lineHeight: "1.9", fontSize: "10.5px" }}>
+                style={{ color: "rgba(185,205,200,0.78)", lineHeight: "1.9", fontSize: "10.5px" }}>
                 INDEX is the structured data division of the RSR Intelligence Network. It exists to monitor
                 defined signal categories, structure incoming data into classified collections, and build
                 a traversable record index — the public-facing data layer of the RSR ecosystem.
               </p>
               <p className="font-mono-tactical leading-relaxed"
-                style={{ color: "rgba(185,205,200,0.52)", lineHeight: "1.9", fontSize: "10.5px" }}>
+                style={{ color: "rgba(185,205,200,0.65)", lineHeight: "1.9", fontSize: "10.5px" }}>
                 It is not a newsroom and not an investigative unit. It is infrastructure — the analytical
                 data architecture behind RSR's broader intelligence operation.
               </p>
