@@ -349,6 +349,21 @@ export default function AccessPage() {
               style={{ color: "rgba(155,175,170,0.38)", lineHeight: "1.85", fontSize: "10px" }}>
               This is not a waitlist. Restricted access is not queued. Requests are assessed individually when intake is active. Deeper access is governed by RSR — not INDEX's public interface.
             </p>
+
+            <div className="h-px" style={{ background: "rgba(100,120,115,0.07)" }} />
+
+            {/* Operator login link — restrained, for provisioned operators only */}
+            <div className="flex items-center justify-between">
+              <span className="font-mono-tactical"
+                style={{ color: "rgba(100,120,115,0.3)", fontSize: "9px" }}>
+                Already provisioned?
+              </span>
+              <a href="/login"
+                className="font-mono-tactical tracking-widest"
+                style={{ color: "rgba(34,197,94,0.38)", fontSize: "9px", letterSpacing: "0.12em", textDecoration: "none" }}>
+                OPERATOR LOGIN →
+              </a>
+            </div>
           </div>
         </div>
       </div>

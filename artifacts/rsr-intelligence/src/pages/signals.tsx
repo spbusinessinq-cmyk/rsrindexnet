@@ -2,11 +2,13 @@ import AppShell from "@/components/AppShell";
 import PageHeader from "@/components/PageHeader";
 import EmptyState from "@/components/EmptyState";
 import { SIGNAL_CATEGORIES, TRIAGE_CRITERIA } from "@/data/config";
-import type { SignalIntakeType, FeedState } from "@/data/types";
+import { useFeed0, useFeed1, useFeed2, useFeed3 } from "@/hooks/useFeed";
+import { SOURCE_DEFINITIONS } from "@/lib/feeds/sources";
+import type { FeedState, SignalCategoryId } from "@/lib/feeds/types";
 
 const FILTERS = ["ALL", "ACTIVE", "STAGED", "DISMISSED"];
 
-const INTAKE_TYPE_LABELS: Record<SignalIntakeType, string> = {
+const INTAKE_TYPE_LABELS: Record<string, string> = {
   passive:   "Passive / continuous",
   active:    "Active / triggered",
   manual:    "Manual / operator",
@@ -14,30 +16,42 @@ const INTAKE_TYPE_LABELS: Record<SignalIntakeType, string> = {
 };
 
 const FEED_STATE_LABELS: Record<FeedState, string> = {
-  connected:    "Connected",
-  disconnected: "Disconnected",
-  staged:       "Staged",
-  error:        "Error",
-  unbound:      "No source bound",
+  connected:        "Connected",
+  disconnected:     "Disconnected",
+  staged:           "Staged",
+  error:            "Error",
+  unbound:          "No source bound",
+  loading:          "Checking...",
+  "cors-restricted": "CORS — proxy required",
 };
 
 const FEED_STATE_COLORS: Record<FeedState, string> = {
-  connected:    "rgba(34,197,94,0.7)",
-  disconnected: "rgba(155,175,170,0.35)",
-  staged:       "rgba(34,197,94,0.4)",
-  error:        "rgba(220,80,80,0.6)",
-  unbound:      "rgba(155,175,170,0.28)",
-};
-
-/* Feed state for each category — unbound until sources are attached */
-const CATEGORY_FEED_STATE: Record<string, FeedState> = {
-  OPN: "unbound",
-  STR: "unbound",
-  FLG: "unbound",
-  MAN: "unbound",
+  connected:        "rgba(34,197,94,0.75)",
+  disconnected:     "rgba(155,175,170,0.38)",
+  staged:           "rgba(34,197,94,0.45)",
+  error:            "rgba(220,80,80,0.65)",
+  unbound:          "rgba(155,175,170,0.28)",
+  loading:          "rgba(34,197,94,0.35)",
+  "cors-restricted": "rgba(220,160,50,0.65)",
 };
 
 export default function SignalsPage() {
+  /* Live feed state — one hook per source (fixed order, no loops) */
+  const f0 = useFeed0(); // OPN
+  const f1 = useFeed1(); // STR
+  const f2 = useFeed2(); // FLG
+  const f3 = useFeed3(); // MAN
+
+  const feedMap: Record<SignalCategoryId, typeof f0> = {
+    OPN: f0,
+    STR: f1,
+    FLG: f2,
+    MAN: f3,
+  };
+
+  const connectedCount = [f0, f1, f2, f3].filter(f => f.state === "connected").length;
+  const hasSources = connectedCount > 0;
+
   return (
     <AppShell>
       <div className="flex flex-col" style={{ minHeight: "calc(100vh - 84px)" }}>
@@ -45,8 +59,8 @@ export default function SignalsPage() {
           module="MODULE / SIGNALS"
           title="SIGNALS"
           subtitle="Signal capture, source triage, and intake classification — monitored input categories and their current binding state"
-          badge="NO FEEDS BOUND"
-          badgeActive={false}
+          badge={hasSources ? `${connectedCount} SOURCE CONNECTED` : "NO FEEDS BOUND"}
+          badgeActive={hasSources}
         >
           <div className="flex items-center gap-2">
             {FILTERS.map((f) => (
@@ -70,7 +84,11 @@ export default function SignalsPage() {
           <div className="flex-1 p-6 md:p-7 space-y-4 overflow-y-auto">
             {/* Category cards */}
             {SIGNAL_CATEGORIES.map((cat) => {
-              const feedState = CATEGORY_FEED_STATE[cat.id] ?? "unbound";
+              const feed = feedMap[cat.id as SignalCategoryId];
+              const feedState = feed?.state ?? "unbound";
+              const source = SOURCE_DEFINITIONS.find(s => s.categoryId === cat.id);
+              const lastChecked = feed?.health.lastChecked;
+
               return (
                 <div key={cat.id} className="rounded idx-card"
                   style={{ border: "1px solid rgba(34,197,94,0.09)", background: "rgba(0,0,0,0.18)" }}>
@@ -99,14 +117,22 @@ export default function SignalsPage() {
                         </div>
                       </div>
                     </div>
-                    {/* Feed state */}
-                    <div className="flex items-center gap-2 flex-shrink-0">
-                      <div className="w-1.5 h-1.5 rounded-full"
-                        style={{ background: FEED_STATE_COLORS[feedState] }} />
-                      <span className="font-mono-tactical"
-                        style={{ color: FEED_STATE_COLORS[feedState], fontSize: "9px", letterSpacing: "0.08em" }}>
-                        {FEED_STATE_LABELS[feedState]}
-                      </span>
+                    {/* Live feed state */}
+                    <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full"
+                          style={{ background: FEED_STATE_COLORS[feedState] }} />
+                        <span className="font-mono-tactical"
+                          style={{ color: FEED_STATE_COLORS[feedState], fontSize: "9px", letterSpacing: "0.08em" }}>
+                          {FEED_STATE_LABELS[feedState]}
+                        </span>
+                      </div>
+                      {lastChecked && (
+                        <span className="font-mono-tactical"
+                          style={{ color: "rgba(155,175,170,0.3)", fontSize: "8.5px" }}>
+                          Checked {lastChecked.toLocaleTimeString()}
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -130,7 +156,7 @@ export default function SignalsPage() {
                       </div>
                     </div>
 
-                    {/* Right: source binding area */}
+                    {/* Right: source binding — now from live feed state */}
                     <div className="px-5 py-4 space-y-3">
                       <div className="font-mono-tactical tracking-widest uppercase"
                         style={{ color: "rgba(34,197,94,0.45)", fontSize: "8.5px", letterSpacing: "0.16em" }}>
@@ -142,12 +168,12 @@ export default function SignalsPage() {
                           background: "rgba(0,0,0,0.25)",
                         }}>
                         {[
-                          { label: "Feed State",       value: FEED_STATE_LABELS[feedState], dim: true },
-                          { label: "Intake Type",      value: INTAKE_TYPE_LABELS[cat.intakeType], dim: false },
-                          { label: "Validation Rule",  value: cat.validationRule, dim: false },
-                          { label: "Sources Bound",    value: "None", dim: true },
-                          { label: "Last Signal",      value: "—", dim: true },
-                          { label: "Intake Count",     value: "0", dim: true },
+                          { label: "Feed State",      value: FEED_STATE_LABELS[feedState],              dim: feedState === "unbound" },
+                          { label: "Intake Type",     value: INTAKE_TYPE_LABELS[cat.intakeType],         dim: false },
+                          { label: "Validation Rule", value: cat.validationRule,                         dim: false },
+                          { label: "Source ID",       value: source?.id ?? "—",                          dim: !source },
+                          { label: "Last Checked",    value: lastChecked ? lastChecked.toLocaleTimeString() : "—", dim: !lastChecked },
+                          { label: "Intake Count",    value: feed?.items?.length > 0 ? String(feed.items.length) : "0", dim: true },
                         ].map((row) => (
                           <div key={row.label} className="flex items-start gap-2">
                             <span className="font-mono-tactical flex-shrink-0 w-28"
@@ -156,7 +182,7 @@ export default function SignalsPage() {
                             </span>
                             <span className="font-mono-tactical"
                               style={{
-                                color: row.dim ? "rgba(155,175,170,0.42)" : "rgba(185,205,200,0.62)",
+                                color: row.dim ? "rgba(155,175,170,0.42)" : "rgba(185,205,200,0.68)",
                                 fontSize: "9.5px",
                                 fontStyle: row.dim ? "italic" : "normal",
                                 lineHeight: "1.5",
@@ -165,6 +191,19 @@ export default function SignalsPage() {
                             </span>
                           </div>
                         ))}
+                        {/* Error state */}
+                        {feed?.health.error && feedState !== "unbound" && (
+                          <div className="flex items-start gap-2 pt-1" style={{ borderTop: "1px solid rgba(220,80,80,0.1)" }}>
+                            <span className="font-mono-tactical flex-shrink-0 w-28"
+                              style={{ color: "rgba(220,80,80,0.45)", fontSize: "9px" }}>
+                              Error
+                            </span>
+                            <span className="font-mono-tactical"
+                              style={{ color: "rgba(220,80,80,0.6)", fontSize: "9px", lineHeight: "1.5" }}>
+                              {feed.health.error}
+                            </span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -223,25 +262,25 @@ export default function SignalsPage() {
                 Intake Status
               </div>
               <div className="space-y-3">
-                {[
-                  { label: "OPEN SOURCE",      value: "Unbound" },
-                  { label: "STRUCTURED FEEDS", value: "Unbound" },
-                  { label: "PATTERN MONITOR",  value: "Inactive" },
-                  { label: "MANUAL QUEUE",     value: "Empty" },
-                  { label: "TRIAGE QUEUE",     value: "—" },
-                  { label: "LAST SIGNAL",      value: "—" },
-                ].map((item) => (
-                  <div key={item.label} className="flex flex-col gap-0.5">
-                    <span className="font-mono-tactical"
-                      style={{ fontSize: "8.5px", color: "rgba(155,175,170,0.42)", letterSpacing: "0.1em" }}>
-                      {item.label}
-                    </span>
-                    <span className="font-mono-tactical"
-                      style={{ color: "rgba(185,205,200,0.6)", fontSize: "11px" }}>
-                      {item.value}
-                    </span>
-                  </div>
-                ))}
+                {SIGNAL_CATEGORIES.map((cat) => {
+                  const feed = feedMap[cat.id as SignalCategoryId];
+                  return (
+                    <div key={cat.id} className="flex flex-col gap-0.5">
+                      <span className="font-mono-tactical"
+                        style={{ fontSize: "8.5px", color: "rgba(155,175,170,0.42)", letterSpacing: "0.1em" }}>
+                        {cat.label.toUpperCase()}
+                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-1 h-1 rounded-full"
+                          style={{ background: FEED_STATE_COLORS[feed?.state ?? "unbound"] }} />
+                        <span className="font-mono-tactical"
+                          style={{ color: FEED_STATE_COLORS[feed?.state ?? "unbound"], fontSize: "10.5px" }}>
+                          {FEED_STATE_LABELS[feed?.state ?? "unbound"]}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -271,7 +310,7 @@ export default function SignalsPage() {
             <p className="font-mono-tactical leading-relaxed"
               style={{ color: "rgba(185,205,200,0.45)", fontSize: "10px", lineHeight: "1.85" }}>
               Signal feeds are bound per source category. Each category operates independently.
-              Binding a source does not bypass triage.
+              Set <span style={{ color: "rgba(34,197,94,0.45)", fontStyle: "normal" }}>VITE_SOURCE_BASE_URL</span> to activate.
             </p>
           </div>
         </div>

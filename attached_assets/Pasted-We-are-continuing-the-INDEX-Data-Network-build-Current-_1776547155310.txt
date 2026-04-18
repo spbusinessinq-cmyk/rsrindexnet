@@ -1,0 +1,437 @@
+We are continuing the INDEX Data Network build.
+
+Current state:
+- branding direction is now correct
+- INDEX is clearly the data division / data network layer of the broader RSR Intelligence Network
+- the wheel is working as the homepage centerpiece
+- pages are coherent
+- typed data/config structure has started
+- empty states are honest
+- visual direction is strong
+
+Now we need to move INDEX from “premium public shell” into “real working product foundation.”
+
+This pass is about:
+1. operator login architecture
+2. real live feed architecture
+3. first real dataset/data-binding foundation
+4. self-hosted deployment discipline for Portainer
+5. preserving the public-facing website experience while enabling controlled private access
+
+Do NOT redesign the site.
+Do NOT duplicate the intel site.
+Do NOT add fake data.
+Do NOT hardcode fake live behavior.
+Do NOT expose raw backend/admin tools publicly.
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Build the first real operational foundation of INDEX.
+
+We need:
+- a public-facing data website
+- a restricted/operator login path
+- real source/feed architecture
+- real dataset binding architecture
+- clean separation between public layer and operator layer
+- deployment-safe structure for self-hosting in Portainer
+
+Goal:
+INDEX should begin functioning like a real data platform, not just a designed shell.
+
+━━━━━━━━━━━━━━━━━━
+1. OPERATOR LOGIN / ACCESS ARCHITECTURE
+━━━━━━━━━━━━━━━━━━
+
+We need a real operator access structure.
+
+Important:
+This does NOT need to become a full production auth platform in one pass.
+But it must establish the correct architecture and flows.
+
+Build a proper restricted/operator access model for INDEX.
+
+Requirements:
+- keep public pages fully viewable
+- create an operator login entry point
+- create a protected operator route/group
+- define clear public vs restricted vs operator boundaries
+- support future real auth without rewriting the app
+
+Preferred route structure:
+- /access → public explanation of access model
+- /login → operator login page
+- /operator or /ops → protected operator area shell
+
+Requirements for login flow:
+- clean operator login screen
+- same INDEX / RSR data systems branding
+- controlled serious tone
+- no consumer/SaaS language
+- no “sign up” framing
+- login is for approved operator access only
+
+If real auth is not yet wired, implement:
+- auth shell
+- protected route logic
+- session state abstraction
+- clear placeholder auth provider structure
+- optional local dev bypass flag ONLY if isolated cleanly for development
+
+Do not build cheesy fake authentication.
+Do not fake successful user identities.
+Do not expose admin internals publicly.
+
+━━━━━━━━━━━━━━━━━━
+2. OPERATOR AREA — FIRST SHELL
+━━━━━━━━━━━━━━━━━━
+
+Create a first protected operator area.
+
+This should NOT be a raw backend dump.
+It should be a controlled operator shell.
+
+Possible route:
+- /operator
+or
+- /ops
+
+This page should include:
+- operator header
+- environment status area
+- feed/source monitor shell
+- dataset/source binding shell
+- record pipeline status shell
+- operator-only notice / restricted banner
+
+This is NOT the public website.
+This is the beginning of the restricted operational layer.
+
+Keep design aligned with INDEX, but clearly more controlled and more system-facing.
+
+━━━━━━━━━━━━━━━━━━
+3. LIVE FEEDS — MAKE THEM REAL
+━━━━━━━━━━━━━━━━━━
+
+The feeds are currently dead.
+We need to start bringing real life into the system.
+
+Very important:
+Do NOT fake live feeds.
+Do NOT invent signal data.
+Do NOT simulate random activity.
+
+Instead, implement real feed plumbing architecture and bind at least one real source path if possible.
+
+We need:
+- source definition structure
+- live feed state model
+- polling/fetch logic
+- loading/error/empty states
+- source health states
+- real data ingestion shell
+
+If possible in this pass:
+Connect at least one real feed source in a disciplined way.
+
+Possible source directions:
+- RSS/Atom feeds
+- JSON endpoints
+- self-hosted structured sources
+- manually defined local feed endpoints
+- simple internal API route that proxies or normalizes source data
+
+Do NOT jam external sources directly into fragile page components.
+Create a real source layer / adapter layer.
+
+Required feed states:
+- connected
+- disconnected
+- staged
+- error
+- no source bound
+
+Make these states real from actual source checks where possible.
+
+━━━━━━━━━━━━━━━━━━
+4. FEED / SOURCE ADAPTER ARCHITECTURE
+━━━━━━━━━━━━━━━━━━
+
+Build a clean source architecture.
+
+We need separation between:
+- source definitions
+- source fetching
+- normalization
+- UI rendering
+
+Suggested structure:
+- src/data/sources/
+- src/lib/feeds/
+- src/lib/adapters/
+- src/lib/api/
+
+Create typed interfaces for:
+- SignalSource
+- SourceHealth
+- FeedItem
+- IngestedSignal
+- DatasetBinding
+- SourceBindingState
+
+Each source should be able to define:
+- id
+- label
+- type
+- endpoint
+- polling mode
+- parser/adapter
+- status
+- last successful sync
+- error state
+- domain/category mapping
+
+Goal:
+future sources can be added cleanly without rewriting pages.
+
+━━━━━━━━━━━━━━━━━━
+5. FIRST REAL DATASET BINDING
+━━━━━━━━━━━━━━━━━━
+
+We need to move one step beyond empty shells.
+
+Without inventing fake datasets, create the structure for real dataset binding.
+
+Requirements:
+- define dataset/domain binding model
+- define how a signal becomes a dataset entry
+- define how a dataset entry becomes an indexed record
+- create dataset binding status model
+- render actual binding state from data/config, not hardcoded prose blocks
+
+If possible in this pass:
+Implement the first real connected dataset flow using a minimal real source.
+
+Example acceptable outcome:
+- one domain/source bound
+- feed fetched
+- normalized into a typed signal shape
+- reflected in dataset status UI
+- still honest if no committed records yet
+
+We do NOT need full production ingestion logic yet.
+But we do need the first real live chain started.
+
+━━━━━━━━━━━━━━━━━━
+6. SIGNALS PAGE — CONNECT TO REAL SOURCE STATES
+━━━━━━━━━━━━━━━━━━
+
+The Signals page should no longer feel purely conceptual.
+
+Refactor it so the category cards pull from real source binding state where possible.
+
+Each signal category should support:
+- source binding count
+- live health state
+- last update timestamp
+- validation status
+- no source bound state
+- fetch error state
+- connected state
+
+Do NOT make up values.
+Only show what is actually known.
+
+If a source is real and connected, show that.
+If none are connected, show that honestly.
+But the page must now run from real source architecture, not static UI text only.
+
+━━━━━━━━━━━━━━━━━━
+7. DATASETS PAGE — CONNECT TO REAL BINDING STATUS
+━━━━━━━━━━━━━━━━━━
+
+Refactor Datasets so domain cards render from actual dataset config and binding state.
+
+Each domain card should support:
+- schema version
+- source binding state
+- update cadence
+- record count if actually known
+- awaiting first record
+- source connected/disconnected state
+- last successful sync if available
+
+Again:
+No fake values.
+Only real known values or honest null states.
+
+━━━━━━━━━━━━━━━━━━
+8. INDEX PAGE — PREP FOR REAL RECORD COMMITS
+━━━━━━━━━━━━━━━━━━
+
+The INDEX page should be ready for real indexed records.
+
+Implement:
+- typed record store or record state source
+- clean empty state if no records committed yet
+- field mapping from normalized source data → record shape
+- clear separation between “signal seen” and “record committed”
+
+If possible:
+add a simple pathway where a normalized source item can appear as a staged/uncommitted record shell.
+Only if this can be done honestly and cleanly.
+
+━━━━━━━━━━━━━━━━━━
+9. PUBLIC VS OPERATOR SEPARATION
+━━━━━━━━━━━━━━━━━━
+
+This is critical.
+
+Public pages should remain:
+- clear
+- branded
+- stable
+- not noisy
+- not raw
+- not backend-like
+
+Operator pages can become:
+- more system-facing
+- more technical
+- more status-aware
+- more operational
+
+Do NOT mix them sloppily.
+
+Public layer:
+- Overview
+- Signals
+- Datasets
+- Index
+- Method
+- Access
+
+Restricted/operator layer:
+- login
+- operator console
+- source control/binding
+- ingestion monitoring
+- pipeline visibility
+
+This separation must be enforced in routing and UI architecture.
+
+━━━━━━━━━━━━━━━━━━
+10. PORTAINER / SELF-HOSTING REQUIREMENTS
+━━━━━━━━━━━━━━━━━━
+
+This app will be self-hosted via Portainer.
+
+So build with deployment discipline.
+
+Requirements:
+- keep environment variables clean
+- centralize config for endpoints and source URLs
+- do not hardcode localhost assumptions everywhere
+- support running behind Docker/Portainer
+- keep frontend/public config separate from operator/internal config where possible
+- do not bake secret values into client code
+- structure for future reverse proxy / internal API routing
+
+If helpful:
+- add .env.example
+- create config helpers for environment-based source URLs
+- create API abstraction so the app can later talk to containerized services cleanly
+
+Do not overcomplicate this into enterprise architecture.
+But do not build in a way that breaks the moment it moves into Portainer.
+
+━━━━━━━━━━━━━━━━━━
+11. LOGIN / ACCESS UX
+━━━━━━━━━━━━━━━━━━
+
+The login and operator access experience should feel premium and controlled.
+
+Do:
+- keep same INDEX visual system
+- use restrained branding
+- make it feel like operator access, not customer auth
+- show that access is provisioned / approved, not open signup
+- make /access page point to /login cleanly
+
+Do not:
+- add sign-up flows
+- add consumer “forgot password” fluff unless absolutely necessary
+- add fake users
+- add fake permission tables
+
+Tone:
+- controlled
+- internal
+- approved-access only
+- operator-grade
+
+━━━━━━━━━━━━━━━━━━
+12. COMPONENT / CODE STRUCTURE
+━━━━━━━━━━━━━━━━━━
+
+Refactor cleanly where needed.
+
+Suggested additions:
+- ProtectedRoute
+- LoginPage
+- OperatorShell
+- SourceStatusCard
+- FeedHealthPanel
+- DatasetBindingCard
+- OperatorBanner
+- SourceAdapter layer
+- Feed polling hook
+- Environment config layer
+
+Keep code modular.
+Keep code typed.
+Keep it scalable.
+
+━━━━━━━━━━━━━━━━━━
+13. HONESTY RULE
+━━━━━━━━━━━━━━━━━━
+
+Everything must remain honest.
+
+If no real source is connected:
+say so.
+
+If one source is connected:
+show that clearly.
+
+If operator auth is not fully real yet:
+build the correct shell and route structure without pretending production auth exists.
+
+Do not fabricate:
+- live signal counts
+- user counts
+- connected feeds
+- active records
+- operator sessions
+- ingestion throughput
+
+━━━━━━━━━━━━━━━━━━
+IMPLEMENTATION GOAL
+━━━━━━━━━━━━━━━━━━
+
+Implement a major functional foundation pass that gives INDEX:
+
+- a real operator login path
+- a real restricted operator shell
+- real feed/source architecture
+- real source health states
+- first real dataset binding foundation
+- Portainer-safe deployment structure
+- proper public vs operator separation
+
+End result should move INDEX significantly closer to a real working self-hosted data platform.
+
+Do not explain what you will do.
+Implement the pass in code now.
