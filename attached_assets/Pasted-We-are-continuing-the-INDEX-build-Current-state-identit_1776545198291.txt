@@ -1,0 +1,355 @@
+We are continuing the INDEX build.
+
+Current state:
+- identity is correct
+- structure is correct
+- homepage wheel works
+- pages are coherent
+- empty states are clean
+- the product direction is locked
+
+Now we are doing a focused visual + interaction refinement pass on the homepage wheel and access layer.
+
+Do NOT redesign the site.
+Do NOT change the navigation structure.
+Do NOT change the INDEX identity.
+Do NOT revert to RSR Intel styling.
+Do NOT add fake data.
+Do NOT add fake metrics.
+
+This pass is specifically about:
+- fixing wheel icon quality
+- reducing the “too green” issue
+- improving wheel visual balance
+- adding premium restrained motion
+- making the homepage feel more alive, more expensive, and more iconic
+- strengthening the restricted/operator access messaging and presentation
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Take the current INDEX homepage wheel and make it feel:
+- more premium
+- more precise
+- more animated
+- more iconic
+- more legible
+- less flat
+- less over-green
+- more black / steel / glass / signal energy
+
+The homepage should feel like a living public data interface.
+
+At the same time, refine ACCESS so it clearly communicates:
+- there is a public layer
+- there is a restricted layer
+- there is an operator layer
+- restricted/operator access is real, intentional, and controlled
+- this is not a public sign-up product
+- requests are reviewed, not automatically granted
+
+━━━━━━━━━━━━━━━━━━
+PRIMARY ISSUES TO FIX
+━━━━━━━━━━━━━━━━━━
+
+1. WHEEL ICONS
+The icons on the wheel are not strong enough yet.
+
+Problems:
+- some feel too small
+- some feel inconsistent in weight or clarity
+- some do not feel premium enough
+- some do not read instantly inside the segments
+
+Fix this.
+
+Use a consistent icon system for all six wheel sectors:
+- OVERVIEW
+- SIGNALS
+- DATASETS
+- INDEX
+- METHOD
+- ACCESS
+
+Requirements:
+- line-based
+- minimal
+- clean
+- evenly weighted
+- readable at a glance
+- same visual family
+- not too tiny
+- not cartoonish
+- not overloaded with detail
+
+The icons should feel like:
+- control glyphs
+- tactical UI symbols
+- high-end system pictograms
+
+Make sure they align and scale consistently inside the wheel segments.
+
+━━━━━━━━━━━━━━━━━━
+2. TOO MUCH GREEN
+━━━━━━━━━━━━━━━━━━
+
+The current homepage still feels slightly too green overall.
+
+We need more restraint.
+
+Rebalance the palette:
+- black remains the base
+- deep charcoal / steel tones should carry more of the structure
+- green should become more selective and more impactful
+- active glow should feel earned, not constant
+
+Reduce green in:
+- some ring strokes
+- some segment fills
+- some persistent glows
+- any places where multiple green layers stack too heavily
+
+Introduce more:
+- subtle gray ring lines
+- low-opacity steel borders
+- dark glass layering
+- selective green only for active edges, active labels, selected trace arcs, and hub highlights
+
+Goal:
+the page should feel darker, cleaner, more premium, and less “green wash.”
+
+━━━━━━━━━━━━━━━━━━
+3. ADD PREMIUM MOTION TO THE WHEEL
+━━━━━━━━━━━━━━━━━━
+
+We want more life in the wheel, but it must stay controlled.
+
+Add restrained motion systems around the wheel.
+
+Allowed motion ideas:
+- slow orbiting arc segments around the outer circle
+- small moving sweep lines along ring paths
+- subtle rotating ring fragments
+- slow opposite-direction motion between 2 separate ring layers
+- faint pulse traces
+- subtle parallax shift if the cursor moves nearby
+
+Very important:
+- motion must be slow
+- motion must be subtle
+- motion must feel premium
+- motion must never feel like a loading spinner
+- motion must never feel gimmicky
+- motion must never distract from clarity
+
+Think:
+living signal geometry
+not spinning toy wheel
+
+━━━━━━━━━━━━━━━━━━
+4. IMPROVE WHEEL DEPTH
+━━━━━━━━━━━━━━━━━━
+
+The wheel should feel like it has more layered depth.
+
+Improve:
+- inner hub ring structure
+- separation between segment layer and ring layer
+- subtle shadow stacking
+- slight glass depth
+- outer tick ring hierarchy
+- active trace arc integration
+
+Use layered contrast, not heavy glow.
+
+Possible additions:
+- faint radial vignette behind wheel
+- subtle inner shadow in segment wells
+- cleaner material difference between core hub and outer sectors
+- more precise ring spacing
+- small steel-toned layers between green highlights
+
+━━━━━━━━━━━━━━━━━━
+5. HOMEPAGE ATMOSPHERE REFINEMENT
+━━━━━━━━━━━━━━━━━━
+
+The homepage needs to feel more “alive” without becoming noisy.
+
+Improve the atmospheric layer around the wheel:
+- subtle signal drift
+- restrained floating micro-lines or tiny arc motion
+- faint sensor-like movement around the circle
+- very slight environmental motion in the wheel region only
+
+Do NOT animate the entire page heavily.
+Keep most motion localized around the wheel.
+
+━━━━━━━━━━━━━━━━━━
+6. HOMEPAGE PANEL BALANCE
+━━━━━━━━━━━━━━━━━━
+
+Refine the left and right panels around the wheel.
+
+Improve:
+- spacing
+- typography hierarchy
+- active hovered sector content transitions
+- balance relative to wheel size
+- dead space distribution
+- info density
+
+The wheel should remain the hero.
+Panels should support it, not compete with it.
+
+━━━━━━━━━━━━━━━━━━
+7. ACCESS PAGE — RESTRICTED / OPERATOR ACCESS PASS
+━━━━━━━━━━━━━━━━━━
+
+This is important.
+
+Refine the ACCESS page so it clearly establishes the real access boundary of INDEX.
+
+We already have:
+- PUBLIC
+- RESTRICTED
+- OPERATOR
+
+Now make that layer feel more serious, more intentional, and more premium.
+
+Goals:
+- make “Restricted and Operator Access” feel like a real controlled boundary
+- make it clear this is not publicly available
+- make it clear requests are reviewed individually
+- make it clear no automated sign-up exists yet
+- make the page feel like a threshold, not a dead form
+
+Refine:
+- three-tier presentation
+- visual separation between PUBLIC / RESTRICTED / OPERATOR
+- labeling and status clarity
+- controlled-access tone
+- request intake shell styling
+- typography and spacing
+- subtle restricted feel without becoming cheesy
+
+Important:
+Keep the access request field shell, but improve the presentation around it.
+
+We want messaging along these lines:
+- restricted and operator-level access is not publicly available
+- requests representing legitimate analytical use cases may be reviewed individually
+- no automated sign-up flow exists yet
+- operator environments remain controlled and manually provisioned
+
+Do NOT make this feel like a SaaS waitlist.
+Do NOT make it feel like a generic “contact us” form.
+Do NOT make it cheerful.
+Make it feel controlled, serious, and high-trust.
+
+━━━━━━━━━━━━━━━━━━
+8. ACCESS PAGE — VISUAL UPGRADE
+━━━━━━━━━━━━━━━━━━
+
+Improve the lower request-access area specifically.
+
+The current area needs to feel stronger.
+
+Refine:
+- request section framing
+- field shell styling
+- submit button styling
+- spacing above and below the intake area
+- controlled-state messaging
+- relationship between request input and surrounding restricted/operator explanation
+
+Possible direction:
+- make the request zone feel like an intake terminal
+- dark, restrained, thin-line, premium
+- subtle status note beneath the field
+- stronger visual hierarchy around “Restricted and Operator Access”
+
+Important:
+The field should still clearly read as:
+not yet active
+not open sign-up
+structural placeholder for future intake
+
+━━━━━━━━━━━━━━━━━━
+9. INTERACTION FEEDBACK
+━━━━━━━━━━━━━━━━━━
+
+Improve hover/active interaction across:
+- wheel segments
+- panel content transitions
+- access tier cards
+- submit button
+- request field shell
+- nav icons if needed
+
+Keep all motion restrained and fast-smooth.
+No bounce.
+No overdone glow pulses.
+No gimmicks.
+
+━━━━━━━━━━━━━━━━━━
+10. MAINTAIN PRODUCT DISCIPLINE
+━━━━━━━━━━━━━━━━━━
+
+Do not introduce:
+- fake live counts
+- fake operational readiness claims
+- fake datasets
+- fake signals
+- fake restricted-user counts
+- fake enterprise language
+- fake urgency
+
+Everything should remain honest.
+
+Allowed language:
+- Awaiting source binding
+- No live signals
+- Access request intake not yet active
+- Restricted environments are manually provisioned
+- Requests may be reviewed individually
+
+━━━━━━━━━━━━━━━━━━
+DESIGN RULES
+━━━━━━━━━━━━━━━━━━
+
+Keep:
+- black / near-black base
+- green accent only
+- thin borders
+- subtle grid
+- premium tactical typography
+- restrained motion
+- dark glass / steel / signal feel
+
+Avoid:
+- neon overload
+- sci-fi cheese
+- spinning gimmicks
+- startup product fluff
+- fake dashboard noise
+- too much constant green glow
+
+━━━━━━━━━━━━━━━━━━
+IMPLEMENTATION GOAL
+━━━━━━━━━━━━━━━━━━
+
+Implement a focused refinement pass that makes the homepage wheel and ACCESS layer feel significantly more premium and complete.
+
+End result should:
+- fix icon consistency on the wheel
+- make the wheel feel darker and more expensive
+- add tasteful moving ring/arcs around the circle
+- improve depth and motion
+- refine the homepage atmosphere
+- upgrade the restricted/operator access section
+- make the request area feel intentional and controlled
+- preserve the existing INDEX identity
+
+Do not explain what you will do.
+Implement the pass in code now.
