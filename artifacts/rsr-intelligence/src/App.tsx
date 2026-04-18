@@ -6,10 +6,10 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import SystemsPage from "@/pages/systems";
 import SignalsPage from "@/pages/signals";
-import ToolsPage from "@/pages/tools";
 import FilesPage from "@/pages/files";
 import BriefsPage from "@/pages/briefs";
 import NetworkPage from "@/pages/network";
+import AccessPage from "@/pages/access";
 
 const queryClient = new QueryClient();
 
@@ -19,10 +19,10 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/systems" component={SystemsPage} />
       <Route path="/signals" component={SignalsPage} />
-      <Route path="/tools" component={ToolsPage} />
       <Route path="/files" component={FilesPage} />
       <Route path="/briefs" component={BriefsPage} />
       <Route path="/network" component={NetworkPage} />
+      <Route path="/access" component={AccessPage} />
       <Route component={NotFound} />
     </Switch>
   );

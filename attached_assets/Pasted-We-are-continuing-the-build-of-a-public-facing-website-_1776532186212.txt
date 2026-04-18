@@ -1,0 +1,351 @@
+We are continuing the build of a public-facing website called:
+
+RSR Intelligence Network
+
+IMPORTANT:
+This site is NOT the main RSR Intel editorial/news site.
+This is the public-facing DATA / INTELLIGENCE / SYSTEMS side of the RSR ecosystem.
+
+This site should explain what we do as a data and intelligence company:
+- intelligence synthesis
+- signal monitoring
+- systems mapping
+- analytical infrastructure
+- operational brief building
+- networked information workflows
+
+It should feel unique, serious, cinematic, and premium.
+
+━━━━━━━━━━━━━━━━━━
+CORE DIRECTION
+━━━━━━━━━━━━━━━━━━
+
+Keep the command wheel.
+
+The wheel is the signature centerpiece of the homepage.
+It should remain the main visual and interaction focal point.
+
+But the site should no longer feel like:
+- an internal tool launcher
+- a local dashboard menu
+- a placeholder prototype
+
+It should feel like:
+- a public-facing intelligence systems company
+- a data command interface
+- a strategic infrastructure platform
+- a high-end network front door
+
+Think:
+black-site aesthetic
+intelligence company
+systems firm
+signal analysis platform
+operator-grade presentation
+
+━━━━━━━━━━━━━━━━━━
+MAIN PROBLEM TO SOLVE
+━━━━━━━━━━━━━━━━━━
+
+Right now the wheel looks cool, but the site architecture still feels halfway between:
+- internal launcher
+and
+- public brand site
+
+We need to resolve that.
+
+The wheel must stay.
+But its purpose needs to become:
+
+A PUBLIC NAVIGATION / IDENTITY SYSTEM
+
+Not a raw tools menu.
+
+━━━━━━━━━━━━━━━━━━
+NEW INFORMATION ARCHITECTURE
+━━━━━━━━━━━━━━━━━━
+
+Replace the current logic with a public-facing structure.
+
+The homepage wheel should route to these public sections:
+
+- SYSTEMS
+- SIGNALS
+- FILES
+- BRIEFS
+- NETWORK
+- ACCESS
+
+REMOVE the current “TOOLS” logic from the homepage wheel.
+
+“ACCESS” should replace it.
+
+Reason:
+This keeps the site public-facing while still allowing a future gated operator layer.
+
+━━━━━━━━━━━━━━━━━━
+WHAT EACH SECTION SHOULD MEAN
+━━━━━━━━━━━━━━━━━━
+
+SYSTEMS
+= our core intelligence systems and analytical architecture
+(AXION, ORION, SAGE, future tools, system roles, how the stack works)
+
+SIGNALS
+= signal monitoring, ingestion logic, watch surfaces, tracking methodology, data intake philosophy
+
+FILES
+= investigations, mapped cases, structured records, documentation layers, analytical evidence structure
+
+BRIEFS
+= executive summaries, intelligence briefs, synthesis outputs, recurring reporting products
+
+NETWORK
+= networked architecture, organizational structure, intelligence layers, system relationship mapping
+
+ACCESS
+= controlled/gated layer for internal operations, restricted environments, operator tools, or request-access flow
+
+━━━━━━━━━━━━━━━━━━
+SITE GOAL
+━━━━━━━━━━━━━━━━━━
+
+The public should understand:
+- what RSR Intelligence Network is
+- what kind of data/intelligence work we do
+- how our systems are structured
+- how signals become files and briefs
+- that there is a deeper operational layer behind the public face
+
+This site should feel like:
+“you are viewing the front-end architecture of a serious intelligence/data operation”
+
+━━━━━━━━━━━━━━━━━━
+HOMEPAGE REQUIREMENTS
+━━━━━━━━━━━━━━━━━━
+
+Keep the homepage wheel as the centerpiece.
+
+But refine the homepage so it communicates clearly.
+
+The homepage should include:
+
+1. LEFT PANEL
+Not generic system stats.
+Not fake operational numbers.
+
+Instead include:
+- RSR Intelligence Network label
+- strong headline
+- short explanation of what the company does
+- short positioning copy
+- maybe 3 concise capability points
+
+Example themes:
+- Signal Monitoring
+- Intelligence Synthesis
+- Systems Mapping
+
+2. CENTER PANEL
+Keep the radial command wheel.
+It must remain the main focal point.
+
+Improve it to feel:
+- symmetrical
+- premium
+- legible
+- public-facing
+- interactive
+- strong enough to carry the brand identity
+
+The wheel should feel like a navigation object and a brand object at the same time.
+
+3. RIGHT PANEL
+Use this as:
+- selected segment explanation
+- section description
+- methodology summary
+- “how this layer works”
+- pathway guidance
+
+This panel should update based on hovered/selected wheel segment if possible.
+
+━━━━━━━━━━━━━━━━━━
+DESIGN PHILOSOPHY
+━━━━━━━━━━━━━━━━━━
+
+Keep these rules strict:
+
+- black / near-black base
+- green only as accent
+- subtle grid background okay
+- thin borders
+- premium typography
+- restrained glow
+- serious spacing
+- clean hierarchy
+- no fake SaaS design
+- no raw dashboard clutter
+- no internal admin panel look
+- no cyberpunk overload
+- no cheesy “AI company” marketing style
+
+It should feel like:
+- Splinter Cell
+- black-ops interface
+- strategic command architecture
+- premium systems company
+- intelligence infrastructure front-end
+
+━━━━━━━━━━━━━━━━━━
+COPY / MESSAGING RULES
+━━━━━━━━━━━━━━━━━━
+
+The writing throughout the site should sound like a serious intelligence and data operation.
+
+Avoid:
+- hypey startup language
+- vague AI buzzwords
+- cheesy futurist copy
+- fake claims
+- military cosplay writing
+- generic “we leverage data to unlock insights” garbage
+
+Use tone closer to:
+- systems architecture
+- analytical operations
+- intelligence workflows
+- structured monitoring
+- synthesis and interpretation
+- mapping patterns, not chasing noise
+
+Make the company feel real, deliberate, and unique.
+
+━━━━━━━━━━━━━━━━━━
+HOMEPAGE COPY GOAL
+━━━━━━━━━━━━━━━━━━
+
+The homepage should clearly communicate some version of this idea:
+
+RSR Intelligence Network is a public-facing intelligence and analytical systems platform focused on monitoring signals, structuring information, mapping systems, and producing synthesized operational understanding.
+
+Do NOT use that exact sentence unless it fits naturally.
+But communicate that concept clearly.
+
+━━━━━━━━━━━━━━━━━━
+WHEEL BEHAVIOR
+━━━━━━━━━━━━━━━━━━
+
+The wheel must remain the signature interaction.
+
+Requirements:
+- clean hover state
+- active segment state
+- better legibility
+- selected segment updates the right panel
+- segment icons should be subtle and serious
+- segment shapes should feel clean and intentional
+- no geometry glitches
+- no awkward spacing
+- no overanimation
+
+If needed, rebuild the wheel math cleanly instead of fighting buggy transforms.
+
+━━━━━━━━━━━━━━━━━━
+REMOVE / CHANGE
+━━━━━━━━━━━━━━━━━━
+
+Remove or replace anything that feels like:
+- fake metrics
+- fake module counts
+- fake readiness numbers
+- placeholder ops jargon
+- raw local tool link emphasis on homepage
+- “this is my backend stack” energy
+
+Do NOT foreground Flowise / Portainer / Open WebUI on the homepage anymore.
+
+Those can exist later under ACCESS or a deeper layer, but they should not define the public homepage.
+
+━━━━━━━━━━━━━━━━━━
+PAGES TO SUPPORT
+━━━━━━━━━━━━━━━━━━
+
+We need the homepage to lead into these public-facing routes:
+
+/systems
+/signals
+/files
+/briefs
+/network
+/access
+
+Each page should be laid out like a real module page, not a placeholder.
+
+Each route should explain its purpose cleanly.
+
+If real data is not connected yet, use honest empty states like:
+- No live sources connected
+- Awaiting source binding
+- Viewer ready
+- Module shell active
+- Data layer not attached
+
+No fake counts.
+No fake reports.
+No fake feeds.
+
+━━━━━━━━━━━━━━━━━━
+LAYOUT IMPROVEMENT GOAL
+━━━━━━━━━━━━━━━━━━
+
+Refine the layout to feel cleaner and more intentional.
+
+Current issue:
+the site has the right look, but some areas still feel awkward, too sparse, or too placeholder-heavy.
+
+Fix:
+- panel spacing
+- content density
+- alignment
+- hierarchy
+- relationship between homepage wheel and supporting content
+- overall polish
+
+Make it feel like a finished front-end direction, not just an experiment.
+
+━━━━━━━━━━━━━━━━━━
+COMPONENT DIRECTION
+━━━━━━━━━━━━━━━━━━
+
+If helpful, refactor into clean reusable pieces such as:
+- AppShell
+- CommandWheel
+- WheelSegment
+- PageHeader
+- ModuleIntroPanel
+- SegmentInfoPanel
+- CapabilityList
+- EmptyStatePanel
+
+Keep the code clean and structured for later migration into Docker / Portainer.
+
+━━━━━━━━━━━━━━━━━━
+DELIVERABLE
+━━━━━━━━━━━━━━━━━━
+
+Produce actual code.
+
+Update the site so that:
+- the homepage is a public-facing intelligence company front door
+- the wheel remains the centerpiece
+- TOOLS is replaced by ACCESS
+- the wheel explains the company structure
+- surrounding panels support the wheel clearly
+- the tone feels like a real data / intelligence company
+- the site becomes more unique and brand-defining
+- all pages feel cleaner and more intentional
+- no fake data is used
+
+Do not just explain what you would do.
+Implement the next pass now.

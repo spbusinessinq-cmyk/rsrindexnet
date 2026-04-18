@@ -20,7 +20,7 @@ export default function BriefsPage() {
                 BRIEFS
               </h1>
               <p className="mt-1 font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.45)" }}>
-                Intelligence summaries and mission report viewer
+                Synthesized intelligence outputs — analytical conclusions in structured report form
               </p>
             </div>
             <StatusPill status="standby" label="NO BRIEFS AVAILABLE" />

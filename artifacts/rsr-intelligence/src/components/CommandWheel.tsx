@@ -91,12 +91,14 @@ function SegmentIcon({ label, x, y, active }: { label: string; x: number; y: num
         <circle cx="0" cy={s * 0.42} r="1.8" fill={col} />
       </g>
     ),
-    TOOLS: (
+    ACCESS: (
       <g>
-        <line x1={-s * 0.7} y1="0" x2={s * 0.7} y2="0" stroke={col} strokeWidth="1.3" strokeLinecap="round" />
-        <line x1="0" y1={-s * 0.7} x2="0" y2={s * 0.7} stroke={col} strokeWidth="1.3" strokeLinecap="round" />
-        <circle cx="0" cy="0" r={s * 0.28} fill="none" stroke={col} strokeWidth="1.3" />
-        <circle cx="0" cy="0" r={s * 0.8} fill="none" stroke={col} strokeWidth="1.1" strokeDasharray="3 3" />
+        <rect x={-s * 0.55} y={-s * 0.55} width={s * 1.1} height={s * 1.1} rx="2.5"
+          fill="none" stroke={col} strokeWidth="1.3" />
+        <circle cx="0" cy={s * 0.05} r={s * 0.22} fill="none" stroke={col} strokeWidth="1.2" />
+        <line x1="0" y1={s * 0.22} x2="0" y2={s * 0.5} stroke={col} strokeWidth="1.3" strokeLinecap="round" />
+        <path d={`M ${-s * 0.35} ${-s * 0.18} L ${-s * 0.35} ${-s * 0.55} A ${s * 0.35} ${s * 0.35} 0 0 1 ${s * 0.35} ${-s * 0.55} L ${s * 0.35} ${-s * 0.18}`}
+          fill="none" stroke={col} strokeWidth="1.2" strokeLinecap="round" />
       </g>
     ),
     FILES: (

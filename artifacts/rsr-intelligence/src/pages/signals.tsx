@@ -22,7 +22,7 @@ export default function SignalsPage() {
                 SIGNALS
               </h1>
               <p className="mt-1 font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.45)" }}>
-                Intelligence feeds, intercept monitoring, and signal workspace
+                Signal capture, source triage, and pattern classification workspace
               </p>
             </div>
             <StatusPill status="standby" label="NO FEEDS CONNECTED" />

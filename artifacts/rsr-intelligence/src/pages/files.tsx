@@ -22,7 +22,7 @@ export default function FilesPage() {
                 FILES
               </h1>
               <p className="mt-1 font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.45)" }}>
-                Document vault and report archive — encrypted file management shell
+                Structured analytical records — investigations, mapped cases, and evidence layers
               </p>
             </div>
             <StatusPill status="standby" label="NO FILES LOADED" />

@@ -1,157 +1,218 @@
 import AppShell from "@/components/AppShell";
-import SectionPanel from "@/components/SectionPanel";
-import StatusPill from "@/components/StatusPill";
 import EmptyState from "@/components/EmptyState";
 
-const NODES = [
-  { label: "AXION",        host: "192.168.12.228", port: 3025, role: "AI Orchestration",  status: "ready" as const },
-  { label: "ORION",        host: "192.168.12.228", port: 3000, role: "Monitoring",         status: "ready" as const },
-  { label: "SAGE",         host: "192.168.12.228", port: 3001, role: "LLM Interface",      status: "ready" as const },
-  { label: "PORTAINER",   host: "192.168.12.228", port: 9000, role: "Container Mgmt",     status: "ready" as const },
+const LAYERS = [
+  {
+    id: "INTAKE",
+    label: "Signal Intake",
+    description: "The first layer — where monitored sources deliver raw information into the RSR environment. Signals are received, timestamped, and staged for triage before entering the analytical cycle.",
+    connections: ["Open source feeds", "Structured data streams", "Webhook endpoints"],
+    status: "Awaiting source binding",
+  },
+  {
+    id: "PROCESS",
+    label: "Processing Core",
+    description: "The analytical middle layer — where AXION, ORION, and SAGE operate. Signals are triaged, classified, and routed. AI orchestration, monitoring, and inference occur here, transforming raw intake into usable analytical material.",
+    connections: ["AXION orchestration", "ORION telemetry", "SAGE reasoning"],
+    status: "Architecture documented",
+  },
+  {
+    id: "OUTPUT",
+    label: "Output Layer",
+    description: "Where analytical work exits the processing core. Files are committed to the record. Briefs are issued. The output layer is the boundary between internal analysis and deliverable intelligence.",
+    connections: ["Files record layer", "Briefs synthesis layer", "Archive and version control"],
+    status: "Shell active",
+  },
 ];
 
-const METRICS = [
-  { label: "TOPOLOGY SOURCE",     value: "Not connected" },
-  { label: "MONITORING AGENT",   value: "Not bound" },
-  { label: "UPTIME TRACKING",    value: "Pending" },
-  { label: "PACKET INSPECTION",  value: "Not available" },
-  { label: "VISUALIZATION",      value: "Shell ready" },
+const RELATIONSHIPS = [
+  { from: "SIGNALS", to: "AXION", description: "Signal intake routes through AXION for classification and pipeline routing" },
+  { from: "AXION", to: "SAGE", description: "AXION dispatches reasoning tasks to SAGE for LLM-assisted analysis" },
+  { from: "ORION", to: "AXION", description: "ORION surfaces system health data that informs AXION routing decisions" },
+  { from: "AXION", to: "FILES", description: "Processed signals are committed to structured file records" },
+  { from: "FILES", to: "BRIEFS", description: "Files are synthesized into executive briefs and recurring reports" },
 ];
 
 export default function NetworkPage() {
   return (
     <AppShell>
-      <div className="p-6 space-y-5">
-        <div className="flex items-start justify-between">
+      <div className="p-6 md:p-8 space-y-8 max-w-5xl">
+        <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
-            <div className="font-mono-tactical text-xs tracking-widest uppercase mb-1" style={{ color: "rgba(34,197,94,0.45)" }}>
-              Module / Network
+            <div
+              className="font-mono-tactical text-xs tracking-widest uppercase mb-2"
+              style={{ color: "rgba(34,197,94,0.4)" }}
+            >
+              MODULE / NETWORK
             </div>
-            <h1 className="font-orbitron text-2xl font-bold tracking-widest" style={{ color: "#22c55e", textShadow: "0 0 16px rgba(34,197,94,0.4)" }}>
+            <h1
+              className="font-orbitron text-3xl font-bold tracking-wider"
+              style={{ color: "#22c55e", textShadow: "0 0 20px rgba(34,197,94,0.2)" }}
+            >
               NETWORK
             </h1>
-            <p className="mt-1 font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.45)" }}>
-              Node topology, connectivity management, and infrastructure health
+            <p className="mt-2 font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.35)", lineHeight: "1.9" }}>
+              How information moves — architectural layers, system relationships, and intelligence flow topology
             </p>
           </div>
-          <StatusPill status="standby" label="VISUALIZATION NOT CONNECTED" />
+          <div
+            className="flex items-center gap-2 px-3 py-1.5 rounded font-mono-tactical text-xs tracking-widest"
+            style={{ border: "1px solid rgba(34,197,94,0.2)", color: "rgba(34,197,94,0.5)", background: "rgba(34,197,94,0.04)" }}
+          >
+            <div className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(34,197,94,0.4)" }} />
+            TOPOLOGY MAPPED
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {LAYERS.map((layer, i) => (
+            <div
+              key={layer.id}
+              data-testid={`layer-${layer.id.toLowerCase()}`}
+              className="rounded p-5 space-y-3 flex flex-col"
+              style={{ border: "1px solid rgba(34,197,94,0.12)", background: "rgba(0,0,0,0.2)" }}
+            >
+              <div className="flex items-start justify-between">
+                <div>
+                  <div
+                    className="font-mono-tactical text-xs tracking-widest"
+                    style={{ color: "rgba(34,197,94,0.35)", fontSize: "9px" }}
+                  >
+                    LAYER {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div
+                    className="font-orbitron text-sm font-bold tracking-wider mt-0.5"
+                    style={{ color: "#22c55e" }}
+                  >
+                    {layer.label}
+                  </div>
+                </div>
+              </div>
+
+              <p
+                className="font-mono-tactical text-xs leading-relaxed flex-1"
+                style={{ color: "rgba(255,255,255,0.38)", lineHeight: "1.85", fontSize: "10.5px" }}
+              >
+                {layer.description}
+              </p>
+
+              <div className="space-y-1" style={{ borderTop: "1px solid rgba(34,197,94,0.07)", paddingTop: "10px" }}>
+                {layer.connections.map((c) => (
+                  <div key={c} className="flex items-center gap-2">
+                    <div className="w-1 h-1 rounded-full" style={{ background: "rgba(34,197,94,0.35)" }} />
+                    <span className="font-mono-tactical text-xs" style={{ color: "rgba(255,255,255,0.28)", fontSize: "10px" }}>
+                      {c}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div
+                className="font-mono-tactical text-xs tracking-widest"
+                style={{ color: "rgba(34,197,94,0.3)", fontSize: "9.5px" }}
+              >
+                {layer.status}
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
-          <div className="xl:col-span-2 space-y-5">
-            <SectionPanel title="Known Nodes" subtitle="Statically registered infrastructure nodes">
-              <div className="divide-y" style={{ borderColor: "rgba(34,197,94,0.07)" }}>
-                <div
-                  className="grid gap-0 px-4 py-2"
-                  style={{
-                    gridTemplateColumns: "1fr 1.5fr 1fr 1fr 1fr",
-                    background: "rgba(0,0,0,0.2)",
-                    borderBottom: "1px solid rgba(34,197,94,0.08)",
-                  }}
-                >
-                  {["NODE", "HOST", "PORT", "ROLE", "STATUS"].map((h) => (
-                    <div key={h} className="font-mono-tactical tracking-widest uppercase" style={{ fontSize: "9px", color: "rgba(34,197,94,0.3)" }}>
-                      {h}
-                    </div>
-                  ))}
-                </div>
-                {NODES.map((node) => (
-                  <div
-                    key={node.label}
-                    data-testid={`node-row-${node.label.toLowerCase()}`}
-                    className="grid gap-0 px-4 py-3 transition-all duration-150"
-                    style={{
-                      gridTemplateColumns: "1fr 1.5fr 1fr 1fr 1fr",
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(34,197,94,0.04)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-                  >
-                    <div className="font-orbitron text-xs font-bold tracking-wide" style={{ color: "#22c55e" }}>
-                      {node.label}
-                    </div>
-                    <div className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.5)" }}>
-                      {node.host}
-                    </div>
-                    <div className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.45)" }}>
-                      {node.port}
-                    </div>
-                    <div className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.4)" }}>
-                      {node.role}
-                    </div>
-                    <div>
-                      <StatusPill status={node.status} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SectionPanel>
-
-            <SectionPanel title="Network Visualization" subtitle="Live topology graph — not connected">
+          <div className="xl:col-span-2">
+            <div
+              className="rounded"
+              style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(0,0,0,0.15)" }}
+            >
               <div
-                className="relative flex items-center justify-center"
-                style={{ height: 200 }}
+                className="px-5 py-3 flex items-center justify-between"
+                style={{ borderBottom: "1px solid rgba(34,197,94,0.07)" }}
               >
-                <svg width="100%" height="100%" viewBox="0 0 500 180" style={{ opacity: 0.18 }}>
-                  <circle cx="250" cy="90" r="30" fill="none" stroke="#22c55e" strokeWidth="1" strokeDasharray="4 6" />
-                  {[0, 72, 144, 216, 288].map((a, i) => {
-                    const rad = (a - 90) * Math.PI / 180;
-                    const x = 250 + 100 * Math.cos(rad);
-                    const y = 90 + 100 * Math.sin(rad);
-                    return (
-                      <g key={i}>
-                        <line x1="250" y1="90" x2={x} y2={y} stroke="#22c55e" strokeWidth="0.8" strokeDasharray="2 4" />
-                        <circle cx={x} cy={y} r="8" fill="none" stroke="#22c55e" strokeWidth="1" />
-                      </g>
-                    );
-                  })}
-                  <text x="250" y="94" textAnchor="middle" fill="#22c55e" fontSize="8" fontFamily="monospace">RSR</text>
+                <span className="font-mono-tactical text-xs tracking-widest uppercase" style={{ color: "rgba(34,197,94,0.35)" }}>
+                  Information Flow
+                </span>
+              </div>
+
+              <div className="relative" style={{ height: 200, overflow: "hidden" }}>
+                <svg width="100%" height="100%" viewBox="0 0 600 180" preserveAspectRatio="xMidYMid meet" style={{ opacity: 0.22 }}>
+                  <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#22c55e" />
+                    </marker>
+                  </defs>
+
+                  {[
+                    { x: 70, y: 90, label: "SIGNALS" },
+                    { x: 200, y: 50, label: "AXION" },
+                    { x: 200, y: 130, label: "ORION" },
+                    { x: 340, y: 90, label: "SAGE" },
+                    { x: 470, y: 55, label: "FILES" },
+                    { x: 470, y: 130, label: "BRIEFS" },
+                  ].map((node) => (
+                    <g key={node.label}>
+                      <rect x={node.x - 32} y={node.y - 11} width={64} height={22} rx="2" fill="none" stroke="#22c55e" strokeWidth="0.8" />
+                      <text x={node.x} y={node.y + 4} textAnchor="middle" fill="#22c55e" fontSize="7" fontFamily="monospace" letterSpacing="0.08em">
+                        {node.label}
+                      </text>
+                    </g>
+                  ))}
+
+                  <line x1="102" y1="85" x2="164" y2="60" stroke="#22c55e" strokeWidth="0.7" markerEnd="url(#arrow)" strokeDasharray="4 3" />
+                  <line x1="232" y1="55" x2="304" y2="82" stroke="#22c55e" strokeWidth="0.7" markerEnd="url(#arrow)" strokeDasharray="4 3" />
+                  <line x1="200" y1="119" x2="200" y2="65" stroke="#22c55e" strokeWidth="0.6" markerEnd="url(#arrow)" strokeDasharray="3 4" />
+                  <line x1="372" y1="82" x2="434" y2="62" stroke="#22c55e" strokeWidth="0.7" markerEnd="url(#arrow)" strokeDasharray="4 3" />
+                  <line x1="470" y1="66" x2="470" y2="119" stroke="#22c55e" strokeWidth="0.6" markerEnd="url(#arrow)" strokeDasharray="3 4" />
                 </svg>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <EmptyState
-                    icon="⬢"
-                    title="Network topology not connected"
-                    subtitle="Monitoring source not bound — visualization shell ready"
-                  />
+                <div className="absolute inset-0 flex items-end justify-start px-5 pb-3">
+                  <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.2)", fontSize: "9px" }}>
+                    Schematic — not a live topology feed
+                  </span>
                 </div>
               </div>
-            </SectionPanel>
+            </div>
           </div>
 
-          <div className="space-y-5">
-            <SectionPanel title="Connectivity Status">
-              <div className="px-4 py-3 space-y-3">
-                {METRICS.map((m) => (
-                  <div key={m.label} className="flex flex-col gap-0.5">
-                    <span className="font-mono-tactical" style={{ fontSize: "9px", color: "rgba(34,197,94,0.3)", letterSpacing: "0.1em" }}>
-                      {m.label}
+          <div
+            className="rounded p-5 space-y-3"
+            style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(0,0,0,0.15)" }}
+          >
+            <div
+              className="font-mono-tactical text-xs tracking-widest uppercase"
+              style={{ color: "rgba(34,197,94,0.35)" }}
+            >
+              System Relationships
+            </div>
+            <div className="space-y-3">
+              {RELATIONSHIPS.map((rel, i) => (
+                <div key={i} className="space-y-0.5">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="font-orbitron text-xs font-semibold"
+                      style={{ color: "rgba(34,197,94,0.65)", fontSize: "9px" }}
+                    >
+                      {rel.from}
                     </span>
-                    <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.5)" }}>
-                      {m.value}
+                    <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.25)", fontSize: "9px" }}>
+                      →
                     </span>
-                  </div>
-                ))}
-              </div>
-            </SectionPanel>
-
-            <SectionPanel title="Integration Targets">
-              <div className="px-4 py-3 space-y-2.5">
-                {[
-                  { label: "nmap / network scan", note: "Not configured" },
-                  { label: "Prometheus / metrics", note: "Not bound" },
-                  { label: "Grafana / dashboards",  note: "UI shell active" },
-                  { label: "Docker stats feed",     note: "Not connected" },
-                ].map((item) => (
-                  <div key={item.label} className="flex items-center justify-between">
-                    <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.45)" }}>
-                      {item.label}
-                    </span>
-                    <span className="font-mono-tactical" style={{ fontSize: "10px", color: "rgba(34,197,94,0.3)" }}>
-                      {item.note}
+                    <span
+                      className="font-orbitron text-xs font-semibold"
+                      style={{ color: "rgba(34,197,94,0.65)", fontSize: "9px" }}
+                    >
+                      {rel.to}
                     </span>
                   </div>
-                ))}
-              </div>
-            </SectionPanel>
+                  <p
+                    className="font-mono-tactical text-xs leading-relaxed"
+                    style={{ color: "rgba(255,255,255,0.28)", fontSize: "10px", lineHeight: "1.75" }}
+                  >
+                    {rel.description}
+                  </p>
+                  {i < RELATIONSHIPS.length - 1 && (
+                    <div style={{ height: "1px", background: "rgba(34,197,94,0.06)", marginTop: "8px" }} />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

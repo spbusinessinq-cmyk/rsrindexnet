@@ -8,7 +8,7 @@ const NAV = [
   { label: "HOME",    path: "/",        icon: "⊕" },
   { label: "SYSTEMS", path: "/systems", icon: "⬡" },
   { label: "SIGNALS", path: "/signals", icon: "◈" },
-  { label: "TOOLS",   path: "/tools",   icon: "⬙" },
+  { label: "ACCESS",  path: "/access",  icon: "⊟" },
   { label: "FILES",   path: "/files",   icon: "▣" },
   { label: "BRIEFS",  path: "/briefs",  icon: "◉" },
   { label: "NETWORK", path: "/network", icon: "⬢" },
