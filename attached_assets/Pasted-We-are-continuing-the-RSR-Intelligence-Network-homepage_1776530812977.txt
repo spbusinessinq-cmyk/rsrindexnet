@@ -1,0 +1,184 @@
+We are continuing the RSR Intelligence Network homepage build.
+
+CURRENT STATE:
+The homepage already has a black-first tactical layout with:
+- left info panel
+- center radial command wheel
+- right info panel
+- green accent styling
+- segmented navigation wheel
+
+The wheel LOOKS promising, but it currently has usability and geometry issues.
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Refine the center command wheel so it becomes the main focal point of the site and feels:
+- premium
+- stable
+- user-friendly
+- interactive
+- sexy
+- operational
+
+Do NOT redesign the whole page.
+Do NOT remove the current aesthetic.
+Do NOT replace the wheel with cards or a normal menu.
+
+We are improving the EXISTING wheel.
+
+━━━━━━━━━━━━━━━━━━
+PRIMARY PROBLEMS TO FIX
+━━━━━━━━━━━━━━━━━━
+
+1. The wheel geometry feels slightly buggy / off
+- some segments feel awkwardly placed
+- spacing and balance need refinement
+- the circle needs to feel mathematically clean and intentional
+
+2. The wheel is not user-friendly enough
+- segment labels need clearer hierarchy
+- hover/click behavior needs to feel cleaner
+- the wheel should guide the user naturally
+
+3. The wheel needs stronger focal-point presence
+- it should dominate the center panel visually
+- it should feel like the homepage’s main control mechanism
+- it should look polished, not experimental
+
+━━━━━━━━━━━━━━━━━━
+WHAT TO IMPROVE
+━━━━━━━━━━━━━━━━━━
+
+Improve the wheel in these exact ways:
+
+1. PERFECT THE RADIAL LAYOUT
+- make the segments evenly distributed
+- ensure the wheel feels symmetrical and stable
+- eliminate any “bugged” or awkward rotation feel
+- make the segment shapes cleaner and more intentional
+
+2. MAKE SEGMENTS THICKER AND MORE LEGIBLE
+- thicker radial segments
+- cleaner inner and outer radius
+- enough room for label + icon
+- improve readability at a glance
+
+3. ADD CLEAR ICONOGRAPHY
+Use subtle icons inside each segment:
+- SYSTEMS
+- SIGNALS
+- TOOLS
+- FILES
+- BRIEFS
+- NETWORK
+
+Icons should be:
+- minimal
+- tactical
+- line-based
+- not cartoonish
+- not oversized
+
+4. IMPROVE INTERACTION
+Each segment should:
+- highlight smoothly on hover
+- brighten border/glow slightly
+- feel obviously clickable
+- support active/selected state
+- show a cleaner transition
+
+Do not overanimate.
+No spinning gimmicks.
+No dramatic motion.
+Keep it premium and controlled.
+
+5. MAKE THE CENTER HUB STRONGER
+The center hub should feel like a real command core.
+
+Improve:
+- inner circle styling
+- typography hierarchy
+- glow restraint
+- ring structure
+- depth
+
+Center text should stay something like:
+- CORE
+- RSR
+- Intelligence Network
+
+But make it look more polished and deliberate.
+
+6. ADD A CLEAN ACTIVE PREVIEW SYSTEM
+When a segment is hovered or selected:
+- the right-side panel should update to reflect that segment
+OR
+- a small contextual label/tooltip appears near the wheel
+
+Goal:
+The wheel must feel useful, not decorative.
+
+7. KEEP IT RESPONSIVE
+The wheel must remain usable on different screen sizes.
+It does not need full mobile perfection yet, but it cannot break or collapse awkwardly.
+
+━━━━━━━━━━━━━━━━━━
+DESIGN RULES
+━━━━━━━━━━━━━━━━━━
+
+Keep all existing brand rules:
+
+- black / near-black base
+- green only as accent
+- subtle glass panels okay
+- tactical grid background okay
+- thin borders
+- premium command-center aesthetic
+- no cyberpunk clutter
+- no cheesy glow overload
+- no startup SaaS look
+
+This must still feel like:
+- Splinter Cell
+- intelligence terminal
+- military command interface
+- high-end operator console
+
+━━━━━━━━━━━━━━━━━━
+IMPORTANT
+━━━━━━━━━━━━━━━━━━
+
+Do not do a full rewrite unless necessary.
+
+Prefer:
+- cleaning the wheel math
+- improving segment rendering
+- improving hierarchy
+- improving interaction
+- making the center wheel feel truly production-grade
+
+We like the current direction.
+We are REFINING it, not abandoning it.
+
+━━━━━━━━━━━━━━━━━━
+DELIVERABLE
+━━━━━━━━━━━━━━━━━━
+
+Produce actual updated React code.
+
+Requirements:
+- real implementation
+- no pseudo-code
+- no explanation-only response
+- clean component structure
+- keep code readable
+- preserve current layout outside the wheel unless needed for active-state integration
+
+If helpful, break the wheel into its own reusable component, for example:
+- CommandWheel
+- WheelSegment
+- wheel data config
+
+Start now.

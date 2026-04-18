@@ -12,326 +12,392 @@ interface CommandWheelProps {
   onSegmentClick: (path: string) => void;
 }
 
-const GREEN = "#22c55e";
-const GREEN_GLOW = "rgba(34,197,94,0.35)";
-const GREEN_DIM = "rgba(34,197,94,0.12)";
+const G = "#22c55e";
+const G_DIM = "rgba(34,197,94,0.55)";
+const G_FAINT = "rgba(34,197,94,0.22)";
+const G_FILL = "rgba(34,197,94,0.07)";
+const G_FILL_HOV = "rgba(34,197,94,0.16)";
+const G_FILL_ACT = "rgba(34,197,94,0.28)";
 
-function polarToCartesian(cx: number, cy: number, r: number, angleDeg: number) {
-  const rad = ((angleDeg - 90) * Math.PI) / 180;
-  return {
-    x: cx + r * Math.cos(rad),
-    y: cy + r * Math.sin(rad),
-  };
+function polar(cx: number, cy: number, r: number, deg: number) {
+  const rad = ((deg - 90) * Math.PI) / 180;
+  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
 }
 
-function describeArc(cx: number, cy: number, r: number, startAngle: number, endAngle: number) {
-  const start = polarToCartesian(cx, cy, r, endAngle);
-  const end = polarToCartesian(cx, cy, r, startAngle);
-  const largeArc = endAngle - startAngle <= 180 ? "0" : "1";
-  return `M ${start.x} ${start.y} A ${r} ${r} 0 ${largeArc} 0 ${end.x} ${end.y}`;
-}
-
-function buildSegmentPath(
+function arcPath(
   cx: number,
   cy: number,
-  innerR: number,
-  outerR: number,
-  startAngle: number,
-  endAngle: number,
-  gap: number = 2
+  r1: number,
+  r2: number,
+  startDeg: number,
+  endDeg: number,
+  gapDeg = 2.2
 ): string {
-  const s = startAngle + gap;
-  const e = endAngle - gap;
-  const outerStart = polarToCartesian(cx, cy, outerR, s);
-  const outerEnd = polarToCartesian(cx, cy, outerR, e);
-  const innerStart = polarToCartesian(cx, cy, innerR, e);
-  const innerEnd = polarToCartesian(cx, cy, innerR, s);
-  const largeArc = e - s <= 180 ? "0" : "1";
+  const s = startDeg + gapDeg;
+  const e = endDeg - gapDeg;
+  const large = e - s > 180 ? 1 : 0;
+  const os = polar(cx, cy, r2, s);
+  const oe = polar(cx, cy, r2, e);
+  const ie = polar(cx, cy, r1, e);
+  const is_ = polar(cx, cy, r1, s);
+  return [
+    `M ${os.x} ${os.y}`,
+    `A ${r2} ${r2} 0 ${large} 1 ${oe.x} ${oe.y}`,
+    `L ${ie.x} ${ie.y}`,
+    `A ${r1} ${r1} 0 ${large} 0 ${is_.x} ${is_.y}`,
+    "Z",
+  ].join(" ");
+}
+
+function openArc(cx: number, cy: number, r: number, startDeg: number, endDeg: number, gapDeg = 3) {
+  const s = startDeg + gapDeg;
+  const e = endDeg - gapDeg;
+  const large = e - s > 180 ? 1 : 0;
+  const p1 = polar(cx, cy, r, s);
+  const p2 = polar(cx, cy, r, e);
+  return `M ${p1.x} ${p1.y} A ${r} ${r} 0 ${large} 1 ${p2.x} ${p2.y}`;
+}
+
+function SegmentIcon({ label, x, y, active }: { label: string; x: number; y: number; active: boolean }) {
+  const col = active ? G : G_DIM;
+  const s = 9;
+
+  const icons: Record<string, JSX.Element> = {
+    SYSTEMS: (
+      <g>
+        {[0, 60, 120, 180, 240, 300].map((a) => {
+          const p1 = polar(0, 0, s * 0.5, a);
+          const p2 = polar(0, 0, s * 0.9, a);
+          return <line key={a} x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} stroke={col} strokeWidth="1.5" strokeLinecap="round" />;
+        })}
+        <circle cx="0" cy="0" r={s * 0.45} fill="none" stroke={col} strokeWidth="1.2" />
+        <circle cx="0" cy="0" r="2" fill={col} />
+      </g>
+    ),
+    SIGNALS: (
+      <g>
+        {[s * 0.35, s * 0.62, s * 0.9].map((r, i) => (
+          <path
+            key={i}
+            d={`M ${-r * Math.cos(Math.PI / 4)} ${r * Math.sin(Math.PI / 4)} A ${r} ${r} 0 0 1 ${r * Math.cos(Math.PI / 4)} ${r * Math.sin(Math.PI / 4)}`}
+            fill="none"
+            stroke={col}
+            strokeWidth={i === 2 ? "1.4" : "1.1"}
+            strokeLinecap="round"
+            strokeOpacity={0.55 + i * 0.2}
+            transform="rotate(180)"
+          />
+        ))}
+        <circle cx="0" cy={s * 0.42} r="1.8" fill={col} />
+      </g>
+    ),
+    TOOLS: (
+      <g>
+        <line x1={-s * 0.7} y1="0" x2={s * 0.7} y2="0" stroke={col} strokeWidth="1.3" strokeLinecap="round" />
+        <line x1="0" y1={-s * 0.7} x2="0" y2={s * 0.7} stroke={col} strokeWidth="1.3" strokeLinecap="round" />
+        <circle cx="0" cy="0" r={s * 0.28} fill="none" stroke={col} strokeWidth="1.3" />
+        <circle cx="0" cy="0" r={s * 0.8} fill="none" stroke={col} strokeWidth="1.1" strokeDasharray="3 3" />
+      </g>
+    ),
+    FILES: (
+      <g>
+        <path
+          d={`M ${-s * 0.55} ${-s * 0.75} L ${s * 0.2} ${-s * 0.75} L ${s * 0.55} ${-s * 0.35} L ${s * 0.55} ${s * 0.75} L ${-s * 0.55} ${s * 0.75} Z`}
+          fill="none"
+          stroke={col}
+          strokeWidth="1.3"
+          strokeLinejoin="round"
+        />
+        <path d={`M ${s * 0.2} ${-s * 0.75} L ${s * 0.2} ${-s * 0.35} L ${s * 0.55} ${-s * 0.35}`} fill="none" stroke={col} strokeWidth="1.1" />
+        {[-0.1, 0.15, 0.4].map((dy) => (
+          <line key={dy} x1={-s * 0.35} y1={s * dy} x2={s * 0.3} y2={s * dy} stroke={col} strokeWidth="1" strokeLinecap="round" strokeOpacity="0.7" />
+        ))}
+      </g>
+    ),
+    BRIEFS: (
+      <g>
+        <rect x={-s * 0.65} y={-s * 0.75} width={s * 1.3} height={s * 1.5} rx="1.5" fill="none" stroke={col} strokeWidth="1.3" />
+        <path d={`M ${-s * 0.25} ${-s * 0.75} L ${-s * 0.25} ${-s * 1.05} L ${s * 0.25} ${-s * 1.05} L ${s * 0.25} ${-s * 0.75}`} fill="none" stroke={col} strokeWidth="1.1" />
+        {[-0.2, 0.05, 0.3].map((dy) => (
+          <line key={dy} x1={-s * 0.42} y1={s * dy} x2={s * 0.42} y2={s * dy} stroke={col} strokeWidth="1" strokeLinecap="round" strokeOpacity="0.7" />
+        ))}
+      </g>
+    ),
+    NETWORK: (
+      <g>
+        {[
+          { cx: 0, cy: -s * 0.7 },
+          { cx: s * 0.65, cy: s * 0.35 },
+          { cx: -s * 0.65, cy: s * 0.35 },
+        ].flatMap((a, ai) =>
+          [
+            { cx: 0, cy: -s * 0.7 },
+            { cx: s * 0.65, cy: s * 0.35 },
+            { cx: -s * 0.65, cy: s * 0.35 },
+          ]
+            .filter((_, bi) => bi > ai)
+            .map((b, bi) => (
+              <line key={`${ai}-${bi}`} x1={a.cx} y1={a.cy} x2={b.cx} y2={b.cy} stroke={col} strokeWidth="1.1" strokeOpacity="0.55" />
+            ))
+        )}
+        {[
+          { cx: 0, cy: -s * 0.7 },
+          { cx: s * 0.65, cy: s * 0.35 },
+          { cx: -s * 0.65, cy: s * 0.35 },
+        ].map((p, i) => (
+          <circle key={i} cx={p.cx} cy={p.cy} r="3.2" fill={col} fillOpacity={i === 0 ? 1 : 0.6} />
+        ))}
+      </g>
+    ),
+  };
+
   return (
-    `M ${outerStart.x} ${outerStart.y} ` +
-    `A ${outerR} ${outerR} 0 ${largeArc} 1 ${outerEnd.x} ${outerEnd.y} ` +
-    `L ${innerStart.x} ${innerStart.y} ` +
-    `A ${innerR} ${innerR} 0 ${largeArc} 0 ${innerEnd.x} ${innerEnd.y} ` +
-    `Z`
+    <g transform={`translate(${x},${y})`} style={{ pointerEvents: "none" }}>
+      {icons[label] ?? <circle cx="0" cy="0" r="4" fill={col} />}
+    </g>
   );
 }
 
 export default function CommandWheel({ segments, onHover, onSegmentClick }: CommandWheelProps) {
   const [hovered, setHovered] = useState<number | null>(null);
-  const [active, setActive] = useState<number | null>(null);
+  const [clicked, setClicked] = useState<number | null>(null);
 
-  const size = 520;
-  const cx = size / 2;
-  const cy = size / 2;
-  const innerR = 105;
-  const outerR = 220;
-  const labelR = (innerR + outerR) / 2 + 8;
-  const iconR = (innerR + outerR) / 2 - 14;
+  const SIZE = 540;
+  const cx = SIZE / 2;
+  const cy = SIZE / 2;
+  const INNER = 112;
+  const OUTER = 232;
+  const ICON_R = (INNER + OUTER) / 2 - 18;
+  const LABEL_R = (INNER + OUTER) / 2 + 14;
+  const OUTER_TICK_R = OUTER + 8;
+
   const n = segments.length;
-  const angleStep = 360 / n;
+  const STEP = 360 / n;
+  const OFFSET = -30;
 
-  const icons: Record<string, string> = {
-    SYSTEMS: "⬡",
-    SIGNALS: "◈",
-    TOOLS: "⬙",
-    FILES: "▣",
-    BRIEFS: "◉",
-    NETWORK: "⬢",
-  };
-
-  const handleMouseEnter = (i: number) => {
-    setHovered(i);
-    onHover(segments[i].label);
-  };
-  const handleMouseLeave = () => {
-    setHovered(null);
-    onHover(null);
-  };
-  const handleClick = (i: number) => {
-    setActive(i);
-    setTimeout(() => setActive(null), 300);
+  const enter = (i: number) => { setHovered(i); onHover(segments[i].label); };
+  const leave = () => { setHovered(null); onHover(null); };
+  const click = (i: number) => {
+    setClicked(i);
+    setTimeout(() => setClicked(null), 400);
     onSegmentClick(segments[i].path);
   };
 
-  const rings = [outerR + 18, outerR + 32, outerR + 46];
+  const activeIdx = hovered ?? clicked ?? null;
+  const activeSeg = activeIdx !== null ? segments[activeIdx] : null;
 
   return (
-    <div className="relative flex items-center justify-center select-none" style={{ width: size, height: size, maxWidth: "100%", maxHeight: "100%" }}>
+    <div
+      className="relative flex flex-col items-center justify-center select-none gap-3"
+      style={{ width: SIZE, maxWidth: "100%" }}
+    >
       <svg
-        width={size}
-        height={size}
-        viewBox={`0 0 ${size} ${size}`}
-        style={{ overflow: "visible" }}
+        width={SIZE}
+        height={SIZE}
+        viewBox={`0 0 ${SIZE} ${SIZE}`}
+        style={{ overflow: "visible", width: "100%", height: "auto" }}
       >
         <defs>
-          <filter id="glow-green" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
+          <filter id="f-glow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="3.5" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
-          <filter id="glow-strong" x="-80%" y="-80%" width="260%" height="260%">
-            <feGaussianBlur stdDeviation="8" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
+          <filter id="f-glow-lg" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="7" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
-          <radialGradient id="hub-gradient" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(34,197,94,0.15)" />
-            <stop offset="60%" stopColor="rgba(34,197,94,0.05)" />
-            <stop offset="100%" stopColor="rgba(34,197,94,0.0)" />
-          </radialGradient>
-          <radialGradient id="seg-hover-gradient" cx="50%" cy="50%" r="50%">
+          <filter id="f-glow-xl" x="-120%" y="-120%" width="340%" height="340%">
+            <feGaussianBlur stdDeviation="12" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+          <radialGradient id="rg-hub" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="rgba(34,197,94,0.18)" />
-            <stop offset="100%" stopColor="rgba(34,197,94,0.06)" />
+            <stop offset="55%" stopColor="rgba(34,197,94,0.06)" />
+            <stop offset="100%" stopColor="rgba(34,197,94,0)" />
           </radialGradient>
         </defs>
 
-        {rings.map((r, i) => (
-          <circle
-            key={i}
-            cx={cx}
-            cy={cy}
-            r={r}
-            fill="none"
-            stroke={GREEN}
-            strokeOpacity={0.06 - i * 0.015}
+        {[OUTER + 22, OUTER + 38, OUTER + 54].map((r, i) => (
+          <circle key={i} cx={cx} cy={cy} r={r} fill="none"
+            stroke={G} strokeOpacity={0.05 - i * 0.01}
             strokeWidth={1}
-            strokeDasharray={i === 0 ? "4 8" : i === 1 ? "2 12" : "1 18"}
+            strokeDasharray={["5 10", "2 14", "1 20"][i]}
           />
         ))}
 
-        {[outerR + 4, innerR - 4].map((r, i) => (
-          <circle
-            key={i}
-            cx={cx}
-            cy={cy}
-            r={r}
-            fill="none"
-            stroke={GREEN}
-            strokeOpacity={0.2}
-            strokeWidth={1}
-          />
-        ))}
+        <circle cx={cx} cy={cy} r={OUTER + 3} fill="none" stroke={G} strokeWidth={1.2} strokeOpacity={0.18} />
+        <circle cx={cx} cy={cy} r={INNER - 3} fill="none" stroke={G} strokeWidth={1} strokeOpacity={0.18} />
 
         {segments.map((seg, i) => {
-          const startAngle = i * angleStep;
-          const endAngle = startAngle + angleStep;
-          const isHovered = hovered === i;
-          const isActive = active === i;
-          const path = buildSegmentPath(cx, cy, innerR + 6, outerR - 4, startAngle, endAngle, 2.5);
+          const startDeg = OFFSET + i * STEP;
+          const endDeg = startDeg + STEP;
+          const midDeg = startDeg + STEP / 2;
+          const isHov = hovered === i;
+          const isClk = clicked === i;
+          const active = isHov || isClk;
 
-          const midAngle = startAngle + angleStep / 2;
-          const labelPos = polarToCartesian(cx, cy, labelR, midAngle);
-          const iconPos = polarToCartesian(cx, cy, iconR, midAngle);
+          const segPath = arcPath(cx, cy, INNER + 4, OUTER - 3, startDeg, endDeg);
+          const iconPt = polar(cx, cy, ICON_R, midDeg);
+          const labelPt = polar(cx, cy, LABEL_R, midDeg);
+          const tickArc = openArc(cx, cy, OUTER_TICK_R, startDeg, endDeg, 3);
 
           return (
             <g
               key={seg.label}
               data-testid={`segment-${seg.label.toLowerCase()}`}
               style={{ cursor: "pointer" }}
-              onMouseEnter={() => handleMouseEnter(i)}
-              onMouseLeave={handleMouseLeave}
-              onClick={() => handleClick(i)}
+              onMouseEnter={() => enter(i)}
+              onMouseLeave={leave}
+              onClick={() => click(i)}
             >
               <path
-                d={path}
-                fill={isActive ? "rgba(34,197,94,0.25)" : isHovered ? "rgba(34,197,94,0.14)" : "rgba(34,197,94,0.04)"}
-                stroke={isHovered || isActive ? GREEN : "rgba(34,197,94,0.25)"}
-                strokeWidth={isHovered ? 1.5 : 0.75}
-                filter={isHovered ? "url(#glow-green)" : undefined}
-                style={{ transition: "fill 0.2s, stroke 0.2s, stroke-width 0.2s" }}
+                d={arcPath(cx, cy, INNER + 4, OUTER - 3, startDeg, endDeg, 2)}
+                fill="transparent"
+                strokeWidth={0}
               />
 
-              {isHovered && (
+              <path
+                d={segPath}
+                fill={isClk ? G_FILL_ACT : isHov ? G_FILL_HOV : G_FILL}
+                stroke={active ? G : G_FAINT}
+                strokeWidth={active ? 1.4 : 0.8}
+                filter={active ? "url(#f-glow)" : undefined}
+                style={{ transition: "fill 0.18s ease, stroke 0.18s ease, stroke-width 0.18s ease" }}
+              />
+
+              {active && (
                 <path
-                  d={buildSegmentPath(cx, cy, innerR + 6, outerR - 4, startAngle, endAngle, 2.5)}
+                  d={segPath}
                   fill="none"
-                  stroke={GREEN}
-                  strokeWidth={2}
-                  strokeOpacity={0.6}
-                  filter="url(#glow-green)"
+                  stroke={G}
+                  strokeWidth={2.5}
+                  strokeOpacity={0.35}
+                  filter="url(#f-glow-lg)"
                 />
               )}
 
+              <path
+                d={tickArc}
+                fill="none"
+                stroke={active ? G : G_FAINT}
+                strokeWidth={active ? 2.2 : 1}
+                strokeLinecap="round"
+                filter={active ? "url(#f-glow)" : undefined}
+                style={{ transition: "stroke 0.18s ease, stroke-width 0.18s ease" }}
+              />
+
+              {active && (
+                <path
+                  d={tickArc}
+                  fill="none"
+                  stroke={G}
+                  strokeWidth={4}
+                  strokeOpacity={0.2}
+                  strokeLinecap="round"
+                  filter="url(#f-glow-lg)"
+                />
+              )}
+
+              <SegmentIcon label={seg.label} x={iconPt.x} y={iconPt.y} active={active} />
+
               <text
-                x={labelPos.x}
-                y={labelPos.y + 5}
+                x={labelPt.x}
+                y={labelPt.y + 5}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fontSize={isHovered ? "11" : "10"}
+                fontSize="9.5"
                 fontFamily="'Orbitron', sans-serif"
-                fontWeight={isHovered ? "600" : "500"}
-                fill={isHovered ? GREEN : "rgba(34,197,94,0.7)"}
-                letterSpacing="0.12em"
-                filter={isHovered ? "url(#glow-green)" : undefined}
-                style={{ transition: "all 0.2s", userSelect: "none", pointerEvents: "none" }}
+                fontWeight={active ? "700" : "500"}
+                fill={active ? G : G_DIM}
+                letterSpacing="0.16em"
+                filter={active ? "url(#f-glow)" : undefined}
+                style={{ transition: "fill 0.18s ease", userSelect: "none", pointerEvents: "none" }}
               >
                 {seg.label}
               </text>
 
-              <text
-                x={iconPos.x}
-                y={iconPos.y + 4}
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fontSize={isHovered ? "18" : "15"}
-                fill={isHovered ? GREEN : "rgba(34,197,94,0.5)"}
-                filter={isHovered ? "url(#glow-green)" : undefined}
-                style={{ transition: "all 0.2s", userSelect: "none", pointerEvents: "none" }}
-              >
-                {icons[seg.label] ?? "◆"}
-              </text>
-
-              <path
-                d={describeArc(cx, cy, outerR + 10, startAngle + 3, endAngle - 3)}
-                fill="none"
-                stroke={isHovered ? GREEN : "rgba(34,197,94,0.15)"}
-                strokeWidth={isHovered ? 2 : 1}
-                filter={isHovered ? "url(#glow-green)" : undefined}
-                style={{ transition: "all 0.2s" }}
-              />
+              {active && (() => {
+                const arrowPt = polar(cx, cy, OUTER - 16, midDeg);
+                return (
+                  <circle
+                    cx={arrowPt.x}
+                    cy={arrowPt.y}
+                    r={3}
+                    fill={G}
+                    filter="url(#f-glow)"
+                  />
+                );
+              })()}
             </g>
           );
         })}
 
-        <circle
-          cx={cx}
-          cy={cy}
-          r={innerR}
-          fill="url(#hub-gradient)"
-          stroke={GREEN}
-          strokeWidth={1.5}
-          strokeOpacity={0.4}
-          filter="url(#glow-green)"
-        />
-        <circle
-          cx={cx}
-          cy={cy}
-          r={innerR - 12}
-          fill="rgba(0,0,0,0.7)"
-          stroke={GREEN}
-          strokeWidth={0.75}
-          strokeOpacity={0.25}
-          strokeDasharray="6 6"
-        />
-        <circle
-          cx={cx}
-          cy={cy}
-          r={innerR - 24}
-          fill="rgba(0,0,0,0.5)"
-          stroke={GREEN}
-          strokeWidth={0.5}
-          strokeOpacity={0.15}
-        />
+        <circle cx={cx} cy={cy} r={INNER - 4} fill="url(#rg-hub)" stroke={G} strokeWidth={1.5} strokeOpacity={0.35} filter="url(#f-glow)" />
+        <circle cx={cx} cy={cy} r={INNER - 16} fill="rgba(0,0,0,0.82)" stroke={G} strokeWidth={0.8} strokeOpacity={0.2} strokeDasharray="5 5" />
+        <circle cx={cx} cy={cy} r={INNER - 30} fill="rgba(0,0,0,0.6)" stroke={G} strokeWidth={0.5} strokeOpacity={0.12} />
+        <circle cx={cx} cy={cy} r={INNER - 42} fill="rgba(0,0,0,0.4)" stroke={G} strokeWidth={0.4} strokeOpacity={0.08} />
 
-        <text
-          x={cx}
-          y={cy - 24}
-          textAnchor="middle"
-          fontSize="9"
-          fontFamily="'Share Tech Mono', monospace"
-          fill={GREEN}
-          fillOpacity={0.5}
-          letterSpacing="0.25em"
-        >
-          CORE
-        </text>
-        <text
-          x={cx}
-          y={cy - 4}
-          textAnchor="middle"
-          fontSize="20"
-          fontFamily="'Orbitron', sans-serif"
-          fontWeight="700"
-          fill={GREEN}
-          filter="url(#glow-strong)"
-          letterSpacing="0.08em"
-        >
-          RSR
-        </text>
-        <text
-          x={cx}
-          y={cy + 16}
-          textAnchor="middle"
-          fontSize="7"
-          fontFamily="'Share Tech Mono', monospace"
-          fill={GREEN}
-          fillOpacity={0.55}
-          letterSpacing="0.18em"
-        >
-          INTELLIGENCE
-        </text>
-        <text
-          x={cx}
-          y={cy + 30}
-          textAnchor="middle"
-          fontSize="7"
-          fontFamily="'Share Tech Mono', monospace"
-          fill={GREEN}
-          fillOpacity={0.55}
-          letterSpacing="0.18em"
-        >
-          NETWORK
-        </text>
-
-        {[0, 60, 120, 180, 240, 300].map((angle) => {
-          const p1 = polarToCartesian(cx, cy, innerR - 28, angle);
-          const p2 = polarToCartesian(cx, cy, innerR - 6, angle);
-          return (
-            <line
-              key={angle}
-              x1={p1.x} y1={p1.y}
-              x2={p2.x} y2={p2.y}
-              stroke={GREEN}
-              strokeWidth={0.75}
-              strokeOpacity={0.2}
-            />
-          );
+        {[0, 60, 120, 180, 240, 300].map((a) => {
+          const p1 = polar(cx, cy, INNER - 42, a);
+          const p2 = polar(cx, cy, INNER - 18, a);
+          return <line key={a} x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} stroke={G} strokeWidth={0.6} strokeOpacity={0.18} />;
         })}
+
+        <text x={cx} y={cy - 32} textAnchor="middle" dominantBaseline="middle"
+          fontSize="7.5" fontFamily="'Share Tech Mono', monospace" fontWeight="400"
+          fill={G} fillOpacity={0.45} letterSpacing="0.3em">CORE</text>
+
+        <text x={cx} y={cy - 10} textAnchor="middle" dominantBaseline="middle"
+          fontSize="24" fontFamily="'Orbitron', sans-serif" fontWeight="800"
+          fill={G} letterSpacing="0.1em" filter="url(#f-glow-lg)">RSR</text>
+
+        <text x={cx} y={cy + 14} textAnchor="middle" dominantBaseline="middle"
+          fontSize="6.5" fontFamily="'Share Tech Mono', monospace"
+          fill={G} fillOpacity={0.5} letterSpacing="0.22em">INTELLIGENCE</text>
+
+        <text x={cx} y={cy + 29} textAnchor="middle" dominantBaseline="middle"
+          fontSize="6.5" fontFamily="'Share Tech Mono', monospace"
+          fill={G} fillOpacity={0.5} letterSpacing="0.22em">NETWORK</text>
       </svg>
+
+      <div
+        className="w-full flex items-center justify-center"
+        style={{ height: 48, minHeight: 48 }}
+      >
+        {activeSeg ? (
+          <div
+            className="flex items-center gap-3 border rounded px-5 py-2.5 transition-all duration-200"
+            style={{
+              borderColor: "rgba(34,197,94,0.3)",
+              background: "rgba(34,197,94,0.06)",
+              boxShadow: "0 0 12px rgba(34,197,94,0.12)",
+              maxWidth: 380,
+            }}
+          >
+            <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: G, boxShadow: `0 0 6px ${G}` }} />
+            <div className="flex flex-col min-w-0">
+              <div className="flex items-center gap-3">
+                <span
+                  className="font-orbitron text-xs font-bold tracking-widest"
+                  style={{ color: G, textShadow: `0 0 8px rgba(34,197,94,0.5)` }}
+                >
+                  {activeSeg.label}
+                </span>
+                <span className="font-mono-tactical text-xs tracking-widest" style={{ color: "rgba(34,197,94,0.5)" }}>
+                  {activeSeg.path}
+                </span>
+              </div>
+              <span className="font-mono-tactical text-xs truncate" style={{ color: "rgba(34,197,94,0.55)" }}>
+                {activeSeg.description}
+              </span>
+            </div>
+          </div>
+        ) : (
+          <div className="font-mono-tactical text-xs tracking-widest" style={{ color: "rgba(34,197,94,0.25)" }}>
+            SELECT A MODULE
+          </div>
+        )}
+      </div>
     </div>
   );
 }
