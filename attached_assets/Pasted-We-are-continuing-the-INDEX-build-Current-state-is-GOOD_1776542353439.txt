@@ -1,0 +1,444 @@
+We are continuing the INDEX build.
+
+Current state is GOOD.
+Identity is now corrected.
+The site is no longer duplicating the intel network.
+The 6-page structure is working:
+- OVERVIEW
+- SIGNALS
+- DATASETS
+- INDEX
+- METHOD
+- ACCESS
+
+Now we need the next major pass:
+
+Turn INDEX from “correct structure” into a polished, product-grade public data platform.
+
+Do NOT restart.
+Do NOT rebrand again.
+Do NOT change the core direction.
+Do NOT revert to the old RSR Intel logic.
+
+We are now refining and hardening what already exists.
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Make INDEX feel:
+- cleaner
+- more cohesive
+- more premium
+- more interactive
+- more usable
+- more product-like
+- more public-facing
+- more intentional
+
+This pass is about:
+1. layout refinement
+2. interaction refinement
+3. consistency refinement
+4. navigation refinement
+5. UI polish
+6. stronger module transitions
+7. clearer “this is a real platform” feel
+
+━━━━━━━━━━━━━━━━━━
+DO NOT CHANGE
+━━━━━━━━━━━━━━━━━━
+
+Keep:
+- name: INDEX
+- 6-page architecture
+- black / green design language
+- public-facing data-network identity
+- no fake stats
+- no duplicated intel-site content
+- no raw backend/tool exposure on public pages
+- no systems-card wall
+- no “newsroom” framing
+
+━━━━━━━━━━━━━━━━━━
+PRIMARY GOALS
+━━━━━━━━━━━━━━━━━━
+
+1. HOMEPAGE: MAKE IT FEEL LEGENDARY
+2. SIDEBAR / NAV: MAKE IT FEEL CLEANER
+3. PAGE LAYOUTS: MAKE THEM FEEL MORE DELIBERATE
+4. COMPONENTS: STANDARDIZE THE SYSTEM
+5. EMPTY STATES: MAKE THEM FEEL PREMIUM
+6. MOTION / HOVER / ACTIVE STATES: MAKE THEM FEEL SHARP
+7. PREP THE APP FOR FUTURE REAL DATA BINDING
+
+━━━━━━━━━━━━━━━━━━
+HOMEPAGE — NEXT LEVEL PASS
+━━━━━━━━━━━━━━━━━━
+
+The homepage is already structurally correct.
+
+Now make it feel stronger.
+
+Required improvements:
+
+- Make the wheel feel more premium and deliberate
+- Improve segment hover state clarity
+- Improve selected state clarity
+- Make it clearer which sector is active
+- Tighten the left and right panel relationship to the wheel
+- Make the center hub feel more iconic
+- Improve text hierarchy around the wheel
+- Reduce any remaining awkward dead space
+- Make “select a sector” interaction feel cleaner and more guided
+
+If useful:
+- add active segment indicator logic
+- add cleaner transitions between hovered sector content
+- add subtle status ring or trace effect on selection
+- add a more intentional center-hub animation (very subtle only)
+
+Do NOT overanimate.
+Do NOT spin the wheel.
+Do NOT make it gimmicky.
+
+Goal:
+The homepage should feel like the defining public interaction of INDEX.
+
+━━━━━━━━━━━━━━━━━━
+LEFT PANEL IMPROVEMENTS
+━━━━━━━━━━━━━━━━━━
+
+The left panel currently communicates platform structure.
+
+Improve it by making it more useful and more elegant.
+
+Possible improvements:
+- better spacing between sections
+- clearer hierarchy between intro and pipeline steps
+- stronger labels
+- cleaner paragraph widths
+- more refined dividers
+- better active-state tie-in with selected wheel sector
+
+If a sector is hovered/selected, the left panel can partially adapt to it.
+But keep the overall structure stable and readable.
+
+━━━━━━━━━━━━━━━━━━
+RIGHT PANEL IMPROVEMENTS
+━━━━━━━━━━━━━━━━━━
+
+The right panel should feel like a true contextual inspector.
+
+Improve:
+- hovered/selected sector detail layout
+- title/subtitle hierarchy
+- section spacing
+- list clarity
+- active-state visual cue
+- smoother transition between sector content
+
+It should feel like:
+“sector scope / what this layer does / what belongs here”
+
+Not just a text block.
+
+━━━━━━━━━━━━━━━━━━
+GLOBAL NAVIGATION / SIDEBAR PASS
+━━━━━━━━━━━━━━━━━━
+
+The side navigation is on the right track, but now refine it hard.
+
+Requirements:
+- make active page state more obvious
+- improve icon alignment
+- improve spacing between icon rail and page content
+- make hover states cleaner
+- ensure the nav feels like one intentional product system
+- reduce any feeling of “prototype side rail”
+
+If needed:
+- refine the icon container sizing
+- improve active glow restraint
+- add subtle label-on-hover behavior
+- unify nav spacing across all pages
+
+Do not make it oversized or chunky.
+Keep it tactical and slim.
+
+━━━━━━━━━━━━━━━━━━
+PAGE CONSISTENCY PASS
+━━━━━━━━━━━━━━━━━━
+
+All 6 pages should feel like they belong to the same system.
+
+Standardize:
+- page top area
+- title structure
+- subtitle style
+- section spacing
+- panel styling
+- border treatment
+- label style
+- empty state format
+- metadata/status pill style
+
+Every page should feel like:
+same product
+different module
+
+Not:
+6 separate design experiments
+
+━━━━━━━━━━━━━━━━━━
+OVERVIEW PAGE IMPROVEMENTS
+━━━━━━━━━━━━━━━━━━
+
+The overview page is already good.
+
+Refine it so it becomes the strongest “what this platform is” page.
+
+Improve:
+- the “what INDEX is / is not” layout
+- the 4-step pipeline presentation
+- click-through section grid
+- page rhythm and spacing
+- visual emphasis on flow from signals → data → indexed records
+
+If helpful:
+- make the pipeline slightly more visual
+- add connecting lines or progression markers
+- reinforce the data lifecycle without making it infographic-cheesy
+
+━━━━━━━━━━━━━━━━━━
+SIGNALS PAGE IMPROVEMENTS
+━━━━━━━━━━━━━━━━━━
+
+The signals page has a solid structure.
+
+Refine it to feel more like a real intake workspace shell.
+
+Improve:
+- card spacing
+- type hierarchy
+- distinction between signal categories and intake rules
+- clarity of the right-side status area
+- search/filter strip polish
+- empty-state presentation
+
+Goal:
+This should feel like a serious signal intake layer waiting for real feeds.
+
+━━━━━━━━━━━━━━━━━━
+DATASETS PAGE IMPROVEMENTS
+━━━━━━━━━━━━━━━━━━
+
+Refine the datasets page so it feels more structured and domain-driven.
+
+Improve:
+- domain card layout
+- visual distinction between domain code and domain description
+- right-side status panel clarity
+- empty-state honesty while still looking premium
+- better grouping / density / balance
+
+Potential addition:
+- dataset schema preview shell
+- domain metadata layout
+- “data not yet bound” state that still feels product-grade
+
+━━━━━━━━━━━━━━━━━━
+INDEX PAGE IMPROVEMENTS
+━━━━━━━━━━━━━━━━━━
+
+This page is important.
+It should feel like the core searchable records layer.
+
+Improve:
+- table shell hierarchy
+- search bar polish
+- filter tab design
+- record detail panel balance
+- column header clarity
+- spacing and density
+- empty table state styling
+
+The INDEX page should feel:
+- clean
+- restrained
+- database-like
+- premium
+- traversable
+
+Not cluttered.
+Not fake-populated.
+
+━━━━━━━━━━━━━━━━━━
+METHOD PAGE IMPROVEMENTS
+━━━━━━━━━━━━━━━━━━
+
+The Method page should feel like doctrine + process architecture.
+
+Improve:
+- phase-to-phase progression
+- section hierarchy
+- layout rhythm
+- rule block styling
+- readability of longer text
+- visual reinforcement of ordered process
+
+Goal:
+This page should feel like the disciplined operating logic of INDEX.
+
+━━━━━━━━━━━━━━━━━━
+ACCESS PAGE IMPROVEMENTS
+━━━━━━━━━━━━━━━━━━
+
+The Access page is strategically important.
+
+Refine it so it feels like:
+- a real boundary layer
+- future monetization entry point
+- controlled system threshold
+
+Improve:
+- three-tier presentation
+- active/planned/restricted distinction
+- shell form layout
+- clarity of what each access layer means
+- premium restricted feel
+
+Do NOT add pricing yet.
+But make it feel like it could eventually support:
+- request access
+- membership tiers
+- restricted datasets
+- operator permissions
+
+━━━━━━━━━━━━━━━━━━
+COMPONENT SYSTEM PASS
+━━━━━━━━━━━━━━━━━━
+
+Refactor toward stronger shared components.
+
+If not already done, standardize reusable pieces like:
+- PageHeader
+- ModuleIntro
+- Panel
+- EmptyStatePanel
+- StatusPill
+- SectionDivider
+- FilterTabs
+- SearchShell
+- DetailPanel
+- WheelInspector
+- AccessTierCard
+
+Reduce one-off styling.
+Reduce repeated layout logic.
+Make the app easier to scale.
+
+━━━━━━━━━━━━━━━━━━
+EMPTY STATE SYSTEM
+━━━━━━━━━━━━━━━━━━
+
+Empty states must feel premium, not dead.
+
+Build a consistent empty-state language system.
+
+Examples of allowed tone:
+- No live feeds connected
+- Awaiting source binding
+- No indexed records committed
+- Dataset layer ready for attachment
+- Access request intake not yet active
+
+These should feel intentional and restrained.
+
+Do NOT use fake filler.
+Do NOT use cheerful app language.
+Do NOT make empty states look broken.
+
+━━━━━━━━━━━━━━━━━━
+TYPOGRAPHY / SPACING / GRID PASS
+━━━━━━━━━━━━━━━━━━
+
+Do a serious polish pass on:
+- headline sizes
+- subtitle sizes
+- line-height
+- paragraph width
+- letter spacing
+- margin rhythm
+- panel padding
+- alignment to the grid
+
+This matters a lot now.
+The site already has the right direction.
+Now it needs to feel expensive.
+
+━━━━━━━━━━━━━━━━━━
+MOTION / FEEDBACK PASS
+━━━━━━━━━━━━━━━━━━
+
+Add or refine subtle UI feedback:
+
+- cleaner hover states
+- subtle panel lift if appropriate
+- smoother content transition in wheel inspector
+- refined active page transition
+- refined button/interactive state behavior
+
+No flashy motion.
+No bouncing.
+No spinning gimmicks.
+No overdone blur animation.
+
+Think:
+controlled, restrained, premium.
+
+━━━━━━━━━━━━━━━━━━
+TECH / STRUCTURE PASS
+━━━━━━━━━━━━━━━━━━
+
+Prepare this app for future deployment and growth.
+
+Requirements:
+- keep routing clean
+- keep code modular
+- avoid hardcoded junk in too many places
+- centralize section config where useful
+- ensure pages can later bind to real data sources
+- keep it portable for self-hosting via Portainer
+
+If helpful:
+- define shared config objects for sectors/pages
+- define typed structures for:
+  - signal categories
+  - dataset domains
+  - access tiers
+  - method phases
+
+━━━━━━━━━━━━━━━━━━
+DELIVERABLE
+━━━━━━━━━━━━━━━━━━
+
+Implement a major polish/productization pass.
+
+End result should feel like:
+
+INDEX is no longer just a concept with correct pages.
+It is now a cohesive, premium, public-facing data platform interface.
+
+Requirements:
+- stronger homepage
+- cleaner nav
+- more cohesive pages
+- better consistency
+- better empty states
+- better visual rhythm
+- better interaction polish
+- code only
+
+Do not explain what you will do.
+Implement the next pass now.

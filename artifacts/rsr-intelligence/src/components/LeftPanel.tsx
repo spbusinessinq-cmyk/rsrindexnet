@@ -15,17 +15,17 @@ const PILLARS = [
   {
     id: "01",
     label: "Signal Intake",
-    text: "Monitored sources deliver signals into the INDEX architecture continuously. Intake is structured — sources are classified, signals are logged, and triage determines what enters the record.",
+    text: "Monitored sources deliver signals into INDEX continuously. Intake is structured — sources are classified, signals are logged, and triage determines what enters the record.",
   },
   {
     id: "02",
     label: "Data Structuring",
-    text: "Validated signals are structured into datasets and indexed records. Structuring imposes classification, scope definition, and source attribution on raw input.",
+    text: "Validated signals are structured into datasets and indexed records. Structuring applies classification, scope definition, and source attribution.",
   },
   {
     id: "03",
     label: "Record Index",
-    text: "Structured data accumulates into a searchable, traversable index. Records are discrete, scoped entries — not notes, not drafts. Each carries defined status and evidence attribution.",
+    text: "Structured data accumulates into a searchable, traversable index. Records are discrete, scoped entries with defined status and evidence attribution.",
   },
 ];
 
@@ -33,75 +33,88 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
   const activeSegment = segments.find((s) => s.label === hoveredSegment);
 
   return (
-    <div className="hidden lg:flex flex-col w-72 xl:w-80 border-r border-border p-6 gap-6 shrink-0 overflow-y-auto">
-      <div>
-        <div
-          className="font-mono-tactical text-xs tracking-widest uppercase mb-3"
-          style={{ color: "rgba(34,197,94,0.35)", letterSpacing: "0.22em" }}
-        >
+    <div className="hidden lg:flex flex-col w-68 xl:w-76 shrink-0 overflow-y-auto"
+      style={{ borderRight: "1px solid rgba(34,197,94,0.08)", width: 272 }}>
+      {/* Identity block */}
+      <div className="px-6 pt-7 pb-5" style={{ borderBottom: "1px solid rgba(34,197,94,0.07)" }}>
+        <div className="font-mono-tactical tracking-widest uppercase mb-2.5"
+          style={{ color: "rgba(34,197,94,0.3)", letterSpacing: "0.22em", fontSize: "9px" }}>
           Public Data Network
         </div>
-        <h1
-          className="font-orbitron text-3xl font-bold tracking-wide leading-none"
-          style={{ color: "#22c55e", textShadow: "0 0 24px rgba(34,197,94,0.2)" }}
-        >
+        <h2 className="font-orbitron text-4xl font-bold tracking-wide leading-none mb-4"
+          style={{ color: "#22c55e", textShadow: "0 0 28px rgba(34,197,94,0.18)", letterSpacing: "0.04em" }}>
           INDEX
-        </h1>
-        <p className="mt-4 font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.4)", lineHeight: "1.9" }}>
+        </h2>
+        <p className="font-mono-tactical leading-relaxed"
+          style={{ color: "rgba(255,255,255,0.35)", lineHeight: "1.88", fontSize: "10.5px" }}>
           A structured data and signal network. INDEX monitors inputs, structures them into classified datasets,
-          and builds a traversable record index — the public-facing layer of a larger analytical infrastructure.
+          and builds a traversable record index.
         </p>
       </div>
 
-      <div className="h-px" style={{ background: "rgba(34,197,94,0.07)" }} />
-
-      {activeSegment ? (
-        <div
-          className="rounded p-4 space-y-2 transition-all duration-300"
-          style={{ border: "1px solid rgba(34,197,94,0.22)", background: "rgba(34,197,94,0.04)" }}
-        >
-          <div className="font-mono-tactical text-xs tracking-widest uppercase" style={{ color: "rgba(34,197,94,0.4)" }}>
-            Sector Selected
-          </div>
-          <div className="font-orbitron text-sm font-bold tracking-wider" style={{ color: "#22c55e" }}>
-            {activeSegment.label}
-          </div>
-          <div className="font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.4)", lineHeight: "1.8" }}>
-            {activeSegment.description}
-          </div>
-          {activeSegment.methodology && (
-            <div className="pt-1 font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.32)", letterSpacing: "0.04em" }}>
-              — {activeSegment.methodology}
+      {/* Dynamic content — adapts on hover */}
+      <div className="flex-1 px-6 py-5">
+        {activeSegment ? (
+          <div key={activeSegment.label} className="panel-fade-in space-y-4">
+            <div className="font-mono-tactical tracking-widest uppercase"
+              style={{ color: "rgba(34,197,94,0.32)", fontSize: "9px", letterSpacing: "0.2em" }}>
+              Sector Preview
             </div>
-          )}
-        </div>
-      ) : (
-        <div className="space-y-5">
-          <div className="font-mono-tactical text-xs tracking-widest uppercase" style={{ color: "rgba(34,197,94,0.3)", letterSpacing: "0.2em" }}>
-            Platform Structure
-          </div>
-          {PILLARS.map((p) => (
-            <div key={p.id} className="space-y-1.5">
-              <div className="flex items-center gap-2.5">
-                <span className="font-mono-tactical text-xs flex-shrink-0" style={{ color: "rgba(34,197,94,0.3)", fontSize: "9px" }}>
-                  {p.id}
-                </span>
-                <div className="w-px h-3 flex-shrink-0" style={{ background: "rgba(34,197,94,0.45)" }} />
-                <span className="font-orbitron text-xs font-semibold tracking-wider" style={{ color: "rgba(34,197,94,0.75)", fontSize: "9.5px" }}>
-                  {p.label}
-                </span>
+            <div>
+              <div className="font-orbitron text-base font-bold tracking-wider mb-1.5" style={{ color: "#22c55e" }}>
+                {activeSegment.label}
               </div>
-              <p className="font-mono-tactical text-xs leading-relaxed pl-8" style={{ color: "rgba(255,255,255,0.3)", lineHeight: "1.85", fontSize: "10.5px" }}>
-                {p.text}
-              </p>
+              <div className="font-mono-tactical leading-relaxed"
+                style={{ color: "rgba(255,255,255,0.38)", lineHeight: "1.9", fontSize: "10.5px" }}>
+                {activeSegment.description}
+              </div>
             </div>
-          ))}
-        </div>
-      )}
+            {activeSegment.methodology && (
+              <div className="pt-1">
+                <div className="h-px mb-3" style={{ background: "rgba(34,197,94,0.07)" }} />
+                <div className="font-mono-tactical italic"
+                  style={{ color: "rgba(34,197,94,0.35)", fontSize: "10px", lineHeight: "1.7" }}>
+                  {activeSegment.methodology}
+                </div>
+              </div>
+            )}
+            <div className="rounded px-3 py-2 flex items-center gap-2"
+              style={{ border: "1px solid rgba(34,197,94,0.14)", background: "rgba(34,197,94,0.03)" }}>
+              <div className="w-1 h-1 rounded-full" style={{ background: "#22c55e", boxShadow: "0 0 4px #22c55e" }} />
+              <span className="font-mono-tactical" style={{ color: "rgba(34,197,94,0.5)", fontSize: "9.5px", letterSpacing: "0.1em" }}>
+                Click to enter {activeSegment.label}
+              </span>
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-5">
+            <div className="font-mono-tactical tracking-widest uppercase"
+              style={{ color: "rgba(34,197,94,0.28)", fontSize: "9px", letterSpacing: "0.2em" }}>
+              Platform Structure
+            </div>
+            {PILLARS.map((p) => (
+              <div key={p.id} className="space-y-1.5">
+                <div className="flex items-center gap-2.5">
+                  <span className="font-mono-tactical flex-shrink-0"
+                    style={{ color: "rgba(34,197,94,0.25)", fontSize: "8.5px" }}>{p.id}</span>
+                  <div className="w-px h-3 flex-shrink-0" style={{ background: "rgba(34,197,94,0.4)" }} />
+                  <span className="font-orbitron font-semibold tracking-wider"
+                    style={{ color: "rgba(34,197,94,0.7)", fontSize: "9.5px" }}>{p.label}</span>
+                </div>
+                <p className="font-mono-tactical leading-relaxed pl-7"
+                  style={{ color: "rgba(255,255,255,0.28)", lineHeight: "1.85", fontSize: "10px" }}>
+                  {p.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
-      <div className="mt-auto pt-4" style={{ borderTop: "1px solid rgba(34,197,94,0.06)" }}>
-        <p className="font-mono-tactical text-xs" style={{ color: "rgba(255,255,255,0.18)", lineHeight: "1.8", fontSize: "10px" }}>
-          Navigate the command wheel to explore INDEX sectors. Hover to preview. Click to enter.
+      {/* Footer hint */}
+      <div className="px-6 py-4" style={{ borderTop: "1px solid rgba(34,197,94,0.06)" }}>
+        <p className="font-mono-tactical" style={{ color: "rgba(255,255,255,0.15)", lineHeight: "1.8", fontSize: "9.5px" }}>
+          Hover a sector to inspect. Click to enter.
         </p>
       </div>
     </div>

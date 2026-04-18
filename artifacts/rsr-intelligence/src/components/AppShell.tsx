@@ -5,13 +5,13 @@ interface AppShellProps {
 }
 
 const NAV = [
-  { label: "HOME",     path: "/",         icon: "⊕" },
-  { label: "OVERVIEW", path: "/overview", icon: "⊡" },
-  { label: "SIGNALS",  path: "/signals",  icon: "◈" },
-  { label: "DATASETS", path: "/datasets", icon: "⊞" },
-  { label: "INDEX",    path: "/records",  icon: "≡" },
-  { label: "METHOD",   path: "/method",   icon: "◎" },
-  { label: "ACCESS",   path: "/access",   icon: "⊟" },
+  { label: "HOME",     path: "/",         icon: "⊕", abbr: "BASE" },
+  { label: "OVERVIEW", path: "/overview", icon: "⊡", abbr: "OVE" },
+  { label: "SIGNALS",  path: "/signals",  icon: "◈", abbr: "SIG" },
+  { label: "DATASETS", path: "/datasets", icon: "⊞", abbr: "DAT" },
+  { label: "INDEX",    path: "/records",  icon: "≡",  abbr: "IND" },
+  { label: "METHOD",   path: "/method",   icon: "◎", abbr: "MET" },
+  { label: "ACCESS",   path: "/access",   icon: "⊟", abbr: "ACC" },
 ];
 
 export default function AppShell({ children }: AppShellProps) {
@@ -19,36 +19,41 @@ export default function AppShell({ children }: AppShellProps) {
 
   return (
     <div className="min-h-screen w-full bg-background grid-overlay flex flex-col overflow-hidden">
+      {/* Top bar */}
       <div
         className="relative z-20 flex items-center justify-between px-5 py-2.5 shrink-0"
-        style={{ borderBottom: "1px solid rgba(34,197,94,0.1)" }}
+        style={{ borderBottom: "1px solid rgba(34,197,94,0.09)" }}
       >
-        <div className="flex items-center gap-3">
-          <div className="w-1.5 h-1.5 rounded-full bg-green-400 status-pulse" style={{ boxShadow: "0 0 6px #22c55e" }} />
-          <span className="font-mono-tactical text-xs tracking-widest uppercase" style={{ color: "rgba(34,197,94,0.5)" }}>
+        <div className="flex items-center gap-2.5">
+          <div
+            className="w-1.5 h-1.5 rounded-full status-pulse"
+            style={{ background: "#22c55e", boxShadow: "0 0 5px #22c55e" }}
+          />
+          <span className="font-mono-tactical text-xs tracking-widest uppercase" style={{ color: "rgba(34,197,94,0.45)", fontSize: "9.5px" }}>
             INDEX // ACTIVE
           </span>
         </div>
-        <span className="font-orbitron text-sm font-bold tracking-widest" style={{ color: "rgba(34,197,94,0.5)" }}>
+        <span className="font-orbitron text-sm font-bold tracking-widest" style={{ color: "rgba(34,197,94,0.45)", letterSpacing: "0.22em" }}>
           INDEX
         </span>
-        <div className="flex items-center gap-3">
-          <span className="font-mono-tactical text-xs tracking-widest" style={{ color: "rgba(34,197,94,0.25)" }}>
+        <div className="flex items-center gap-4">
+          <span className="font-mono-tactical text-xs tracking-widest" style={{ color: "rgba(34,197,94,0.22)", fontSize: "9.5px", letterSpacing: "0.14em" }}>
             DATA NETWORK
           </span>
-          <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.2)" }}>
+          <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.18)", fontSize: "9.5px" }}>
             {new Date().toISOString().slice(0, 19).replace("T", " ")} UTC
           </span>
         </div>
       </div>
 
       <div className="flex flex-1 overflow-hidden">
+        {/* Side nav */}
         <nav
-          className="flex flex-col shrink-0 py-3 gap-0.5 overflow-y-auto"
+          className="flex flex-col shrink-0 py-2 gap-0 overflow-y-auto"
           style={{
-            width: 56,
-            borderRight: "1px solid rgba(34,197,94,0.09)",
-            background: "rgba(0,0,0,0.2)",
+            width: 54,
+            borderRight: "1px solid rgba(34,197,94,0.08)",
+            background: "rgba(0,0,0,0.25)",
           }}
         >
           {NAV.map((item) => {
@@ -60,23 +65,27 @@ export default function AppShell({ children }: AppShellProps) {
                 data-testid={`nav-${item.label.toLowerCase()}`}
                 title={item.label}
                 onClick={(e) => { e.preventDefault(); setLocation(item.path); }}
-                className="group flex flex-col items-center gap-1 py-3 px-1 relative transition-all duration-150"
+                className={`group flex flex-col items-center gap-1 py-3 px-1 relative idx-nav-item ${active ? "idx-nav-active" : ""}`}
                 style={{
-                  background: active ? "rgba(34,197,94,0.08)" : "transparent",
-                  borderLeft: active ? "2px solid #22c55e" : "2px solid transparent",
+                  background: active ? "rgba(34,197,94,0.09)" : "transparent",
+                  borderLeft: active ? "2px solid rgba(34,197,94,0.75)" : "2px solid transparent",
                   cursor: "pointer",
                   textDecoration: "none",
                 }}
               >
                 {active && (
-                  <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(34,197,94,0.03)" }} />
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ background: "linear-gradient(90deg, rgba(34,197,94,0.07), transparent)" }}
+                  />
                 )}
                 <span
-                  className="text-base leading-none"
                   style={{
-                    color: active ? "#22c55e" : "rgba(34,197,94,0.3)",
-                    filter: active ? "drop-shadow(0 0 4px #22c55e)" : undefined,
-                    transition: "color 0.15s",
+                    fontSize: "15px",
+                    lineHeight: 1,
+                    color: active ? "#22c55e" : "rgba(34,197,94,0.28)",
+                    filter: active ? "drop-shadow(0 0 5px #22c55e)" : undefined,
+                    transition: "color 0.15s ease, filter 0.15s ease",
                   }}
                 >
                   {item.icon}
@@ -85,12 +94,12 @@ export default function AppShell({ children }: AppShellProps) {
                   className="font-mono-tactical"
                   style={{
                     fontSize: "7px",
-                    letterSpacing: "0.1em",
-                    color: active ? "rgba(34,197,94,0.8)" : "rgba(34,197,94,0.2)",
-                    transition: "color 0.15s",
+                    letterSpacing: "0.08em",
+                    color: active ? "rgba(34,197,94,0.85)" : "rgba(34,197,94,0.22)",
+                    transition: "color 0.15s ease",
                   }}
                 >
-                  {item.label === "HOME" ? "BASE" : item.label.slice(0, 3)}
+                  {item.abbr}
                 </span>
               </a>
             );
@@ -102,19 +111,20 @@ export default function AppShell({ children }: AppShellProps) {
         </main>
       </div>
 
+      {/* Bottom bar */}
       <div
-        className="relative z-20 flex items-center justify-between px-5 py-2 shrink-0"
-        style={{ borderTop: "1px solid rgba(34,197,94,0.07)" }}
+        className="relative z-20 flex items-center justify-between px-5 py-1.5 shrink-0"
+        style={{ borderTop: "1px solid rgba(34,197,94,0.06)" }}
       >
-        <span className="font-mono-tactical text-xs tracking-widest" style={{ color: "rgba(34,197,94,0.2)" }}>
+        <span className="font-mono-tactical tracking-widest" style={{ color: "rgba(34,197,94,0.18)", fontSize: "9px", letterSpacing: "0.18em" }}>
           INDEX // v1.0
         </span>
-        <div className="flex items-center gap-4">
-          <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.18)" }}>DATA NETWORK</span>
-          <div className="w-1 h-1 rounded-full bg-green-400/30 status-pulse" />
-          <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.18)" }}>SIGNAL INTAKE ACTIVE</span>
+        <div className="flex items-center gap-3">
+          <span className="font-mono-tactical" style={{ color: "rgba(34,197,94,0.16)", fontSize: "9px" }}>DATA NETWORK</span>
+          <div className="w-1 h-1 rounded-full status-pulse" style={{ background: "rgba(34,197,94,0.3)" }} />
+          <span className="font-mono-tactical" style={{ color: "rgba(34,197,94,0.16)", fontSize: "9px" }}>SIGNAL LAYER ACTIVE</span>
         </div>
-        <span className="font-mono-tactical text-xs tracking-widest" style={{ color: "rgba(34,197,94,0.2)" }}>
+        <span className="font-mono-tactical tracking-widest" style={{ color: "rgba(34,197,94,0.18)", fontSize: "9px" }}>
           PUBLIC LAYER
         </span>
       </div>

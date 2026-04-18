@@ -258,12 +258,49 @@
   }
 
   .status-pulse {
-    animation: status-pulse 2s ease-in-out infinite;
+    animation: status-pulse 2.4s ease-in-out infinite;
   }
 
   @keyframes status-pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+    50% { opacity: 0.35; }
+  }
+
+  .hub-breathe {
+    animation: hub-breathe 4s ease-in-out infinite;
+  }
+
+  @keyframes hub-breathe {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.65; }
+  }
+
+  .hub-spin-slow {
+    animation: hub-spin-slow 60s linear infinite;
+    transform-origin: center;
+  }
+
+  @keyframes hub-spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .panel-fade-in {
+    animation: panel-fade-in 0.22s ease-out both;
+  }
+
+  @keyframes panel-fade-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .slide-in-right {
+    animation: slide-in-right 0.2s ease-out both;
+  }
+
+  @keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(8px); }
+    to { opacity: 1; transform: translateX(0); }
   }
 
   .scan-line {
@@ -273,5 +310,34 @@
   @keyframes scan {
     0% { transform: translateY(-100%); }
     100% { transform: translateY(100vh); }
+  }
+
+  .idx-card {
+    transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .idx-card:hover {
+    border-color: rgba(34,197,94,0.28) !important;
+    background: rgba(34,197,94,0.04) !important;
+    box-shadow: 0 0 16px rgba(34,197,94,0.06);
+  }
+
+  .idx-nav-item {
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .idx-nav-item:hover:not(.idx-nav-active) {
+    background: rgba(34,197,94,0.05) !important;
+    border-left-color: rgba(34,197,94,0.3) !important;
+  }
+
+  .idx-filter-btn {
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+
+  .idx-filter-btn:hover {
+    border-color: rgba(34,197,94,0.35) !important;
+    color: rgba(34,197,94,0.8) !important;
+    background: rgba(34,197,94,0.04) !important;
   }
 }

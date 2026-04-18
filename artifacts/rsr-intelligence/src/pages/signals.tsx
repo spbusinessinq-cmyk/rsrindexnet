@@ -1,4 +1,5 @@
 import AppShell from "@/components/AppShell";
+import PageHeader from "@/components/PageHeader";
 import EmptyState from "@/components/EmptyState";
 
 const SIGNAL_CATEGORIES = [
@@ -23,14 +24,14 @@ const SIGNAL_CATEGORIES = [
   {
     id: "MAN",
     label: "Manual Intake",
-    description: "Signals submitted through operator-controlled intake channels. Manual intake requires classification at submission — unclassified submissions are held in the staging queue.",
+    description: "Signals submitted through operator-controlled channels. Manual intake requires classification at submission — unclassified submissions are held in the staging queue.",
     intakeLogic: "Operator-classified before commit — no auto-routing on manual intake",
   },
 ];
 
-const TRIAGE_CRITERIA = [
-  "Source reliability score meets intake threshold",
-  "Signal type matches a defined category",
+const TRIAGE_RULES = [
+  "Source reliability score meets defined intake threshold",
+  "Signal type matches a monitored category",
   "Temporal relevance within defined observation window",
   "No duplicate record exists in the index for this signal",
   "Classification can be determined at intake",
@@ -41,70 +42,62 @@ const FILTERS = ["ALL", "ACTIVE", "STAGED", "DISMISSED"];
 export default function SignalsPage() {
   return (
     <AppShell>
-      <div className="flex flex-col h-full" style={{ minHeight: "calc(100vh - 84px)" }}>
-        <div className="px-6 md:px-8 py-4 shrink-0" style={{ borderBottom: "1px solid rgba(34,197,94,0.08)" }}>
-          <div className="flex items-start justify-between gap-4 flex-wrap">
-            <div>
-              <div className="font-mono-tactical text-xs tracking-widest uppercase mb-2" style={{ color: "rgba(34,197,94,0.4)" }}>
-                MODULE / SIGNALS
-              </div>
-              <h1 className="font-orbitron text-3xl font-bold tracking-wider" style={{ color: "#22c55e", textShadow: "0 0 20px rgba(34,197,94,0.2)" }}>
-                SIGNALS
-              </h1>
-              <p className="mt-2 font-mono-tactical text-xs" style={{ color: "rgba(255,255,255,0.35)", lineHeight: "1.9" }}>
-                Signal capture, source triage, and intake classification workspace
-              </p>
-            </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded font-mono-tactical text-xs tracking-widest"
-              style={{ border: "1px solid rgba(34,197,94,0.15)", color: "rgba(34,197,94,0.45)", background: "rgba(34,197,94,0.03)" }}>
-              <div className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(34,197,94,0.35)" }} />
-              NO FEEDS CONNECTED
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 mt-4">
+      <div className="flex flex-col" style={{ minHeight: "calc(100vh - 84px)" }}>
+        <PageHeader
+          module="MODULE / SIGNALS"
+          title="SIGNALS"
+          subtitle="Signal capture, source triage, and intake classification"
+          badge="NO FEEDS CONNECTED"
+          badgeActive={false}
+        >
+          {/* Filter strip in header */}
+          <div className="flex items-center gap-2">
             {FILTERS.map((f) => (
               <button key={f} data-testid={`filter-${f.toLowerCase()}`}
-                className="font-mono-tactical text-xs px-3 py-1 rounded"
+                className="font-mono-tactical idx-filter-btn rounded px-2.5 py-1"
                 style={{
                   border: f === "ALL" ? "1px solid rgba(34,197,94,0.38)" : "1px solid rgba(34,197,94,0.1)",
-                  color: f === "ALL" ? "#22c55e" : "rgba(34,197,94,0.38)",
-                  background: f === "ALL" ? "rgba(34,197,94,0.07)" : "transparent",
-                  letterSpacing: "0.12em",
+                  color: f === "ALL" ? "#22c55e" : "rgba(34,197,94,0.35)",
+                  background: f === "ALL" ? "rgba(34,197,94,0.06)" : "transparent",
+                  fontSize: "9.5px",
+                  letterSpacing: "0.1em",
                 }}>
                 {f}
               </button>
             ))}
-            <div className="flex-1" />
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded"
-              style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(0,0,0,0.3)" }}>
-              <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.25)", fontSize: "10px" }}>SEARCH</span>
-              <div className="w-px h-3" style={{ background: "rgba(34,197,94,0.15)" }} />
-              <span className="font-mono-tactical text-xs w-36" style={{ color: "rgba(34,197,94,0.18)" }}>Filter signals...</span>
-            </div>
           </div>
-        </div>
+        </PageHeader>
 
         <div className="flex flex-1 overflow-hidden">
-          <div className="flex-1 flex flex-col overflow-y-auto p-5 gap-5">
+          {/* Main content */}
+          <div className="flex-1 p-6 md:p-7 space-y-5 overflow-y-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {SIGNAL_CATEGORIES.map((cat) => (
-                <div key={cat.id} className="rounded p-4 space-y-2.5"
+                <div key={cat.id} className="rounded p-5 space-y-3 idx-card"
                   style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(0,0,0,0.2)" }}>
                   <div className="flex items-center gap-2.5">
-                    <div className="font-mono-tactical text-xs px-1.5 py-0.5 rounded"
-                      style={{ border: "1px solid rgba(34,197,94,0.2)", color: "rgba(34,197,94,0.6)", fontSize: "9px" }}>
+                    <div className="font-mono-tactical px-1.5 py-0.5 rounded flex-shrink-0"
+                      style={{
+                        border: "1px solid rgba(34,197,94,0.22)",
+                        color: "rgba(34,197,94,0.65)",
+                        fontSize: "8.5px",
+                        letterSpacing: "0.06em",
+                        background: "rgba(34,197,94,0.04)",
+                      }}>
                       {cat.id}
                     </div>
-                    <span className="font-orbitron text-xs font-bold tracking-wider" style={{ color: "#22c55e" }}>
+                    <span className="font-orbitron text-sm font-bold tracking-wider" style={{ color: "#22c55e" }}>
                       {cat.label}
                     </span>
                   </div>
-                  <p className="font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.38)", lineHeight: "1.85", fontSize: "10.5px" }}>
+                  <p className="font-mono-tactical leading-relaxed"
+                    style={{ color: "rgba(255,255,255,0.38)", lineHeight: "1.88", fontSize: "10.5px" }}>
                     {cat.description}
                   </p>
-                  <div className="pt-1.5" style={{ borderTop: "1px solid rgba(34,197,94,0.07)" }}>
-                    <span className="font-mono-tactical text-xs italic" style={{ color: "rgba(34,197,94,0.32)", fontSize: "9.5px" }}>
+                  <div className="flex items-center gap-2 pt-1.5" style={{ borderTop: "1px solid rgba(34,197,94,0.07)" }}>
+                    <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: "rgba(34,197,94,0.28)" }} />
+                    <span className="font-mono-tactical italic"
+                      style={{ color: "rgba(34,197,94,0.3)", fontSize: "9.5px" }}>
                       {cat.intakeLogic}
                     </span>
                   </div>
@@ -112,46 +105,74 @@ export default function SignalsPage() {
               ))}
             </div>
 
-            <div className="rounded p-4" style={{ border: "1px solid rgba(34,197,94,0.08)", background: "rgba(0,0,0,0.15)" }}>
-              <div className="font-mono-tactical text-xs tracking-widest uppercase mb-3" style={{ color: "rgba(34,197,94,0.3)", fontSize: "9px" }}>
+            {/* Triage rules */}
+            <div className="rounded p-5"
+              style={{ border: "1px solid rgba(34,197,94,0.08)", background: "rgba(0,0,0,0.15)" }}>
+              <div className="font-mono-tactical tracking-widest uppercase mb-3.5"
+                style={{ color: "rgba(34,197,94,0.28)", fontSize: "9.5px", letterSpacing: "0.18em" }}>
                 Triage Criteria
               </div>
               <div className="space-y-2">
-                {TRIAGE_CRITERIA.map((c, i) => (
-                  <div key={i} className="flex items-center gap-2.5">
-                    <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: "rgba(34,197,94,0.35)" }} />
-                    <span className="font-mono-tactical text-xs" style={{ color: "rgba(255,255,255,0.3)", fontSize: "10.5px" }}>{c}</span>
+                {TRIAGE_RULES.map((rule, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <span className="font-mono-tactical flex-shrink-0"
+                      style={{ color: "rgba(34,197,94,0.22)", fontSize: "8.5px" }}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="w-px h-3 flex-shrink-0" style={{ background: "rgba(34,197,94,0.12)" }} />
+                    <span className="font-mono-tactical" style={{ color: "rgba(255,255,255,0.3)", fontSize: "10.5px" }}>
+                      {rule}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <EmptyState icon="◈" title="No live signals" subtitle="Source binding pending — signal log will populate here on intake" />
+            {/* Empty live feed */}
+            <div className="rounded" style={{ border: "1px solid rgba(34,197,94,0.07)", background: "rgba(0,0,0,0.12)" }}>
+              <div className="px-4 py-2.5" style={{ borderBottom: "1px solid rgba(34,197,94,0.06)" }}>
+                <span className="font-mono-tactical tracking-widest uppercase"
+                  style={{ color: "rgba(34,197,94,0.25)", fontSize: "9px", letterSpacing: "0.16em" }}>
+                  Live Signal Feed
+                </span>
+              </div>
+              <EmptyState icon="◈" title="No live signals" subtitle="Awaiting source binding — signal log will populate on intake" />
+            </div>
           </div>
 
-          <div className="w-60 xl:w-72 shrink-0 p-4 space-y-4 overflow-y-auto" style={{ borderLeft: "1px solid rgba(34,197,94,0.07)" }}>
-            <div className="font-mono-tactical text-xs tracking-widest uppercase" style={{ color: "rgba(34,197,94,0.28)", fontSize: "9px" }}>
-              Intake Status
+          {/* Status sidebar */}
+          <div className="w-56 xl:w-64 shrink-0 p-5 space-y-5 overflow-y-auto"
+            style={{ borderLeft: "1px solid rgba(34,197,94,0.07)" }}>
+            <div>
+              <div className="font-mono-tactical tracking-widest uppercase mb-3"
+                style={{ color: "rgba(34,197,94,0.28)", fontSize: "9px", letterSpacing: "0.16em" }}>
+                Intake Status
+              </div>
+              <div className="space-y-3">
+                {[
+                  { label: "OPEN SOURCE", value: "Not connected" },
+                  { label: "STRUCTURED FEEDS", value: "Not bound" },
+                  { label: "PATTERN MONITOR", value: "Inactive" },
+                  { label: "MANUAL QUEUE", value: "Empty" },
+                  { label: "TRIAGE QUEUE", value: "—" },
+                  { label: "LAST SIGNAL", value: "—" },
+                ].map((item) => (
+                  <div key={item.label} className="flex flex-col gap-0.5">
+                    <span className="font-mono-tactical"
+                      style={{ fontSize: "8.5px", color: "rgba(34,197,94,0.25)", letterSpacing: "0.1em" }}>
+                      {item.label}
+                    </span>
+                    <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.45)" }}>
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="space-y-2.5">
-              {[
-                { label: "PRIMARY SOURCE", value: "Not connected" },
-                { label: "STRUCTURED FEEDS", value: "Not bound" },
-                { label: "PATTERN MONITOR", value: "Inactive" },
-                { label: "MANUAL QUEUE", value: "Empty" },
-                { label: "TRIAGE QUEUE", value: "—" },
-                { label: "LAST SIGNAL", value: "—" },
-              ].map((item) => (
-                <div key={item.label} className="flex flex-col gap-0.5">
-                  <span className="font-mono-tactical" style={{ fontSize: "9px", color: "rgba(34,197,94,0.28)", letterSpacing: "0.08em" }}>
-                    {item.label}
-                  </span>
-                  <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.45)" }}>
-                    {item.value}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <div className="h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
+            <p className="font-mono-tactical" style={{ color: "rgba(255,255,255,0.2)", fontSize: "9.5px", lineHeight: "1.8" }}>
+              Signal feeds are bound per source category. Each category operates independently.
+            </p>
           </div>
         </div>
       </div>

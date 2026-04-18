@@ -11,50 +11,41 @@ interface RightPanelProps {
   segments: Segment[];
 }
 
-const DEFAULT = {
-  headline: "Signal to structure — how INDEX works",
-  paragraphs: [
-    "INDEX operates a defined pipeline: signals are monitored, classified, and structured into datasets and indexed records. The command wheel maps the six public sectors of this platform.",
-    "Each sector represents a distinct layer of the INDEX architecture — from signal intake through structured data to the access boundary between public and restricted layers.",
-    "Hover any sector to review its scope. Click to enter.",
-  ],
-};
-
 const SECTOR_DETAILS: Record<string, { tagline: string; points: string[] }> = {
   OVERVIEW: {
     tagline: "What INDEX is and how it works",
     points: [
-      "INDEX is a structured data and signal network, not a content platform",
-      "The public interface documents what the platform does and how it operates",
-      "Signal intake, data structuring, and record indexing form the core pipeline",
-      "Deeper analytical layers exist behind the ACCESS threshold",
+      "INDEX is a structured data network — not a content platform or newsroom",
+      "Signal intake, structuring, and record indexing form the core pipeline",
+      "The public interface documents architecture; deeper layers exist behind ACCESS",
+      "Every sector maps a distinct layer of the signal-to-record flow",
     ],
   },
   SIGNALS: {
     tagline: "How monitored inputs enter the INDEX architecture",
     points: [
       "Signal categories are defined before monitoring begins — not after",
-      "Sources are classified on intake: reliability, type, and recency weight",
-      "High-volume sources are filtered by relevance, not ingested wholesale",
-      "Signals that don't meet triage criteria are logged and dismissed — not discarded silently",
+      "Sources are classified on intake by reliability, type, and recency",
+      "High-volume sources are filtered by relevance before logging",
+      "Dismissed signals are logged with reason — not silently discarded",
     ],
   },
   DATASETS: {
-    tagline: "How structured data is organized into collections",
+    tagline: "How structured data is organized into domain collections",
     points: [
-      "Datasets are organized by domain, subject class, or tracked activity type",
-      "A dataset grows as new signals are structured and appended to its scope",
-      "Dataset boundaries are defined — records cannot be cross-filed without explicit linking",
-      "Public datasets reflect structure only — restricted data requires ACCESS verification",
+      "Datasets are bounded collections with defined analytical scope",
+      "Data grows as new signals are structured and appended to each domain",
+      "Cross-domain signals require explicit classification before assignment",
+      "Public datasets reflect structure only — restricted data requires ACCESS",
     ],
   },
   INDEX: {
-    tagline: "How structured records form the searchable data layer",
+    tagline: "The core searchable record layer of the platform",
     points: [
-      "The index is not a file vault — it is a structured, queryable record of classified data",
-      "Each record has a defined scope, source attribution, and classification status",
+      "The index is a structured, queryable record — not a file vault",
+      "Each record carries defined scope, source attribution, and classification status",
       "Records are discrete — no open-ended notes or unsourced entries",
-      "The index grows incrementally as new signals are structured and committed",
+      "Once committed, records are versioned — not overwritten",
     ],
   },
   METHOD: {
@@ -63,107 +54,138 @@ const SECTOR_DETAILS: Record<string, { tagline: string; points: string[] }> = {
       "Collection discipline defines which sources are worth monitoring",
       "Classification logic determines how signals are routed into datasets",
       "Structuring rules govern what makes a valid record entry",
-      "Synthesis flows from indexed records outward — not from raw signal intake",
+      "Synthesis flows from indexed records outward — not from raw signals",
     ],
   },
   ACCESS: {
     tagline: "Where the public interface ends and the operational layer begins",
     points: [
-      "ACCESS is the boundary between documentation and operation",
+      "ACCESS is the boundary between public documentation and operation",
       "Deeper datasets, live feeds, and analytical tools exist behind this threshold",
       "Entry is not public — verification is required",
-      "The platform is designed to support tiered access: public, restricted, operator",
+      "Designed to support tiered access: public, restricted, operator",
     ],
   },
 };
+
+const DEFAULT_SECTORS = [
+  "OVERVIEW", "SIGNALS", "DATASETS", "INDEX", "METHOD", "ACCESS"
+];
 
 export default function RightPanel({ hoveredSegment, segments }: RightPanelProps) {
   const activeSegment = segments.find((s) => s.label === hoveredSegment);
   const sectorDetail = hoveredSegment ? SECTOR_DETAILS[hoveredSegment] : null;
 
   return (
-    <div className="hidden lg:flex flex-col w-72 xl:w-80 border-l border-border p-6 gap-5 shrink-0 overflow-y-auto">
+    <div className="hidden lg:flex flex-col shrink-0 overflow-y-auto"
+      style={{ borderLeft: "1px solid rgba(34,197,94,0.08)", width: 280 }}>
       {activeSegment && sectorDetail ? (
-        <div className="space-y-5 transition-all duration-300">
-          <div>
-            <div className="font-mono-tactical text-xs tracking-widest uppercase mb-3" style={{ color: "rgba(34,197,94,0.38)" }}>
+        <div key={activeSegment.label} className="panel-fade-in flex flex-col h-full">
+          {/* Sector header */}
+          <div className="px-6 pt-7 pb-5" style={{ borderBottom: "1px solid rgba(34,197,94,0.07)" }}>
+            <div className="font-mono-tactical tracking-widest uppercase mb-2"
+              style={{ color: "rgba(34,197,94,0.3)", fontSize: "9px", letterSpacing: "0.2em" }}>
               Sector — {activeSegment.label}
             </div>
-            <div className="font-orbitron text-base font-bold tracking-wide leading-snug" style={{ color: "#22c55e", textShadow: "0 0 16px rgba(34,197,94,0.18)" }}>
+            <div className="font-orbitron text-base font-bold tracking-wide leading-snug mb-0"
+              style={{ color: "#22c55e", textShadow: "0 0 16px rgba(34,197,94,0.15)" }}>
               {sectorDetail.tagline}
             </div>
           </div>
 
-          <div className="h-px" style={{ background: "rgba(34,197,94,0.09)" }} />
-
-          {activeSegment.detail && (
-            <p className="font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.42)", lineHeight: "1.9", fontSize: "11px" }}>
-              {activeSegment.detail}
-            </p>
-          )}
-
-          <div className="space-y-2.5">
-            {sectorDetail.points.map((point, i) => (
-              <div key={i} className="flex items-start gap-3">
-                <div className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ background: "rgba(34,197,94,0.5)" }} />
-                <span className="font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.35)", lineHeight: "1.8", fontSize: "10.5px" }}>
-                  {point}
-                </span>
+          {/* Detail body */}
+          <div className="flex-1 px-6 py-5 space-y-5">
+            {activeSegment.detail && (
+              <p className="font-mono-tactical leading-relaxed"
+                style={{ color: "rgba(255,255,255,0.38)", lineHeight: "1.92", fontSize: "10.5px" }}>
+                {activeSegment.detail}
+              </p>
+            )}
+            <div className="space-y-2.5">
+              {sectorDetail.points.map((point, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
+                    style={{ background: "rgba(34,197,94,0.45)" }} />
+                  <span className="font-mono-tactical leading-relaxed"
+                    style={{ color: "rgba(255,255,255,0.32)", lineHeight: "1.82", fontSize: "10.5px" }}>
+                    {point}
+                  </span>
+                </div>
+              ))}
+            </div>
+            {activeSegment.methodology && (
+              <div className="pt-1">
+                <div className="h-px mb-3" style={{ background: "rgba(34,197,94,0.07)" }} />
+                <div className="font-mono-tactical italic"
+                  style={{ color: "rgba(34,197,94,0.32)", fontSize: "10px" }}>
+                  {activeSegment.methodology}
+                </div>
               </div>
-            ))}
+            )}
           </div>
 
-          {activeSegment.methodology && (
-            <>
-              <div className="h-px" style={{ background: "rgba(34,197,94,0.07)" }} />
-              <div className="font-mono-tactical text-xs tracking-widest" style={{ color: "rgba(34,197,94,0.32)" }}>
-                {activeSegment.methodology}
-              </div>
-            </>
-          )}
-
-          <div className="rounded p-3 flex items-center justify-between"
-            style={{ border: "1px solid rgba(34,197,94,0.14)", background: "rgba(34,197,94,0.03)" }}>
-            <span className="font-mono-tactical text-xs tracking-widest" style={{ color: "rgba(34,197,94,0.38)" }}>ENTER SECTOR</span>
-            <span className="font-mono-tactical text-xs" style={{ color: "rgba(34,197,94,0.28)" }}>{activeSegment.path}</span>
+          {/* Enter CTA */}
+          <div className="px-6 py-4" style={{ borderTop: "1px solid rgba(34,197,94,0.07)" }}>
+            <div className="rounded px-4 py-2.5 flex items-center justify-between"
+              style={{ border: "1px solid rgba(34,197,94,0.16)", background: "rgba(34,197,94,0.04)" }}>
+              <span className="font-mono-tactical tracking-widest"
+                style={{ color: "rgba(34,197,94,0.5)", fontSize: "9.5px", letterSpacing: "0.14em" }}>
+                ENTER SECTOR
+              </span>
+              <span className="font-mono-tactical"
+                style={{ color: "rgba(34,197,94,0.28)", fontSize: "9.5px" }}>
+                {activeSegment.path}
+              </span>
+            </div>
           </div>
         </div>
       ) : (
-        <div className="space-y-5">
-          <div>
-            <div className="font-mono-tactical text-xs tracking-widest uppercase mb-3" style={{ color: "rgba(34,197,94,0.38)" }}>
+        <div className="flex flex-col h-full">
+          {/* Default header */}
+          <div className="px-6 pt-7 pb-5" style={{ borderBottom: "1px solid rgba(34,197,94,0.07)" }}>
+            <div className="font-mono-tactical tracking-widest uppercase mb-2"
+              style={{ color: "rgba(34,197,94,0.28)", fontSize: "9px", letterSpacing: "0.2em" }}>
               Platform Overview
             </div>
-            <div className="font-orbitron text-base font-bold tracking-wide leading-snug" style={{ color: "rgba(34,197,94,0.7)" }}>
-              {DEFAULT.headline}
+            <div className="font-orbitron text-base font-bold tracking-wide leading-snug"
+              style={{ color: "rgba(34,197,94,0.6)" }}>
+              Signal to structure — how INDEX works
             </div>
           </div>
 
-          <div className="h-px" style={{ background: "rgba(34,197,94,0.07)" }} />
-
-          {DEFAULT.paragraphs.map((p, i) => (
-            <p key={i} className="font-mono-tactical text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.32)", lineHeight: "1.9", fontSize: "11px" }}>
-              {p}
+          {/* Default body */}
+          <div className="flex-1 px-6 py-5 space-y-5">
+            <p className="font-mono-tactical leading-relaxed"
+              style={{ color: "rgba(255,255,255,0.28)", lineHeight: "1.92", fontSize: "10.5px" }}>
+              INDEX operates a defined pipeline: signals are monitored, classified, and structured
+              into datasets and indexed records. The command wheel maps the six public sectors.
             </p>
-          ))}
+            <p className="font-mono-tactical leading-relaxed"
+              style={{ color: "rgba(255,255,255,0.28)", lineHeight: "1.92", fontSize: "10.5px" }}>
+              Each sector represents a distinct layer of the INDEX architecture — from signal intake through structured data to the access boundary.
+            </p>
 
-          <div className="h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
+            <div className="h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
 
-          <div className="space-y-2">
-            <div className="font-mono-tactical text-xs tracking-widest uppercase mb-2" style={{ color: "rgba(34,197,94,0.28)" }}>
-              Sector Index
-            </div>
-            {segments.map((seg, i) => (
-              <div key={seg.label} className="flex items-center gap-2.5 py-0.5">
-                <span className="font-mono-tactical text-xs flex-shrink-0" style={{ color: "rgba(34,197,94,0.22)", fontSize: "9.5px" }}>
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="flex-1 h-px" style={{ background: "rgba(34,197,94,0.07)" }} />
-                <span className="font-orbitron text-xs font-semibold tracking-wider flex-shrink-0" style={{ color: "rgba(34,197,94,0.42)", fontSize: "8.5px" }}>
-                  {seg.label}
-                </span>
+            <div className="space-y-1">
+              <div className="font-mono-tactical tracking-widest uppercase mb-3"
+                style={{ color: "rgba(34,197,94,0.24)", fontSize: "9px", letterSpacing: "0.18em" }}>
+                Sector Index
               </div>
-            ))}
+              {segments.map((seg, i) => (
+                <div key={seg.label} className="flex items-center gap-2.5 py-0.5">
+                  <span className="font-mono-tactical flex-shrink-0"
+                    style={{ color: "rgba(34,197,94,0.2)", fontSize: "9px" }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="flex-1 h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
+                  <span className="font-orbitron font-semibold tracking-wider flex-shrink-0"
+                    style={{ color: "rgba(34,197,94,0.38)", fontSize: "8.5px" }}>
+                    {seg.label}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
