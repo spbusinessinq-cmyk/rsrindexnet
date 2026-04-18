@@ -1,0 +1,269 @@
+We are continuing the INDEX build.
+
+Important correction:
+This is a WEBSITE, not just an interface experiment.
+That means branding must reinforce identity clearly and consistently.
+
+INDEX should NOT feel detached from RSR.
+It should be obvious that:
+
+INDEX is the DATA subset / data division / data network team within the broader RSR ecosystem.
+
+This relationship must be clear without making INDEX feel like a copy of the main RSR Intel site.
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Refine the branding, identity hierarchy, and page language so that the site clearly communicates:
+
+- INDEX is its own product/system
+- INDEX is the public-facing data network
+- INDEX exists inside the RSR Intelligence ecosystem
+- INDEX is the data subset team / data layer / data network arm of RSR
+- this is not a separate unrelated brand
+- this is not a duplicate of the intel site
+
+We need:
+- stronger identity hierarchy
+- clearer branded language
+- better website-level brand reinforcement
+- more consistent product naming across pages
+
+Do NOT redesign the app.
+Do NOT replace the wheel.
+Do NOT revert to the old duplicated intel-site structure.
+Do NOT make RSR dominate the entire interface.
+Do NOT make INDEX feel disconnected from RSR.
+
+We need a clean parent/sub-brand system.
+
+━━━━━━━━━━━━━━━━━━
+BRAND HIERARCHY TO ESTABLISH
+━━━━━━━━━━━━━━━━━━
+
+The hierarchy should feel like this:
+
+Parent:
+RSR Intelligence Network
+
+Subset / division / data arm:
+INDEX Data Network
+
+This means the site should communicate:
+
+INDEX Data Network
+An RSR Data Systems Division
+
+OR
+
+INDEX Data Network
+A structured data subsystem of the RSR Intelligence Network
+
+OR similar language that cleanly expresses:
+- parent brand = RSR
+- product / subset = INDEX
+- role = data network / structured data layer
+
+Do not make this verbose.
+Do not turn it into corporate fluff.
+Keep it sharp and premium.
+
+━━━━━━━━━━━━━━━━━━
+IDENTITY RULES
+━━━━━━━━━━━━━━━━━━
+
+We need two things true at the same time:
+
+1. INDEX should remain the main public-facing name on this site
+2. RSR should be visibly acknowledged as the parent system / ecosystem
+
+This means:
+
+- INDEX should remain the dominant product mark
+- RSR should appear as the parent system, sponsor, or ecosystem
+- the relationship should be visible in top bars, intro blocks, and key identity areas
+- the wording should be intentional, not random
+
+Examples of acceptable phrasing:
+- INDEX Data Network
+- An RSR Data Systems Division
+- Operated within the RSR Intelligence Network
+- Structured Data Layer — RSR Intelligence Network
+- INDEX / RSR Data Division
+
+Choose one clean system and apply it consistently.
+
+━━━━━━━━━━━━━━━━━━
+HOMEPAGE BRANDING PASS
+━━━━━━━━━━━━━━━━━━
+
+Refine the homepage so branding is clearer.
+
+Improve:
+- top bar identity
+- left panel intro block
+- center hub supporting text
+- right panel “Platform Identity” area
+- footer / bottom bar if applicable
+
+Goals:
+- INDEX is unmistakably the product
+- RSR is unmistakably the parent ecosystem
+- users immediately understand this is the data side of RSR
+- no confusion that INDEX is some unrelated standalone company
+
+Possible homepage structure:
+- top center lockup: INDEX Data Network
+- supporting subline: RSR Intelligence Network — Data Systems Division
+- hub center: INDEX
+- hub subline: Data Network
+- side panel text: Public data interface of the RSR Intelligence Network
+
+Do NOT overdo repetition.
+Do NOT clutter the page with branding everywhere.
+Use disciplined placement.
+
+━━━━━━━━━━━━━━━━━━
+COPY / WORDING PASS
+━━━━━━━━━━━━━━━━━━
+
+Right now the product identity is close, but it needs cleaner website copy.
+
+Review page intro copy and align it to one consistent idea:
+
+INDEX is the structured data network operated as the data subset of the broader RSR Intelligence ecosystem.
+
+Use cleaner variations of this across the site.
+
+The site should clearly communicate:
+- INDEX structures signals into data
+- INDEX manages datasets and record indexing
+- INDEX is part of RSR’s larger intelligence architecture
+- INDEX is the data arm, not the editorial arm
+
+Avoid:
+- vague branding
+- detached branding
+- generic “data network” wording with no ecosystem reference
+- over-corporate brand copy
+- startup slogans
+
+Tone:
+- clean
+- analytical
+- serious
+- premium
+- website-grade
+- brand-aware
+
+━━━━━━━━━━━━━━━━━━
+GLOBAL BRAND CONSISTENCY PASS
+━━━━━━━━━━━━━━━━━━
+
+Make branding consistent across all pages.
+
+This includes:
+- top bar
+- PageHeader subtitle or context line
+- side panel identity blocks
+- footer/bottom bar
+- access page references
+- overview page intro text
+
+Every page should reinforce the same identity relationship.
+
+Not necessarily with the exact same sentence every time,
+but the same brand structure.
+
+Examples:
+- INDEX Data Network
+- RSR Data Systems Division
+- Structured data layer of the RSR Intelligence Network
+- Public data interface within the RSR ecosystem
+
+Make this feel cohesive.
+
+━━━━━━━━━━━━━━━━━━
+OVERVIEW PAGE BRANDING
+━━━━━━━━━━━━━━━━━━
+
+The Overview page should explicitly explain where INDEX sits.
+
+Add or refine content so it clearly establishes:
+- what INDEX is
+- what INDEX is not
+- where INDEX fits inside RSR
+- that INDEX is the data layer, not the editorial/investigative site
+
+This page should help users understand the brand relationship immediately.
+
+━━━━━━━━━━━━━━━━━━
+ACCESS PAGE BRANDING
+━━━━━━━━━━━━━━━━━━
+
+ACCESS should also reinforce ecosystem relationship.
+
+It should make clear:
+- public users are viewing INDEX’s public layer
+- restricted/operator access belongs to deeper RSR-controlled environments
+- INDEX is the public-facing data network inside a larger operational architecture
+
+Do not dump backend tooling here.
+But the page should make it clear the deeper layer belongs to the RSR system.
+
+━━━━━━━━━━━━━━━━━━
+WHEEL / HUB BRAND REFINEMENT
+━━━━━━━━━━━━━━━━━━
+
+Do not redesign the wheel.
+
+But refine the hub text and nearby descriptors so the product/sub-brand relationship is cleaner.
+
+The wheel center should still feel like:
+INDEX
+
+But the supporting labels around it should better communicate:
+- Data Network
+- RSR subsystem / division / structured data layer
+
+Keep it elegant.
+Keep it minimal.
+Do not overload the hub with text.
+
+━━━━━━━━━━━━━━━━━━
+DESIGN RULES
+━━━━━━━━━━━━━━━━━━
+
+Keep:
+- black / near-black base
+- restrained green accents
+- steel / graphite support tones
+- premium tactical typography
+- dark product aesthetic
+
+Avoid:
+- plastering RSR everywhere
+- making INDEX feel secondary
+- confusing hierarchy
+- repetitive copy
+- overly corporate “division” language spam
+
+This is a website brand hierarchy problem.
+Solve it like a real product system.
+
+━━━━━━━━━━━━━━━━━━
+IMPLEMENTATION GOAL
+━━━━━━━━━━━━━━━━━━
+
+Implement a branding and identity reinforcement pass so that:
+
+- INDEX remains the main product name
+- RSR is clearly established as the parent ecosystem
+- the site clearly reads as the data subset / data division / data network arm of RSR
+- branding is consistent across the site
+- the homepage, overview, and access pages communicate this relationship cleanly
+- the result feels like a real website with real brand hierarchy
+
+Do not explain what you will do.
+Implement the pass in code now.

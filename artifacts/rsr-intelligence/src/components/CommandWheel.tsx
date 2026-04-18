@@ -418,10 +418,10 @@ export default function CommandWheel({ segments, onHover, onSegmentClick }: Comm
           <text x={cx} y={cy - 27}
             textAnchor="middle" dominantBaseline="middle"
             fontSize="6" fontFamily="'Share Tech Mono', monospace"
-            fill={G} fillOpacity={hubActive ? 0.58 : 0.35}
-            letterSpacing="0.42em"
+            fill={G} fillOpacity={hubActive ? 0.55 : 0.32}
+            letterSpacing="0.36em"
             style={{ transition: "fill-opacity 0.35s ease" }}>
-            SYSTEM
+            RSR
           </text>
 
           <text x={cx} y={cy - 3}

@@ -143,11 +143,11 @@ export default function RightPanel({ hoveredSegment, segments }: RightPanelProps
           <div className="px-6 pt-7 pb-5" style={{ borderBottom: "1px solid rgba(34,197,94,0.07)" }}>
             <div className="font-mono-tactical tracking-widest uppercase mb-2"
               style={{ color: "rgba(34,197,94,0.45)", fontSize: "9px", letterSpacing: "0.2em" }}>
-              Platform Overview
+              Platform Identity
             </div>
             <div className="font-orbitron text-sm font-bold tracking-wide leading-snug"
               style={{ color: "rgba(34,197,94,0.62)" }}>
-              Signal to structure — how INDEX works
+              INDEX — the data layer of the RSR Intelligence Network
             </div>
           </div>
 
@@ -155,14 +155,14 @@ export default function RightPanel({ hoveredSegment, segments }: RightPanelProps
           <div className="flex-1 px-6 py-5 space-y-4">
             <p className="font-mono-tactical leading-relaxed"
               style={{ color: "rgba(185,205,200,0.6)", lineHeight: "1.95", fontSize: "11px" }}>
-              INDEX operates a defined pipeline: signals are monitored, classified, and structured
-              into datasets and indexed records. The command wheel maps the six public sectors of
-              the INDEX Data Network.
+              INDEX is the structured data division of the RSR Intelligence Network. It is not the
+              editorial or investigative arm — it is the data architecture layer: signal intake,
+              dataset structuring, and record indexing.
             </p>
             <p className="font-mono-tactical leading-relaxed"
               style={{ color: "rgba(185,205,200,0.55)", lineHeight: "1.95", fontSize: "11px" }}>
-              Each sector represents a distinct layer of the INDEX architecture — from signal intake
-              through structured data to the access boundary.
+              The command wheel maps the six public sectors. Each sector represents a distinct layer
+              of the INDEX pipeline — from monitored signal intake to the access boundary.
             </p>
 
             <div className="h-px" style={{ background: "rgba(34,197,94,0.06)" }} />

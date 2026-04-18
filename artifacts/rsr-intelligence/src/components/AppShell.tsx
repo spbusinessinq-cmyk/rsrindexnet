@@ -48,12 +48,12 @@ export default function AppShell({ children }: AppShellProps) {
 
         <div className="flex flex-col items-center">
           <span className="font-orbitron font-bold tracking-widest"
-            style={{ color: "rgba(34,197,94,0.45)", fontSize: "11px", letterSpacing: "0.25em" }}>
-            INDEX
+            style={{ color: "rgba(34,197,94,0.48)", fontSize: "11px", letterSpacing: "0.25em" }}>
+            INDEX DATA NETWORK
           </span>
           <span className="font-mono-tactical tracking-widest"
-            style={{ color: "rgba(155,175,170,0.38)", fontSize: "8px", letterSpacing: "0.2em" }}>
-            DATA NETWORK
+            style={{ color: "rgba(155,175,170,0.35)", fontSize: "8px", letterSpacing: "0.2em" }}>
+            RSR INTELLIGENCE NETWORK — DATA SYSTEMS
           </span>
         </div>
 
@@ -145,11 +145,11 @@ export default function AppShell({ children }: AppShellProps) {
         </span>
         <div className="flex items-center gap-3">
           <span className="font-mono-tactical" style={{ color: "rgba(155,175,170,0.22)", fontSize: "9px" }}>
-            SIGNAL LAYER ACTIVE
+            RSR DATA SYSTEMS
           </span>
           <div className="w-1 h-1 rounded-full status-pulse" style={{ background: "rgba(34,197,94,0.3)" }} />
           <span className="font-mono-tactical" style={{ color: "rgba(155,175,170,0.22)", fontSize: "9px" }}>
-            PUBLIC LAYER
+            PUBLIC LAYER ACTIVE
           </span>
         </div>
         <span className="font-mono-tactical tracking-widest"

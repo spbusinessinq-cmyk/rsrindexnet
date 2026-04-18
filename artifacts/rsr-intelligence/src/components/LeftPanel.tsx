@@ -40,8 +40,8 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
       {/* Identity block */}
       <div className="px-6 pt-7 pb-5" style={{ borderBottom: "1px solid rgba(34,197,94,0.07)" }}>
         <div className="font-mono-tactical tracking-widest uppercase mb-1"
-          style={{ color: "rgba(34,197,94,0.48)", letterSpacing: "0.2em", fontSize: "9px" }}>
-          Data Network
+          style={{ color: "rgba(34,197,94,0.42)", letterSpacing: "0.2em", fontSize: "9px" }}>
+          RSR Intelligence Network
         </div>
         <h2 className="font-orbitron text-4xl font-bold tracking-wide leading-none mb-1"
           style={{ color: "#22c55e", textShadow: "0 0 24px rgba(34,197,94,0.16)", letterSpacing: "0.04em" }}>
@@ -49,12 +49,12 @@ export default function LeftPanel({ hoveredSegment, segments }: LeftPanelProps) 
         </h2>
         <div className="font-mono-tactical mb-4"
           style={{ color: "rgba(155,175,170,0.5)", fontSize: "9px", letterSpacing: "0.16em" }}>
-          Structured Signal Network
+          Data Systems Division
         </div>
         <p className="font-mono-tactical leading-relaxed"
           style={{ color: "rgba(185,205,200,0.6)", lineHeight: "1.92", fontSize: "11px" }}>
-          A structured data and signal network. INDEX monitors inputs, structures them into classified
-          datasets, and builds a traversable record index.
+          The public-facing data network of the RSR Intelligence Network. INDEX monitors signals,
+          structures them into classified datasets, and builds a traversable record index.
         </p>
       </div>
 

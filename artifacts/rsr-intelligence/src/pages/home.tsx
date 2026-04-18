@@ -79,12 +79,12 @@ export default function Home() {
         </div>
         <div className="flex flex-col items-center">
           <span className="font-orbitron font-bold tracking-widest hidden md:block"
-            style={{ color: "rgba(34,197,94,0.4)", fontSize: "11px", letterSpacing: "0.28em" }}>
-            INDEX
+            style={{ color: "rgba(34,197,94,0.45)", fontSize: "11px", letterSpacing: "0.22em" }}>
+            INDEX DATA NETWORK
           </span>
           <span className="font-mono-tactical tracking-widest hidden md:block"
-            style={{ color: "rgba(155,175,170,0.35)", fontSize: "8px", letterSpacing: "0.22em" }}>
-            DATA NETWORK
+            style={{ color: "rgba(155,175,170,0.35)", fontSize: "8px", letterSpacing: "0.18em" }}>
+            RSR INTELLIGENCE NETWORK — DATA SYSTEMS
           </span>
         </div>
         <span className="font-mono-tactical text-xs"
@@ -110,12 +110,12 @@ export default function Home() {
       <div className="relative z-10 flex items-center justify-between px-6 py-2"
         style={{ borderTop: "1px solid rgba(34,197,94,0.06)" }}>
         <span className="font-mono-tactical tracking-widest"
-          style={{ color: "rgba(155,175,170,0.3)", fontSize: "9px", letterSpacing: "0.16em" }}>
+          style={{ color: "rgba(155,175,170,0.28)", fontSize: "9px", letterSpacing: "0.16em" }}>
           INDEX DATA NETWORK
         </span>
         <div className="flex items-center gap-4">
           <span className="font-mono-tactical" style={{ color: "rgba(155,175,170,0.28)", fontSize: "9px" }}>
-            6 SECTORS
+            RSR DATA SYSTEMS
           </span>
           <div className="w-1 h-1 rounded-full status-pulse" style={{ background: "rgba(34,197,94,0.35)" }} />
           <span className="font-mono-tactical" style={{ color: "rgba(155,175,170,0.28)", fontSize: "9px" }}>

@@ -90,8 +90,8 @@ export default function AccessPage() {
             <div className="rounded p-4"
               style={{ border: "1px solid rgba(100,120,115,0.12)", background: "rgba(5,8,7,0.5)" }}>
               <p className="font-mono-tactical leading-relaxed"
-                style={{ color: "rgba(180,200,195,0.32)", lineHeight: "1.92", fontSize: "10.5px" }}>
-                INDEX operates three access tiers. The public layer — this site — is open and unrestricted. It documents the platform's architecture, methodology, and analytical structure. Restricted and operator access exist beyond this boundary. They are controlled, not gated by a sign-up flow. The distinction is intentional.
+                style={{ color: "rgba(185,205,200,0.52)", lineHeight: "1.92", fontSize: "10.5px" }}>
+                INDEX operates three access tiers. The public layer — this site — is open and unrestricted. It documents the architecture, methodology, and analytical structure of the INDEX Data Network within the RSR Intelligence ecosystem. Restricted and operator access exist beyond this boundary. They are controlled environments belonging to the RSR operational layer — not gated by a sign-up flow. The distinction is intentional.
               </p>
             </div>
 
@@ -192,12 +192,12 @@ export default function AccessPage() {
                 {/* Framing text */}
                 <div className="space-y-2">
                   <div className="font-orbitron font-bold tracking-wide"
-                    style={{ color: "rgba(180,200,195,0.45)", fontSize: "11px" }}>
+                    style={{ color: "rgba(180,200,195,0.48)", fontSize: "11px" }}>
                     Restricted and Operator Access
                   </div>
                   <p className="font-mono-tactical leading-relaxed"
-                    style={{ color: "rgba(180,200,195,0.28)", lineHeight: "1.9", fontSize: "10.5px" }}>
-                    Restricted and operator-level access is not publicly available. Requests representing organisations with a documented analytical use case may be reviewed individually. There is no automated sign-up flow. Operator environments are manually provisioned — they are not self-serve.
+                    style={{ color: "rgba(185,205,200,0.42)", lineHeight: "1.9", fontSize: "10.5px" }}>
+                    Restricted and operator-level access belongs to the RSR operational layer — it is not publicly available. Requests from organisations with a documented analytical use case may be reviewed individually. There is no automated sign-up flow. Operator environments are provisioned within the RSR system and are not self-serve.
                   </p>
                 </div>
 
@@ -346,8 +346,8 @@ export default function AccessPage() {
             <div className="h-px" style={{ background: "rgba(100,120,115,0.08)" }} />
 
             <p className="font-mono-tactical leading-relaxed"
-              style={{ color: "rgba(100,120,115,0.28)", lineHeight: "1.85", fontSize: "9.5px" }}>
-              This is not a waitlist. Restricted access is not queued. Requests are assessed individually when intake is active.
+              style={{ color: "rgba(155,175,170,0.38)", lineHeight: "1.85", fontSize: "10px" }}>
+              This is not a waitlist. Restricted access is not queued. Requests are assessed individually when intake is active. Deeper access is governed by RSR — not INDEX's public interface.
             </p>
           </div>
         </div>
