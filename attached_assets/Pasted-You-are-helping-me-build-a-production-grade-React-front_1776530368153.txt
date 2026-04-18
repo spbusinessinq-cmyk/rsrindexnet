@@ -1,0 +1,187 @@
+You are helping me build a production-grade React frontend called:
+
+RSR Intelligence Network
+
+We are building this in Replit first, then transferring it into Portainer/self-hosted deployment after the UI and structure are clean.
+
+This is not a generic website.
+This is a black-first intelligence command interface.
+
+━━━━━━━━━━━━━━━━━━
+PRIMARY OBJECTIVE
+━━━━━━━━━━━━━━━━━━
+
+Build the homepage as a segmented radial command wheel.
+
+The current direction is already locked:
+
+- black background
+- subtle grid / tactical interface atmosphere
+- green is only for highlights, glow accents, active borders, and status indicators
+- center hub = RSR core
+- outer ring = segmented clickable wheel
+- homepage should feel like an operator command surface, not a SaaS landing page
+
+The reference style is:
+
+- segmented radial wheel like a control interface
+- clean, high-end, cinematic
+- tactical / intelligence / Splinter Cell / command center
+- NOT cyberpunk clutter
+- NOT startup UI
+- NOT bright green wash
+
+━━━━━━━━━━━━━━━━━━
+TECH STACK
+━━━━━━━━━━━━━━━━━━
+
+Use:
+
+- React
+- Vite
+- Tailwind CSS
+- clean component structure
+- no unnecessary libraries unless clearly needed
+
+If routing is needed, use:
+- react-router-dom
+
+Keep the build easy to migrate into Docker/Portainer later.
+
+━━━━━━━━━━━━━━━━━━
+CURRENT PAGE TO BUILD
+━━━━━━━━━━━━━━━━━━
+
+Build:
+
+RSR Homepage V2 — Command Wheel
+
+Layout:
+
+1. LEFT PANEL
+- RSR Intelligence Network label
+- title: Command Wheel
+- short tactical description
+- core system status card
+- live tool links list
+
+2. CENTER PANEL
+- large circular command wheel
+- center circle = RSR core
+- segmented outer wheel around it
+- each segment clickable
+- subtle glow, subtle rings, subtle borders
+- no messy node-cloud look
+- no cartoon styling
+- strong premium command aesthetic
+
+3. RIGHT PANEL
+- section explaining wheel intent
+- route info
+- next pass / build notes
+- maintain same visual language as left panel
+
+━━━━━━━━━━━━━━━━━━
+SEGMENTS REQUIRED
+━━━━━━━━━━━━━━━━━━
+
+The outer command wheel must include these sections:
+
+- SYSTEMS → /systems
+- SIGNALS → /signals
+- TOOLS → /tools
+- FILES → /files
+- BRIEFS → /briefs
+- NETWORK → /network
+
+These should appear as radial segments around the center hub.
+
+Center hub text:
+- CORE
+- RSR
+- Intelligence Network
+
+━━━━━━━━━━━━━━━━━━
+REAL TOOL LINKS
+━━━━━━━━━━━━━━━━━━
+
+In the left panel, include working external links to these local services:
+
+- Flowise → http://192.168.12.228:3025
+- Intel Board → http://192.168.12.228:3000
+- Open WebUI → http://192.168.12.228:3001
+- Portainer → http://192.168.12.228:9000
+
+These should be real anchor links that open in a new tab.
+
+━━━━━━━━━━━━━━━━━━
+VISUAL RULES
+━━━━━━━━━━━━━━━━━━
+
+Strict rules:
+
+- black / near-black base
+- green only as accent
+- glassy dark panels are okay
+- subtle borders
+- subtle glow only
+- use clean spacing
+- sharp and serious
+- premium command-center feel
+- no bright hero gradients
+- no cheesy AI marketing visuals
+- no stacked homepage cards replacing the wheel
+- homepage focus must remain the wheel
+
+━━━━━━━━━━━━━━━━━━
+INTERACTION RULES
+━━━━━━━━━━━━━━━━━━
+
+- wheel segments should hover cleanly
+- hover = slight glow / border enhancement / tiny lift
+- center hub should feel active
+- clickable segments must clearly feel interactive
+- do not overanimate
+- no spinning gimmicks
+- no unnecessary motion overload
+
+━━━━━━━━━━━━━━━━━━
+IMPORTANT DESIGN CORRECTION
+━━━━━━━━━━━━━━━━━━
+
+We already moved away from a loose “spider web node map.”
+
+DO NOT revert to floating web nodes.
+
+This homepage is now a:
+SEGMENTED RADIAL COMMAND WHEEL
+
+That direction is locked.
+
+━━━━━━━━━━━━━━━━━━
+DELIVERABLE
+━━━━━━━━━━━━━━━━━━
+
+Create a clean React component for the homepage that is fully renderable in Replit preview.
+
+Also organize the code so it will be easy to migrate later into Portainer.
+
+If needed, create:
+- App.tsx
+- main homepage component
+- minimal supporting styles
+- minimal route scaffolding
+
+━━━━━━━━━━━━━━━━━━
+CODING INSTRUCTIONS
+━━━━━━━━━━━━━━━━━━
+
+- produce real code, not explanation
+- do not stop at mockup text
+- do not describe what you would do
+- directly implement it
+- keep code clean and readable
+- keep everything production-lean
+- preserve the tactical aesthetic
+
+Start building now.

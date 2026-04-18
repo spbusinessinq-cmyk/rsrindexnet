@@ -25,3 +25,29 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - `pnpm --filter @workspace/api-server run dev` — run API server locally
 
 See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+
+## Artifacts
+
+### RSR Intelligence Network (`artifacts/rsr-intelligence`)
+- **Type**: React + Vite frontend (no backend)
+- **Preview path**: `/`
+- **Description**: Black-first tactical command interface for RSR Intelligence Network
+- **Tech**: React, Vite, Tailwind CSS, wouter (routing), Orbitron/Rajdhani/Share Tech Mono fonts
+- **Features**:
+  - Full-screen three-panel layout (left panel, center command wheel, right panel)
+  - SVG segmented radial command wheel with 6 clickable segments: SYSTEMS, SIGNALS, TOOLS, FILES, BRIEFS, NETWORK
+  - Center hub: CORE / RSR / Intelligence Network
+  - Live tool links in left panel: Flowise, Intel Board, Open WebUI, Portainer
+  - Tactical status indicators, module index, route map
+  - Dark green-on-black aesthetic with subtle glow effects and tactical grid overlay
+  - Hover interaction: segment glow + border enhancement + module context preview
+  - Stub module pages at /systems, /signals, /tools, /files, /briefs, /network
+
+### API Server (`artifacts/api-server`)
+- **Type**: Express 5 API
+- **Preview path**: `/api`
+- **Description**: Shared backend API server
+
+### Canvas / Mockup Sandbox (`artifacts/mockup-sandbox`)
+- **Type**: Design mockup sandbox
+- **Preview path**: `/__mockup`
