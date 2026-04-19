@@ -133,84 +133,67 @@ function WheelIcon({ label, active }: { label: string; active: boolean }) {
 /* ── Main component ────────────────────────────────────────────── */
 export default function CommandWheel({ segments, onHover, onSegmentClick }: CommandWheelProps) {
   const [hovered, setHovered]   = useState<number | null>(null);
-  const [clicked, setClicked]   = useState<number | null>(null);
-  const [parallax, setParallax] = useState({ x: 0, y: 0 });
-  const svgRef = useRef<SVGSVGElement>(null);
+  const [clicked, setClicked] = useState<number | null>(null);
+  const svgRef     = useRef<SVGSVGElement>(null);
+  const hubRef     = useRef<SVGGElement>(null);
 
-  /* ── Parallax — RAF lerp, zero state thrash ───────────────────
-     Target values are written via ref on every mousemove.
-     A single RAF loop interpolates current → target and only
-     calls setParallax when the delta is worth rendering.
-     Amplitude clamped to ±5.5px; lerp factor 0.09 → buttery.
+  /* ── Parallax — direct DOM write, zero React re-renders ───────
+     Mouse position is written to targetRef only.
+     A single RAF loop lerps current → target and sets
+     hubRef.current.style.transform directly — no setState,
+     no React reconciliation on every frame.
+     Amplitude ±4px, lerp 0.08 — subtle and smooth.
   ─────────────────────────────────────────────────────────── */
   const targetRef  = useRef({ x: 0, y: 0 });
   const currentRef = useRef({ x: 0, y: 0 });
   const rafRef     = useRef<number | null>(null);
 
-  const animateParallax = useCallback(() => {
-    const LERP = 0.09;
-    const tx = targetRef.current.x;
-    const ty = targetRef.current.y;
-    const cx_ = currentRef.current.x;
-    const cy_ = currentRef.current.y;
-    const nx = cx_ + (tx - cx_) * LERP;
-    const ny = cy_ + (ty - cy_) * LERP;
-    currentRef.current = { x: nx, y: ny };
-    if (Math.abs(nx - cx_) > 0.015 || Math.abs(ny - cy_) > 0.015) {
-      setParallax({ x: nx, y: ny });
-    }
-    rafRef.current = requestAnimationFrame(animateParallax);
-  }, []);
-
   useEffect(() => {
-    rafRef.current = requestAnimationFrame(animateParallax);
+    const loop = () => {
+      const LERP = 0.08;
+      const { x: tx, y: ty } = targetRef.current;
+      const { x: cx_, y: cy_ } = currentRef.current;
+      const nx = cx_ + (tx - cx_) * LERP;
+      const ny = cy_ + (ty - cy_) * LERP;
+      currentRef.current = { x: nx, y: ny };
+      if (hubRef.current) {
+        hubRef.current.style.transform = `translate(${nx.toFixed(3)}px, ${ny.toFixed(3)}px)`;
+      }
+      rafRef.current = requestAnimationFrame(loop);
+    };
+    rafRef.current = requestAnimationFrame(loop);
     return () => { if (rafRef.current !== null) cancelAnimationFrame(rafRef.current); };
-  }, [animateParallax]);
+  }, []);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<SVGSVGElement>) => {
     const rect = svgRef.current?.getBoundingClientRect();
     if (!rect) return;
+    const AMP = 4;
     const dx = (e.clientX - rect.left - rect.width  / 2) / rect.width;
     const dy = (e.clientY - rect.top  - rect.height / 2) / rect.height;
-    const AMP = 5.5;
     targetRef.current = {
       x: Math.max(-AMP, Math.min(AMP, dx * AMP * 2)),
       y: Math.max(-AMP, Math.min(AMP, dy * AMP * 2)),
     };
   }, []);
 
-  const handleMouseLeave = useCallback(() => {
-    targetRef.current = { x: 0, y: 0 };
-  }, []);
-
-  /* ── Hover — debounced leave prevents inter-sector flicker ───
-     When the cursor crosses the gap between segments the browser
-     fires mouseLeave then immediately mouseEnter. A 45ms timeout
-     on leave gives the next enter time to cancel it, so the hub
-     and indicator bar never flash to idle mid-transit.
+  /* ── Hover — SVG-level leave only, no per-segment timers ──────
+     Per-segment: onMouseEnter sets hovered immediately.
+     Clearing: only fires from the SVG container's onMouseLeave,
+     which triggers when the mouse exits the whole wheel —
+     not on every inter-segment crossing.
+     Zero timers, zero races.
   ─────────────────────────────────────────────────────────── */
-  const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
   const enter = useCallback((i: number) => {
-    if (leaveTimer.current !== null) {
-      clearTimeout(leaveTimer.current);
-      leaveTimer.current = null;
-    }
     setHovered(i);
     onHover(segments[i].label);
   }, [onHover, segments]);
 
-  const leave = useCallback(() => {
-    leaveTimer.current = setTimeout(() => {
-      leaveTimer.current = null;
-      setHovered(null);
-      onHover(null);
-    }, 45);
+  const clearHover = useCallback(() => {
+    targetRef.current = { x: 0, y: 0 };
+    setHovered(null);
+    onHover(null);
   }, [onHover]);
-
-  useEffect(() => {
-    return () => { if (leaveTimer.current !== null) clearTimeout(leaveTimer.current); };
-  }, []);
 
   const SIZE  = 540;
   const cx    = SIZE / 2;
@@ -254,7 +237,7 @@ export default function CommandWheel({ segments, onHover, onSegmentClick }: Comm
         viewBox={`0 0 ${SIZE} ${SIZE}`}
         style={{ overflow: "visible", width: "100%", height: "auto" }}
         onMouseMove={handleMouseMove}
-        onMouseLeave={() => { handleMouseLeave(); leave(); }}
+        onMouseLeave={clearHover}
       >
         <defs>
           <filter id="f-glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -349,7 +332,6 @@ export default function CommandWheel({ segments, onHover, onSegmentClick }: Comm
             <g key={seg.label}
               style={{ cursor: "pointer" }}
               onMouseEnter={() => enter(i)}
-              onMouseLeave={leave}
               onClick={() => click(i)}
             >
               <path d={hitPth} fill="transparent" />
@@ -412,10 +394,7 @@ export default function CommandWheel({ segments, onHover, onSegmentClick }: Comm
         })}
 
         {/* ── Hub ────────────────────────────────────────────── */}
-        <g style={{
-          transform: `translate(${parallax.x}px, ${parallax.y}px)`,
-          transition: "transform 0.7s cubic-bezier(0.16,1,0.3,1)",
-        }}>
+        <g ref={hubRef}>
           <circle cx={cx} cy={cy} r={INNER - 3}
             fill={hubActive ? "url(#rg-hub-act)" : "url(#rg-hub)"}
             filter={hubActive ? "url(#f-hub)" : undefined}

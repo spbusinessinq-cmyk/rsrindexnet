@@ -1,0 +1,156 @@
+We are doing one final corrective pass on the INDEX homepage wheel interaction.
+
+The last motion/parallax fix did NOT solve it.
+It is still buggy.
+
+This is NOT a redesign.
+This is NOT a visual pass.
+This is a strict interaction stability fix.
+
+━━━━━━━━━━━━━━━━━━
+PROBLEM
+━━━━━━━━━━━━━━━━━━
+
+The homepage command wheel still wigs out when moving quickly across sectors/tabs.
+The motion does not feel stable or buttery.
+The hover + parallax behavior is still fighting itself.
+
+I do NOT want another “soft smoothing” attempt.
+I want the interaction logic simplified and made deterministic.
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Make the wheel interaction feel:
+- stable
+- deterministic
+- premium
+- smooth
+- non-jittery
+- non-glitchy
+
+Priority:
+STABILITY OVER FANCINESS
+
+If a motion effect causes instability, reduce it or remove it.
+
+━━━━━━━━━━━━━━━━━━
+HARD REQUIREMENTS
+━━━━━━━━━━━━━━━━━━
+
+1. REMOVE ANY INTERACTION CONFLICT
+Audit and simplify all logic affecting:
+- hover state
+- active sector state
+- parallax
+- sector transitions
+- ring/trace reactions tied to pointer movement
+
+There should be NO fighting between:
+- pointer tracking
+- hover enter/leave
+- active visual state
+- animation timing
+
+2. PARALLAX MUST BE EITHER:
+- extremely subtle and perfectly stable
+OR
+- disabled entirely if it is the source of instability
+
+Do not protect parallax for its own sake.
+If it causes bugs, kill it.
+
+3. SECTOR HOVER MUST BE DIRECT AND CLEAN
+When moving between sectors:
+- no flicker
+- no lingering previous state
+- no snap-back
+- no delayed weirdness
+- no transition race conditions
+
+Hover should switch cleanly from sector to sector.
+
+4. REMOVE OVERENGINEERED POINTER LOGIC
+If current logic uses:
+- too many refs
+- delayed leave timers
+- multiple animation loops
+- pointer smoothing stacked with hover smoothing
+- state updates from too many places
+
+Simplify it.
+
+Prefer:
+- fewer moving parts
+- fewer effects
+- fewer timers
+- fewer competing transitions
+
+5. KEEP ONLY THE MOTION THAT ACTUALLY WORKS
+Allowed:
+- passive ambient ring motion that is independent of pointer
+- clean hover highlight on sector
+- clean active sector card update
+- maybe extremely small center shift if truly stable
+
+Not allowed:
+- interaction motion that makes the wheel feel unstable
+- pointer behavior that causes visible wigging out
+- anything that makes hover feel unreliable
+
+━━━━━━━━━━━━━━━━━━
+PREFERRED IMPLEMENTATION DIRECTION
+━━━━━━━━━━━━━━━━━━
+
+Use the simplest stable model.
+
+Recommended:
+- keep ambient ring animations purely CSS and independent
+- sector hover should be CSS-first if possible
+- React state should only track the currently hovered/selected sector
+- do NOT run complicated pointer-based transforms unless they are proven stable
+- if needed, remove parallax completely and keep only hover/active sector transitions
+
+If a small parallax is retained:
+- it must be tiny
+- it must update smoothly
+- it must not depend on hover switching
+- it must not visually lag behind sector changes
+- it must reset cleanly on mouse leave
+
+━━━━━━━━━━━━━━━━━━
+SPECIFIC QA TARGETS
+━━━━━━━━━━━━━━━━━━
+
+After the fix, verify:
+- moving quickly across all 6 sectors feels smooth
+- no visual stutter when crossing sector boundaries
+- no stuck highlights
+- no delayed leave artifacts
+- no jump when entering/exiting wheel
+- no motion weirdness when moving from sector to sector rapidly
+- wheel remains visually premium
+
+━━━━━━━━━━━━━━━━━━
+IMPORTANT
+━━━━━━━━━━━━━━━━━━
+
+Do NOT give me another “technically smoother but still buggy” version.
+If necessary, reduce the interaction complexity aggressively.
+
+The right answer is:
+clean, stable, premium
+
+Not:
+complex, clever, fragile
+
+━━━━━━━━━━━━━━━━━━
+DELIVERABLE
+━━━━━━━━━━━━━━━━━━
+
+Implement the fix in code now.
+
+Do not explain what you plan to do.
+Do not keep unstable parallax just because it looks cool.
+Ship the most stable version of the wheel interaction.
