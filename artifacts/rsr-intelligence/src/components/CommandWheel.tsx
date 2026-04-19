@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 
 interface Segment {
   label: string;
@@ -137,16 +137,79 @@ export default function CommandWheel({ segments, onHover, onSegmentClick }: Comm
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const svgRef = useRef<SVGSVGElement>(null);
 
+  /* ── Parallax — RAF lerp, zero state thrash ───────────────────
+     Target values are written via ref on every mousemove.
+     A single RAF loop interpolates current → target and only
+     calls setParallax when the delta is worth rendering.
+     Amplitude clamped to ±5.5px; lerp factor 0.09 → buttery.
+  ─────────────────────────────────────────────────────────── */
+  const targetRef  = useRef({ x: 0, y: 0 });
+  const currentRef = useRef({ x: 0, y: 0 });
+  const rafRef     = useRef<number | null>(null);
+
+  const animateParallax = useCallback(() => {
+    const LERP = 0.09;
+    const tx = targetRef.current.x;
+    const ty = targetRef.current.y;
+    const cx_ = currentRef.current.x;
+    const cy_ = currentRef.current.y;
+    const nx = cx_ + (tx - cx_) * LERP;
+    const ny = cy_ + (ty - cy_) * LERP;
+    currentRef.current = { x: nx, y: ny };
+    if (Math.abs(nx - cx_) > 0.015 || Math.abs(ny - cy_) > 0.015) {
+      setParallax({ x: nx, y: ny });
+    }
+    rafRef.current = requestAnimationFrame(animateParallax);
+  }, []);
+
+  useEffect(() => {
+    rafRef.current = requestAnimationFrame(animateParallax);
+    return () => { if (rafRef.current !== null) cancelAnimationFrame(rafRef.current); };
+  }, [animateParallax]);
+
   const handleMouseMove = useCallback((e: React.MouseEvent<SVGSVGElement>) => {
     const rect = svgRef.current?.getBoundingClientRect();
     if (!rect) return;
     const dx = (e.clientX - rect.left - rect.width  / 2) / rect.width;
     const dy = (e.clientY - rect.top  - rect.height / 2) / rect.height;
-    setParallax({ x: dx * 7, y: dy * 7 });
+    const AMP = 5.5;
+    targetRef.current = {
+      x: Math.max(-AMP, Math.min(AMP, dx * AMP * 2)),
+      y: Math.max(-AMP, Math.min(AMP, dy * AMP * 2)),
+    };
   }, []);
 
   const handleMouseLeave = useCallback(() => {
-    setParallax({ x: 0, y: 0 });
+    targetRef.current = { x: 0, y: 0 };
+  }, []);
+
+  /* ── Hover — debounced leave prevents inter-sector flicker ───
+     When the cursor crosses the gap between segments the browser
+     fires mouseLeave then immediately mouseEnter. A 45ms timeout
+     on leave gives the next enter time to cancel it, so the hub
+     and indicator bar never flash to idle mid-transit.
+  ─────────────────────────────────────────────────────────── */
+  const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const enter = useCallback((i: number) => {
+    if (leaveTimer.current !== null) {
+      clearTimeout(leaveTimer.current);
+      leaveTimer.current = null;
+    }
+    setHovered(i);
+    onHover(segments[i].label);
+  }, [onHover, segments]);
+
+  const leave = useCallback(() => {
+    leaveTimer.current = setTimeout(() => {
+      leaveTimer.current = null;
+      setHovered(null);
+      onHover(null);
+    }, 45);
+  }, [onHover]);
+
+  useEffect(() => {
+    return () => { if (leaveTimer.current !== null) clearTimeout(leaveTimer.current); };
   }, []);
 
   const SIZE  = 540;
@@ -173,8 +236,6 @@ export default function CommandWheel({ segments, onHover, onSegmentClick }: Comm
   const C_TRACE = 2 * Math.PI * TRACE_R;
   const C_OUTER = 2 * Math.PI * (OUTER + 52);
 
-  const enter = (i: number) => { setHovered(i); onHover(segments[i].label); };
-  const leave = () => { setHovered(null); onHover(null); };
   const click = (i: number) => {
     setClicked(i);
     setTimeout(() => setClicked(null), 340);

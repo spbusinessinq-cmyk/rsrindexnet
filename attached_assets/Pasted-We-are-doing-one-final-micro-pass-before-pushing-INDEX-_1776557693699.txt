@@ -1,0 +1,79 @@
+We are doing one final micro-pass before pushing INDEX live.
+
+This is NOT a redesign.
+This is NOT a new feature pass.
+This is a motion-smoothing / interaction-stability fix only.
+
+Issue:
+The motion/parallax behavior on the homepage command wheel can wig out or feel jumpy when moving around different tabs / sectors quickly.
+It needs to feel buttery, stable, premium, and controlled.
+
+━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━
+
+Refine the homepage wheel interaction so all hover/parallax/motion behavior feels smooth, stable, and release-quality.
+
+Do NOT remove the wheel.
+Do NOT remove the motion entirely.
+Do NOT add more animation.
+Do NOT make it more dramatic.
+
+We want:
+- buttery movement
+- no jitter
+- no snapping
+- no wigging out when moving across sectors fast
+- no weird lingering hover states
+- no unstable re-renders
+- no motion conflicts between hover, active state, and ring animation
+
+━━━━━━━━━━━━━━━━━━
+WHAT TO FIX
+━━━━━━━━━━━━━━━━━━
+
+1. Smooth out cursor/parallax logic
+- reduce jitter
+- reduce overreaction to mouse movement
+- use easing/interpolation properly
+- clamp motion tightly
+- ensure the wheel recenters cleanly
+
+2. Stabilize hover/active transitions
+- moving across sectors quickly should not feel glitchy
+- hover states should switch cleanly
+- no flicker
+- no stuck active visual state
+- no racing transitions
+
+3. Motion coordination
+- ensure ring animations, hover glow, and parallax do not visually fight each other
+- if necessary, tone down the motion amplitude slightly
+- prioritize smoothness over intensity
+
+4. Performance / cleanup
+- avoid unnecessary rerenders
+- avoid state thrashing from mousemove
+- use requestAnimationFrame / refs / interpolation if needed
+- ensure event listeners clean up correctly
+- make the interaction feel production-grade
+
+━━━━━━━━━━━━━━━━━━
+IMPORTANT
+━━━━━━━━━━━━━━━━━━
+
+This should still feel:
+- premium
+- alive
+- tactical
+- polished
+
+But the dominant priority is:
+SMOOTHNESS
+
+Think:
+high-end interface motion
+not reactive/glitchy toy behavior
+
+Do not explain what you will do.
+Implement the motion smoothing fix in code now.
