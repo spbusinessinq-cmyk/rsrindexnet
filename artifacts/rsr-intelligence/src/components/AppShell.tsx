@@ -42,14 +42,14 @@ export default function AppShell({ children }: AppShellProps) {
           />
           <span className="font-mono-tactical tracking-widest uppercase"
             style={{ color: "rgba(34,197,94,0.62)", fontSize: "9.5px", letterSpacing: "0.18em" }}>
-            INDEX // ACTIVE
+            PACIFIC SYSTEMS // ACTIVE
           </span>
         </div>
 
         <div className="flex flex-col items-center">
           <span className="font-orbitron font-bold tracking-widest"
             style={{ color: "rgba(34,197,94,0.52)", fontSize: "11px", letterSpacing: "0.25em" }}>
-            INDEX DATA NETWORK
+            PACIFIC SYSTEMS
           </span>
           <span className="font-mono-tactical tracking-widest"
             style={{ color: "rgba(155,175,170,0.32)", fontSize: "7.5px", letterSpacing: "0.22em" }}>
@@ -168,7 +168,7 @@ export default function AppShell({ children }: AppShellProps) {
       >
         <span className="font-mono-tactical tracking-widest"
           style={{ color: "rgba(155,175,170,0.25)", fontSize: "8.5px", letterSpacing: "0.18em" }}>
-          INDEX DATA NETWORK
+          PACIFIC SYSTEMS
         </span>
         <div className="flex items-center gap-3">
           <span className="font-mono-tactical hidden sm:block"

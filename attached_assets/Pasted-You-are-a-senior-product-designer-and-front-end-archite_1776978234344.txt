@@ -1,0 +1,249 @@
+You are a senior product designer and front-end architect.
+
+Apply a full high-end redesign refinement pass to the current INDEX page.
+
+IMPORTANT:
+The branch has now been renamed from INDEX to:
+
+PACIFIC SYSTEMS
+
+This is the new official name everywhere on the page.
+
+Do not keep INDEX as the primary brand.
+You may preserve any useful internal concepts from the previous implementation, but the page itself must now present as:
+
+PACIFIC SYSTEMS
+Data Systems Division
+RSR Intelligence Network
+
+This is not a rebuild from scratch.
+This is a full executive polish pass on the current page.
+
+━━━━━━━━━━━━━━━━━━━━
+PRIMARY OBJECTIVE
+━━━━━━━━━━━━━━━━━━━━
+
+Take the existing page and push it into a premium, lighter, more beautiful, more corporate-intelligence final form.
+
+The current version is better than before, but still needs:
+- better hierarchy
+- better color balance
+- better contrast
+- better spacing
+- better elegance
+- better institutional framing
+- better public-facing credibility
+- less “dark app”
+- less “green terminal”
+- more “serious west coast systems division”
+
+Pacific Systems should feel like:
+- a real branch
+- a data architecture division
+- an intelligence infrastructure unit
+- a refined institutional web property
+- west coast / pacific / steel / marine / graphite
+- expensive, official, calm, sharp
+
+It should NOT feel like:
+- a hacker dashboard
+- a cyberpunk terminal
+- an over-designed game UI
+- a neon HUD
+- a generic SaaS tool
+- a cluttered admin console
+
+━━━━━━━━━━━━━━━━━━━━
+MANDATORY BRAND UPDATE
+━━━━━━━━━━━━━━━━━━━━
+
+Replace all top-level INDEX branding with:
+
+PACIFIC SYSTEMS
+
+Use a title stack like:
+PACIFIC SYSTEMS
+Data Systems Division
+RSR Intelligence Network
+
+Or an equivalent arrangement that feels more refined and premium.
+
+Where appropriate, refer to it in copy as:
+“Pacific Systems”
+or
+“Pacific Systems, the data systems division of the RSR Intelligence Network”
+
+━━━━━━━━━━━━━━━━━━━━
+COLOR DIRECTION
+━━━━━━━━━━━━━━━━━━━━
+
+Shift the page to a lighter dark theme.
+
+Use these tones as the visual base:
+- page background: #121922
+- section background: #1A2530
+- card background: #23303B
+- border: #3B4E5E
+- heading text: #EEF3F7
+- body text: #B4C0CA
+- muted text: #7F8E9B
+- primary accent: #7FAE9E
+- accent hover: #95C2B2
+- secondary accent: #7C95AD
+- warning amber: #C7A56A
+
+Green should no longer dominate the atmosphere.
+Green should only appear as a restrained accent.
+
+The atmosphere should feel like:
+- marine steel
+- graphite
+- slate
+- cool west coast institutional systems
+- coastal defense architecture
+
+━━━━━━━━━━━━━━━━━━━━
+THE 40-POINT PASS
+━━━━━━━━━━━━━━━━━━━━
+
+Apply all of the following improvements directly in code.
+
+1. Rename INDEX to PACIFIC SYSTEMS everywhere it is the main brand.
+2. Update the hero to feel more commanding and executive.
+3. Add a stronger subtitle beneath the main title.
+4. Make the hero paragraph more polished and institutional.
+5. Improve the overall typography hierarchy.
+6. Increase contrast between page background and cards.
+7. Reduce muddy black-on-black sections.
+8. Brighten headings slightly.
+9. Improve body text legibility.
+10. Reduce visual over-reliance on green.
+11. Use more steel, slate, and marine undertones.
+12. Improve section spacing vertically.
+13. Improve breathing room inside cards.
+14. Make the page feel more premium and less cramped.
+15. Refine the navigation styling so it feels less app-like.
+16. Keep the left rail only if it feels elegant and restrained.
+17. If needed, redesign the left rail to feel more like section navigation than a software panel.
+18. Strengthen the top-level hierarchy showing that Pacific Systems sits inside the RSR Intelligence Network.
+19. Make the parent-network relationship more visible near the top.
+20. Show sibling branch awareness for RSR Press Corps and Black Dog Security.
+21. Refine the “What it is / What it is not” section so it reads cleaner and more intelligently.
+22. Polish the Division cards to feel more institutional and expensive.
+23. Keep the current division concept, but improve the visual finish.
+24. Make division cards more consistent in height, spacing, and alignment.
+25. Improve micro-labels, metadata, and small type treatment.
+26. Make the Signal-to-Record pipeline more elegant and less “UI toy.”
+27. Turn the pipeline into a more polished architecture sequence.
+28. Improve the visual treatment of icons throughout the page.
+29. Remove any visual effects that feel gimmicky or too sci-fi.
+30. Keep motion subtle and premium.
+31. Use soft gradients, not glow-heavy effects.
+32. Improve borders so they feel deliberate and architectural.
+33. Make card hover states restrained and clean.
+34. Strengthen the “Why Pacific Systems matters” section.
+35. Add or refine a “Related Branches” section linking to Press Corps and Black Dog Security.
+36. Ensure the page reads well as a public-facing systems/property page.
+37. Preserve the intelligence architecture feel.
+38. Make the page feel lighter, prettier, calmer, and more confident.
+39. Make sure the final result feels like a finished brand page, not an intermediate pass.
+40. Do not just tweak colors — deliver a true visual polish pass across structure, tone, spacing, hierarchy, and finish.
+
+━━━━━━━━━━━━━━━━━━━━
+INFORMATION ARCHITECTURE
+━━━━━━━━━━━━━━━━━━━━
+
+Preserve and improve the existing structure around these major sections:
+
+- Hero
+- Network Positioning
+- What Pacific Systems Is / Is Not
+- Divisions
+- Signal-to-Record Pipeline
+- Why It Matters
+- Related Branches
+
+Do not flatten the page.
+Do not remove important architecture language.
+Do not turn it into generic startup marketing copy.
+
+━━━━━━━━━━━━━━━━━━━━
+DIVISIONS
+━━━━━━━━━━━━━━━━━━━━
+
+Retain and polish this model:
+
+- Signal Intake Office
+- Data Structuring Division
+- Dataset Operations
+- Index & Retrieval Division
+- Access Control Office
+- Methodology & Standards Unit
+
+These should feel like real internal divisions of Pacific Systems.
+
+━━━━━━━━━━━━━━━━━━━━
+COPY TONE
+━━━━━━━━━━━━━━━━━━━━
+
+Use language that feels:
+- official
+- disciplined
+- systems-oriented
+- institutional
+- calm
+- sharp
+- premium
+
+Avoid:
+- hype language
+- startup clichés
+- cyberpunk jargon
+- empty branding fluff
+
+━━━━━━━━━━━━━━━━━━━━
+DESIGN REFERENCES FOR TONE
+━━━━━━━━━━━━━━━━━━━━
+
+Aim for a blend of:
+- west coast institutional systems group
+- executive intelligence architecture page
+- coastal defense contractor brand language
+- premium black/slate command aesthetic
+- restrained motion and high-trust design
+
+━━━━━━━━━━━━━━━━━━━━
+TECH REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━
+
+- Implement directly in React/Tailwind
+- Keep responsive behavior strong
+- Keep animations minimal and tasteful
+- Ensure spacing is consistent
+- Ensure cards and sections feel production-ready
+- No dead UI
+- No placeholder nonsense
+- No over-glowing elements
+- No harsh neon
+- No clutter
+
+━━━━━━━━━━━━━━━━━━━━
+FINAL STANDARD
+━━━━━━━━━━━━━━━━━━━━
+
+When complete, the page should feel like this:
+
+Pacific Systems is a real, high-end, west coast data architecture branch inside the RSR Intelligence Network.
+
+It should feel:
+beautiful
+serious
+lighter
+cleaner
+more breathable
+more expensive
+more official
+more credible
+
+Implement the full pass directly in code now.
+Do not give me a plan only.

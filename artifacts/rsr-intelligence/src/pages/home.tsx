@@ -8,15 +8,15 @@ export const SEGMENTS = [
   {
     label: "OVERVIEW",
     path: "/overview",
-    description: "What the INDEX Data Network is and how signal-to-structure works",
-    detail: "OVERVIEW documents the INDEX platform — what it monitors, how it structures incoming signals into usable data, and how structured data becomes indexed records.",
+    description: "What Pacific Systems is and how signal-to-structure works",
+    detail: "OVERVIEW documents the Pacific Systems platform — what it monitors, how it structures incoming signals into usable data, and how structured data becomes indexed records.",
     methodology: "Platform scope. Signal-to-structure flow. Layer introduction.",
   },
   {
     label: "SIGNALS",
     path: "/signals",
     description: "Monitored signal classes, intake categories, and source structure",
-    detail: "SIGNALS is where monitored input enters the INDEX architecture. Signal categories are defined, sources are classified, and intake logic determines what gets structured versus what gets held or dismissed.",
+    detail: "SIGNALS is where monitored input enters the Pacific Systems architecture. Signal categories are defined, sources are classified, and intake logic determines what gets structured versus what gets held or dismissed.",
     methodology: "Signal classification. Intake routing. Source assessment.",
   },
   {
@@ -36,99 +36,128 @@ export const SEGMENTS = [
   {
     label: "METHOD",
     path: "/method",
-    description: "How INDEX collects, classifies, structures, and synthesises",
-    detail: "METHOD explains the operational logic behind INDEX — the discipline rules that govern signal intake, the classification logic that routes data into datasets, and the structuring process that builds records.",
+    description: "How Pacific Systems collects, classifies, structures, and synthesises",
+    detail: "METHOD explains the operational logic behind Pacific Systems — the discipline rules that govern signal intake, the classification logic that routes data into datasets, and the structuring process that builds records.",
     methodology: "Collection discipline. Classification logic. Synthesis flow.",
   },
   {
     label: "ACCESS",
     path: "/access",
     description: "Controlled entry to deeper data layers and restricted environments",
-    detail: "ACCESS is the boundary between the public INDEX interface and the operational layer behind it. Deeper datasets, live signal feeds, and analytical tools exist behind this threshold.",
+    detail: "ACCESS is the boundary between the public interface and the operational layer behind it. Deeper datasets, live signal feeds, and analytical tools exist behind this threshold.",
     methodology: "Verified entry. Tier separation. Restricted data layer.",
   },
 ];
 
-/* ── Design tokens ─────────────────────────────────────────────── */
+/* ── Design tokens — marine steel / graphite / slate ─────────── */
 const C = {
-  textPrimary:   "rgba(222,228,226,0.88)",
-  textSecondary: "rgba(168,182,178,0.66)",
-  textTertiary:  "rgba(128,145,142,0.48)",
-  textGreen:     "rgba(34,197,94,0.78)",
-  textGreenDim:  "rgba(34,197,94,0.5)",
-  borderNeutral: "rgba(255,255,255,0.065)",
-  borderGreen:   "rgba(34,197,94,0.16)",
-  borderGreenMid:"rgba(34,197,94,0.24)",
-  surfaceCard:   "rgba(255,255,255,0.024)",
-  surfaceRaised: "rgba(255,255,255,0.04)",
-  green:         "#22c55e",
-  amber:         "rgba(251,191,36,0.72)",
+  bg:             "#121922",
+  bgSection:      "#0F1720",
+  bgCard:         "#1C2A35",
+  bgCardHover:    "#243240",
+  bgStrip:        "#0D1520",
+  border:         "#2D3E4E",
+  borderMid:      "#3B4E5E",
+  borderAccent:   "rgba(127,174,158,0.32)",
+  borderAccentMid:"rgba(127,174,158,0.5)",
+  heading:        "#EEF3F7",
+  headingDim:     "#C8D4DC",
+  body:           "#B4C0CA",
+  muted:          "#7F8E9B",
+  mutedDim:       "#5E6E7A",
+  accent:         "#7FAE9E",
+  accentHover:    "#95C2B2",
+  accentBlue:     "#7C95AD",
+  accentBlueDim:  "#5A7A96",
+  amber:          "#C7A56A",
+  amberDim:       "#A8864E",
 };
 
 /* ── Shared micro-label ────────────────────────────────────────── */
-function SectionLabel({ children }: { children: React.ReactNode }) {
+function SectionLabel({ children, accent = false }: { children: React.ReactNode; accent?: boolean }) {
   return (
-    <div className="flex items-center gap-3 mb-5">
-      <div className="w-4 h-px" style={{ background: C.borderGreenMid }} />
-      <span className="font-mono-tactical tracking-widest uppercase"
-        style={{ color: C.textGreenDim, fontSize: "8.5px", letterSpacing: "0.22em" }}>
+    <div className="flex items-center gap-3 mb-6">
+      <div style={{ width: 20, height: 1, background: accent ? C.borderAccentMid : C.borderMid, flexShrink: 0 }} />
+      <span style={{
+        color: accent ? C.accent : C.mutedDim,
+        fontSize: "9px",
+        letterSpacing: "0.24em",
+        fontFamily: "'Share Tech Mono', monospace",
+        textTransform: "uppercase",
+        fontWeight: 400,
+      }}>
         {children}
       </span>
     </div>
   );
 }
 
-/* ── Live status dot ───────────────────────────────────────────── */
-function StatusDot({ live }: { live: boolean }) {
+/* ── Status indicator ──────────────────────────────────────────── */
+function StatusDot({ live, amber = false }: { live: boolean; amber?: boolean }) {
+  const color = live ? (amber ? C.amber : C.accent) : C.mutedDim;
   return (
-    <div className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-      style={{
-        background: live ? C.green : "rgba(140,155,150,0.3)",
-        boxShadow: live ? `0 0 5px rgba(34,197,94,0.55)` : undefined,
-      }} />
+    <div style={{
+      width: 6, height: 6, borderRadius: "50%", flexShrink: 0,
+      background: live ? color : C.border,
+      boxShadow: live ? `0 0 6px ${color}55` : undefined,
+      transition: "all 0.3s",
+    }} />
   );
 }
 
 /* ── Division card ─────────────────────────────────────────────── */
-function DivisionCard({
-  code, name, purpose, path, onClick,
-}: {
+function DivisionCard({ code, name, purpose, path, onClick }: {
   code: string; name: string; purpose: string; path: string;
   onClick: (path: string) => void;
 }) {
+  const [hov, setHov] = useState(false);
   return (
-    <button onClick={() => onClick(path)}
-      className="group rounded-sm text-left w-full transition-all duration-200"
+    <button
+      onClick={() => onClick(path)}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
       style={{
-        border: `1px solid ${C.borderNeutral}`,
-        background: C.surfaceCard,
-        padding: "1.25rem 1.5rem",
+        border: `1px solid ${hov ? C.borderAccent : C.border}`,
+        background: hov ? C.bgCardHover : C.bgCard,
+        borderRadius: 4,
+        padding: "1.5rem 1.625rem",
         cursor: "pointer",
-      }}
-      onMouseOver={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = C.borderGreen;
-        (e.currentTarget as HTMLElement).style.background = C.surfaceRaised;
-      }}
-      onMouseOut={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = C.borderNeutral;
-        (e.currentTarget as HTMLElement).style.background = C.surfaceCard;
+        textAlign: "left",
+        width: "100%",
+        transition: "border-color 0.18s, background 0.18s",
+        display: "flex",
+        flexDirection: "column",
+        gap: 0,
       }}>
-      <div className="flex items-start justify-between gap-3 mb-2.5">
-        <span className="font-mono-tactical"
-          style={{ color: C.textGreenDim, fontSize: "8.5px", letterSpacing: "0.14em" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
+        <span style={{ color: C.mutedDim, fontSize: "8.5px", letterSpacing: "0.12em", fontFamily: "'Share Tech Mono', monospace" }}>
           {code}
         </span>
-        <span className="font-mono-tactical opacity-0 group-hover:opacity-100 transition-opacity duration-150"
-          style={{ color: C.textGreen, fontSize: "9px" }}>
+        <span style={{ color: hov ? C.accent : C.mutedDim, fontSize: "11px", transition: "color 0.18s", opacity: hov ? 1 : 0.4 }}>
           →
         </span>
       </div>
-      <div className="font-orbitron font-semibold mb-2"
-        style={{ color: C.textPrimary, fontSize: "11px", letterSpacing: "0.08em" }}>
+      <div style={{
+        color: hov ? C.heading : C.headingDim,
+        fontSize: "11.5px",
+        letterSpacing: "0.07em",
+        fontFamily: "'Orbitron', sans-serif",
+        fontWeight: 600,
+        marginBottom: 12,
+        lineHeight: 1.4,
+        transition: "color 0.18s",
+      }}>
         {name}
       </div>
-      <p className="font-mono-tactical leading-relaxed"
-        style={{ color: C.textTertiary, fontSize: "9.5px", lineHeight: "1.75" }}>
+      <p style={{
+        color: C.muted,
+        fontSize: "12px",
+        lineHeight: "1.72",
+        fontFamily: "'Rajdhani', sans-serif",
+        fontWeight: 400,
+        flex: 1,
+        margin: 0,
+      }}>
         {purpose}
       </p>
     </button>
@@ -136,77 +165,101 @@ function DivisionCard({
 }
 
 /* ── Pipeline step ─────────────────────────────────────────────── */
-function PipelineStep({
-  number, label, desc, isLast = false,
-}: {
-  number: string; label: string; desc: string; isLast?: boolean;
+function PipelineStep({ number, label, desc, active = false }: {
+  number: string; label: string; desc: string; active?: boolean;
 }) {
   return (
-    <div className="flex items-stretch gap-0 flex-1 min-w-0">
-      <div className="flex flex-col items-center flex-1 min-w-0">
-        <div className="rounded-sm px-3 py-3 w-full text-center"
-          style={{ border: `1px solid ${C.borderNeutral}`, background: C.surfaceCard }}>
-          <div className="font-mono-tactical mb-1.5"
-            style={{ color: C.textGreenDim, fontSize: "8px", letterSpacing: "0.12em" }}>
-            {number}
-          </div>
-          <div className="font-orbitron font-semibold"
-            style={{ color: C.textPrimary, fontSize: "10px", letterSpacing: "0.08em" }}>
-            {label}
-          </div>
-          <p className="font-mono-tactical mt-1.5"
-            style={{ color: C.textTertiary, fontSize: "8.5px", lineHeight: "1.65" }}>
-            {desc}
-          </p>
-        </div>
-      </div>
-      {!isLast && (
-        <div className="flex items-center px-1.5 flex-shrink-0">
-          <span style={{ color: C.textTertiary, fontSize: "11px" }}>›</span>
-        </div>
+    <div style={{
+      flex: 1,
+      border: `1px solid ${active ? C.borderAccent : C.border}`,
+      background: active ? `${C.bgCard}` : C.bgCard,
+      borderRadius: 4,
+      padding: "1.125rem 1.25rem",
+      position: "relative",
+    }}>
+      {active && (
+        <div style={{
+          position: "absolute", top: 0, left: 0, right: 0, height: 2,
+          background: `linear-gradient(90deg, transparent, ${C.accent}55, transparent)`,
+          borderRadius: "4px 4px 0 0",
+        }} />
       )}
+      <div style={{ color: C.mutedDim, fontSize: "8px", letterSpacing: "0.14em", fontFamily: "'Share Tech Mono', monospace", marginBottom: 10 }}>
+        {number}
+      </div>
+      <div style={{
+        color: active ? C.accent : C.headingDim,
+        fontSize: "10px", letterSpacing: "0.09em",
+        fontFamily: "'Orbitron', sans-serif", fontWeight: 600, marginBottom: 10,
+      }}>
+        {label}
+      </div>
+      <p style={{ color: C.muted, fontSize: "11px", lineHeight: "1.65", fontFamily: "'Rajdhani', sans-serif", margin: 0 }}>
+        {desc}
+      </p>
     </div>
   );
 }
 
-/* ── Related branch card ───────────────────────────────────────── */
-function BranchCard({ name, abbr, desc, href }: { name: string; abbr: string; desc: string; href: string }) {
+/* ── Branch card ───────────────────────────────────────────────── */
+function BranchCard({ name, code, role, desc, href }: {
+  name: string; code: string; role: string; desc: string; href: string;
+}) {
+  const [hov, setHov] = useState(false);
   return (
     <a href={href} target="_blank" rel="noopener noreferrer"
-      className="group block rounded-sm transition-all duration-200"
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
       style={{
-        border: `1px solid ${C.borderNeutral}`,
-        background: C.surfaceCard,
-        padding: "1.5rem",
-        textDecoration: "none",
-      }}
-      onMouseOver={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = C.borderGreen;
-        (e.currentTarget as HTMLElement).style.background = C.surfaceRaised;
-      }}
-      onMouseOut={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = C.borderNeutral;
-        (e.currentTarget as HTMLElement).style.background = C.surfaceCard;
+        display: "block", textDecoration: "none",
+        border: `1px solid ${hov ? C.borderMid : C.border}`,
+        background: hov ? C.bgCardHover : C.bgCard,
+        borderRadius: 4, padding: "1.75rem 2rem",
+        transition: "border-color 0.18s, background 0.18s",
       }}>
-      <div className="flex items-start justify-between mb-3">
-        <span className="font-mono-tactical"
-          style={{ color: C.textGreenDim, fontSize: "8.5px", letterSpacing: "0.14em" }}>
-          {abbr}
+      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 14 }}>
+        <span style={{ color: C.mutedDim, fontSize: "8.5px", letterSpacing: "0.12em", fontFamily: "'Share Tech Mono', monospace" }}>
+          {code}
         </span>
-        <span className="font-mono-tactical opacity-0 group-hover:opacity-100 transition-opacity duration-150"
-          style={{ color: C.textGreen, fontSize: "9px" }}>
+        <span style={{ color: hov ? C.accentBlue : C.mutedDim, fontSize: "11px", transition: "color 0.18s", opacity: hov ? 1 : 0.5 }}>
           ↗
         </span>
       </div>
-      <div className="font-orbitron font-semibold mb-2.5"
-        style={{ color: C.textPrimary, fontSize: "13px", letterSpacing: "0.06em" }}>
+      <div style={{
+        color: C.headingDim, fontSize: "15px", letterSpacing: "0.05em",
+        fontFamily: "'Orbitron', sans-serif", fontWeight: 700, marginBottom: 6,
+      }}>
         {name}
       </div>
-      <p className="font-mono-tactical"
-        style={{ color: C.textTertiary, fontSize: "9.5px", lineHeight: "1.75" }}>
+      <div style={{ color: C.accentBlue, fontSize: "10px", letterSpacing: "0.1em", fontFamily: "'Share Tech Mono', monospace", marginBottom: 14 }}>
+        {role}
+      </div>
+      <p style={{ color: C.muted, fontSize: "13px", lineHeight: "1.75", fontFamily: "'Rajdhani', sans-serif", margin: 0 }}>
         {desc}
       </p>
     </a>
+  );
+}
+
+/* ── NavLink ──────────────────────────────────────────────────── */
+function NavLink({ label, path, onClick }: { label: string; path: string; onClick: (p: string) => void }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <button
+      onClick={() => onClick(path)}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        background: "none", border: "none", cursor: "pointer",
+        color: hov ? C.body : C.muted,
+        fontSize: "9px", letterSpacing: "0.18em",
+        fontFamily: "'Share Tech Mono', monospace",
+        textTransform: "uppercase",
+        transition: "color 0.15s",
+        padding: "4px 0",
+      }}>
+      {label}
+    </button>
   );
 }
 
@@ -227,166 +280,203 @@ export default function Home() {
   const navigate = (path: string) => setLocation(path);
 
   return (
-    <div className="relative min-h-screen w-full bg-background flex flex-col"
-      style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px)", backgroundSize: "52px 52px" }}>
+    <div style={{
+      background: C.bg,
+      minHeight: "100vh",
+      width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      backgroundImage: "linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)",
+      backgroundSize: "60px 60px",
+    }}>
 
-      {/* ── TOP NAV ──────────────────────────────────────────────── */}
-      <header className="relative z-20 flex items-center justify-between px-8 shrink-0"
-        style={{ borderBottom: `1px solid ${C.borderNeutral}`, minHeight: 52 }}>
-        <div className="flex items-center gap-3">
+      {/* ── NAV ─────────────────────────────────────────────────── */}
+      <header style={{
+        borderBottom: `1px solid ${C.border}`,
+        background: C.bgStrip,
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: "0 2.5rem", minHeight: 56, flexShrink: 0, position: "sticky", top: 0, zIndex: 20,
+      }}>
+        {/* Left: brand */}
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <StatusDot live={networkLive} />
-          <span className="font-mono-tactical tracking-widest"
-            style={{ color: networkLive ? C.textGreen : C.textTertiary, fontSize: "9px", letterSpacing: "0.18em" }}>
-            INDEX DATA NETWORK
-          </span>
+          <div>
+            <div style={{ color: C.body, fontSize: "11px", letterSpacing: "0.16em", fontFamily: "'Orbitron', sans-serif", fontWeight: 700, lineHeight: 1 }}>
+              PACIFIC SYSTEMS
+            </div>
+            <div style={{ color: C.mutedDim, fontSize: "7.5px", letterSpacing: "0.12em", fontFamily: "'Share Tech Mono', monospace", marginTop: 3 }}>
+              RSR INTELLIGENCE NETWORK
+            </div>
+          </div>
         </div>
 
-        <div className="flex items-center gap-6">
+        {/* Center: nav links */}
+        <nav style={{ display: "flex", alignItems: "center", gap: 32 }}>
           {SEGMENTS.slice(0, -1).map((seg) => (
-            <button key={seg.path}
-              onClick={() => navigate(seg.path)}
-              className="font-mono-tactical tracking-widest transition-colors duration-150"
-              style={{ color: C.textTertiary, fontSize: "8.5px", letterSpacing: "0.14em", background: "none", border: "none", cursor: "pointer" }}
-              onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = C.textGreen; }}
-              onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = C.textTertiary; }}>
-              {seg.label}
-            </button>
+            <NavLink key={seg.path} label={seg.label} path={seg.path} onClick={navigate} />
           ))}
-        </div>
+        </nav>
 
-        <div className="flex items-center gap-4">
+        {/* Right: external + CTA */}
+        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <a href="https://www.rsrintel.com" target="_blank" rel="noopener noreferrer"
-            className="font-mono-tactical tracking-widest"
-            style={{ color: C.textTertiary, fontSize: "8.5px", letterSpacing: "0.12em", textDecoration: "none", transition: "color 0.15s" }}
-            onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = C.textGreen; }}
-            onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = C.textTertiary; }}>
+            style={{ color: C.mutedDim, fontSize: "8.5px", letterSpacing: "0.1em", textDecoration: "none", fontFamily: "'Share Tech Mono', monospace", transition: "color 0.15s" }}
+            onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = C.muted; }}
+            onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = C.mutedDim; }}>
             RSR INTEL ↗
           </a>
           <button onClick={() => navigate("/access")}
-            className="font-mono-tactical tracking-widest rounded-sm"
             style={{
-              color: C.textGreenDim, fontSize: "8.5px", letterSpacing: "0.12em",
-              border: `1px solid ${C.borderGreen}`, padding: "5px 14px",
-              background: "rgba(34,197,94,0.04)", cursor: "pointer", transition: "all 0.15s",
+              background: "transparent",
+              border: `1px solid ${C.borderAccent}`,
+              color: C.accent, fontSize: "9px", letterSpacing: "0.14em",
+              fontFamily: "'Share Tech Mono', monospace",
+              padding: "6px 16px", borderRadius: 3, cursor: "pointer",
+              transition: "all 0.18s",
             }}
             onMouseOver={(e) => {
-              (e.currentTarget as HTMLElement).style.color = C.textGreen;
-              (e.currentTarget as HTMLElement).style.borderColor = C.borderGreenMid;
-              (e.currentTarget as HTMLElement).style.background = "rgba(34,197,94,0.07)";
+              (e.currentTarget as HTMLElement).style.background = `${C.accent}10`;
+              (e.currentTarget as HTMLElement).style.borderColor = C.borderAccentMid;
             }}
             onMouseOut={(e) => {
-              (e.currentTarget as HTMLElement).style.color = C.textGreenDim;
-              (e.currentTarget as HTMLElement).style.borderColor = C.borderGreen;
-              (e.currentTarget as HTMLElement).style.background = "rgba(34,197,94,0.04)";
+              (e.currentTarget as HTMLElement).style.background = "transparent";
+              (e.currentTarget as HTMLElement).style.borderColor = C.borderAccent;
             }}>
             ACCESS
           </button>
         </div>
       </header>
 
-      {/* ── LIVE STATUS STRIP ───────────────────────────────────── */}
-      <div className="flex items-center justify-between px-8 shrink-0"
-        style={{ borderBottom: `1px solid ${C.borderNeutral}`, background: "rgba(0,0,0,0.18)", minHeight: 32 }}>
-        <div className="flex items-center gap-0 overflow-x-auto">
+      {/* ── DATA STRIP ──────────────────────────────────────────── */}
+      <div style={{
+        background: C.bgStrip, borderBottom: `1px solid ${C.border}`,
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: "0 2.5rem", minHeight: 36, flexShrink: 0,
+      }}>
+        <div style={{ display: "flex", alignItems: "center", overflow: "hidden" }}>
           {[
-            {
-              label: "INTAKE SOURCES",
-              value: `${platform.sourcesConnected}/${platform.sourcesTotal} ACTIVE`,
-              live: networkLive,
-            },
-            {
-              label: "STAGED SIGNALS",
-              value: platform.totalLiveItems > 0 ? String(platform.totalLiveItems) : "—",
-              live: platform.totalLiveItems > 0,
-            },
-            {
-              label: "COMMITTED",
-              value: "0",
-              live: false,
-            },
-            {
-              label: "DOMAINS",
-              value: `${platform.domainsBound}/${platform.domainsTotal} BOUND`,
-              live: platform.domainsBound > 0,
-            },
-          ].map((item, i) => (
-            <div key={item.label}
-              className="flex items-center gap-2.5 px-5 py-1.5 flex-shrink-0"
-              style={{ borderRight: `1px solid ${C.borderNeutral}` }}>
-              <span className="font-mono-tactical"
-                style={{ color: C.textTertiary, fontSize: "7.5px", letterSpacing: "0.1em" }}>
-                {item.label}
+            { k: "INTAKE SOURCES", v: `${platform.sourcesConnected}/${platform.sourcesTotal}`, live: networkLive },
+            { k: "STAGED", v: platform.totalLiveItems > 0 ? String(platform.totalLiveItems) : "—", live: platform.totalLiveItems > 0 },
+            { k: "COMMITTED", v: "0", live: false },
+            { k: "DOMAINS", v: `${platform.domainsBound}/${platform.domainsTotal}`, live: platform.domainsBound > 0 },
+          ].map((item) => (
+            <div key={item.k} style={{ display: "flex", alignItems: "center", gap: 8, padding: "0 20px 0 0", marginRight: 20, borderRight: `1px solid ${C.border}`, flexShrink: 0 }}>
+              <span style={{ color: C.mutedDim, fontSize: "8px", letterSpacing: "0.1em", fontFamily: "'Share Tech Mono', monospace" }}>
+                {item.k}
               </span>
-              <span className="font-mono-tactical"
-                style={{
-                  color: item.live ? C.textGreen : "rgba(155,175,170,0.35)",
-                  fontSize: "8.5px", letterSpacing: "0.06em", fontVariantNumeric: "tabular-nums",
-                }}>
-                {item.value}
+              <span style={{
+                color: item.live ? C.accent : C.border,
+                fontSize: "9.5px", letterSpacing: "0.04em",
+                fontFamily: "'Share Tech Mono', monospace",
+                fontVariantNumeric: "tabular-nums",
+              }}>
+                {item.v}
               </span>
             </div>
           ))}
         </div>
-        <div className="flex items-center gap-2.5 px-5 flex-shrink-0">
-          {networkLive && platform.lastSync ? (
-            <span className="font-mono-tactical"
-              style={{ color: "rgba(34,197,94,0.38)", fontSize: "8px", letterSpacing: "0.06em" }}>
-              SYNCED {fmtRelative(platform.lastSync).toUpperCase()}
-            </span>
-          ) : (
-            <span className="font-mono-tactical"
-              style={{ color: C.textTertiary, fontSize: "8px", letterSpacing: "0.06em" }}>
-              {isConnecting ? "CONNECTING..." : "PIPELINE READY"}
-            </span>
-          )}
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <StatusDot live={networkLive} />
+          <span style={{ color: C.mutedDim, fontSize: "8.5px", letterSpacing: "0.06em", fontFamily: "'Share Tech Mono', monospace" }}>
+            {networkLive && platform.lastSync
+              ? `SYNCED ${fmtRelative(platform.lastSync).toUpperCase()}`
+              : isConnecting ? "CONNECTING..." : "PIPELINE READY"}
+          </span>
         </div>
       </div>
 
-      {/* ── SCROLLABLE CONTENT ───────────────────────────────────── */}
-      <div className="flex-1 overflow-y-auto">
+      {/* ── SCROLLABLE BODY ─────────────────────────────────────── */}
+      <div style={{ flex: 1, overflowY: "auto" }}>
 
         {/* ── HERO ─────────────────────────────────────────────── */}
-        <section className="px-8 py-20" style={{ borderBottom: `1px solid ${C.borderNeutral}` }}>
-          <div style={{ maxWidth: 900 }}>
-            <SectionLabel>RSR Intelligence Network — Data Systems Division</SectionLabel>
-            <h1 className="font-orbitron font-bold mb-5"
-              style={{ color: C.textPrimary, fontSize: "clamp(40px, 6vw, 68px)", letterSpacing: "0.06em", lineHeight: 1.08 }}>
-              INDEX
-            </h1>
-            <div className="font-orbitron font-semibold mb-7"
-              style={{ color: C.textSecondary, fontSize: "clamp(14px, 2vw, 20px)", letterSpacing: "0.1em" }}>
-              Data Systems Division
+        <section style={{ borderBottom: `1px solid ${C.border}`, padding: "6rem 2.5rem 5rem" }}>
+          <div style={{ maxWidth: 960 }}>
+            {/* Parent label */}
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
+              <div style={{ width: 28, height: 1, background: C.borderAccentMid }} />
+              <span style={{ color: C.accent, fontSize: "9px", letterSpacing: "0.26em", fontFamily: "'Share Tech Mono', monospace" }}>
+                RSR INTELLIGENCE NETWORK — DATA SYSTEMS DIVISION
+              </span>
             </div>
-            <p className="mb-8"
-              style={{ color: C.textSecondary, fontSize: "clamp(13px, 1.4vw, 16px)", lineHeight: "1.85", maxWidth: 660, fontFamily: "Rajdhani, sans-serif", fontWeight: 400 }}>
-              INDEX is the structured data layer of the RSR Intelligence Network. It receives monitored signals, routes them through a defined structuring process, assigns them to classified datasets, and commits them to a searchable record index. INDEX does not produce editorial content — it produces structured, retrievable data infrastructure.
+
+            {/* Title */}
+            <h1 style={{
+              color: C.heading,
+              fontFamily: "'Orbitron', sans-serif",
+              fontWeight: 800,
+              fontSize: "clamp(44px, 7vw, 80px)",
+              letterSpacing: "0.04em",
+              lineHeight: 1.02,
+              marginBottom: 16,
+            }}>
+              PACIFIC<br />SYSTEMS
+            </h1>
+
+            {/* Subtitle */}
+            <div style={{
+              color: C.accentBlue,
+              fontFamily: "'Orbitron', sans-serif",
+              fontWeight: 500,
+              fontSize: "clamp(13px, 1.8vw, 17px)",
+              letterSpacing: "0.14em",
+              marginBottom: 28,
+            }}>
+              Structured Data Infrastructure
+            </div>
+
+            {/* Description */}
+            <p style={{
+              color: C.body,
+              fontSize: "clamp(14px, 1.4vw, 16px)",
+              lineHeight: "1.88",
+              maxWidth: 640,
+              fontFamily: "'Rajdhani', sans-serif",
+              fontWeight: 400,
+              marginBottom: 36,
+            }}>
+              Pacific Systems is the structured data division of the RSR Intelligence Network.
+              It receives monitored signals, routes them through a defined structuring process,
+              assigns them to classified datasets, and commits them to a searchable record index.
+              Pacific Systems does not produce editorial content — it produces structured,
+              retrievable data infrastructure.
             </p>
-            <div className="flex items-center gap-3 flex-wrap">
+
+            {/* CTAs */}
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <button onClick={() => navigate("/overview")}
-                className="font-orbitron font-semibold rounded-sm transition-all duration-150"
                 style={{
-                  color: "#090909", background: C.green, border: `1px solid ${C.green}`,
-                  fontSize: "11px", letterSpacing: "0.12em", padding: "10px 24px", cursor: "pointer",
+                  background: C.accent,
+                  border: `1px solid ${C.accent}`,
+                  color: "#0D1520",
+                  fontFamily: "'Orbitron', sans-serif",
+                  fontWeight: 700,
+                  fontSize: "10px",
+                  letterSpacing: "0.14em",
+                  padding: "12px 28px",
+                  borderRadius: 3,
+                  cursor: "pointer",
+                  transition: "all 0.18s",
                 }}
-                onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.88"; }}
-                onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}>
+                onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.background = C.accentHover; (e.currentTarget as HTMLElement).style.borderColor = C.accentHover; }}
+                onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.background = C.accent; (e.currentTarget as HTMLElement).style.borderColor = C.accent; }}>
                 EXPLORE ARCHITECTURE
               </button>
               <button onClick={() => navigate("/method")}
-                className="font-orbitron font-semibold rounded-sm transition-all duration-150"
                 style={{
-                  color: C.textGreen, background: "transparent",
-                  border: `1px solid ${C.borderGreen}`,
-                  fontSize: "11px", letterSpacing: "0.12em", padding: "10px 24px", cursor: "pointer",
+                  background: "transparent",
+                  border: `1px solid ${C.borderMid}`,
+                  color: C.body,
+                  fontFamily: "'Orbitron', sans-serif",
+                  fontWeight: 600,
+                  fontSize: "10px",
+                  letterSpacing: "0.14em",
+                  padding: "12px 28px",
+                  borderRadius: 3,
+                  cursor: "pointer",
+                  transition: "all 0.18s",
                 }}
-                onMouseOver={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = C.borderGreenMid;
-                  (e.currentTarget as HTMLElement).style.background = "rgba(34,197,94,0.05)";
-                }}
-                onMouseOut={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = C.borderGreen;
-                  (e.currentTarget as HTMLElement).style.background = "transparent";
-                }}>
+                onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.borderColor = C.borderAccent; (e.currentTarget as HTMLElement).style.color = C.heading; }}
+                onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.borderColor = C.borderMid; (e.currentTarget as HTMLElement).style.color = C.body; }}>
                 METHODOLOGY
               </button>
             </div>
@@ -394,63 +484,67 @@ export default function Home() {
         </section>
 
         {/* ── NETWORK POSITIONING ───────────────────────────────── */}
-        <section className="px-8 py-10" style={{ borderBottom: `1px solid ${C.borderNeutral}`, background: "rgba(0,0,0,0.14)" }}>
+        <section style={{ background: C.bgSection, borderBottom: `1px solid ${C.border}`, padding: "3.5rem 2.5rem" }}>
           <div style={{ maxWidth: 1100 }}>
             <SectionLabel>Network Architecture</SectionLabel>
-            <div className="flex items-center gap-0 mb-8 overflow-x-auto">
+
+            {/* Hierarchy breadcrumb */}
+            <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 32, flexWrap: "wrap" }}>
               {[
-                { label: "RSR", sub: "Parent organisation", href: "https://www.rsrintel.com", external: true },
-                { label: "RSR Intelligence Network", sub: "Intelligence division", href: "https://www.rsrintel.com", external: true },
-                { label: "INDEX Data Network", sub: "Data systems layer — this site", href: "/", external: false, active: true },
+                { label: "RSR", sub: "Parent organisation", active: false, href: "https://www.rsrintel.com" },
+                { label: "RSR Intelligence Network", sub: "Intelligence division", active: false, href: "https://www.rsrintel.com" },
+                { label: "Pacific Systems", sub: "Data systems — this site", active: true, href: "/" },
               ].map((node, i) => (
-                <div key={node.label} className="flex items-center gap-0 flex-shrink-0">
-                  <a href={node.href}
-                    target={node.external ? "_blank" : "_self"}
-                    rel={node.external ? "noopener noreferrer" : undefined}
-                    className="flex flex-col rounded-sm px-5 py-3 transition-all duration-150"
+                <div key={node.label} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+                  <a href={node.href} target={node.active ? "_self" : "_blank"} rel="noopener noreferrer"
                     style={{
-                      border: `1px solid ${node.active ? C.borderGreenMid : C.borderNeutral}`,
-                      background: node.active ? "rgba(34,197,94,0.04)" : C.surfaceCard,
-                      textDecoration: "none",
+                      display: "flex", flexDirection: "column",
+                      border: `1px solid ${node.active ? C.borderAccent : C.border}`,
+                      background: node.active ? `${C.bgCard}` : "transparent",
+                      borderRadius: 3, padding: "10px 18px", textDecoration: "none",
+                      transition: "border-color 0.15s",
                     }}>
-                    <span className="font-orbitron font-semibold"
-                      style={{ color: node.active ? C.textGreen : C.textSecondary, fontSize: "10px", letterSpacing: "0.1em" }}>
+                    <span style={{
+                      color: node.active ? C.accent : C.body,
+                      fontSize: "10px", letterSpacing: "0.1em",
+                      fontFamily: "'Orbitron', sans-serif", fontWeight: node.active ? 700 : 500,
+                    }}>
                       {node.label}
                     </span>
-                    <span className="font-mono-tactical mt-0.5"
-                      style={{ color: C.textTertiary, fontSize: "8px", letterSpacing: "0.08em" }}>
+                    <span style={{ color: C.mutedDim, fontSize: "8px", letterSpacing: "0.08em", fontFamily: "'Share Tech Mono', monospace", marginTop: 4 }}>
                       {node.sub}
                     </span>
                   </a>
                   {i < 2 && (
-                    <div className="px-3 flex-shrink-0">
-                      <span style={{ color: C.textTertiary, fontSize: "12px" }}>›</span>
-                    </div>
+                    <div style={{ padding: "0 12px", color: C.borderMid, fontSize: "14px", flexShrink: 0 }}>›</div>
                   )}
                 </div>
               ))}
             </div>
 
-            <div className="flex items-start gap-3">
-              <span className="font-mono-tactical flex-shrink-0"
-                style={{ color: C.textTertiary, fontSize: "8.5px", letterSpacing: "0.1em", paddingTop: 2 }}>
-                SIBLING BRANCHES:
+            {/* Sibling branches */}
+            <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+              <span style={{ color: C.mutedDim, fontSize: "8.5px", letterSpacing: "0.1em", fontFamily: "'Share Tech Mono', monospace" }}>
+                SIBLING BRANCHES
               </span>
+              <div style={{ width: 1, height: 12, background: C.border }} />
               {[
-                { label: "RSR Press Corps", desc: "Editorial and publication arm" },
-                { label: "Black Dog Security", desc: "Security intelligence division" },
+                { label: "RSR Press Corps", role: "Editorial & Publication" },
+                { label: "Black Dog Security", role: "Security Intelligence" },
               ].map((branch) => (
                 <div key={branch.label}
-                  className="flex items-center gap-2 rounded-sm px-3 py-1.5"
-                  style={{ border: `1px solid ${C.borderNeutral}`, background: C.surfaceCard }}>
-                  <div className="w-1 h-1 rounded-full" style={{ background: "rgba(140,155,150,0.3)" }} />
-                  <span className="font-mono-tactical"
-                    style={{ color: C.textTertiary, fontSize: "8.5px", letterSpacing: "0.06em" }}>
+                  style={{
+                    display: "flex", alignItems: "center", gap: 8,
+                    border: `1px solid ${C.border}`,
+                    background: "transparent",
+                    borderRadius: 3, padding: "6px 14px",
+                  }}>
+                  <div style={{ width: 5, height: 5, borderRadius: "50%", background: C.accentBlue, opacity: 0.6 }} />
+                  <span style={{ color: C.muted, fontSize: "9px", letterSpacing: "0.06em", fontFamily: "'Share Tech Mono', monospace" }}>
                     {branch.label}
                   </span>
-                  <span className="font-mono-tactical hidden sm:inline"
-                    style={{ color: "rgba(128,145,142,0.32)", fontSize: "8px" }}>
-                    — {branch.desc}
+                  <span style={{ color: C.mutedDim, fontSize: "8px", fontFamily: "'Share Tech Mono', monospace" }}>
+                    — {branch.role}
                   </span>
                 </div>
               ))}
@@ -458,22 +552,29 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── WHAT INDEX IS / IS NOT ────────────────────────────── */}
-        <section className="px-8 py-16" style={{ borderBottom: `1px solid ${C.borderNeutral}` }}>
+        {/* ── SCOPE DEFINITION ──────────────────────────────────── */}
+        <section style={{ borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem" }}>
           <div style={{ maxWidth: 1100 }}>
             <SectionLabel>Scope Definition</SectionLabel>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "20px", letterSpacing: "0.07em", marginBottom: 24 }}>
+              What Pacific Systems Is
+            </h2>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(440px, 1fr))", gap: 20 }}>
+
               {/* IS */}
-              <div className="rounded-sm p-7"
-                style={{ border: `1px solid ${C.borderGreen}`, background: "rgba(34,197,94,0.025)" }}>
-                <div className="flex items-center gap-2.5 mb-5">
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ background: C.green, boxShadow: `0 0 5px rgba(34,197,94,0.5)` }} />
-                  <span className="font-mono-tactical tracking-widest"
-                    style={{ color: C.textGreenDim, fontSize: "8.5px", letterSpacing: "0.18em" }}>
-                    WHAT INDEX IS
+              <div style={{
+                border: `1px solid ${C.borderAccent}`,
+                background: C.bgCard,
+                borderRadius: 4, padding: "2rem 2.25rem",
+                borderTop: `2px solid ${C.accent}`,
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: C.accent, boxShadow: `0 0 6px ${C.accent}55` }} />
+                  <span style={{ color: C.accent, fontSize: "8.5px", letterSpacing: "0.2em", fontFamily: "'Share Tech Mono', monospace" }}>
+                    PACIFIC SYSTEMS IS
                   </span>
                 </div>
-                <div className="space-y-3">
+                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                   {[
                     "The structured data infrastructure of the RSR Intelligence Network",
                     "A signal intake, classification, and record-indexing system",
@@ -481,9 +582,9 @@ export default function Home() {
                     "A data operations layer with tiered access and version control",
                     "The authoritative record layer for the broader RSR ecosystem",
                   ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <div className="w-1 h-1 rounded-full mt-2 flex-shrink-0" style={{ background: C.textGreenDim }} />
-                      <span style={{ color: C.textSecondary, fontSize: "13px", lineHeight: "1.7", fontFamily: "Rajdhani, sans-serif" }}>
+                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                      <div style={{ width: 4, height: 4, borderRadius: "50%", background: C.borderAccentMid, flexShrink: 0, marginTop: 7 }} />
+                      <span style={{ color: C.body, fontSize: "13.5px", lineHeight: "1.72", fontFamily: "'Rajdhani', sans-serif" }}>
                         {item}
                       </span>
                     </div>
@@ -492,16 +593,19 @@ export default function Home() {
               </div>
 
               {/* IS NOT */}
-              <div className="rounded-sm p-7"
-                style={{ border: `1px solid ${C.borderNeutral}`, background: C.surfaceCard }}>
-                <div className="flex items-center gap-2.5 mb-5">
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(140,155,150,0.3)" }} />
-                  <span className="font-mono-tactical tracking-widest"
-                    style={{ color: C.textTertiary, fontSize: "8.5px", letterSpacing: "0.18em" }}>
-                    WHAT INDEX IS NOT
+              <div style={{
+                border: `1px solid ${C.border}`,
+                background: C.bgCard,
+                borderRadius: 4, padding: "2rem 2.25rem",
+                borderTop: `2px solid ${C.border}`,
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: C.border }} />
+                  <span style={{ color: C.mutedDim, fontSize: "8.5px", letterSpacing: "0.2em", fontFamily: "'Share Tech Mono', monospace" }}>
+                    PACIFIC SYSTEMS IS NOT
                   </span>
                 </div>
-                <div className="space-y-3">
+                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                   {[
                     "An editorial platform or press operation",
                     "A public-facing news or content system",
@@ -509,9 +613,9 @@ export default function Home() {
                     "A commercial data marketplace or consumer service",
                     "A social platform, aggregator, or discovery tool",
                   ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <div className="w-1 h-1 rounded-full mt-2 flex-shrink-0" style={{ background: "rgba(140,155,150,0.22)" }} />
-                      <span style={{ color: C.textTertiary, fontSize: "13px", lineHeight: "1.7", fontFamily: "Rajdhani, sans-serif" }}>
+                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                      <div style={{ width: 4, height: 4, borderRadius: "50%", background: C.border, flexShrink: 0, marginTop: 7 }} />
+                      <span style={{ color: C.muted, fontSize: "13.5px", lineHeight: "1.72", fontFamily: "'Rajdhani', sans-serif" }}>
                         {item}
                       </span>
                     </div>
@@ -522,56 +626,40 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── INDEX DIVISIONS ───────────────────────────────────── */}
-        <section className="px-8 py-16" style={{ borderBottom: `1px solid ${C.borderNeutral}`, background: "rgba(0,0,0,0.1)" }}>
+        {/* ── DIVISIONS ─────────────────────────────────────────── */}
+        <section style={{ background: C.bgSection, borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem" }}>
           <div style={{ maxWidth: 1100 }}>
             <SectionLabel>Organisational Structure</SectionLabel>
-            <h2 className="font-orbitron font-bold mb-2"
-              style={{ color: C.textPrimary, fontSize: "22px", letterSpacing: "0.07em" }}>
-              INDEX Divisions
-            </h2>
-            <p className="mb-8"
-              style={{ color: C.textTertiary, fontSize: "13px", lineHeight: "1.75", fontFamily: "Rajdhani, sans-serif", maxWidth: 520 }}>
-              INDEX operates through six internal divisions, each responsible for a defined stage of the signal-to-record pipeline.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 28, flexWrap: "wrap", gap: 12 }}>
+              <div>
+                <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "20px", letterSpacing: "0.07em", marginBottom: 8 }}>
+                  Pacific Systems Divisions
+                </h2>
+                <p style={{ color: C.muted, fontSize: "13px", lineHeight: "1.72", fontFamily: "'Rajdhani', sans-serif", maxWidth: 500, margin: 0 }}>
+                  Six internal divisions, each responsible for a defined stage of the signal-to-record pipeline.
+                </p>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <StatusDot live={networkLive} />
+                <span style={{ color: C.mutedDim, fontSize: "8.5px", letterSpacing: "0.08em", fontFamily: "'Share Tech Mono', monospace" }}>
+                  {networkLive ? `${platform.sourcesConnected} SOURCES ACTIVE` : "INTAKE READY"}
+                </span>
+              </div>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 12 }}>
               {[
-                {
-                  code: "DIV-01",
-                  name: "Signal Intake Office",
-                  purpose: "Receives and validates incoming signals from monitored sources. Manages intake routing, source classification, and triage gate evaluation.",
-                  path: "/signals",
-                },
-                {
-                  code: "DIV-02",
-                  name: "Data Structuring Division",
-                  purpose: "Transforms validated signals into structured data entries. Applies schema rules, field normalisation, and preliminary classification before dataset assignment.",
-                  path: "/datasets",
-                },
-                {
-                  code: "DIV-03",
-                  name: "Dataset Operations",
-                  purpose: "Manages the domain dataset layer. Assigns structured entries to the correct collection, maintains dataset integrity, and enforces coverage boundaries.",
-                  path: "/datasets",
-                },
-                {
-                  code: "DIV-04",
-                  name: "Index & Retrieval Division",
-                  purpose: "Handles the commitment of structured entries into the searchable index. Manages record versioning, retrieval architecture, and index integrity.",
-                  path: "/records",
-                },
-                {
-                  code: "DIV-05",
-                  name: "Access Control Office",
-                  purpose: "Governs tier-based access to the data layer. Manages operator authentication, public/restricted separation, and access provisioning.",
-                  path: "/access",
-                },
-                {
-                  code: "DIV-06",
-                  name: "Methodology & Standards Unit",
-                  purpose: "Defines and maintains the operational standards that govern all INDEX activity — classification logic, collection discipline, and synthesis protocol.",
-                  path: "/method",
-                },
+                { code: "DIV-01", name: "Signal Intake Office", path: "/signals",
+                  purpose: "Receives and validates incoming signals from monitored sources. Manages intake routing, source classification, and triage gate evaluation." },
+                { code: "DIV-02", name: "Data Structuring Division", path: "/datasets",
+                  purpose: "Transforms validated signals into structured data entries. Applies schema rules, field normalisation, and preliminary classification before dataset assignment." },
+                { code: "DIV-03", name: "Dataset Operations", path: "/datasets",
+                  purpose: "Manages the domain dataset layer. Assigns structured entries to the correct collection, maintains dataset integrity, and enforces coverage boundaries." },
+                { code: "DIV-04", name: "Index & Retrieval Division", path: "/records",
+                  purpose: "Handles the commitment of structured entries into the searchable index. Manages record versioning, retrieval architecture, and index integrity." },
+                { code: "DIV-05", name: "Access Control Office", path: "/access",
+                  purpose: "Governs tier-based access to the data layer. Manages operator authentication, public/restricted separation, and access provisioning." },
+                { code: "DIV-06", name: "Methodology & Standards Unit", path: "/method",
+                  purpose: "Defines and maintains the operational standards governing all Pacific Systems activity — classification logic, collection discipline, and synthesis protocol." },
               ].map((div) => (
                 <DivisionCard key={div.code} {...div} onClick={navigate} />
               ))}
@@ -580,74 +668,58 @@ export default function Home() {
         </section>
 
         {/* ── SIGNAL-TO-RECORD PIPELINE ─────────────────────────── */}
-        <section className="px-8 py-16" style={{ borderBottom: `1px solid ${C.borderNeutral}` }}>
+        <section style={{ borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem" }}>
           <div style={{ maxWidth: 1100 }}>
-            <SectionLabel>Data Architecture</SectionLabel>
-            <h2 className="font-orbitron font-bold mb-2"
-              style={{ color: C.textPrimary, fontSize: "22px", letterSpacing: "0.07em" }}>
+            <SectionLabel accent>Data Architecture</SectionLabel>
+            <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "20px", letterSpacing: "0.07em", marginBottom: 10 }}>
               Signal-to-Record Pipeline
             </h2>
-            <p className="mb-8"
-              style={{ color: C.textTertiary, fontSize: "13px", lineHeight: "1.75", fontFamily: "Rajdhani, sans-serif", maxWidth: 520 }}>
-              Every record in the INDEX began as a monitored signal. The pipeline below defines the mandatory path from intake to indexed entry.
+            <p style={{ color: C.muted, fontSize: "13px", lineHeight: "1.72", fontFamily: "'Rajdhani', sans-serif", maxWidth: 500, marginBottom: 36 }}>
+              Every record in Pacific Systems began as a monitored signal. The pipeline defines the mandatory path from intake to indexed entry.
             </p>
 
-            {/* Pipeline flow — horizontal on desktop, vertical on mobile */}
-            <div className="flex flex-col lg:flex-row items-stretch gap-1 mb-8">
+            {/* Pipeline */}
+            <div style={{ display: "flex", alignItems: "stretch", gap: 6, marginBottom: 28, overflowX: "auto" }}>
               {[
-                {
-                  number: "01",
-                  label: "SIGNAL INTAKE",
-                  desc: "Monitored sources deliver raw signals into the intake layer",
-                },
-                {
-                  number: "02",
-                  label: "TRIAGE GATE",
-                  desc: "Signals are validated against defined triage criteria",
-                },
-                {
-                  number: "03",
-                  label: "STRUCTURING",
-                  desc: "Validated signals are structured into schema-compliant entries",
-                },
-                {
-                  number: "04",
-                  label: "DATASET ASSIGN",
-                  desc: "Structured entries are routed to their domain dataset",
-                },
-                {
-                  number: "05",
-                  label: "INDEX COMMIT",
-                  desc: "Operator review and explicit commit to the record index",
-                },
-              ].map((step, i) => (
-                <PipelineStep key={step.number} {...step} isLast={i === 4} />
+                { number: "01", label: "SIGNAL INTAKE", desc: "Monitored sources deliver raw signals into the intake layer", active: networkLive },
+                { number: "02", label: "TRIAGE GATE", desc: "Signals validated against defined triage criteria before structuring", active: false },
+                { number: "03", label: "STRUCTURING", desc: "Validated signals structured into schema-compliant entries", active: false },
+                { number: "04", label: "DATASET ASSIGN", desc: "Structured entries routed to their domain dataset collection", active: false },
+                { number: "05", label: "INDEX COMMIT", desc: "Operator review and explicit commit to the record index", active: false },
+              ].map((step, i, arr) => (
+                <div key={step.number} style={{ display: "flex", alignItems: "stretch", flex: 1, minWidth: 140 }}>
+                  <PipelineStep {...step} />
+                  {i < arr.length - 1 && (
+                    <div style={{ display: "flex", alignItems: "center", padding: "0 2px", flexShrink: 0 }}>
+                      <div style={{ color: C.borderMid, fontSize: "16px" }}>›</div>
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
 
-            {/* Live pipeline state */}
-            <div className="flex items-center gap-6 px-5 py-3 rounded-sm"
-              style={{ border: `1px solid ${C.borderNeutral}`, background: C.surfaceCard }}>
-              <div className="flex items-center gap-2">
+            {/* Live state */}
+            <div style={{
+              display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap",
+              border: `1px solid ${C.border}`, background: C.bgCard,
+              borderRadius: 4, padding: "14px 20px",
+            }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <StatusDot live={networkLive} />
-                <span className="font-mono-tactical"
-                  style={{ color: C.textTertiary, fontSize: "8.5px", letterSpacing: "0.1em" }}>
+                <span style={{ color: C.mutedDim, fontSize: "8.5px", letterSpacing: "0.08em", fontFamily: "'Share Tech Mono', monospace" }}>
                   INTAKE LAYER
                 </span>
-                <span className="font-mono-tactical"
-                  style={{ color: networkLive ? C.textGreen : C.textTertiary, fontSize: "9px" }}>
-                  {networkLive ? `${platform.sourcesConnected} sources active · ${platform.totalLiveItems} staged` : "Ready — awaiting source binding"}
+                <span style={{ color: networkLive ? C.accent : C.muted, fontSize: "9px", fontFamily: "'Share Tech Mono', monospace" }}>
+                  {networkLive ? `${platform.sourcesConnected} sources · ${platform.totalLiveItems} staged` : "Ready — awaiting source binding"}
                 </span>
               </div>
-              <div className="w-px h-3.5" style={{ background: C.borderNeutral }} />
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(140,155,150,0.22)" }} />
-                <span className="font-mono-tactical"
-                  style={{ color: C.textTertiary, fontSize: "8.5px", letterSpacing: "0.1em" }}>
+              <div style={{ width: 1, height: 14, background: C.border }} />
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: C.border }} />
+                <span style={{ color: C.mutedDim, fontSize: "8.5px", letterSpacing: "0.08em", fontFamily: "'Share Tech Mono', monospace" }}>
                   INDEX LAYER
                 </span>
-                <span className="font-mono-tactical italic"
-                  style={{ color: "rgba(140,155,150,0.38)", fontSize: "9px" }}>
+                <span style={{ color: C.mutedDim, fontSize: "9px", fontFamily: "'Share Tech Mono', monospace", fontStyle: "italic" }}>
                   0 records committed — classification pending
                 </span>
               </div>
@@ -655,47 +727,55 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── WHY INDEX MATTERS ─────────────────────────────────── */}
-        <section className="px-8 py-16" style={{ borderBottom: `1px solid ${C.borderNeutral}`, background: "rgba(0,0,0,0.12)" }}>
+        {/* ── WHY IT MATTERS ───────────────────────────────────── */}
+        <section style={{ background: C.bgSection, borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem" }}>
           <div style={{ maxWidth: 1100 }}>
             <SectionLabel>Institutional Context</SectionLabel>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))", gap: 60, alignItems: "start" }}>
+              {/* Left — narrative */}
               <div>
-                <h2 className="font-orbitron font-bold mb-5"
-                  style={{ color: C.textPrimary, fontSize: "22px", letterSpacing: "0.07em" }}>
-                  Why INDEX Exists
+                <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "20px", letterSpacing: "0.07em", marginBottom: 20 }}>
+                  Why Pacific Systems Exists
                 </h2>
-                <p className="mb-5"
-                  style={{ color: C.textSecondary, fontSize: "14px", lineHeight: "1.88", fontFamily: "Rajdhani, sans-serif" }}>
-                  Intelligence networks accumulate vast signal volume. Without a dedicated structuring and indexing layer, that signal volume remains operationally unusable — it cannot be retrieved, cross-referenced, or built upon systematically.
+                <p style={{ color: C.body, fontSize: "14.5px", lineHeight: "1.9", fontFamily: "'Rajdhani', sans-serif", marginBottom: 18 }}>
+                  Intelligence networks accumulate large volumes of signal. Without a dedicated structuring and indexing layer, that volume remains operationally unusable — it cannot be retrieved, cross-referenced, or built upon systematically.
                 </p>
-                <p style={{ color: C.textSecondary, fontSize: "14px", lineHeight: "1.88", fontFamily: "Rajdhani, sans-serif" }}>
-                  INDEX solves this problem within the RSR Intelligence Network. It converts raw monitored input into structured, attributed, version-controlled records that can be retrieved, queried, and used as the data foundation for downstream analytical work across RSR's broader operations.
+                <p style={{ color: C.body, fontSize: "14.5px", lineHeight: "1.9", fontFamily: "'Rajdhani', sans-serif", marginBottom: 0 }}>
+                  Pacific Systems resolves this within the RSR Intelligence Network. It converts raw monitored input into structured, attributed, version-controlled records that can be retrieved, queried, and used as the data foundation for downstream analytical work across RSR's broader operations.
                 </p>
               </div>
-              <div className="space-y-4">
+
+              {/* Right — principles */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 {[
                   {
                     heading: "Structured over raw",
-                    body: "Every entry that enters INDEX has been validated, classified, and structured against a defined schema. Raw signal volume does not equal usable data without this layer.",
+                    body: "Every entry that enters Pacific Systems has been validated, classified, and structured against a defined schema. Raw signal volume does not equal usable data without this layer.",
+                    accent: C.accent,
                   },
                   {
                     heading: "Attribution by design",
-                    body: "Every record carries source attribution, intake timestamp, classification status, and version history. INDEX does not accept unattributed entries.",
+                    body: "Every record carries source attribution, intake timestamp, classification status, and version history. Pacific Systems does not accept unattributed entries.",
+                    accent: C.accentBlue,
                   },
                   {
                     heading: "Retrieval-first architecture",
-                    body: "The INDEX layer is built around retrieval — entries are indexed for search, cross-reference, and programmatic access from the moment they are committed.",
+                    body: "The index layer is built around retrieval — entries are indexed for search, cross-reference, and programmatic access from the moment they are committed.",
+                    accent: C.accent,
                   },
-                ].map((point) => (
-                  <div key={point.heading} className="rounded-sm p-5"
-                    style={{ border: `1px solid ${C.borderNeutral}`, background: C.surfaceCard }}>
-                    <div className="font-orbitron font-semibold mb-2"
-                      style={{ color: C.textPrimary, fontSize: "10.5px", letterSpacing: "0.08em" }}>
-                      {point.heading}
+                ].map((principle) => (
+                  <div key={principle.heading}
+                    style={{
+                      border: `1px solid ${C.border}`,
+                      background: C.bgCard,
+                      borderRadius: 4, padding: "1.25rem 1.5rem",
+                      borderLeft: `3px solid ${principle.accent}55`,
+                    }}>
+                    <div style={{ color: C.headingDim, fontFamily: "'Orbitron', sans-serif", fontWeight: 600, fontSize: "10.5px", letterSpacing: "0.08em", marginBottom: 8 }}>
+                      {principle.heading}
                     </div>
-                    <p style={{ color: C.textTertiary, fontSize: "12px", lineHeight: "1.78", fontFamily: "Rajdhani, sans-serif" }}>
-                      {point.body}
+                    <p style={{ color: C.muted, fontSize: "12.5px", lineHeight: "1.72", fontFamily: "'Rajdhani', sans-serif", margin: 0 }}>
+                      {principle.body}
                     </p>
                   </div>
                 ))}
@@ -705,21 +785,19 @@ export default function Home() {
         </section>
 
         {/* ── NAVIGATE THE ARCHITECTURE ─────────────────────────── */}
-        <section className="px-8 py-16" style={{ borderBottom: `1px solid ${C.borderNeutral}` }}>
+        <section style={{ borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem" }}>
           <div style={{ maxWidth: 1100 }}>
             <SectionLabel>Interactive Architecture</SectionLabel>
-            <h2 className="font-orbitron font-bold mb-2"
-              style={{ color: C.textPrimary, fontSize: "22px", letterSpacing: "0.07em" }}>
-              Navigate the INDEX
+            <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "20px", letterSpacing: "0.07em", marginBottom: 10 }}>
+              Navigate Pacific Systems
             </h2>
-            <p className="mb-10"
-              style={{ color: C.textTertiary, fontSize: "13px", lineHeight: "1.75", fontFamily: "Rajdhani, sans-serif", maxWidth: 480 }}>
-              Six public sectors. Hover a sector to inspect its scope. Click to enter.
+            <p style={{ color: C.muted, fontSize: "13px", lineHeight: "1.72", fontFamily: "'Rajdhani', sans-serif", maxWidth: 440, marginBottom: 44 }}>
+              Six public sectors. Hover to inspect scope. Click to enter.
             </p>
 
-            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10">
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", gap: 48 }}>
               {/* Wheel */}
-              <div className="flex-shrink-0" style={{ width: 480, maxWidth: "100%" }}>
+              <div style={{ flexShrink: 0, width: 460, maxWidth: "100%" }}>
                 <CommandWheel
                   segments={SEGMENTS}
                   onHover={setHoveredSegment}
@@ -727,134 +805,136 @@ export default function Home() {
                 />
               </div>
 
-              {/* Sector detail panel */}
-              <div className="flex-1 w-full lg:w-auto">
-                <div className="grid grid-cols-1 gap-2">
-                  {SEGMENTS.map((seg) => {
-                    const isHovered = hoveredSegment === seg.label;
-                    return (
-                      <button key={seg.label}
-                        onClick={() => navigate(seg.path)}
-                        className="flex items-start gap-4 rounded-sm px-5 py-4 text-left w-full transition-all duration-150"
-                        style={{
-                          border: `1px solid ${isHovered ? C.borderGreenMid : C.borderNeutral}`,
-                          background: isHovered ? "rgba(34,197,94,0.04)" : C.surfaceCard,
-                          cursor: "pointer",
+              {/* Sector list */}
+              <div style={{ flex: 1, minWidth: 280, display: "flex", flexDirection: "column", gap: 6 }}>
+                {SEGMENTS.map((seg) => {
+                  const active = hoveredSegment === seg.label;
+                  return (
+                    <button key={seg.label}
+                      onClick={() => navigate(seg.path)}
+                      style={{
+                        display: "flex", alignItems: "center", gap: 14,
+                        border: `1px solid ${active ? C.borderAccent : C.border}`,
+                        background: active ? C.bgCardHover : C.bgCard,
+                        borderRadius: 4, padding: "14px 18px",
+                        cursor: "pointer", textAlign: "left", width: "100%",
+                        transition: "all 0.15s",
+                      }}>
+                      <div style={{
+                        width: 7, height: 7, borderRadius: "50%", flexShrink: 0,
+                        background: active ? C.accent : C.border,
+                        boxShadow: active ? `0 0 6px ${C.accent}55` : undefined,
+                        transition: "all 0.15s",
+                      }} />
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{
+                          color: active ? C.accent : C.headingDim,
+                          fontFamily: "'Orbitron', sans-serif", fontWeight: 700,
+                          fontSize: "9.5px", letterSpacing: "0.14em", marginBottom: 5,
+                          transition: "color 0.15s",
                         }}>
-                        <div className="flex flex-col items-center gap-1 flex-shrink-0 pt-0.5">
-                          <div className="w-1.5 h-1.5 rounded-full"
-                            style={{
-                              background: isHovered ? C.green : "rgba(140,155,150,0.22)",
-                              boxShadow: isHovered ? `0 0 5px rgba(34,197,94,0.5)` : undefined,
-                              transition: "all 0.15s",
-                            }} />
+                          {seg.label}
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-baseline gap-3 mb-1">
-                            <span className="font-orbitron font-bold"
-                              style={{ color: isHovered ? C.textGreen : C.textSecondary, fontSize: "10px", letterSpacing: "0.12em", transition: "color 0.15s" }}>
-                              {seg.label}
-                            </span>
-                          </div>
-                          <p className="font-mono-tactical"
-                            style={{ color: C.textTertiary, fontSize: "9.5px", lineHeight: "1.65" }}>
-                            {seg.description}
-                          </p>
-                        </div>
-                        <span className="font-mono-tactical flex-shrink-0 self-center"
-                          style={{ color: isHovered ? C.textGreen : C.textTertiary, fontSize: "11px", transition: "color 0.15s" }}>
-                          →
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
+                        <p style={{ color: C.muted, fontFamily: "'Share Tech Mono', monospace", fontSize: "9.5px", lineHeight: "1.6", margin: 0 }}>
+                          {seg.description}
+                        </p>
+                      </div>
+                      <span style={{ color: active ? C.accent : C.border, fontSize: "13px", flexShrink: 0, transition: "color 0.15s" }}>→</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
         </section>
 
         {/* ── RELATED BRANCHES ──────────────────────────────────── */}
-        <section className="px-8 py-16" style={{ borderBottom: `1px solid ${C.borderNeutral}`, background: "rgba(0,0,0,0.12)" }}>
+        <section style={{ background: C.bgSection, borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem" }}>
           <div style={{ maxWidth: 1100 }}>
             <SectionLabel>RSR Intelligence Network</SectionLabel>
-            <h2 className="font-orbitron font-bold mb-2"
-              style={{ color: C.textPrimary, fontSize: "22px", letterSpacing: "0.07em" }}>
+            <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "20px", letterSpacing: "0.07em", marginBottom: 10 }}>
               Related Branches
             </h2>
-            <p className="mb-8"
-              style={{ color: C.textTertiary, fontSize: "13px", lineHeight: "1.75", fontFamily: "Rajdhani, sans-serif", maxWidth: 480 }}>
-              INDEX operates alongside two sibling branches within the RSR Intelligence Network.
+            <p style={{ color: C.muted, fontSize: "13px", lineHeight: "1.72", fontFamily: "'Rajdhani', sans-serif", maxWidth: 480, marginBottom: 32 }}>
+              Pacific Systems operates alongside two sibling branches within the RSR Intelligence Network.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: 16, marginBottom: 20 }}>
               <BranchCard
                 name="RSR Press Corps"
-                abbr="RSR-PC"
+                code="RSR-PC"
+                role="EDITORIAL & PUBLICATION BRANCH"
                 desc="The editorial and publication arm of the RSR Intelligence Network. Responsible for analysis, reporting, and the conversion of structured intelligence into distributed content."
                 href="https://www.rsrintel.com"
               />
               <BranchCard
                 name="Black Dog Security"
-                abbr="BDS"
+                code="BDS"
+                role="SECURITY INTELLIGENCE BRANCH"
                 desc="The security intelligence division of the RSR network. Focused on threat assessment, vulnerability analysis, and operational security intelligence for network-wide operations."
                 href="https://www.rsrintel.com"
               />
             </div>
-            <div className="flex items-center gap-3 px-5 py-3 rounded-sm"
-              style={{ border: `1px solid ${C.borderNeutral}`, background: C.surfaceCard }}>
-              <div className="w-1 h-1 rounded-full" style={{ background: C.textGreenDim }} />
-              <span className="font-mono-tactical"
-                style={{ color: C.textTertiary, fontSize: "9px", lineHeight: "1.7" }}>
-                INDEX provides the structured data layer that supports operations across all three RSR branches. Data indexed here feeds directly into RSR Press Corps analysis and Black Dog Security intelligence assessments.
-              </span>
+            <div style={{
+              display: "flex", alignItems: "flex-start", gap: 12,
+              border: `1px solid ${C.border}`, background: C.bgCard,
+              borderRadius: 4, padding: "14px 18px",
+            }}>
+              <div style={{ width: 4, height: 4, borderRadius: "50%", background: C.borderAccentMid, flexShrink: 0, marginTop: 5 }} />
+              <p style={{ color: C.muted, fontFamily: "'Rajdhani', sans-serif", fontSize: "13px", lineHeight: "1.72", margin: 0 }}>
+                Pacific Systems provides the structured data layer that supports operations across all three RSR branches.
+                Data indexed here feeds directly into RSR Press Corps analysis and Black Dog Security intelligence assessments.
+              </p>
             </div>
           </div>
         </section>
 
         {/* ── FOOTER ───────────────────────────────────────────── */}
-        <footer className="px-8 py-6 flex items-center justify-between"
-          style={{ borderTop: `1px solid ${C.borderNeutral}` }}>
+        <footer style={{
+          borderTop: `1px solid ${C.border}`,
+          background: C.bgStrip,
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          padding: "1.5rem 2.5rem", flexWrap: "wrap", gap: 16,
+        }}>
           <div>
-            <div className="font-orbitron font-bold mb-1"
-              style={{ color: C.textTertiary, fontSize: "9.5px", letterSpacing: "0.18em" }}>
-              INDEX DATA NETWORK
+            <div style={{ color: C.headingDim, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "10px", letterSpacing: "0.16em", marginBottom: 5 }}>
+              PACIFIC SYSTEMS
             </div>
-            <div className="font-mono-tactical"
-              style={{ color: "rgba(128,145,142,0.35)", fontSize: "8px", letterSpacing: "0.1em" }}>
+            <div style={{ color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace", fontSize: "8px", letterSpacing: "0.1em" }}>
               RSR Intelligence Network — Data Systems Division
             </div>
           </div>
-          <div className="flex items-center gap-5">
+          <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
             {[
               { label: "OVERVIEW", path: "/overview" },
               { label: "METHOD", path: "/method" },
               { label: "ACCESS", path: "/access" },
             ].map((link) => (
-              <button key={link.path}
-                onClick={() => navigate(link.path)}
-                className="font-mono-tactical transition-colors duration-150"
-                style={{ color: C.textTertiary, fontSize: "8.5px", letterSpacing: "0.12em", background: "none", border: "none", cursor: "pointer" }}
-                onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = C.textGreenDim; }}
-                onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = C.textTertiary; }}>
+              <button key={link.path} onClick={() => navigate(link.path)}
+                style={{
+                  background: "none", border: "none", cursor: "pointer",
+                  color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace",
+                  fontSize: "8.5px", letterSpacing: "0.14em", transition: "color 0.15s",
+                }}
+                onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = C.muted; }}
+                onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = C.mutedDim; }}>
                 {link.label}
               </button>
             ))}
             <a href="https://www.rsrintel.com" target="_blank" rel="noopener noreferrer"
-              className="font-mono-tactical transition-colors duration-150"
-              style={{ color: C.textTertiary, fontSize: "8.5px", letterSpacing: "0.12em", textDecoration: "none" }}
-              onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = C.textGreenDim; }}
-              onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = C.textTertiary; }}>
+              style={{ color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace", fontSize: "8.5px", letterSpacing: "0.14em", textDecoration: "none", transition: "color 0.15s" }}
+              onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = C.muted; }}
+              onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = C.mutedDim; }}>
               RSR INTEL ↗
             </a>
           </div>
-          <div className="flex items-center gap-2.5">
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <StatusDot live={networkLive} />
-            <span className="font-mono-tactical"
-              style={{ color: C.textTertiary, fontSize: "8px", letterSpacing: "0.06em" }}>
+            <span style={{ color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace", fontSize: "8px", letterSpacing: "0.06em" }}>
               PUBLIC LAYER ACTIVE
             </span>
           </div>
         </footer>
+
       </div>
     </div>
   );

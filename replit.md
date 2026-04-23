@@ -28,10 +28,10 @@ See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and pa
 
 ## Artifacts
 
-### INDEX Data Network (`artifacts/rsr-intelligence`)
+### Pacific Systems (`artifacts/rsr-intelligence`)
 - **Type**: React + Vite frontend (no backend, self-hostable via Portainer/Docker)
 - **Preview path**: `/`
-- **Product**: INDEX Data Network — RSR Intelligence Network, Data Systems Division
+- **Product**: Pacific Systems — RSR Intelligence Network, Data Systems Division (formerly "INDEX Data Network")
 - **Tech**: React, Vite, Tailwind CSS, wouter (routing), Orbitron/Rajdhani/Share Tech Mono fonts
 
 #### Architecture
