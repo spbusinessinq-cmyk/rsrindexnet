@@ -7,6 +7,17 @@ interface PageHeaderProps {
   children?: React.ReactNode;
 }
 
+const C = {
+  bg:           "#0D1520",
+  border:       "#2D3E4E",
+  heading:      "#EEF3F7",
+  body:         "#B4C0CA",
+  muted:        "#7F8E9B",
+  mutedDim:     "#5E6E7A",
+  accent:       "#7FAE9E",
+  accentBlue:   "#7C95AD",
+};
+
 export default function PageHeader({
   module,
   title,
@@ -17,26 +28,37 @@ export default function PageHeader({
 }: PageHeaderProps) {
   return (
     <div
-      className="px-6 md:px-8 py-5 shrink-0"
-      style={{ borderBottom: "1px solid rgba(34,197,94,0.09)", background: "rgba(0,0,0,0.08)" }}
+      className="px-6 md:px-10 py-6 shrink-0"
+      style={{
+        borderBottom: `1px solid ${C.border}`,
+        background: C.bg,
+      }}
     >
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div className="min-w-0">
           <div
             className="font-mono-tactical tracking-widest uppercase mb-2"
-            style={{ color: "rgba(34,197,94,0.45)", letterSpacing: "0.24em", fontSize: "9px" }}
+            style={{ color: C.mutedDim, letterSpacing: "0.22em", fontSize: "9px" }}
           >
             {module}
           </div>
           <h1
-            className="font-orbitron text-3xl font-bold tracking-wider leading-none"
-            style={{ color: "#22c55e", textShadow: "0 0 22px rgba(34,197,94,0.15)" }}
+            className="font-orbitron font-bold tracking-wider leading-none"
+            style={{
+              color: C.heading,
+              fontSize: "clamp(22px, 4vw, 30px)",
+            }}
           >
             {title}
           </h1>
           <p
-            className="mt-2.5 font-mono-tactical"
-            style={{ color: "rgba(185,205,200,0.62)", lineHeight: "1.88", maxWidth: 560, fontSize: "10.5px" }}
+            className="mt-3 font-mono-tactical"
+            style={{
+              color: "rgba(180,192,202,0.68)",
+              lineHeight: "1.88",
+              maxWidth: 560,
+              fontSize: "11px",
+            }}
           >
             {subtitle}
           </p>
@@ -46,9 +68,17 @@ export default function PageHeader({
             <div
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded font-mono-tactical tracking-widest"
               style={{
-                border: `1px solid ${badgeActive ? "rgba(34,197,94,0.3)" : "rgba(34,197,94,0.12)"}`,
-                color: badgeActive ? "rgba(34,197,94,0.8)" : "rgba(34,197,94,0.38)",
-                background: badgeActive ? "rgba(34,197,94,0.05)" : "rgba(0,0,0,0.2)",
+                border: `1px solid ${
+                  badgeActive
+                    ? "rgba(127,174,158,0.3)"
+                    : "rgba(127,174,158,0.12)"
+                }`,
+                color: badgeActive
+                  ? "rgba(127,174,158,0.85)"
+                  : "rgba(127,174,158,0.4)",
+                background: badgeActive
+                  ? "rgba(127,174,158,0.06)"
+                  : "rgba(13,21,32,0.4)",
                 letterSpacing: "0.12em",
                 fontSize: "9px",
               }}
@@ -56,9 +86,15 @@ export default function PageHeader({
               <div
                 className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                 style={{
-                  background: badgeActive ? "rgba(34,197,94,0.72)" : "rgba(34,197,94,0.25)",
-                  boxShadow: badgeActive ? "0 0 5px rgba(34,197,94,0.55)" : undefined,
-                  animation: badgeActive ? "status-pulse 2.4s ease-in-out infinite" : undefined,
+                  background: badgeActive
+                    ? "rgba(127,174,158,0.75)"
+                    : "rgba(127,174,158,0.28)",
+                  boxShadow: badgeActive
+                    ? "0 0 5px rgba(127,174,158,0.5)"
+                    : undefined,
+                  animation: badgeActive
+                    ? "status-pulse 2.4s ease-in-out infinite"
+                    : undefined,
                 }}
               />
               {badge}

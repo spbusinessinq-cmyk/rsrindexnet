@@ -1,0 +1,258 @@
+You are a senior product designer and front-end architect.
+
+Apply a FULL-SITE CONGRUENCE PASS across Pacific Systems.
+
+IMPORTANT:
+This is not a homepage-only update.
+This is not a partial brand swap.
+This is a global redesign unification pass.
+
+Right now the landing page has been updated toward the new Pacific Systems direction, but the inner pages/modules still look like the old INDEX-era interface.
+
+That is not acceptable.
+
+The entire site must now feel like ONE cohesive corporate-intelligence property.
+
+━━━━━━━━━━━━━━━━━━━━
+MISSION
+━━━━━━━━━━━━━━━━━━━━
+
+Unify the entire Pacific Systems site so that:
+
+- homepage
+- overview
+- signals
+- datasets
+- index
+- method
+- access
+- any related public-facing modules
+
+all share the same:
+- brand system
+- color system
+- typography scale
+- spacing rules
+- navigation model
+- page shell
+- card styling
+- institutional tone
+
+The current issue:
+the homepage looks newer and more polished,
+but the rest of the site still looks like an older dark terminal dashboard.
+
+That mismatch must be fixed.
+
+━━━━━━━━━━━━━━━━━━━━
+MANDATORY OUTCOME
+━━━━━━━━━━━━━━━━━━━━
+
+Pacific Systems must feel like a real, finished, public-facing corporate systems site.
+
+NOT:
+- a homepage with old app screens behind it
+- a mixed-style prototype
+- a terminal dashboard with a rebrand pasted on top
+
+It must feel:
+- cohesive
+- expensive
+- institutional
+- west coast
+- lighter
+- calmer
+- more corporate
+- more web-first
+- less app-panel
+- less hacker terminal
+
+━━━━━━━━━━━━━━━━━━━━
+GLOBAL BRAND RULE
+━━━━━━━━━━━━━━━━━━━━
+
+Pacific Systems is now the official brand.
+
+Replace leftover INDEX-era top-level branding where appropriate.
+
+You may keep “index” only where it refers to an internal record layer or technical function,
+but not as the primary identity of the product/site.
+
+Examples:
+- “Index & Retrieval Division” is okay
+- a page titled simply “INDEX” as the main public identity is not okay unless it is clearly framed as an internal layer within Pacific Systems
+
+All modules must clearly belong to:
+PACIFIC SYSTEMS
+Data Systems Division
+RSR Intelligence Network
+
+━━━━━━━━━━━━━━━━━━━━
+FULL-SITE SHELL PASS
+━━━━━━━━━━━━━━━━━━━━
+
+Apply a unified shell across the entire site:
+
+1. Same top navigation style across all pages
+2. Same header branding across all pages
+3. Same page width logic
+4. Same section spacing logic
+5. Same card design language
+6. Same border treatment
+7. Same typography scale
+8. Same button styling
+9. Same background/grid treatment
+10. Same tone and visual rhythm
+
+Do not let inner pages revert to the old UI system.
+
+━━━━━━━━━━━━━━━━━━━━
+NAVIGATION CHANGE
+━━━━━━━━━━━━━━━━━━━━
+
+Add a proper hamburger menu / mobile navigation system.
+
+Also improve desktop navigation so it feels like a corporate site, not a tool rail.
+
+Rules:
+- Reduce reliance on the old left-side app rail
+- Move toward a cleaner top navigation model
+- Add a hamburger menu for smaller screens
+- If useful, keep a secondary in-page section nav, but do NOT keep the old software-style left rail as the dominant navigation model unless it is heavily redesigned and elegant
+- Navigation should feel like a serious public website
+
+Desktop nav should include:
+- Overview
+- Signals
+- Datasets
+- Index
+- Method
+- Access
+
+Optional:
+- About / Architecture / Divisions if already supported
+
+On mobile:
+- hamburger opens a clean slide-over or dropdown panel
+- polished, minimal, branded
+- not app-like, not clunky
+
+━━━━━━━━━━━━━━━━━━━━
+GLOBAL VISUAL RULES
+━━━━━━━━━━━━━━━━━━━━
+
+Keep the lighter Pacific Systems palette and apply it everywhere.
+
+Use and normalize these tones site-wide:
+- page background: #121922
+- section background: #1A2530
+- card background: #23303B
+- border: #3B4E5E
+- heading text: #EEF3F7
+- body text: #B4C0CA
+- muted text: #7F8E9B
+- primary accent: #7FAE9E
+- accent hover: #95C2B2
+- secondary accent: #7C95AD
+- warning amber: #C7A56A
+
+Green must be an accent, not the atmosphere.
+
+Reduce leftover neon-green dashboard styling on all inner pages.
+
+━━━━━━━━━━━━━━━━━━━━
+TYPOGRAPHY RULES
+━━━━━━━━━━━━━━━━━━━━
+
+Apply the improved larger type scale across the full site.
+
+Do not leave inner pages in the old tiny microtext style.
+
+Make all important copy comfortably readable:
+- section intros
+- body text
+- card text
+- methodology text
+- signals descriptions
+- access descriptions
+- index explanations
+
+The whole site should feel like a public-facing institutional property, not a tiny operator console.
+
+━━━━━━━━━━━━━━━━━━━━
+CONTENT / MODULE FIXES
+━━━━━━━━━━━━━━━━━━━━
+
+Review every inner module/page and bring it into alignment.
+
+Specific issues to fix:
+- leftover “INDEX” main-page naming where Pacific Systems should lead
+- old terminal-style layouts that clash with the new homepage
+- tiny text
+- over-dense data panels
+- old green-heavy styling
+- old left-rail app feel
+- inconsistent headings
+- inconsistent spacing
+- inconsistent page framing
+
+Each page should feel like a section of the same website.
+
+━━━━━━━━━━━━━━━━━━━━
+PAGE-BY-PAGE EXPECTATION
+━━━━━━━━━━━━━━━━━━━━
+
+OVERVIEW
+- should feel like a polished institutional overview page
+
+SIGNALS
+- should feel like a structured public-facing documentation page, not a raw operator screen
+
+DATASETS
+- same corporate systems presentation style
+
+INDEX
+- if retained as a page title, frame it explicitly as the indexed record layer within Pacific Systems
+- do not make it feel like the old primary brand
+
+METHOD
+- should read like official process architecture documentation
+
+ACCESS
+- should feel like controlled access architecture explained to the public, not an internal console
+
+━━━━━━━━━━━━━━━━━━━━
+DESIGN DIRECTION
+━━━━━━━━━━━━━━━━━━━━
+
+Target tone:
+- executive systems group
+- coastal infrastructure
+- institutional intelligence architecture
+- premium west coast technical organization
+
+Not:
+- cyberpunk
+- game UI
+- SOC dashboard
+- hacker terminal
+- admin panel
+
+━━━━━━━━━━━━━━━━━━━━
+IMPLEMENTATION RULE
+━━━━━━━━━━━━━━━━━━━━
+
+Do not return a plan only.
+Do not do a tiny partial pass.
+Do not touch only one page.
+
+Implement the full-site congruence pass directly in code across all public-facing pages now.
+
+Final result should feel like:
+one cohesive Pacific Systems site
+with unified navigation
+unified branding
+unified typography
+unified shell
+unified visual language
+and a proper hamburger menu for mobile.

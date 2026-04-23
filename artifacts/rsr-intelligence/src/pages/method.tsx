@@ -99,16 +99,16 @@ export default function MethodPage() {
 
         {/* Phase navigator strip */}
         <div className="shrink-0 flex items-center gap-0 overflow-x-auto"
-          style={{ borderBottom: "1px solid rgba(34,197,94,0.06)", background: "rgba(0,0,0,0.2)" }}>
+          style={{ borderBottom: "1px solid rgba(127,174,158,0.06)", background: "rgba(0,0,0,0.2)" }}>
           {PHASES.map((phase, i) => (
             <div key={phase.id} className="flex items-center gap-2 px-4 py-2.5 flex-shrink-0"
-              style={{ borderRight: i < PHASES.length - 1 ? "1px solid rgba(34,197,94,0.06)" : undefined }}>
+              style={{ borderRight: i < PHASES.length - 1 ? "1px solid rgba(127,174,158,0.06)" : undefined }}>
               <span className="font-mono-tactical"
-                style={{ color: "rgba(34,197,94,0.3)", fontSize: "8px" }}>
+                style={{ color: "rgba(127,174,158,0.3)", fontSize: "8px" }}>
                 {phase.id}
               </span>
               <span className="font-mono-tactical"
-                style={{ color: "rgba(185,205,200,0.55)", fontSize: "8.5px", letterSpacing: "0.04em" }}>
+                style={{ color: "rgba(180,192,202,0.55)", fontSize: "8.5px", letterSpacing: "0.04em" }}>
                 {phase.label}
               </span>
             </div>
@@ -118,9 +118,9 @@ export default function MethodPage() {
         <div className="flex-1 p-6 md:p-7 space-y-4 overflow-y-auto">
           {/* Context block */}
           <div className="rounded p-5 max-w-4xl"
-            style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(0,0,0,0.2)" }}>
+            style={{ border: "1px solid rgba(127,174,158,0.1)", background: "rgba(0,0,0,0.2)" }}>
             <p className="font-mono-tactical leading-relaxed"
-              style={{ color: "rgba(185,205,200,0.72)", lineHeight: "1.95", fontSize: "11px" }}>
+              style={{ color: "rgba(180,192,202,0.72)", lineHeight: "1.95", fontSize: "11px" }}>
               INDEX operates a defined methodology for turning monitored signals into structured, indexed records.
               Each phase has explicit rules — not guidelines. This page documents the process architecture.
               The six phases are sequential — signal classification cannot precede collection discipline;
@@ -132,26 +132,26 @@ export default function MethodPage() {
           <div className="space-y-3 max-w-4xl">
             {PHASES.map((phase) => (
               <div key={phase.id} className="rounded idx-card"
-                style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(0,0,0,0.2)" }}>
+                style={{ border: "1px solid rgba(127,174,158,0.1)", background: "rgba(0,0,0,0.2)" }}>
                 {/* Phase header */}
                 <div className="flex items-start justify-between gap-4 px-5 pt-4 pb-3.5"
-                  style={{ borderBottom: "1px solid rgba(34,197,94,0.08)" }}>
+                  style={{ borderBottom: "1px solid rgba(127,174,158,0.08)" }}>
                   <div className="flex items-start gap-3">
                     <div className="w-8 h-8 flex-shrink-0 rounded flex items-center justify-center font-mono-tactical font-bold"
                       style={{
-                        background: "rgba(0,0,0,0.55)",
-                        border: "1px solid rgba(34,197,94,0.22)",
-                        color: "rgba(34,197,94,0.75)",
+                        background: "rgba(13,21,32,0.55)",
+                        border: "1px solid rgba(127,174,158,0.22)",
+                        color: "rgba(127,174,158,0.75)",
                         fontSize: "9px",
                       }}>
                       {phase.id}
                     </div>
                     <div>
-                      <div className="font-orbitron text-sm font-bold tracking-wider" style={{ color: "#22c55e" }}>
+                      <div className="font-orbitron text-sm font-bold tracking-wider" style={{ color: "#7FAE9E" }}>
                         {phase.label}
                       </div>
                       <div className="font-mono-tactical mt-0.5 italic"
-                        style={{ color: "rgba(185,205,200,0.72)", fontSize: "10.5px", lineHeight: "1.7" }}>
+                        style={{ color: "rgba(180,192,202,0.72)", fontSize: "10.5px", lineHeight: "1.7" }}>
                         {phase.headline}
                       </div>
                     </div>
@@ -161,11 +161,11 @@ export default function MethodPage() {
                       onClick={() => setLocation(phase.relatedPath)}
                       className="font-mono-tactical tracking-widest flex-shrink-0 rounded px-2.5 py-1.5"
                       style={{
-                        color: "rgba(34,197,94,0.45)",
+                        color: "rgba(127,174,158,0.45)",
                         fontSize: "8px",
                         letterSpacing: "0.1em",
-                        border: "1px solid rgba(34,197,94,0.14)",
-                        background: "rgba(34,197,94,0.03)",
+                        border: "1px solid rgba(127,174,158,0.14)",
+                        background: "rgba(127,174,158,0.03)",
                         cursor: "pointer",
                       }}>
                       {phase.relatedLabel} →
@@ -175,26 +175,26 @@ export default function MethodPage() {
 
                 {/* Phase body */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x"
-                  style={{ borderColor: "rgba(34,197,94,0.07)" }}>
+                  style={{ borderColor: "rgba(127,174,158,0.07)" }}>
                   <div className="px-5 py-4">
                     <p className="font-mono-tactical leading-relaxed"
-                      style={{ color: "rgba(185,205,200,0.72)", lineHeight: "1.9", fontSize: "10.5px" }}>
+                      style={{ color: "rgba(180,192,202,0.72)", lineHeight: "1.9", fontSize: "10.5px" }}>
                       {phase.body}
                     </p>
                   </div>
 
                   <div className="px-5 py-4">
                     <div className="font-mono-tactical tracking-widest uppercase mb-3"
-                      style={{ color: "rgba(34,197,94,0.42)", fontSize: "8.5px", letterSpacing: "0.16em" }}>
+                      style={{ color: "rgba(127,174,158,0.42)", fontSize: "8.5px", letterSpacing: "0.16em" }}>
                       Rules
                     </div>
                     <div className="space-y-2.5">
                       {phase.rules.map((rule, ri) => (
                         <div key={ri} className="flex items-start gap-2.5">
                           <div className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
-                            style={{ background: "rgba(34,197,94,0.45)" }} />
+                            style={{ background: "rgba(127,174,158,0.45)" }} />
                           <span className="font-mono-tactical"
-                            style={{ color: "rgba(185,205,200,0.72)", lineHeight: "1.8", fontSize: "10.5px" }}>
+                            style={{ color: "rgba(180,192,202,0.72)", lineHeight: "1.8", fontSize: "10.5px" }}>
                             {rule}
                           </span>
                         </div>
@@ -208,12 +208,12 @@ export default function MethodPage() {
 
           {/* Follow the Pipeline footer */}
           <div className="max-w-4xl rounded"
-            style={{ border: "1px solid rgba(34,197,94,0.1)", background: "rgba(0,0,0,0.2)" }}>
+            style={{ border: "1px solid rgba(127,174,158,0.1)", background: "rgba(0,0,0,0.2)" }}>
             <div className="flex items-center gap-2.5 px-5 py-3"
-              style={{ borderBottom: "1px solid rgba(34,197,94,0.07)" }}>
-              <div className="w-1 h-1 rounded-full" style={{ background: "rgba(34,197,94,0.45)" }} />
+              style={{ borderBottom: "1px solid rgba(127,174,158,0.07)" }}>
+              <div className="w-1 h-1 rounded-full" style={{ background: "rgba(127,174,158,0.45)" }} />
               <span className="font-mono-tactical tracking-widest uppercase"
-                style={{ color: "rgba(34,197,94,0.5)", fontSize: "9px", letterSpacing: "0.16em" }}>
+                style={{ color: "rgba(127,174,158,0.5)", fontSize: "9px", letterSpacing: "0.16em" }}>
                 Follow the Pipeline
               </span>
             </div>
@@ -228,16 +228,16 @@ export default function MethodPage() {
                   onClick={() => setLocation(link.path)}
                   className="rounded px-4 py-2.5 flex items-center gap-2.5"
                   style={{
-                    border: "1px solid rgba(34,197,94,0.14)",
-                    background: "rgba(34,197,94,0.04)",
+                    border: "1px solid rgba(127,174,158,0.14)",
+                    background: "rgba(127,174,158,0.04)",
                     cursor: "pointer",
                   }}>
                   <span className="font-orbitron font-bold tracking-wider"
-                    style={{ color: "rgba(34,197,94,0.68)", fontSize: "8.5px" }}>
+                    style={{ color: "rgba(127,174,158,0.68)", fontSize: "8.5px" }}>
                     {link.label}
                   </span>
                   <span className="font-mono-tactical"
-                    style={{ color: "rgba(155,175,170,0.38)", fontSize: "8.5px" }}>
+                    style={{ color: "rgba(127,142,155,0.38)", fontSize: "8.5px" }}>
                     — {link.note} →
                   </span>
                 </button>

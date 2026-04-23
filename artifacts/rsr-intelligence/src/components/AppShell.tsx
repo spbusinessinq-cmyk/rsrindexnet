@@ -1,191 +1,308 @@
+import { useState } from "react";
 import { useLocation } from "wouter";
+
+const C = {
+  bg:             "#121922",
+  bgSection:      "#0F1720",
+  bgStrip:        "#0D1520",
+  border:         "#2D3E4E",
+  borderMid:      "#3B4E5E",
+  borderAccent:   "rgba(127,174,158,0.32)",
+  borderAccentMid:"rgba(127,174,158,0.5)",
+  heading:        "#EEF3F7",
+  headingDim:     "#C8D4DC",
+  body:           "#B4C0CA",
+  muted:          "#7F8E9B",
+  mutedDim:       "#5E6E7A",
+  accent:         "#7FAE9E",
+  accentHover:    "#95C2B2",
+  accentBlue:     "#7C95AD",
+};
+
+const NAV_LINKS = [
+  { label: "OVERVIEW", path: "/overview" },
+  { label: "SIGNALS",  path: "/signals"  },
+  { label: "DATASETS", path: "/datasets" },
+  { label: "INDEX",    path: "/records"  },
+  { label: "METHOD",   path: "/method"   },
+];
 
 interface AppShellProps {
   children: React.ReactNode;
 }
 
-const NAV = [
-  { label: "HOME",     path: "/",         icon: "⊕", abbr: "BASE" },
-  { label: "OVERVIEW", path: "/overview", icon: "⊡", abbr: "OVE" },
-  { label: "SIGNALS",  path: "/signals",  icon: "◈", abbr: "SIG" },
-  { label: "DATASETS", path: "/datasets", icon: "⊞", abbr: "DAT" },
-  { label: "INDEX",    path: "/records",  icon: "≡",  abbr: "IND" },
-  { label: "METHOD",   path: "/method",   icon: "◎", abbr: "MET" },
-  { label: "ACCESS",   path: "/access",   icon: "⊟", abbr: "ACC" },
-];
-
-/* Shared text color tokens */
 export const T = {
-  body:    "rgba(185,205,200,0.68)",
-  bodyDim: "rgba(185,205,200,0.52)",
-  label:   "rgba(34,197,94,0.55)",
-  labelDim:"rgba(34,197,94,0.4)",
-  meta:    "rgba(155,175,170,0.55)",
-  metaDim: "rgba(155,175,170,0.35)",
-  steel:   "rgba(155,175,170,0.28)",
+  body:    C.body,
+  bodyDim: "rgba(180,192,202,0.62)",
+  label:   C.accent,
+  labelDim:"rgba(127,174,158,0.5)",
+  meta:    C.muted,
+  metaDim: C.mutedDim,
+  steel:   "rgba(94,110,122,0.5)",
 };
 
 export default function AppShell({ children }: AppShellProps) {
   const [location, setLocation] = useLocation();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const navigate = (path: string) => {
+    setLocation(path);
+    setMobileOpen(false);
+  };
+
+  const isActive = (path: string) =>
+    path === "/" ? location === "/" : location.startsWith(path);
 
   return (
-    <div className="min-h-screen w-full bg-background grid-overlay flex flex-col overflow-hidden">
-      {/* Top bar */}
-      <div
-        className="relative z-20 flex items-center justify-between px-5 py-2.5 shrink-0"
-        style={{ borderBottom: "1px solid rgba(34,197,94,0.09)" }}
-      >
-        <div className="flex items-center gap-2.5">
-          <div
-            className="w-1.5 h-1.5 rounded-full status-pulse"
-            style={{ background: "#22c55e", boxShadow: "0 0 5px rgba(34,197,94,0.7)" }}
-          />
-          <span className="font-mono-tactical tracking-widest uppercase"
-            style={{ color: "rgba(34,197,94,0.62)", fontSize: "9.5px", letterSpacing: "0.18em" }}>
-            PACIFIC SYSTEMS // ACTIVE
-          </span>
-        </div>
+    <div style={{
+      background: C.bg,
+      minHeight: "100vh",
+      width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      backgroundImage: "linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)",
+      backgroundSize: "60px 60px",
+    }}>
 
-        <div className="flex flex-col items-center">
-          <span className="font-orbitron font-bold tracking-widest"
-            style={{ color: "rgba(34,197,94,0.52)", fontSize: "11px", letterSpacing: "0.25em" }}>
-            PACIFIC SYSTEMS
-          </span>
-          <span className="font-mono-tactical tracking-widest"
-            style={{ color: "rgba(155,175,170,0.32)", fontSize: "7.5px", letterSpacing: "0.22em" }}>
-            RSR INTELLIGENCE NETWORK — DATA SYSTEMS
-          </span>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <a
-            href="https://www.rsrintel.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono-tactical tracking-widest hidden sm:flex items-center gap-1.5"
-            style={{
-              color: "rgba(34,197,94,0.45)",
-              fontSize: "8.5px",
-              letterSpacing: "0.12em",
-              textDecoration: "none",
-              border: "1px solid rgba(34,197,94,0.16)",
-              padding: "3px 10px",
-              borderRadius: 3,
-              background: "rgba(34,197,94,0.04)",
-              transition: "color 0.15s ease, border-color 0.15s ease",
-            }}
-            onMouseOver={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.color = "rgba(34,197,94,0.72)";
-              (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(34,197,94,0.3)";
-            }}
-            onMouseOut={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.color = "rgba(34,197,94,0.45)";
-              (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(34,197,94,0.16)";
-            }}
-          >
-            RSR INTEL ↗
-          </a>
-          <span className="font-mono-tactical"
-            style={{ color: "rgba(155,175,170,0.4)", fontSize: "9.5px", letterSpacing: "0.1em" }}>
-            PUBLIC LAYER
-          </span>
-          <span className="font-mono-tactical hidden lg:block"
-            style={{ color: "rgba(155,175,170,0.28)", fontSize: "9px" }}>
-            {new Date().toISOString().slice(0, 19).replace("T", " ")} UTC
-          </span>
-        </div>
-      </div>
-
-      <div className="flex flex-1 overflow-hidden">
-        {/* Side nav */}
-        <nav
-          className="flex flex-col shrink-0 py-2 gap-0 overflow-y-auto"
+      {/* ── STICKY TOP NAV ─────────────────────────────────────── */}
+      <header style={{
+        borderBottom: `1px solid ${C.border}`,
+        background: C.bgStrip,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 2.5rem",
+        minHeight: 56,
+        flexShrink: 0,
+        position: "sticky",
+        top: 0,
+        zIndex: 30,
+      }}>
+        {/* Brand */}
+        <button
+          onClick={() => navigate("/")}
           style={{
-            width: 54,
-            borderRight: "1px solid rgba(34,197,94,0.07)",
-            background: "rgba(0,0,0,0.25)",
-          }}
-        >
-          {NAV.map((item) => {
-            const active = item.path === "/" ? location === "/" : location.startsWith(item.path);
+            background: "none", border: "none", cursor: "pointer",
+            display: "flex", alignItems: "center", gap: 10,
+            padding: 0,
+          }}>
+          <div style={{
+            width: 7, height: 7, borderRadius: "50%",
+            background: C.accent,
+            boxShadow: `0 0 6px ${C.accent}88`,
+          }} />
+          <div>
+            <div style={{
+              color: C.body, fontSize: "12.5px", letterSpacing: "0.16em",
+              fontFamily: "'Orbitron', sans-serif", fontWeight: 700, lineHeight: 1,
+            }}>
+              PACIFIC SYSTEMS
+            </div>
+            <div style={{
+              color: C.mutedDim, fontSize: "8.5px", letterSpacing: "0.12em",
+              fontFamily: "'Share Tech Mono', monospace", marginTop: 4,
+            }}>
+              RSR INTELLIGENCE NETWORK
+            </div>
+          </div>
+        </button>
+
+        {/* Desktop nav */}
+        <nav style={{ display: "flex", alignItems: "center", gap: 32 }}
+          className="hidden-mobile">
+          {NAV_LINKS.map((link) => {
+            const active = isActive(link.path);
             return (
-              <a
-                key={item.path}
-                href={item.path}
-                data-testid={`nav-${item.label.toLowerCase()}`}
-                title={item.label}
-                onClick={(e) => { e.preventDefault(); setLocation(item.path); }}
-                className={`group flex flex-col items-center gap-1 py-3 px-1 relative idx-nav-item ${active ? "idx-nav-active" : ""}`}
+              <button key={link.path}
+                onClick={() => navigate(link.path)}
                 style={{
-                  background: active ? "rgba(34,197,94,0.08)" : "transparent",
-                  borderLeft: active ? "2px solid rgba(34,197,94,0.72)" : "2px solid transparent",
-                  cursor: "pointer",
-                  textDecoration: "none",
+                  background: "none", border: "none", cursor: "pointer",
+                  color: active ? C.accent : C.muted,
+                  fontSize: "10.5px", letterSpacing: "0.16em",
+                  fontFamily: "'Share Tech Mono', monospace",
+                  textTransform: "uppercase",
+                  padding: "4px 0",
+                  borderBottom: active ? `1px solid ${C.accent}` : "1px solid transparent",
+                  transition: "color 0.15s, border-color 0.15s",
                 }}
-              >
-                {active && (
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{ background: "linear-gradient(90deg, rgba(34,197,94,0.07), transparent)" }}
-                  />
-                )}
-                <span
-                  style={{
-                    fontSize: "15px",
-                    lineHeight: 1,
-                    color: active ? "#22c55e" : "rgba(34,197,94,0.28)",
-                    filter: active ? "drop-shadow(0 0 5px rgba(34,197,94,0.65))" : undefined,
-                    transition: "color 0.15s ease, filter 0.15s ease",
-                  }}
-                >
-                  {item.icon}
-                </span>
-                <span
-                  className="font-mono-tactical"
-                  style={{
-                    fontSize: "7px",
-                    letterSpacing: "0.08em",
-                    color: active ? "rgba(34,197,94,0.85)" : "rgba(155,175,170,0.3)",
-                    transition: "color 0.15s ease",
-                  }}
-                >
-                  {item.abbr}
-                </span>
-              </a>
+                onMouseOver={(e) => {
+                  if (!active) (e.currentTarget as HTMLElement).style.color = C.body;
+                }}
+                onMouseOut={(e) => {
+                  if (!active) (e.currentTarget as HTMLElement).style.color = C.muted;
+                }}>
+                {link.label}
+              </button>
             );
           })}
         </nav>
 
-        <main className="flex-1 overflow-y-auto">
-          {children}
-        </main>
-      </div>
+        {/* Right: external link + ACCESS + hamburger */}
+        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+          <a href="https://www.rsrintel.com" target="_blank" rel="noopener noreferrer"
+            style={{
+              color: C.mutedDim, fontSize: "10px", letterSpacing: "0.1em",
+              textDecoration: "none", fontFamily: "'Share Tech Mono', monospace",
+              transition: "color 0.15s",
+            }}
+            className="hidden-mobile"
+            onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = C.muted; }}
+            onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = C.mutedDim; }}>
+            RSR INTEL ↗
+          </a>
+          <button onClick={() => navigate("/access")}
+            className="hidden-mobile"
+            style={{
+              background: "transparent",
+              border: `1px solid ${C.borderAccent}`,
+              color: C.accent, fontSize: "10.5px", letterSpacing: "0.14em",
+              fontFamily: "'Share Tech Mono', monospace",
+              padding: "7px 18px", borderRadius: 3, cursor: "pointer",
+              transition: "all 0.18s",
+            }}
+            onMouseOver={(e) => {
+              (e.currentTarget as HTMLElement).style.background = `${C.accent}10`;
+              (e.currentTarget as HTMLElement).style.borderColor = C.borderAccentMid;
+            }}
+            onMouseOut={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "transparent";
+              (e.currentTarget as HTMLElement).style.borderColor = C.borderAccent;
+            }}>
+            ACCESS
+          </button>
 
-      {/* Bottom bar */}
-      <div
-        className="relative z-20 flex items-center justify-between px-5 py-1.5 shrink-0"
-        style={{ borderTop: "1px solid rgba(34,197,94,0.06)", background: "rgba(0,0,0,0.18)" }}
-      >
-        <span className="font-mono-tactical tracking-widest"
-          style={{ color: "rgba(155,175,170,0.25)", fontSize: "8.5px", letterSpacing: "0.18em" }}>
+          {/* Hamburger */}
+          <button
+            onClick={() => setMobileOpen((v) => !v)}
+            style={{
+              background: "none", border: "none", cursor: "pointer",
+              display: "none", flexDirection: "column", gap: 5,
+              padding: "4px 0",
+            }}
+            className="show-mobile"
+            aria-label="Menu">
+            <div style={{
+              width: 22, height: 1.5,
+              background: mobileOpen ? C.accent : C.muted,
+              transition: "all 0.2s",
+              transform: mobileOpen ? "rotate(45deg) translateY(6px)" : "none",
+            }} />
+            <div style={{
+              width: 22, height: 1.5, background: C.muted,
+              opacity: mobileOpen ? 0 : 1,
+              transition: "opacity 0.2s",
+            }} />
+            <div style={{
+              width: 22, height: 1.5,
+              background: mobileOpen ? C.accent : C.muted,
+              transition: "all 0.2s",
+              transform: mobileOpen ? "rotate(-45deg) translateY(-6px)" : "none",
+            }} />
+          </button>
+        </div>
+      </header>
+
+      {/* ── MOBILE MENU ─────────────────────────────────────────── */}
+      {mobileOpen && (
+        <div style={{
+          position: "fixed", top: 56, left: 0, right: 0,
+          background: C.bgStrip,
+          borderBottom: `1px solid ${C.border}`,
+          zIndex: 28,
+          padding: "1.5rem 2.5rem",
+          display: "flex", flexDirection: "column", gap: 6,
+        }}>
+          <button
+            onClick={() => navigate("/")}
+            style={{
+              background: "none", border: "none", cursor: "pointer", textAlign: "left",
+              color: C.muted, fontSize: "11px", letterSpacing: "0.16em",
+              fontFamily: "'Share Tech Mono', monospace", padding: "10px 0",
+              borderBottom: `1px solid ${C.border}`,
+            }}>
+            HOME
+          </button>
+          {NAV_LINKS.map((link) => (
+            <button key={link.path}
+              onClick={() => navigate(link.path)}
+              style={{
+                background: "none", border: "none", cursor: "pointer", textAlign: "left",
+                color: isActive(link.path) ? C.accent : C.muted,
+                fontSize: "11px", letterSpacing: "0.16em",
+                fontFamily: "'Share Tech Mono', monospace", padding: "10px 0",
+                borderBottom: `1px solid ${C.border}`,
+              }}>
+              {link.label}
+            </button>
+          ))}
+          <button
+            onClick={() => navigate("/access")}
+            style={{
+              marginTop: 8,
+              background: "transparent",
+              border: `1px solid ${C.borderAccent}`,
+              color: C.accent, fontSize: "10.5px", letterSpacing: "0.14em",
+              fontFamily: "'Share Tech Mono', monospace",
+              padding: "10px 18px", borderRadius: 3, cursor: "pointer",
+              textAlign: "center",
+            }}>
+            ACCESS
+          </button>
+        </div>
+      )}
+
+      {/* ── MAIN CONTENT ────────────────────────────────────────── */}
+      <main style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+        {children}
+      </main>
+
+      {/* ── FOOTER STRIP ────────────────────────────────────────── */}
+      <footer style={{
+        borderTop: `1px solid ${C.border}`,
+        background: C.bgStrip,
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: "0.875rem 2.5rem", flexWrap: "wrap", gap: 12,
+        flexShrink: 0,
+      }}>
+        <div style={{
+          color: C.mutedDim, fontFamily: "'Orbitron', sans-serif",
+          fontWeight: 700, fontSize: "10px", letterSpacing: "0.16em",
+        }}>
           PACIFIC SYSTEMS
-        </span>
-        <div className="flex items-center gap-3">
-          <span className="font-mono-tactical hidden sm:block"
-            style={{ color: "rgba(155,175,170,0.2)", fontSize: "8.5px", letterSpacing: "0.08em" }}>
-            RSR DATA SYSTEMS
-          </span>
-          <div className="w-px h-3 hidden sm:block" style={{ background: "rgba(155,175,170,0.1)" }} />
-          <div className="w-1 h-1 rounded-full status-pulse" style={{ background: "rgba(34,197,94,0.35)" }} />
-          <span className="font-mono-tactical" style={{ color: "rgba(155,175,170,0.22)", fontSize: "8.5px" }}>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{
+            width: 5, height: 5, borderRadius: "50%",
+            background: C.accent, boxShadow: `0 0 4px ${C.accent}66`,
+          }} />
+          <span style={{
+            color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace",
+            fontSize: "9px", letterSpacing: "0.08em",
+          }}>
             PUBLIC LAYER ACTIVE
           </span>
         </div>
-        <span className="font-mono-tactical tracking-widest hidden sm:block"
-          style={{ color: "rgba(155,175,170,0.2)", fontSize: "8.5px", letterSpacing: "0.1em" }}>
-          v1.0
-        </span>
-      </div>
+        <a href="https://www.rsrintel.com" target="_blank" rel="noopener noreferrer"
+          style={{
+            color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace",
+            fontSize: "9px", letterSpacing: "0.1em", textDecoration: "none",
+            transition: "color 0.15s",
+          }}
+          onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = C.muted; }}
+          onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = C.mutedDim; }}>
+          RSR INTEL ↗
+        </a>
+      </footer>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .hidden-mobile { display: none !important; }
+          .show-mobile { display: flex !important; }
+        }
+        @media (min-width: 769px) {
+          .show-mobile { display: none !important; }
+        }
+      `}</style>
     </div>
   );
 }
