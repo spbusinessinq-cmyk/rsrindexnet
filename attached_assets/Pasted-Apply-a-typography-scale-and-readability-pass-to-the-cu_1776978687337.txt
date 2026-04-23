@@ -1,0 +1,117 @@
+Apply a typography scale and readability pass to the current Pacific Systems page.
+
+IMPORTANT:
+Do NOT redesign the page.
+Do NOT change the visual direction.
+Do NOT change the name.
+Do NOT rebuild the layout.
+
+This is a focused pass to fix one major issue:
+
+TEXT IS TOO SMALL.
+
+The page looks much better now, but too much of the typography still feels like tiny interface copy instead of premium public-facing institutional content.
+
+GOAL:
+Make the page feel more readable, more confident, more premium, and more public-facing by increasing type scale, improving spacing, and reducing overuse of microtext.
+
+━━━━━━━━━━━━━━━━━━━━
+TYPOGRAPHY GOALS
+━━━━━━━━━━━━━━━━━━━━
+
+Pacific Systems should read like:
+- an executive systems page
+- a premium institutional web property
+- a serious public-facing architecture division
+
+It should NOT read like:
+- a dense operator manual
+- a tiny admin panel
+- a microtext-heavy tool UI
+- a zoomed-out dashboard
+
+━━━━━━━━━━━━━━━━━━━━
+MAKE THESE CHANGES
+━━━━━━━━━━━━━━━━━━━━
+
+1. Increase hero paragraph size noticeably.
+2. Increase body text size across the entire page.
+3. Increase card description text size.
+4. Increase section intro paragraph sizes.
+5. Slightly increase navigation text size.
+6. Slightly increase labels inside architecture cards.
+7. Keep eyebrow/micro-labels small, but make them readable.
+8. Reduce the amount of ultra-small text.
+9. Improve line-height for body copy.
+10. Improve line-height for card copy.
+11. Increase spacing between paragraphs.
+12. Increase spacing between heading and paragraph blocks.
+13. Make the page feel less cramped vertically.
+14. Keep headings strong, but make body text feel substantial enough to match them.
+15. Ensure all text remains elegant and disciplined — bigger, not bloated.
+
+━━━━━━━━━━━━━━━━━━━━
+TARGET SCALE DIRECTION
+━━━━━━━━━━━━━━━━━━━━
+
+Use this as the direction:
+
+- Hero title: keep strong, maybe slightly refine but not smaller
+- Hero subheadline: increase slightly
+- Hero paragraph: significantly larger
+- Section headings: increase slightly
+- Section body copy: increase clearly
+- Card titles: slightly increase
+- Card descriptions: increase clearly
+- Nav labels: slightly increase
+- Metadata / tiny system labels: can remain smaller, but not microscopic
+
+Preferred feel:
+- desktop body copy should feel comfortably readable without zooming
+- section cards should feel like polished web content, not tiny system text
+- users should not have to lean in to read anything important
+
+━━━━━━━━━━━━━━━━━━━━
+READABILITY RULES
+━━━━━━━━━━━━━━━━━━━━
+
+- Prioritize readability over dense “technical” styling
+- Preserve the premium intelligence aesthetic
+- Keep the typography crisp and controlled
+- Avoid oversized cartoonish scaling
+- Avoid shrinking text to fit boxes — let layout breathe instead
+- Increase vertical rhythm where needed to support larger type
+
+━━━━━━━━━━━━━━━━━━━━
+LAYOUT ADJUSTMENTS ALLOWED
+━━━━━━━━━━━━━━━━━━━━
+
+You may:
+- increase padding inside cards
+- increase max width of text blocks if needed
+- add more spacing between sections
+- rebalance hero text width
+- adjust card heights to fit larger copy naturally
+
+Do NOT:
+- redesign the structure
+- remove sections
+- replace the aesthetic
+- revert the page to small dashboard-style typography
+
+━━━━━━━━━━━━━━━━━━━━
+FINAL RESULT
+━━━━━━━━━━━━━━━━━━━━
+
+After this pass, Pacific Systems should feel:
+- easier to read
+- more polished
+- more confident
+- more expensive
+- more public-facing
+- less tiny
+- less technical-manual
+- more like a serious institutional website
+
+Implement directly in code now.
+Do not just suggest sizes — apply the pass.
