@@ -60,12 +60,12 @@ export default function DatasetsPage() {
                     boxShadow: platform.domainsBound > 0 ? "0 0 4px rgba(127,174,158,0.5)" : undefined,
                   }} />
                 <span className="font-mono-tactical tracking-widest uppercase"
-                  style={{ color: "rgba(127,174,158,0.55)", fontSize: "9px", letterSpacing: "0.18em" }}>
+                  style={{ color: "rgba(127,174,158,0.55)", fontSize: "13px", letterSpacing: "0.18em" }}>
                   Domain Coverage Map
                 </span>
                 {platform.domainsBound > 0 && (
                   <span className="font-mono-tactical ml-auto"
-                    style={{ color: "rgba(127,174,158,0.42)", fontSize: "9px" }}>
+                    style={{ color: "rgba(127,174,158,0.42)", fontSize: "13px" }}>
                     {coveragePct}% bound
                   </span>
                 )}
@@ -86,12 +86,12 @@ export default function DatasetsPage() {
                           <div className="w-1 h-1 rounded-full"
                             style={{ background: FEED_STATE_COLORS[state] }} />
                           <span className="font-mono-tactical"
-                            style={{ color: isConn ? "rgba(127,174,158,0.72)" : "rgba(127,142,155,0.4)", fontSize: "8px", letterSpacing: "0.1em" }}>
+                            style={{ color: isConn ? "rgba(127,174,158,0.72)" : "rgba(127,142,155,0.4)", fontSize: "11.5px", letterSpacing: "0.1em" }}>
                             {ds.id}
                           </span>
                         </div>
                         <div className="font-mono-tactical truncate"
-                          style={{ color: isConn ? "rgba(180,192,202,0.72)" : "rgba(127,142,155,0.35)", fontSize: "8px" }}>
+                          style={{ color: isConn ? "rgba(180,192,202,0.72)" : "rgba(127,142,155,0.35)", fontSize: "11.5px" }}>
                           {isConn ? `${binding?.stagedCount ?? 0} stg` : "unbound"}
                         </div>
                       </div>
@@ -99,7 +99,7 @@ export default function DatasetsPage() {
                   })}
                 </div>
                 <p className="font-mono-tactical leading-relaxed"
-                  style={{ color: "rgba(180,192,202,0.68)", lineHeight: "1.9", fontSize: "10.5px" }}>
+                  style={{ color: "rgba(180,192,202,0.68)", lineHeight: "2.0", fontSize: "15.5px" }}>
                   Dataset domains define the analytical coverage structure of INDEX. Each domain is a bounded collection —
                   signals are classified into domains on intake, and records are appended as data is structured and committed.
                   {platform.domainsBound > 0
@@ -116,7 +116,7 @@ export default function DatasetsPage() {
                   <div className="w-1.5 h-1.5 rounded-full"
                     style={{ background: "#7FAE9E", boxShadow: "0 0 4px rgba(127,174,158,0.6)" }} />
                   <span className="font-mono-tactical tracking-widest uppercase"
-                    style={{ color: "rgba(127,174,158,0.55)", fontSize: "9px", letterSpacing: "0.18em" }}>
+                    style={{ color: "rgba(127,174,158,0.55)", fontSize: "13px", letterSpacing: "0.18em" }}>
                     Active Domains — Source Bound
                   </span>
                 </div>
@@ -134,7 +134,7 @@ export default function DatasetsPage() {
                 <div className="flex items-center gap-2.5 mb-3 mt-2">
                   <div className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(127,142,155,0.25)" }} />
                   <span className="font-mono-tactical tracking-widest uppercase"
-                    style={{ color: "rgba(127,142,155,0.38)", fontSize: "9px", letterSpacing: "0.18em" }}>
+                    style={{ color: "rgba(127,142,155,0.38)", fontSize: "13px", letterSpacing: "0.18em" }}>
                     Defined Domains — Source Unbound
                   </span>
                 </div>
@@ -160,18 +160,18 @@ export default function DatasetsPage() {
               style={{ border: "1px solid rgba(127,174,158,0.09)", background: "rgba(13,21,32,0.18)" }}>
               <div>
                 <div className="font-mono-tactical tracking-widest uppercase mb-1"
-                  style={{ color: "rgba(127,174,158,0.42)", fontSize: "8.5px", letterSpacing: "0.14em" }}>
+                  style={{ color: "rgba(127,174,158,0.42)", fontSize: "12.5px", letterSpacing: "0.14em" }}>
                   Next Layer
                 </div>
                 <p className="font-mono-tactical"
-                  style={{ color: "rgba(180,192,202,0.62)", fontSize: "10.5px" }}>
+                  style={{ color: "rgba(180,192,202,0.62)", fontSize: "15.5px" }}>
                   Structured dataset records commit to the INDEX — the searchable record layer.
                 </p>
               </div>
               <button onClick={() => setLocation("/records")}
                 className="font-mono-tactical tracking-widest flex-shrink-0 ml-6 rounded px-3 py-2"
                 style={{
-                  color: "rgba(127,174,158,0.58)", fontSize: "8.5px", letterSpacing: "0.1em",
+                  color: "rgba(127,174,158,0.58)", fontSize: "12.5px", letterSpacing: "0.1em",
                   border: "1px solid rgba(127,174,158,0.2)", background: "rgba(127,174,158,0.05)", cursor: "pointer",
                 }}>
                 INDEX →
@@ -184,7 +184,7 @@ export default function DatasetsPage() {
             style={{ borderLeft: "1px solid rgba(127,174,158,0.07)" }}>
             <div>
               <div className="font-mono-tactical tracking-widest uppercase mb-3"
-                style={{ color: "rgba(127,174,158,0.5)", fontSize: "9px", letterSpacing: "0.16em" }}>
+                style={{ color: "rgba(127,174,158,0.5)", fontSize: "13px", letterSpacing: "0.16em" }}>
                 Coverage Status
               </div>
               <div className="space-y-3">
@@ -204,11 +204,11 @@ export default function DatasetsPage() {
                 ].map((item) => (
                   <div key={item.label} className="flex flex-col gap-0.5">
                     <span className="font-mono-tactical"
-                      style={{ fontSize: "8.5px", color: "rgba(127,142,155,0.45)", letterSpacing: "0.1em" }}>
+                      style={{ fontSize: "12.5px", color: "rgba(127,142,155,0.45)", letterSpacing: "0.1em" }}>
                       {item.label}
                     </span>
                     <span className="font-mono-tactical"
-                      style={{ color: "rgba(180,192,202,0.78)", fontSize: "11px" }}>
+                      style={{ color: "rgba(180,192,202,0.78)", fontSize: "17px" }}>
                       {item.value}
                     </span>
                   </div>
@@ -221,7 +221,7 @@ export default function DatasetsPage() {
             {/* Per-domain binding */}
             <div>
               <div className="font-mono-tactical tracking-widest uppercase mb-2.5"
-                style={{ color: "rgba(127,174,158,0.48)", fontSize: "9px", letterSpacing: "0.14em" }}>
+                style={{ color: "rgba(127,174,158,0.48)", fontSize: "13px", letterSpacing: "0.14em" }}>
                 Domain Binding
               </div>
               {DATASET_DOMAINS.map((ds) => {
@@ -237,11 +237,11 @@ export default function DatasetsPage() {
                         boxShadow: isConn ? `0 0 3px ${FEED_STATE_COLORS[state]}` : undefined,
                       }} />
                     <span className="font-mono-tactical"
-                      style={{ color: isConn ? "rgba(127,174,158,0.6)" : "rgba(127,142,155,0.42)", fontSize: "8.5px", width: 26 }}>
+                      style={{ color: isConn ? "rgba(127,174,158,0.6)" : "rgba(127,142,155,0.42)", fontSize: "12.5px", width: 26 }}>
                       {ds.id}
                     </span>
                     <span className="font-mono-tactical flex-1 truncate"
-                      style={{ color: isConn ? "rgba(180,192,202,0.75)" : "rgba(127,142,155,0.38)", fontSize: "9.5px" }}>
+                      style={{ color: isConn ? "rgba(180,192,202,0.75)" : "rgba(127,142,155,0.38)", fontSize: "14px" }}>
                       {isConn
                         ? `${binding?.stagedCount ?? 0} staged`
                         : state === "loading" ? "Connecting..." : "Unbound"}
@@ -255,7 +255,7 @@ export default function DatasetsPage() {
 
             <div>
               <div className="font-mono-tactical tracking-widest uppercase mb-2"
-                style={{ color: "rgba(127,174,158,0.45)", fontSize: "9px", letterSpacing: "0.14em" }}>
+                style={{ color: "rgba(127,174,158,0.45)", fontSize: "13px", letterSpacing: "0.14em" }}>
                 Schema Key
               </div>
               <div className="space-y-2">
@@ -265,7 +265,7 @@ export default function DatasetsPage() {
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: item.dot }} />
-                    <span className="font-mono-tactical" style={{ color: "rgba(180,192,202,0.65)", fontSize: "10px" }}>
+                    <span className="font-mono-tactical" style={{ color: "rgba(180,192,202,0.65)", fontSize: "15px" }}>
                       {item.label}
                     </span>
                   </div>
@@ -276,7 +276,7 @@ export default function DatasetsPage() {
             <div className="h-px" style={{ background: "rgba(127,174,158,0.06)" }} />
 
             <p className="font-mono-tactical leading-relaxed"
-              style={{ color: "rgba(180,192,202,0.58)", fontSize: "10px", lineHeight: "1.85" }}>
+              style={{ color: "rgba(180,192,202,0.58)", fontSize: "15px", lineHeight: "2.02" }}>
               Datasets grow incrementally as signals are classified and structured. Schemas are versioned — field changes are tracked.
             </p>
 
@@ -284,7 +284,7 @@ export default function DatasetsPage() {
 
             <div>
               <div className="font-mono-tactical tracking-widest uppercase mb-2"
-                style={{ color: "rgba(127,174,158,0.42)", fontSize: "8.5px", letterSpacing: "0.14em" }}>
+                style={{ color: "rgba(127,174,158,0.42)", fontSize: "12.5px", letterSpacing: "0.14em" }}>
                 Related Layers
               </div>
               <div className="space-y-1.5">
@@ -298,11 +298,11 @@ export default function DatasetsPage() {
                     className="w-full flex items-center justify-between py-1.5"
                     style={{ background: "none", border: "none", cursor: "pointer" }}>
                     <span className="font-orbitron font-semibold tracking-wider"
-                      style={{ color: "rgba(127,174,158,0.55)", fontSize: "8.5px" }}>
+                      style={{ color: "rgba(127,174,158,0.55)", fontSize: "12.5px" }}>
                       {link.label}
                     </span>
                     <span className="font-mono-tactical"
-                      style={{ color: "rgba(127,142,155,0.38)", fontSize: "8.5px" }}>
+                      style={{ color: "rgba(127,142,155,0.38)", fontSize: "12.5px" }}>
                       {link.note}
                     </span>
                   </button>
@@ -349,7 +349,7 @@ function DomainCard({
             style={{
               border: `1px solid ${isConnected ? "rgba(127,174,158,0.42)" : "rgba(127,174,158,0.2)"}`,
               color: isConnected ? "rgba(127,174,158,0.92)" : "rgba(127,174,158,0.68)",
-              fontSize: "9px", letterSpacing: "0.1em",
+              fontSize: "13px", letterSpacing: "0.1em",
               background: isConnected ? "rgba(127,174,158,0.08)" : "rgba(127,174,158,0.03)",
             }}>
             {ds.id}
@@ -362,13 +362,13 @@ function DomainCard({
               </div>
               {isFirst && isConnected && (
                 <span className="font-mono-tactical rounded px-1.5 py-0.5"
-                  style={{ border: "1px solid rgba(127,174,158,0.3)", color: "rgba(127,174,158,0.72)", fontSize: "7.5px", letterSpacing: "0.1em", background: "rgba(127,174,158,0.06)" }}>
+                  style={{ border: "1px solid rgba(127,174,158,0.3)", color: "rgba(127,174,158,0.72)", fontSize: "17px", letterSpacing: "0.1em", background: "rgba(127,174,158,0.06)" }}>
                   FIRST ACTIVE
                 </span>
               )}
             </div>
             <div className="font-mono-tactical mt-0.5"
-              style={{ color: "rgba(127,142,155,0.52)", fontSize: "9px" }}>
+              style={{ color: "rgba(127,142,155,0.52)", fontSize: "13px" }}>
               Schema v{ds.schemaVersion} — {ds.fields.length} fields defined
             </div>
           </div>
@@ -381,7 +381,7 @@ function DomainCard({
             <span className="font-mono-tactical rounded px-2 py-1"
               style={{
                 border: `1px solid ${isConnected ? "rgba(127,174,158,0.28)" : "rgba(127,142,155,0.1)"}`,
-                color: stateColor, fontSize: "8.5px",
+                color: stateColor, fontSize: "12.5px",
                 background: isConnected ? "rgba(127,174,158,0.06)" : "rgba(0,0,0,0.3)",
                 letterSpacing: "0.08em",
               }}>
@@ -390,7 +390,7 @@ function DomainCard({
           </div>
           {isConnected && binding?.lastSync && (
             <span className="font-mono-tactical"
-              style={{ color: "rgba(127,142,155,0.4)", fontSize: "8px" }}>
+              style={{ color: "rgba(127,142,155,0.4)", fontSize: "11.5px" }}>
               Synced {fmtRelative(binding.lastSync)}
             </span>
           )}
@@ -402,7 +402,7 @@ function DomainCard({
         style={{ borderColor: isConnected ? "rgba(127,174,158,0.1)" : "rgba(127,174,158,0.05)" }}>
         <div className="px-5 py-4 space-y-3">
           <p className="font-mono-tactical leading-relaxed"
-            style={{ color: "rgba(180,192,202,0.72)", lineHeight: "1.9", fontSize: "10.5px" }}>
+            style={{ color: "rgba(180,192,202,0.72)", lineHeight: "2.0", fontSize: "15.5px" }}>
             {ds.description}
           </p>
           <div className="space-y-1.5 pt-2" style={{ borderTop: "1px solid rgba(127,174,158,0.06)" }}>
@@ -426,13 +426,13 @@ function DomainCard({
             ].map((item) => (
               <div key={item.label} className="flex items-start gap-2">
                 <span className="font-mono-tactical flex-shrink-0 w-32"
-                  style={{ color: "rgba(127,142,155,0.48)", fontSize: "9.5px", letterSpacing: "0.04em" }}>
+                  style={{ color: "rgba(127,142,155,0.48)", fontSize: "14px", letterSpacing: "0.04em" }}>
                   {item.label}
                 </span>
                 <span className="font-mono-tactical"
                   style={{
                     color: item.bright ? "rgba(180,192,202,0.82)" : "rgba(127,142,155,0.48)",
-                    fontSize: "10px", fontStyle: item.bright ? "normal" : "italic", lineHeight: "1.5",
+                    fontSize: "15px", fontStyle: item.bright ? "normal" : "italic", lineHeight: "1.72",
                   }}>
                   {item.value}
                 </span>
@@ -443,7 +443,7 @@ function DomainCard({
 
         <div className="px-5 py-4">
           <div className="font-mono-tactical tracking-widest uppercase mb-3"
-            style={{ color: "rgba(127,174,158,0.48)", fontSize: "8.5px", letterSpacing: "0.16em" }}>
+            style={{ color: "rgba(127,174,158,0.48)", fontSize: "12.5px", letterSpacing: "0.16em" }}>
             Record Schema — {ds.fields.length} Fields
           </div>
           <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
@@ -452,18 +452,18 @@ function DomainCard({
                 <div className="w-1 h-1 rounded-full flex-shrink-0"
                   style={{ background: field.required ? "rgba(127,174,158,0.55)" : "rgba(127,142,155,0.22)" }} />
                 <span className="font-mono-tactical truncate"
-                  style={{ color: field.required ? "rgba(180,192,202,0.72)" : "rgba(127,142,155,0.48)", fontSize: "9.5px" }}>
+                  style={{ color: field.required ? "rgba(180,192,202,0.72)" : "rgba(127,142,155,0.48)", fontSize: "14px" }}>
                   {field.key}
                 </span>
                 <span className="font-mono-tactical flex-shrink-0"
-                  style={{ color: "rgba(127,142,155,0.3)", fontSize: "8.5px" }}>
+                  style={{ color: "rgba(127,142,155,0.3)", fontSize: "12.5px" }}>
                   {field.type}
                 </span>
               </div>
             ))}
             {ds.fields.length > 12 && (
               <div className="col-span-2 font-mono-tactical"
-                style={{ color: "rgba(127,142,155,0.38)", fontSize: "9px" }}>
+                style={{ color: "rgba(127,142,155,0.38)", fontSize: "13px" }}>
                 +{ds.fields.length - 12} more fields
               </div>
             )}

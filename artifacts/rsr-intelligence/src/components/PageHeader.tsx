@@ -38,7 +38,7 @@ export default function PageHeader({
         <div className="min-w-0">
           <div
             className="font-mono-tactical tracking-widest uppercase mb-2"
-            style={{ color: C.mutedDim, letterSpacing: "0.22em", fontSize: "9px" }}
+            style={{ color: C.mutedDim, letterSpacing: "0.22em", fontSize: "15px" }}
           >
             {module}
           </div>
@@ -57,7 +57,7 @@ export default function PageHeader({
               color: "rgba(180,192,202,0.68)",
               lineHeight: "1.88",
               maxWidth: 560,
-              fontSize: "11px",
+              fontSize: "15px",
             }}
           >
             {subtitle}
@@ -80,7 +80,7 @@ export default function PageHeader({
                   ? "rgba(127,174,158,0.06)"
                   : "rgba(13,21,32,0.4)",
                 letterSpacing: "0.12em",
-                fontSize: "9px",
+                fontSize: "15px",
               }}
             >
               <div

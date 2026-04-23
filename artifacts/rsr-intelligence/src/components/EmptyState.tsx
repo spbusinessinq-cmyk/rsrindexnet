@@ -45,7 +45,7 @@ export default function EmptyState({
         <div
           className="font-mono-tactical max-w-xs mb-2.5"
           style={{
-            fontSize: "10.5px",
+            fontSize: "15px",
             color: "rgba(180,192,202,0.48)",
             lineHeight: "1.88",
             letterSpacing: "0.02em",
@@ -57,7 +57,7 @@ export default function EmptyState({
       {statusLine && (
         <div
           className="font-mono-tactical flex items-center gap-2 mt-1"
-          style={{ fontSize: "9px", color: "rgba(127,142,155,0.38)" }}
+          style={{ fontSize: "12px", color: "rgba(127,142,155,0.38)" }}
         >
           <div
             className="w-1 h-1 rounded-full"

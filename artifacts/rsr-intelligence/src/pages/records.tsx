@@ -74,7 +74,7 @@ export default function RecordsPage() {
                 }}>
                 {COLUMNS.map((col) => (
                   <div key={col.key} className="font-mono-tactical tracking-widest uppercase"
-                    style={{ fontSize: "8.5px", color: "rgba(127,174,158,0.52)", letterSpacing: "0.14em" }}>
+                    style={{ fontSize: "12.5px", color: "rgba(127,174,158,0.52)", letterSpacing: "0.14em" }}>
                     {col.label}
                   </div>
                 ))}
@@ -95,7 +95,7 @@ export default function RecordsPage() {
                         boxShadow: pipelineActive ? "0 0 4px rgba(127,174,158,0.5)" : undefined,
                       }} />
                     <span className="font-mono-tactical tracking-widest uppercase"
-                      style={{ color: "rgba(127,174,158,0.5)", fontSize: "9px", letterSpacing: "0.16em" }}>
+                      style={{ color: "rgba(127,174,158,0.5)", fontSize: "13px", letterSpacing: "0.16em" }}>
                       Pipeline Convergence
                     </span>
                   </div>
@@ -137,7 +137,7 @@ export default function RecordsPage() {
                           cursor: p.current ? "default" : "pointer",
                         }}>
                         <div className="flex items-center gap-1.5 mb-1">
-                          <span className="font-mono-tactical" style={{ color: "rgba(127,174,158,0.28)", fontSize: "8px" }}>
+                          <span className="font-mono-tactical" style={{ color: "rgba(127,174,158,0.28)", fontSize: "11.5px" }}>
                             {p.phase}
                           </span>
                           <div className="w-1 h-1 rounded-full"
@@ -147,15 +147,15 @@ export default function RecordsPage() {
                             }} />
                         </div>
                         <div className="font-orbitron font-bold tracking-wider"
-                          style={{ color: p.current ? "rgba(127,174,158,0.78)" : p.live ? "rgba(127,174,158,0.65)" : "rgba(127,142,155,0.45)", fontSize: "9px" }}>
+                          style={{ color: p.current ? "rgba(127,174,158,0.78)" : p.live ? "rgba(127,174,158,0.65)" : "rgba(127,142,155,0.45)", fontSize: "13px" }}>
                           {p.label}
                         </div>
                         <div className="font-mono-tactical mt-0.5"
-                          style={{ color: p.live ? "rgba(180,192,202,0.65)" : "rgba(127,142,155,0.32)", fontSize: "9px" }}>
+                          style={{ color: p.live ? "rgba(180,192,202,0.65)" : "rgba(127,142,155,0.32)", fontSize: "13px" }}>
                           {p.value}
                         </div>
                         <div className="font-mono-tactical mt-0.5 italic"
-                          style={{ color: "rgba(127,142,155,0.28)", fontSize: "8.5px" }}>
+                          style={{ color: "rgba(127,142,155,0.28)", fontSize: "12.5px" }}>
                           {p.note}
                         </div>
                       </button>
@@ -186,24 +186,24 @@ export default function RecordsPage() {
                       <div className="w-1.5 h-1.5 rounded-full"
                         style={{ background: "#7FAE9E", boxShadow: "0 0 5px rgba(127,174,158,0.55)" }} />
                       <span className="font-orbitron font-bold tracking-wider"
-                        style={{ color: "rgba(127,174,158,0.8)", fontSize: "9.5px", letterSpacing: "0.12em" }}>
+                        style={{ color: "rgba(127,174,158,0.8)", fontSize: "14px", letterSpacing: "0.12em" }}>
                         {totalStaged} STAGED CANDIDATE{totalStaged !== 1 ? "S" : ""}
                       </span>
                       <span className="font-mono-tactical ml-auto"
-                        style={{ color: "rgba(127,142,155,0.35)", fontSize: "8.5px" }}>
+                        style={{ color: "rgba(127,142,155,0.35)", fontSize: "12.5px" }}>
                         pre-commit
                       </span>
                     </div>
                     <div className="px-5 py-4 space-y-3">
                       <p className="font-mono-tactical leading-relaxed"
-                        style={{ color: "rgba(180,192,202,0.72)", lineHeight: "1.88", fontSize: "10px" }}>
+                        style={{ color: "rgba(180,192,202,0.72)", lineHeight: "2.02", fontSize: "15px" }}>
                         {totalStaged} signal item{totalStaged !== 1 ? "s have" : " has"} been received from live sources and
                         staged for classification. None have been committed to the index.
                       </p>
                       <div className="rounded px-3.5 py-3 space-y-2"
                         style={{ border: "1px solid rgba(127,174,158,0.1)", background: "rgba(0,0,0,0.3)" }}>
                         <div className="font-mono-tactical tracking-widest uppercase"
-                          style={{ color: "rgba(127,174,158,0.38)", fontSize: "7.5px", letterSpacing: "0.12em", marginBottom: 6 }}>
+                          style={{ color: "rgba(127,174,158,0.38)", fontSize: "17px", letterSpacing: "0.12em", marginBottom: 6 }}>
                           Commit Requirements
                         </div>
                         {[
@@ -214,11 +214,11 @@ export default function RecordsPage() {
                         ].map((req, i) => (
                           <div key={i} className="flex items-start gap-2">
                             <span className="font-mono-tactical flex-shrink-0"
-                              style={{ color: "rgba(127,142,155,0.3)", fontSize: "9px" }}>
+                              style={{ color: "rgba(127,142,155,0.3)", fontSize: "13px" }}>
                               {String(i + 1).padStart(2, "0")}
                             </span>
                             <span className="font-mono-tactical"
-                              style={{ color: "rgba(127,142,155,0.52)", fontSize: "9.5px", lineHeight: "1.6" }}>
+                              style={{ color: "rgba(127,142,155,0.52)", fontSize: "14px", lineHeight: "1.8" }}>
                               {req}
                             </span>
                           </div>
@@ -229,7 +229,7 @@ export default function RecordsPage() {
                         <div className="w-1 h-1 rounded-full flex-shrink-0"
                           style={{ background: "rgba(127,142,155,0.25)" }} />
                         <span className="font-mono-tactical italic"
-                          style={{ color: "rgba(127,142,155,0.45)", fontSize: "9px" }}>
+                          style={{ color: "rgba(127,142,155,0.45)", fontSize: "13px" }}>
                           Classification and commit controls exist in the operator layer.
                         </span>
                       </div>
@@ -243,15 +243,15 @@ export default function RecordsPage() {
                     className="flex-1 rounded px-4 py-3 text-left"
                     style={{ border: "1px solid rgba(127,174,158,0.1)", background: "rgba(0,0,0,0.2)", cursor: "pointer" }}>
                     <div className="font-mono-tactical tracking-widest uppercase mb-1"
-                      style={{ color: "rgba(127,174,158,0.4)", fontSize: "8px", letterSpacing: "0.12em" }}>
+                      style={{ color: "rgba(127,174,158,0.4)", fontSize: "11.5px", letterSpacing: "0.12em" }}>
                       Upstream
                     </div>
                     <div className="font-orbitron font-bold tracking-wider"
-                      style={{ color: "rgba(127,174,158,0.62)", fontSize: "9.5px" }}>
+                      style={{ color: "rgba(127,174,158,0.62)", fontSize: "14px" }}>
                       SIGNALS ←
                     </div>
                     <div className="font-mono-tactical mt-1"
-                      style={{ color: "rgba(127,142,155,0.45)", fontSize: "9px" }}>
+                      style={{ color: "rgba(127,142,155,0.45)", fontSize: "13px" }}>
                       Signal intake layer
                     </div>
                   </button>
@@ -259,15 +259,15 @@ export default function RecordsPage() {
                     className="flex-1 rounded px-4 py-3 text-left"
                     style={{ border: "1px solid rgba(127,174,158,0.1)", background: "rgba(0,0,0,0.2)", cursor: "pointer" }}>
                     <div className="font-mono-tactical tracking-widest uppercase mb-1"
-                      style={{ color: "rgba(127,174,158,0.4)", fontSize: "8px", letterSpacing: "0.12em" }}>
+                      style={{ color: "rgba(127,174,158,0.4)", fontSize: "11.5px", letterSpacing: "0.12em" }}>
                       Upstream
                     </div>
                     <div className="font-orbitron font-bold tracking-wider"
-                      style={{ color: "rgba(127,174,158,0.62)", fontSize: "9.5px" }}>
+                      style={{ color: "rgba(127,174,158,0.62)", fontSize: "14px" }}>
                       DATASETS ←
                     </div>
                     <div className="font-mono-tactical mt-1"
-                      style={{ color: "rgba(127,142,155,0.45)", fontSize: "9px" }}>
+                      style={{ color: "rgba(127,142,155,0.45)", fontSize: "13px" }}>
                       Domain collections
                     </div>
                   </button>
@@ -282,7 +282,7 @@ export default function RecordsPage() {
             {/* Record schema */}
             <div className="px-5 pt-5 pb-4" style={{ borderBottom: "1px solid rgba(127,174,158,0.07)" }}>
               <div className="font-mono-tactical tracking-widest uppercase mb-3"
-                style={{ color: "rgba(127,174,158,0.5)", fontSize: "9px", letterSpacing: "0.16em" }}>
+                style={{ color: "rgba(127,174,158,0.5)", fontSize: "13px", letterSpacing: "0.16em" }}>
                 Record Schema
               </div>
               <div className="space-y-1.5">
@@ -291,11 +291,11 @@ export default function RecordsPage() {
                     <div className="w-1 h-1 rounded-full flex-shrink-0"
                       style={{ background: field.required ? "rgba(127,174,158,0.55)" : "rgba(127,142,155,0.2)" }} />
                     <span className="font-mono-tactical flex-1"
-                      style={{ color: field.required ? "rgba(180,192,202,0.72)" : "rgba(127,142,155,0.42)", fontSize: "9.5px" }}>
+                      style={{ color: field.required ? "rgba(180,192,202,0.72)" : "rgba(127,142,155,0.42)", fontSize: "14px" }}>
                       {field.key}
                     </span>
                     <span className="font-mono-tactical flex-shrink-0"
-                      style={{ color: "rgba(127,142,155,0.3)", fontSize: "8.5px" }}>
+                      style={{ color: "rgba(127,142,155,0.3)", fontSize: "12.5px" }}>
                       {field.type}
                     </span>
                   </div>
@@ -306,7 +306,7 @@ export default function RecordsPage() {
             {/* Index state */}
             <div className="px-5 py-4 space-y-3 flex-1 overflow-y-auto">
               <div className="font-mono-tactical tracking-widest uppercase"
-                style={{ color: "rgba(127,174,158,0.48)", fontSize: "9px", letterSpacing: "0.16em" }}>
+                style={{ color: "rgba(127,174,158,0.48)", fontSize: "13px", letterSpacing: "0.16em" }}>
                 Index State
               </div>
               <div className="rounded px-3.5 py-3 space-y-2.5"
@@ -321,13 +321,13 @@ export default function RecordsPage() {
                 ].map((item) => (
                   <div key={item.label} className="flex items-baseline justify-between">
                     <span className="font-mono-tactical"
-                      style={{ color: "rgba(127,142,155,0.45)", fontSize: "9px", letterSpacing: "0.08em" }}>
+                      style={{ color: "rgba(127,142,155,0.45)", fontSize: "13px", letterSpacing: "0.08em" }}>
                       {item.label}
                     </span>
                     <span className="font-mono-tactical"
                       style={{
                         color: item.active ? "rgba(127,174,158,0.75)" : "rgba(180,192,202,0.58)",
-                        fontSize: "11px",
+                        fontSize: "17px",
                       }}>
                       {item.value}
                     </span>
@@ -338,7 +338,7 @@ export default function RecordsPage() {
               <div className="h-px" style={{ background: "rgba(127,174,158,0.06)" }} />
 
               <p className="font-mono-tactical leading-relaxed"
-                style={{ color: "rgba(127,142,155,0.5)", fontSize: "9.5px", lineHeight: "1.8" }}>
+                style={{ color: "rgba(127,142,155,0.5)", fontSize: "14px", lineHeight: "1.8" }}>
                 Committed records are immutable — revisions create versioned entries. Records carry
                 source attribution, classification, and commit timestamp.
               </p>
@@ -348,7 +348,7 @@ export default function RecordsPage() {
               {/* Pipeline position */}
               <div>
                 <div className="font-mono-tactical tracking-widest uppercase mb-2.5"
-                  style={{ color: "rgba(127,174,158,0.42)", fontSize: "8.5px", letterSpacing: "0.14em" }}>
+                  style={{ color: "rgba(127,174,158,0.42)", fontSize: "12.5px", letterSpacing: "0.14em" }}>
                   Pipeline Position
                 </div>
                 <div className="space-y-1.5">
@@ -363,11 +363,11 @@ export default function RecordsPage() {
                           background: p.current ? "rgba(127,174,158,0.6)" : p.live ? "rgba(127,174,158,0.45)" : "rgba(127,142,155,0.2)",
                         }} />
                       <span className="font-orbitron font-semibold tracking-wider"
-                        style={{ color: p.current ? "rgba(127,174,158,0.72)" : p.live ? "rgba(127,174,158,0.55)" : "rgba(127,142,155,0.38)", fontSize: "8.5px" }}>
+                        style={{ color: p.current ? "rgba(127,174,158,0.72)" : p.live ? "rgba(127,174,158,0.55)" : "rgba(127,142,155,0.38)", fontSize: "12.5px" }}>
                         {p.label}
                       </span>
                       <span className="font-mono-tactical"
-                        style={{ color: "rgba(127,142,155,0.3)", fontSize: "8.5px" }}>
+                        style={{ color: "rgba(127,142,155,0.3)", fontSize: "12.5px" }}>
                         {p.note}
                       </span>
                     </div>

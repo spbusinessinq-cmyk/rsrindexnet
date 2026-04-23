@@ -80,7 +80,7 @@ function SectionLabel({ children, accent = false }: { children: React.ReactNode;
       <div style={{ width: 20, height: 1, background: accent ? C.borderAccentMid : C.borderMid, flexShrink: 0 }} />
       <span style={{
         color: accent ? C.accent : C.mutedDim,
-        fontSize: "10px",
+        fontSize: "16.5px",
         letterSpacing: "0.22em",
         fontFamily: "'Share Tech Mono', monospace",
         textTransform: "uppercase",
@@ -130,16 +130,16 @@ function DivisionCard({ code, name, purpose, path, onClick }: {
         gap: 0,
       }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
-        <span style={{ color: C.mutedDim, fontSize: "9.5px", letterSpacing: "0.12em", fontFamily: "'Share Tech Mono', monospace" }}>
+        <span style={{ color: C.mutedDim, fontSize: "18px", letterSpacing: "0.12em", fontFamily: "'Share Tech Mono', monospace" }}>
           {code}
         </span>
-        <span style={{ color: hov ? C.accent : C.mutedDim, fontSize: "12px", transition: "color 0.18s", opacity: hov ? 1 : 0.4 }}>
+        <span style={{ color: hov ? C.accent : C.mutedDim, fontSize: "16.5px", transition: "color 0.18s", opacity: hov ? 1 : 0.4 }}>
           →
         </span>
       </div>
       <div style={{
         color: hov ? C.heading : C.headingDim,
-        fontSize: "13px",
+        fontSize: "18px",
         letterSpacing: "0.07em",
         fontFamily: "'Orbitron', sans-serif",
         fontWeight: 600,
@@ -151,8 +151,8 @@ function DivisionCard({ code, name, purpose, path, onClick }: {
       </div>
       <p style={{
         color: C.muted,
-        fontSize: "15px",
-        lineHeight: "1.76",
+        fontSize: "18px",
+        lineHeight: "1.88",
         fontFamily: "'Rajdhani', sans-serif",
         fontWeight: 400,
         flex: 1,
@@ -184,17 +184,17 @@ function PipelineStep({ number, label, desc, active = false }: {
           borderRadius: "4px 4px 0 0",
         }} />
       )}
-      <div style={{ color: C.mutedDim, fontSize: "9px", letterSpacing: "0.14em", fontFamily: "'Share Tech Mono', monospace", marginBottom: 12 }}>
+      <div style={{ color: C.mutedDim, fontSize: "13.5px", letterSpacing: "0.14em", fontFamily: "'Share Tech Mono', monospace", marginBottom: 12 }}>
         {number}
       </div>
       <div style={{
         color: active ? C.accent : C.headingDim,
-        fontSize: "11px", letterSpacing: "0.09em",
+        fontSize: "13.5px", letterSpacing: "0.09em",
         fontFamily: "'Orbitron', sans-serif", fontWeight: 600, marginBottom: 12,
       }}>
         {label}
       </div>
-      <p style={{ color: C.muted, fontSize: "14px", lineHeight: "1.72", fontFamily: "'Rajdhani', sans-serif", margin: 0 }}>
+      <p style={{ color: C.muted, fontSize: "18.5px", lineHeight: "1.85", fontFamily: "'Rajdhani', sans-serif", margin: 0 }}>
         {desc}
       </p>
     </div>
@@ -218,23 +218,23 @@ function BranchCard({ name, code, role, desc, href }: {
         transition: "border-color 0.18s, background 0.18s",
       }}>
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 18 }}>
-        <span style={{ color: C.mutedDim, fontSize: "9.5px", letterSpacing: "0.12em", fontFamily: "'Share Tech Mono', monospace" }}>
+        <span style={{ color: C.mutedDim, fontSize: "18px", letterSpacing: "0.12em", fontFamily: "'Share Tech Mono', monospace" }}>
           {code}
         </span>
-        <span style={{ color: hov ? C.accentBlue : C.mutedDim, fontSize: "13px", transition: "color 0.18s", opacity: hov ? 1 : 0.5 }}>
+        <span style={{ color: hov ? C.accentBlue : C.mutedDim, fontSize: "18px", transition: "color 0.18s", opacity: hov ? 1 : 0.5 }}>
           ↗
         </span>
       </div>
       <div style={{
-        color: C.headingDim, fontSize: "17px", letterSpacing: "0.05em",
+        color: C.headingDim, fontSize: "19.5px", letterSpacing: "0.05em",
         fontFamily: "'Orbitron', sans-serif", fontWeight: 700, marginBottom: 8,
       }}>
         {name}
       </div>
-      <div style={{ color: C.accentBlue, fontSize: "10.5px", letterSpacing: "0.1em", fontFamily: "'Share Tech Mono', monospace", marginBottom: 18 }}>
+      <div style={{ color: C.accentBlue, fontSize: "18.5px", letterSpacing: "0.1em", fontFamily: "'Share Tech Mono', monospace", marginBottom: 18 }}>
         {role}
       </div>
-      <p style={{ color: C.muted, fontSize: "15px", lineHeight: "1.8", fontFamily: "'Rajdhani', sans-serif", margin: 0 }}>
+      <p style={{ color: C.muted, fontSize: "18px", lineHeight: "1.92", fontFamily: "'Rajdhani', sans-serif", margin: 0 }}>
         {desc}
       </p>
     </a>
@@ -252,7 +252,7 @@ function NavLink({ label, path, onClick }: { label: string; path: string; onClic
       style={{
         background: "none", border: "none", cursor: "pointer",
         color: hov ? C.body : C.muted,
-        fontSize: "10.5px", letterSpacing: "0.16em",
+        fontSize: "18.5px", letterSpacing: "0.16em",
         fontFamily: "'Share Tech Mono', monospace",
         textTransform: "uppercase",
         transition: "color 0.15s",
@@ -301,10 +301,10 @@ export default function Home() {
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <StatusDot live={networkLive} />
           <div>
-            <div style={{ color: C.body, fontSize: "12.5px", letterSpacing: "0.16em", fontFamily: "'Orbitron', sans-serif", fontWeight: 700, lineHeight: 1 }}>
+            <div style={{ color: C.body, fontSize: "18.5px", letterSpacing: "0.16em", fontFamily: "'Orbitron', sans-serif", fontWeight: 700, lineHeight: 1 }}>
               PACIFIC SYSTEMS
             </div>
-            <div style={{ color: C.mutedDim, fontSize: "8.5px", letterSpacing: "0.12em", fontFamily: "'Share Tech Mono', monospace", marginTop: 4 }}>
+            <div style={{ color: C.mutedDim, fontSize: "18.5px", letterSpacing: "0.12em", fontFamily: "'Share Tech Mono', monospace", marginTop: 4 }}>
               RSR INTELLIGENCE NETWORK
             </div>
           </div>
@@ -320,7 +320,7 @@ export default function Home() {
         {/* Right: external + CTA */}
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <a href="https://www.rsrintel.com" target="_blank" rel="noopener noreferrer"
-            style={{ color: C.mutedDim, fontSize: "10px", letterSpacing: "0.1em", textDecoration: "none", fontFamily: "'Share Tech Mono', monospace", transition: "color 0.15s" }}
+            style={{ color: C.mutedDim, fontSize: "16.5px", letterSpacing: "0.1em", textDecoration: "none", fontFamily: "'Share Tech Mono', monospace", transition: "color 0.15s" }}
             onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = C.muted; }}
             onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = C.mutedDim; }}>
             RSR INTEL ↗
@@ -329,7 +329,7 @@ export default function Home() {
             style={{
               background: "transparent",
               border: `1px solid ${C.borderAccent}`,
-              color: C.accent, fontSize: "10.5px", letterSpacing: "0.14em",
+              color: C.accent, fontSize: "18.5px", letterSpacing: "0.14em",
               fontFamily: "'Share Tech Mono', monospace",
               padding: "7px 18px", borderRadius: 3, cursor: "pointer",
               transition: "all 0.18s",
@@ -361,12 +361,12 @@ export default function Home() {
             { k: "DOMAINS", v: `${platform.domainsBound}/${platform.domainsTotal}`, live: platform.domainsBound > 0 },
           ].map((item) => (
             <div key={item.k} style={{ display: "flex", alignItems: "center", gap: 8, padding: "0 20px 0 0", marginRight: 20, borderRight: `1px solid ${C.border}`, flexShrink: 0 }}>
-              <span style={{ color: C.mutedDim, fontSize: "9px", letterSpacing: "0.1em", fontFamily: "'Share Tech Mono', monospace" }}>
+              <span style={{ color: C.mutedDim, fontSize: "13.5px", letterSpacing: "0.1em", fontFamily: "'Share Tech Mono', monospace" }}>
                 {item.k}
               </span>
               <span style={{
                 color: item.live ? C.accent : C.border,
-                fontSize: "10.5px", letterSpacing: "0.04em",
+                fontSize: "18.5px", letterSpacing: "0.04em",
                 fontFamily: "'Share Tech Mono', monospace",
                 fontVariantNumeric: "tabular-nums",
               }}>
@@ -377,7 +377,7 @@ export default function Home() {
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <StatusDot live={networkLive} />
-          <span style={{ color: C.mutedDim, fontSize: "9.5px", letterSpacing: "0.06em", fontFamily: "'Share Tech Mono', monospace" }}>
+          <span style={{ color: C.mutedDim, fontSize: "18px", letterSpacing: "0.06em", fontFamily: "'Share Tech Mono', monospace" }}>
             {networkLive && platform.lastSync
               ? `SYNCED ${fmtRelative(platform.lastSync).toUpperCase()}`
               : isConnecting ? "CONNECTING..." : "PIPELINE READY"}
@@ -394,7 +394,7 @@ export default function Home() {
             {/* Parent label */}
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
               <div style={{ width: 28, height: 1, background: C.borderAccentMid }} />
-              <span style={{ color: C.accent, fontSize: "10px", letterSpacing: "0.22em", fontFamily: "'Share Tech Mono', monospace" }}>
+              <span style={{ color: C.accent, fontSize: "16.5px", letterSpacing: "0.22em", fontFamily: "'Share Tech Mono', monospace" }}>
                 RSR INTELLIGENCE NETWORK — DATA SYSTEMS DIVISION
               </span>
             </div>
@@ -428,7 +428,7 @@ export default function Home() {
             <p style={{
               color: C.body,
               fontSize: "clamp(16px, 1.6vw, 19px)",
-              lineHeight: "1.94",
+              lineHeight: "2.0",
               maxWidth: 700,
               fontFamily: "'Rajdhani', sans-serif",
               fontWeight: 400,
@@ -450,7 +450,7 @@ export default function Home() {
                   color: "#0D1520",
                   fontFamily: "'Orbitron', sans-serif",
                   fontWeight: 700,
-                  fontSize: "11px",
+                  fontSize: "13.5px",
                   letterSpacing: "0.14em",
                   padding: "14px 32px",
                   borderRadius: 3,
@@ -468,7 +468,7 @@ export default function Home() {
                   color: C.body,
                   fontFamily: "'Orbitron', sans-serif",
                   fontWeight: 600,
-                  fontSize: "11px",
+                  fontSize: "13.5px",
                   letterSpacing: "0.14em",
                   padding: "14px 32px",
                   borderRadius: 3,
@@ -506,17 +506,17 @@ export default function Home() {
                     }}>
                     <span style={{
                       color: node.active ? C.accent : C.body,
-                      fontSize: "11.5px", letterSpacing: "0.1em",
+                      fontSize: "18px", letterSpacing: "0.1em",
                       fontFamily: "'Orbitron', sans-serif", fontWeight: node.active ? 700 : 500,
                     }}>
                       {node.label}
                     </span>
-                    <span style={{ color: C.mutedDim, fontSize: "9.5px", letterSpacing: "0.08em", fontFamily: "'Share Tech Mono', monospace", marginTop: 5 }}>
+                    <span style={{ color: C.mutedDim, fontSize: "18px", letterSpacing: "0.08em", fontFamily: "'Share Tech Mono', monospace", marginTop: 5 }}>
                       {node.sub}
                     </span>
                   </a>
                   {i < 2 && (
-                    <div style={{ padding: "0 12px", color: C.borderMid, fontSize: "14px", flexShrink: 0 }}>›</div>
+                    <div style={{ padding: "0 12px", color: C.borderMid, fontSize: "18.5px", flexShrink: 0 }}>›</div>
                   )}
                 </div>
               ))}
@@ -524,7 +524,7 @@ export default function Home() {
 
             {/* Sibling branches */}
             <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-              <span style={{ color: C.mutedDim, fontSize: "10px", letterSpacing: "0.1em", fontFamily: "'Share Tech Mono', monospace" }}>
+              <span style={{ color: C.mutedDim, fontSize: "16.5px", letterSpacing: "0.1em", fontFamily: "'Share Tech Mono', monospace" }}>
                 SIBLING BRANCHES
               </span>
               <div style={{ width: 1, height: 12, background: C.border }} />
@@ -540,10 +540,10 @@ export default function Home() {
                     borderRadius: 3, padding: "6px 14px",
                   }}>
                   <div style={{ width: 5, height: 5, borderRadius: "50%", background: C.accentBlue, opacity: 0.6 }} />
-                  <span style={{ color: C.muted, fontSize: "10.5px", letterSpacing: "0.06em", fontFamily: "'Share Tech Mono', monospace" }}>
+                  <span style={{ color: C.muted, fontSize: "18.5px", letterSpacing: "0.06em", fontFamily: "'Share Tech Mono', monospace" }}>
                     {branch.label}
                   </span>
-                  <span style={{ color: C.mutedDim, fontSize: "9.5px", fontFamily: "'Share Tech Mono', monospace" }}>
+                  <span style={{ color: C.mutedDim, fontSize: "18px", fontFamily: "'Share Tech Mono', monospace" }}>
                     — {branch.role}
                   </span>
                 </div>
@@ -570,7 +570,7 @@ export default function Home() {
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
                   <div style={{ width: 6, height: 6, borderRadius: "50%", background: C.accent, boxShadow: `0 0 6px ${C.accent}55` }} />
-                  <span style={{ color: C.accent, fontSize: "9.5px", letterSpacing: "0.2em", fontFamily: "'Share Tech Mono', monospace" }}>
+                  <span style={{ color: C.accent, fontSize: "18px", letterSpacing: "0.2em", fontFamily: "'Share Tech Mono', monospace" }}>
                     PACIFIC SYSTEMS IS
                   </span>
                 </div>
@@ -584,7 +584,7 @@ export default function Home() {
                   ].map((item, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                       <div style={{ width: 4, height: 4, borderRadius: "50%", background: C.borderAccentMid, flexShrink: 0, marginTop: 7 }} />
-                      <span style={{ color: C.body, fontSize: "16px", lineHeight: "1.78", fontFamily: "'Rajdhani', sans-serif" }}>
+                      <span style={{ color: C.body, fontSize: "18.5px", lineHeight: "1.9", fontFamily: "'Rajdhani', sans-serif" }}>
                         {item}
                       </span>
                     </div>
@@ -601,7 +601,7 @@ export default function Home() {
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
                   <div style={{ width: 6, height: 6, borderRadius: "50%", background: C.border }} />
-                  <span style={{ color: C.mutedDim, fontSize: "9.5px", letterSpacing: "0.2em", fontFamily: "'Share Tech Mono', monospace" }}>
+                  <span style={{ color: C.mutedDim, fontSize: "18px", letterSpacing: "0.2em", fontFamily: "'Share Tech Mono', monospace" }}>
                     PACIFIC SYSTEMS IS NOT
                   </span>
                 </div>
@@ -615,7 +615,7 @@ export default function Home() {
                   ].map((item, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                       <div style={{ width: 4, height: 4, borderRadius: "50%", background: C.border, flexShrink: 0, marginTop: 7 }} />
-                      <span style={{ color: C.muted, fontSize: "16px", lineHeight: "1.78", fontFamily: "'Rajdhani', sans-serif" }}>
+                      <span style={{ color: C.muted, fontSize: "18.5px", lineHeight: "1.9", fontFamily: "'Rajdhani', sans-serif" }}>
                         {item}
                       </span>
                     </div>
@@ -635,13 +635,13 @@ export default function Home() {
                 <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "24px", letterSpacing: "0.07em", marginBottom: 10 }}>
                   Pacific Systems Divisions
                 </h2>
-                <p style={{ color: C.muted, fontSize: "15px", lineHeight: "1.78", fontFamily: "'Rajdhani', sans-serif", maxWidth: 500, margin: 0 }}>
+                <p style={{ color: C.muted, fontSize: "18px", lineHeight: "1.9", fontFamily: "'Rajdhani', sans-serif", maxWidth: 500, margin: 0 }}>
                   Six internal divisions, each responsible for a defined stage of the signal-to-record pipeline.
                 </p>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <StatusDot live={networkLive} />
-                <span style={{ color: C.mutedDim, fontSize: "10px", letterSpacing: "0.08em", fontFamily: "'Share Tech Mono', monospace" }}>
+                <span style={{ color: C.mutedDim, fontSize: "16.5px", letterSpacing: "0.08em", fontFamily: "'Share Tech Mono', monospace" }}>
                   {networkLive ? `${platform.sourcesConnected} SOURCES ACTIVE` : "INTAKE READY"}
                 </span>
               </div>
@@ -674,7 +674,7 @@ export default function Home() {
             <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "24px", letterSpacing: "0.07em", marginBottom: 12 }}>
               Signal-to-Record Pipeline
             </h2>
-            <p style={{ color: C.muted, fontSize: "15px", lineHeight: "1.78", fontFamily: "'Rajdhani', sans-serif", maxWidth: 560, marginBottom: 40 }}>
+            <p style={{ color: C.muted, fontSize: "18px", lineHeight: "1.9", fontFamily: "'Rajdhani', sans-serif", maxWidth: 560, marginBottom: 40 }}>
               Every record in Pacific Systems began as a monitored signal. The pipeline defines the mandatory path from intake to indexed entry.
             </p>
 
@@ -691,7 +691,7 @@ export default function Home() {
                   <PipelineStep {...step} />
                   {i < arr.length - 1 && (
                     <div style={{ display: "flex", alignItems: "center", padding: "0 2px", flexShrink: 0 }}>
-                      <div style={{ color: C.borderMid, fontSize: "16px" }}>›</div>
+                      <div style={{ color: C.borderMid, fontSize: "18.5px" }}>›</div>
                     </div>
                   )}
                 </div>
@@ -706,20 +706,20 @@ export default function Home() {
             }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <StatusDot live={networkLive} />
-                <span style={{ color: C.mutedDim, fontSize: "10px", letterSpacing: "0.08em", fontFamily: "'Share Tech Mono', monospace" }}>
+                <span style={{ color: C.mutedDim, fontSize: "16.5px", letterSpacing: "0.08em", fontFamily: "'Share Tech Mono', monospace" }}>
                   INTAKE LAYER
                 </span>
-                <span style={{ color: networkLive ? C.accent : C.muted, fontSize: "11px", fontFamily: "'Share Tech Mono', monospace" }}>
+                <span style={{ color: networkLive ? C.accent : C.muted, fontSize: "13.5px", fontFamily: "'Share Tech Mono', monospace" }}>
                   {networkLive ? `${platform.sourcesConnected} sources · ${platform.totalLiveItems} staged` : "Ready — awaiting source connection"}
                 </span>
               </div>
               <div style={{ width: 1, height: 14, background: C.border }} />
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: C.border }} />
-                <span style={{ color: C.mutedDim, fontSize: "10px", letterSpacing: "0.08em", fontFamily: "'Share Tech Mono', monospace" }}>
+                <span style={{ color: C.mutedDim, fontSize: "16.5px", letterSpacing: "0.08em", fontFamily: "'Share Tech Mono', monospace" }}>
                   INDEX LAYER
                 </span>
-                <span style={{ color: C.mutedDim, fontSize: "11px", fontFamily: "'Share Tech Mono', monospace", fontStyle: "italic" }}>
+                <span style={{ color: C.mutedDim, fontSize: "13.5px", fontFamily: "'Share Tech Mono', monospace", fontStyle: "italic" }}>
                   No records committed — index pending
                 </span>
               </div>
@@ -737,10 +737,10 @@ export default function Home() {
                 <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "24px", letterSpacing: "0.07em", marginBottom: 22 }}>
                   Why Pacific Systems Exists
                 </h2>
-                <p style={{ color: C.body, fontSize: "17px", lineHeight: "1.94", fontFamily: "'Rajdhani', sans-serif", marginBottom: 20 }}>
+                <p style={{ color: C.body, fontSize: "19.5px", lineHeight: "2.0", fontFamily: "'Rajdhani', sans-serif", marginBottom: 20 }}>
                   Signal accumulation is not useful on its own. Without a structured layer, monitored input cannot be retrieved, cross-referenced, or built upon operationally. Volume is not infrastructure.
                 </p>
-                <p style={{ color: C.body, fontSize: "17px", lineHeight: "1.94", fontFamily: "'Rajdhani', sans-serif", marginBottom: 0 }}>
+                <p style={{ color: C.body, fontSize: "19.5px", lineHeight: "2.0", fontFamily: "'Rajdhani', sans-serif", marginBottom: 0 }}>
                   Pacific Systems resolves this. It converts monitored input into attributed, version-controlled records — structured, indexed, and available to the RSR Intelligence Network as operational data infrastructure.
                 </p>
               </div>
@@ -771,10 +771,10 @@ export default function Home() {
                       borderRadius: 4, padding: "1.25rem 1.5rem",
                       borderLeft: `3px solid ${principle.accent}55`,
                     }}>
-                    <div style={{ color: C.headingDim, fontFamily: "'Orbitron', sans-serif", fontWeight: 600, fontSize: "12px", letterSpacing: "0.08em", marginBottom: 10 }}>
+                    <div style={{ color: C.headingDim, fontFamily: "'Orbitron', sans-serif", fontWeight: 600, fontSize: "16.5px", letterSpacing: "0.08em", marginBottom: 10 }}>
                       {principle.heading}
                     </div>
-                    <p style={{ color: C.muted, fontSize: "14.5px", lineHeight: "1.78", fontFamily: "'Rajdhani', sans-serif", margin: 0 }}>
+                    <p style={{ color: C.muted, fontSize: "16.5px", lineHeight: "1.9", fontFamily: "'Rajdhani', sans-serif", margin: 0 }}>
                       {principle.body}
                     </p>
                   </div>
@@ -791,7 +791,7 @@ export default function Home() {
             <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "24px", letterSpacing: "0.07em", marginBottom: 12 }}>
               Navigate Pacific Systems
             </h2>
-            <p style={{ color: C.muted, fontSize: "15px", lineHeight: "1.78", fontFamily: "'Rajdhani', sans-serif", maxWidth: 480, marginBottom: 48 }}>
+            <p style={{ color: C.muted, fontSize: "18px", lineHeight: "1.9", fontFamily: "'Rajdhani', sans-serif", maxWidth: 480, marginBottom: 48 }}>
               Six public sectors. Each represents a defined stage of the architecture.
             </p>
 
@@ -830,16 +830,16 @@ export default function Home() {
                         <div style={{
                           color: active ? C.accent : C.headingDim,
                           fontFamily: "'Orbitron', sans-serif", fontWeight: 700,
-                          fontSize: "11px", letterSpacing: "0.14em", marginBottom: 6,
+                          fontSize: "13.5px", letterSpacing: "0.14em", marginBottom: 6,
                           transition: "color 0.15s",
                         }}>
                           {seg.label}
                         </div>
-                        <p style={{ color: C.muted, fontFamily: "'Share Tech Mono', monospace", fontSize: "11.5px", lineHeight: "1.65", margin: 0 }}>
+                        <p style={{ color: C.muted, fontFamily: "'Share Tech Mono', monospace", fontSize: "18px", lineHeight: "1.92", margin: 0 }}>
                           {seg.description}
                         </p>
                       </div>
-                      <span style={{ color: active ? C.accent : C.border, fontSize: "13px", flexShrink: 0, transition: "color 0.15s" }}>→</span>
+                      <span style={{ color: active ? C.accent : C.border, fontSize: "18px", flexShrink: 0, transition: "color 0.15s" }}>→</span>
                     </button>
                   );
                 })}
@@ -855,7 +855,7 @@ export default function Home() {
             <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "24px", letterSpacing: "0.07em", marginBottom: 12 }}>
               Related Branches
             </h2>
-            <p style={{ color: C.muted, fontSize: "15px", lineHeight: "1.78", fontFamily: "'Rajdhani', sans-serif", maxWidth: 540, marginBottom: 36 }}>
+            <p style={{ color: C.muted, fontSize: "18px", lineHeight: "1.9", fontFamily: "'Rajdhani', sans-serif", maxWidth: 540, marginBottom: 36 }}>
               Pacific Systems operates alongside two sibling branches within the RSR Intelligence Network.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: 16, marginBottom: 20 }}>
@@ -880,7 +880,7 @@ export default function Home() {
               borderRadius: 4, padding: "14px 18px",
             }}>
               <div style={{ width: 4, height: 4, borderRadius: "50%", background: C.borderAccentMid, flexShrink: 0, marginTop: 5 }} />
-              <p style={{ color: C.muted, fontFamily: "'Rajdhani', sans-serif", fontSize: "15px", lineHeight: "1.78", margin: 0 }}>
+              <p style={{ color: C.muted, fontFamily: "'Rajdhani', sans-serif", fontSize: "18px", lineHeight: "1.9", margin: 0 }}>
                 Pacific Systems provides the structured data layer underpinning operations across all three RSR branches.
                 Records committed here serve as the data foundation for RSR Press Corps analysis and Black Dog Security intelligence work.
               </p>
@@ -896,10 +896,10 @@ export default function Home() {
           padding: "1.5rem 2.5rem", flexWrap: "wrap", gap: 16,
         }}>
           <div>
-            <div style={{ color: C.headingDim, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "11.5px", letterSpacing: "0.16em", marginBottom: 5 }}>
+            <div style={{ color: C.headingDim, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "18px", letterSpacing: "0.16em", marginBottom: 5 }}>
               PACIFIC SYSTEMS
             </div>
-            <div style={{ color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace", fontSize: "9px", letterSpacing: "0.1em" }}>
+            <div style={{ color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace", fontSize: "13.5px", letterSpacing: "0.1em" }}>
               RSR Intelligence Network — Data Systems Division
             </div>
           </div>
@@ -913,7 +913,7 @@ export default function Home() {
                 style={{
                   background: "none", border: "none", cursor: "pointer",
                   color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace",
-                  fontSize: "10px", letterSpacing: "0.14em", transition: "color 0.15s",
+                  fontSize: "16.5px", letterSpacing: "0.14em", transition: "color 0.15s",
                 }}
                 onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = C.muted; }}
                 onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = C.mutedDim; }}>
@@ -921,7 +921,7 @@ export default function Home() {
               </button>
             ))}
             <a href="https://www.rsrintel.com" target="_blank" rel="noopener noreferrer"
-              style={{ color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace", fontSize: "10px", letterSpacing: "0.14em", textDecoration: "none", transition: "color 0.15s" }}
+              style={{ color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace", fontSize: "16.5px", letterSpacing: "0.14em", textDecoration: "none", transition: "color 0.15s" }}
               onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = C.muted; }}
               onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = C.mutedDim; }}>
               RSR INTEL ↗
@@ -929,7 +929,7 @@ export default function Home() {
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <StatusDot live={networkLive} />
-            <span style={{ color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace", fontSize: "9.5px", letterSpacing: "0.06em" }}>
+            <span style={{ color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace", fontSize: "18px", letterSpacing: "0.06em" }}>
               PUBLIC LAYER ACTIVE
             </span>
           </div>

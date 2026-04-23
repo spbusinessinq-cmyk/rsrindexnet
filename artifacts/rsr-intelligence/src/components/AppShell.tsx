@@ -93,13 +93,13 @@ export default function AppShell({ children }: AppShellProps) {
           }} />
           <div>
             <div style={{
-              color: C.body, fontSize: "12.5px", letterSpacing: "0.16em",
+              color: C.body, fontSize: "14.5px", letterSpacing: "0.16em",
               fontFamily: "'Orbitron', sans-serif", fontWeight: 700, lineHeight: 1,
             }}>
               PACIFIC SYSTEMS
             </div>
             <div style={{
-              color: C.mutedDim, fontSize: "8.5px", letterSpacing: "0.12em",
+              color: C.mutedDim, fontSize: "14.5px", letterSpacing: "0.12em",
               fontFamily: "'Share Tech Mono', monospace", marginTop: 4,
             }}>
               RSR INTELLIGENCE NETWORK
@@ -118,7 +118,7 @@ export default function AppShell({ children }: AppShellProps) {
                 style={{
                   background: "none", border: "none", cursor: "pointer",
                   color: active ? C.accent : C.muted,
-                  fontSize: "10.5px", letterSpacing: "0.16em",
+                  fontSize: "14.5px", letterSpacing: "0.16em",
                   fontFamily: "'Share Tech Mono', monospace",
                   textTransform: "uppercase",
                   padding: "4px 0",
@@ -141,7 +141,7 @@ export default function AppShell({ children }: AppShellProps) {
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <a href="https://www.rsrintel.com" target="_blank" rel="noopener noreferrer"
             style={{
-              color: C.mutedDim, fontSize: "10px", letterSpacing: "0.1em",
+              color: C.mutedDim, fontSize: "12px", letterSpacing: "0.1em",
               textDecoration: "none", fontFamily: "'Share Tech Mono', monospace",
               transition: "color 0.15s",
             }}
@@ -155,7 +155,7 @@ export default function AppShell({ children }: AppShellProps) {
             style={{
               background: "transparent",
               border: `1px solid ${C.borderAccent}`,
-              color: C.accent, fontSize: "10.5px", letterSpacing: "0.14em",
+              color: C.accent, fontSize: "14.5px", letterSpacing: "0.14em",
               fontFamily: "'Share Tech Mono', monospace",
               padding: "7px 18px", borderRadius: 3, cursor: "pointer",
               transition: "all 0.18s",
@@ -216,7 +216,7 @@ export default function AppShell({ children }: AppShellProps) {
             onClick={() => navigate("/")}
             style={{
               background: "none", border: "none", cursor: "pointer", textAlign: "left",
-              color: C.muted, fontSize: "11px", letterSpacing: "0.16em",
+              color: C.muted, fontSize: "13.5px", letterSpacing: "0.16em",
               fontFamily: "'Share Tech Mono', monospace", padding: "10px 0",
               borderBottom: `1px solid ${C.border}`,
             }}>
@@ -228,7 +228,7 @@ export default function AppShell({ children }: AppShellProps) {
               style={{
                 background: "none", border: "none", cursor: "pointer", textAlign: "left",
                 color: isActive(link.path) ? C.accent : C.muted,
-                fontSize: "11px", letterSpacing: "0.16em",
+                fontSize: "13.5px", letterSpacing: "0.16em",
                 fontFamily: "'Share Tech Mono', monospace", padding: "10px 0",
                 borderBottom: `1px solid ${C.border}`,
               }}>
@@ -241,7 +241,7 @@ export default function AppShell({ children }: AppShellProps) {
               marginTop: 8,
               background: "transparent",
               border: `1px solid ${C.borderAccent}`,
-              color: C.accent, fontSize: "10.5px", letterSpacing: "0.14em",
+              color: C.accent, fontSize: "14.5px", letterSpacing: "0.14em",
               fontFamily: "'Share Tech Mono', monospace",
               padding: "10px 18px", borderRadius: 3, cursor: "pointer",
               textAlign: "center",
@@ -266,7 +266,7 @@ export default function AppShell({ children }: AppShellProps) {
       }}>
         <div style={{
           color: C.mutedDim, fontFamily: "'Orbitron', sans-serif",
-          fontWeight: 700, fontSize: "10px", letterSpacing: "0.16em",
+          fontWeight: 700, fontSize: "12px", letterSpacing: "0.16em",
         }}>
           PACIFIC SYSTEMS
         </div>
@@ -277,7 +277,7 @@ export default function AppShell({ children }: AppShellProps) {
           }} />
           <span style={{
             color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace",
-            fontSize: "9px", letterSpacing: "0.08em",
+            fontSize: "13.5px", letterSpacing: "0.08em",
           }}>
             PUBLIC LAYER ACTIVE
           </span>
@@ -285,7 +285,7 @@ export default function AppShell({ children }: AppShellProps) {
         <a href="https://www.rsrintel.com" target="_blank" rel="noopener noreferrer"
           style={{
             color: C.mutedDim, fontFamily: "'Share Tech Mono', monospace",
-            fontSize: "9px", letterSpacing: "0.1em", textDecoration: "none",
+            fontSize: "13.5px", letterSpacing: "0.1em", textDecoration: "none",
             transition: "color 0.15s",
           }}
           onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = C.muted; }}

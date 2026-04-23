@@ -1,0 +1,161 @@
+Apply a FULL-SITE LARGE-TYPE READABILITY PASS across Pacific Systems.
+
+IMPORTANT:
+Do NOT redesign the site again.
+Do NOT change the core layout direction.
+Do NOT shrink anything to preserve the old dashboard feel.
+Do NOT treat this as a subtle typography refinement.
+
+This is a strong readability correction pass.
+
+CURRENT PROBLEM:
+Text across the site is still too small.
+It may look “clean” from a design perspective, but it is not readable enough for normal people at normal viewing distance.
+With glasses or without glasses, too much of the text still feels small.
+
+GOAL:
+Make the ENTIRE Pacific Systems site clearly readable, larger, more comfortable, and more public-facing.
+
+Pacific Systems should feel like:
+- a premium institutional website
+- a corporate-intelligence property
+- a serious public-facing architecture site
+
+It should NOT feel like:
+- a microtext-heavy dashboard
+- a tiny admin console
+- a compact operator UI
+- a zoomed-out terminal screen
+
+━━━━━━━━━━━━━━━━━━━━
+MANDATORY RULE
+━━━━━━━━━━━━━━━━━━━━
+
+Increase text size across the ENTIRE site.
+
+Do not only adjust the homepage.
+Do not only adjust one module.
+Do not leave inner pages in the old small-text style.
+
+Apply this pass to all public-facing pages/modules:
+- homepage / hero
+- overview
+- signals
+- datasets
+- index
+- method
+- access
+- division cards
+- network positioning cards
+- pipeline cards
+- related branch cards
+- all supporting content sections
+- all navigation areas
+
+━━━━━━━━━━━━━━━━━━━━
+WHAT MUST GET BIGGER
+━━━━━━━━━━━━━━━━━━━━
+
+1. Hero paragraph
+2. Section intro paragraphs
+3. All body text
+4. All explanatory copy
+5. Division card descriptions
+6. Card labels where they matter
+7. Signals page descriptions
+8. Method page explanatory text
+9. Access page explanatory text
+10. Dataset and index explanatory text
+11. Pipeline step descriptions
+12. Network architecture card content
+13. Side content blocks if still present
+14. Navigation text slightly
+15. Buttons slightly if needed
+16. Metadata that users actually need to read
+17. Any paragraph currently still in tiny UI text
+
+━━━━━━━━━━━━━━━━━━━━
+TYPOGRAPHY TARGET
+━━━━━━━━━━━━━━━━━━━━
+
+Move the site out of the “micro UI” scale and into a true web readability scale.
+
+Directionally:
+- normal body copy should feel more like 16–18px minimum
+- important explanatory copy can go 18–20px where needed
+- card descriptions should not feel like tiny interface text
+- section intros should feel comfortably readable
+- headings should remain strong and proportional
+- labels can stay smaller, but never microscopic
+
+DO NOT literally force all text to one size.
+Use hierarchy.
+But the whole hierarchy needs to shift UP.
+
+━━━━━━━━━━━━━━━━━━━━
+READABILITY RULES
+━━━━━━━━━━━━━━━━━━━━
+
+- Prioritize human readability over compactness
+- Let sections grow vertically if needed
+- Add padding where larger text needs room
+- Increase line-height throughout the site
+- Increase paragraph spacing
+- Increase spacing between heading and body copy
+- Increase spacing inside cards
+- Do not compress text to preserve old box sizes
+- Reflow layouts as needed to support larger type cleanly
+
+━━━━━━━━━━━━━━━━━━━━
+SPECIFIC VISUAL STANDARD
+━━━━━━━━━━━━━━━━━━━━
+
+The site should read well:
+- at normal desktop distance
+- without leaning forward
+- without zooming browser size
+- without the text feeling “cool but tiny”
+
+If a user lands on the page, they should immediately feel:
+“this is readable”
+not
+“this is stylish but too small”
+
+━━━━━━━━━━━━━━━━━━━━
+DON’T DO THIS
+━━━━━━━━━━━━━━━━━━━━
+
+- do not answer with a tiny pass
+- do not keep old compact dashboard proportions
+- do not preserve ultra-small metadata styling everywhere
+- do not hide readability problems behind whitespace
+- do not only enlarge headings while leaving body text small
+- do not treat this as optional
+
+━━━━━━━━━━━━━━━━━━━━
+DO THIS
+━━━━━━━━━━━━━━━━━━━━
+
+- increase the full-site typography scale
+- rebalance spacing and padding accordingly
+- make all important content easy to read
+- preserve the premium Pacific Systems aesthetic
+- keep it elegant, not bloated
+- make it feel more expensive, more confident, and more accessible
+
+━━━━━━━━━━━━━━━━━━━━
+FINAL STANDARD
+━━━━━━━━━━━━━━━━━━━━
+
+When finished, Pacific Systems should feel:
+- bigger
+- clearer
+- easier to read
+- more comfortable
+- more public-facing
+- less dashboard-like
+- less tiny
+- more premium
+
+Implement the full-site large-type readability pass directly in code now.
+Do not provide a plan only.

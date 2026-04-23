@@ -78,7 +78,7 @@ export default function OverviewPage() {
               style={{ borderBottom: "1px solid rgba(127,174,158,0.1)" }}>
               <div className="w-1 h-1 rounded-full" style={{ background: "rgba(127,174,158,0.55)" }} />
               <span className="font-mono-tactical tracking-widest uppercase"
-                style={{ color: "rgba(127,174,158,0.55)", fontSize: "9px", letterSpacing: "0.2em" }}>
+                style={{ color: "rgba(127,174,158,0.55)", fontSize: "13px", letterSpacing: "0.2em" }}>
                 Where INDEX Fits
               </span>
             </div>
@@ -88,20 +88,20 @@ export default function OverviewPage() {
                 <div className="rounded px-4 py-4 space-y-2"
                   style={{ border: "1px solid rgba(127,142,155,0.12)", background: "rgba(13,21,32,0.28)" }}>
                   <div className="font-mono-tactical tracking-widest uppercase"
-                    style={{ color: "rgba(127,142,155,0.42)", fontSize: "7.5px", letterSpacing: "0.14em" }}>
+                    style={{ color: "rgba(127,142,155,0.42)", fontSize: "17px", letterSpacing: "0.14em" }}>
                     Parent Network
                   </div>
                   <div className="font-orbitron font-bold tracking-wide"
-                    style={{ color: "rgba(180,192,202,0.78)", fontSize: "11px" }}>
+                    style={{ color: "rgba(180,192,202,0.78)", fontSize: "17px" }}>
                     RSR Intelligence Network
                   </div>
                   <div className="font-mono-tactical"
-                    style={{ color: "rgba(180,192,202,0.62)", fontSize: "10px", lineHeight: "1.75" }}>
+                    style={{ color: "rgba(180,192,202,0.62)", fontSize: "15px", lineHeight: "2.02" }}>
                     Intelligence and analytical ecosystem encompassing editorial analysis, investigations, and the data layer.
                   </div>
                   <a href="https://www.rsrintel.com" target="_blank" rel="noopener noreferrer"
                     className="font-mono-tactical tracking-widest inline-block mt-1"
-                    style={{ color: "rgba(127,174,158,0.42)", fontSize: "8px", letterSpacing: "0.1em", textDecoration: "none" }}>
+                    style={{ color: "rgba(127,174,158,0.42)", fontSize: "11.5px", letterSpacing: "0.1em", textDecoration: "none" }}>
                     RSRINTEL.COM ↗
                   </a>
                 </div>
@@ -111,7 +111,7 @@ export default function OverviewPage() {
                   <div className="flex flex-col items-center gap-2">
                     <div className="w-px flex-1" style={{ background: "rgba(127,174,158,0.12)" }} />
                     <span className="font-mono-tactical" style={{ color: "rgba(127,174,158,0.3)", fontSize: "16px" }}>→</span>
-                    <div className="font-mono-tactical" style={{ color: "rgba(127,174,158,0.25)", fontSize: "7.5px", letterSpacing: "0.1em" }}>DATA LAYER</div>
+                    <div className="font-mono-tactical" style={{ color: "rgba(127,174,158,0.25)", fontSize: "17px", letterSpacing: "0.1em" }}>DATA LAYER</div>
                     <div className="w-px flex-1" style={{ background: "rgba(127,174,158,0.12)" }} />
                   </div>
                 </div>
@@ -120,22 +120,22 @@ export default function OverviewPage() {
                 <div className="rounded px-4 py-4 space-y-2"
                   style={{ border: "1px solid rgba(127,174,158,0.22)", background: "rgba(127,174,158,0.04)" }}>
                   <div className="font-mono-tactical tracking-widest uppercase"
-                    style={{ color: "rgba(127,174,158,0.52)", fontSize: "7.5px", letterSpacing: "0.14em" }}>
+                    style={{ color: "rgba(127,174,158,0.52)", fontSize: "17px", letterSpacing: "0.14em" }}>
                     Data Systems Division
                   </div>
                   <div className="font-orbitron font-bold tracking-wide"
-                    style={{ color: "#7FAE9E", fontSize: "11px", textShadow: "0 0 12px rgba(127,174,158,0.12)" }}>
+                    style={{ color: "#7FAE9E", fontSize: "17px", textShadow: "0 0 12px rgba(127,174,158,0.12)" }}>
                     INDEX Data Network
                   </div>
                   <div className="font-mono-tactical"
-                    style={{ color: "rgba(180,192,202,0.68)", fontSize: "10px", lineHeight: "1.75" }}>
+                    style={{ color: "rgba(180,192,202,0.68)", fontSize: "15px", lineHeight: "2.02" }}>
                     Signal intake, dataset structuring, and record indexing. The data architecture layer — not the editorial arm.
                   </div>
                   <div className="flex items-center gap-1.5">
                     <div className="w-1 h-1 rounded-full"
                       style={{ background: "#7FAE9E", boxShadow: "0 0 4px rgba(127,174,158,0.6)" }} />
                     <span className="font-mono-tactical"
-                      style={{ color: "rgba(127,174,158,0.5)", fontSize: "8px", letterSpacing: "0.1em" }}>
+                      style={{ color: "rgba(127,174,158,0.5)", fontSize: "11.5px", letterSpacing: "0.1em" }}>
                       YOU ARE HERE — PUBLIC LAYER
                     </span>
                   </div>
@@ -156,14 +156,14 @@ export default function OverviewPage() {
                 {WHAT_IT_IS.map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <div className="w-1 h-1 rounded-full flex-shrink-0 mt-1.5" style={{ background: "rgba(127,174,158,0.5)" }} />
-                    <span className="font-mono-tactical" style={{ color: "rgba(180,192,202,0.75)", fontSize: "10.5px", lineHeight: "1.75" }}>
+                    <span className="font-mono-tactical" style={{ color: "rgba(180,192,202,0.75)", fontSize: "15.5px", lineHeight: "2.02" }}>
                       {item}
                     </span>
                   </div>
                 ))}
               </div>
               <p className="font-mono-tactical leading-relaxed pt-1"
-                style={{ color: "rgba(180,192,202,0.58)", lineHeight: "1.88", fontSize: "10px", borderTop: "1px solid rgba(127,174,158,0.07)" }}>
+                style={{ color: "rgba(180,192,202,0.58)", lineHeight: "2.02", fontSize: "15px", borderTop: "1px solid rgba(127,174,158,0.07)" }}>
                 INDEX is not a newsroom and not an investigative unit. It is infrastructure — the analytical
                 data architecture behind RSR's broader intelligence operation.
               </p>
@@ -178,7 +178,7 @@ export default function OverviewPage() {
                 {WHAT_IT_IS_NOT.map((item) => (
                   <div key={item} className="flex items-center gap-2.5">
                     <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: "rgba(127,174,158,0.25)" }} />
-                    <span className="font-mono-tactical" style={{ color: "rgba(180,192,202,0.65)", fontSize: "10.5px" }}>
+                    <span className="font-mono-tactical" style={{ color: "rgba(180,192,202,0.65)", fontSize: "15.5px" }}>
                       {item}
                     </span>
                   </div>
@@ -190,7 +190,7 @@ export default function OverviewPage() {
           {/* Pipeline */}
           <div>
             <div className="font-mono-tactical tracking-widest uppercase mb-4"
-              style={{ color: "rgba(127,174,158,0.5)", fontSize: "9.5px", letterSpacing: "0.2em" }}>
+              style={{ color: "rgba(127,174,158,0.5)", fontSize: "14px", letterSpacing: "0.2em" }}>
               The Signal-to-Record Pipeline
             </div>
             <div className="relative">
@@ -204,7 +204,7 @@ export default function OverviewPage() {
                           background: "rgba(13,21,32,0.85)",
                           border: "1px solid rgba(127,174,158,0.24)",
                           color: "rgba(127,174,158,0.72)",
-                          fontSize: "9.5px",
+                          fontSize: "14px",
                           boxShadow: "0 0 8px rgba(0,0,0,0.5)",
                         }}>
                         {phase.step}
@@ -221,7 +221,7 @@ export default function OverviewPage() {
                             style={{
                               border: "1px solid rgba(127,174,158,0.12)",
                               color: "rgba(127,174,158,0.45)",
-                              fontSize: "8.5px",
+                              fontSize: "12.5px",
                               letterSpacing: "0.06em",
                             }}>
                             → {phase.output}
@@ -229,12 +229,12 @@ export default function OverviewPage() {
                         </div>
                         <button onClick={() => setLocation(phase.path)}
                           className="font-mono-tactical tracking-widest flex-shrink-0"
-                          style={{ color: "rgba(127,174,158,0.4)", fontSize: "8px", letterSpacing: "0.1em", background: "none", border: "none", cursor: "pointer" }}>
+                          style={{ color: "rgba(127,174,158,0.4)", fontSize: "11.5px", letterSpacing: "0.1em", background: "none", border: "none", cursor: "pointer" }}>
                           VIEW →
                         </button>
                       </div>
                       <p className="font-mono-tactical leading-relaxed"
-                        style={{ color: "rgba(180,192,202,0.72)", lineHeight: "1.85", fontSize: "10.5px" }}>
+                        style={{ color: "rgba(180,192,202,0.72)", lineHeight: "2.02", fontSize: "15.5px" }}>
                         {phase.description}
                       </p>
                     </div>
@@ -247,7 +247,7 @@ export default function OverviewPage() {
           {/* Explore sectors */}
           <div>
             <div className="font-mono-tactical tracking-widest uppercase mb-4"
-              style={{ color: "rgba(127,174,158,0.5)", fontSize: "9.5px", letterSpacing: "0.2em" }}>
+              style={{ color: "rgba(127,174,158,0.5)", fontSize: "14px", letterSpacing: "0.2em" }}>
               Explore Sectors
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
@@ -261,10 +261,10 @@ export default function OverviewPage() {
                       {sector.label}
                     </div>
                     <span className="font-mono-tactical"
-                      style={{ color: "rgba(127,174,158,0.32)", fontSize: "11px" }}>→</span>
+                      style={{ color: "rgba(127,174,158,0.32)", fontSize: "17px" }}>→</span>
                   </div>
                   <div className="font-mono-tactical"
-                    style={{ color: "rgba(180,192,202,0.62)", fontSize: "10px", lineHeight: "1.7" }}>
+                    style={{ color: "rgba(180,192,202,0.62)", fontSize: "15px", lineHeight: "2.02" }}>
                     {sector.description}
                   </div>
                 </button>
