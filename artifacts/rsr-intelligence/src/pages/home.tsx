@@ -8,44 +8,44 @@ export const SEGMENTS = [
   {
     label: "OVERVIEW",
     path: "/overview",
-    description: "What Pacific Systems is and how signal-to-structure works",
-    detail: "OVERVIEW documents the Pacific Systems platform — what it monitors, how it structures incoming signals into usable data, and how structured data becomes indexed records.",
-    methodology: "Platform scope. Signal-to-structure flow. Layer introduction.",
+    description: "Architecture overview and signal-to-record system introduction",
+    detail: "OVERVIEW establishes the structure of Pacific Systems — its scope, its position within the RSR Intelligence Network, and how monitored signals move through intake, structuring, and index commitment.",
+    methodology: "Platform scope. Layer architecture. System introduction.",
   },
   {
     label: "SIGNALS",
     path: "/signals",
-    description: "Monitored signal classes, intake categories, and source structure",
-    detail: "SIGNALS is where monitored input enters the Pacific Systems architecture. Signal categories are defined, sources are classified, and intake logic determines what gets structured versus what gets held or dismissed.",
+    description: "Signal classification, intake categories, and source structure",
+    detail: "SIGNALS is where monitored input enters the architecture. Signal categories are defined, sources are classified, and intake logic governs what proceeds to structuring versus what is held or dismissed.",
     methodology: "Signal classification. Intake routing. Source assessment.",
   },
   {
     label: "DATASETS",
     path: "/datasets",
-    description: "Structured data collections and tracked analytical domains",
-    detail: "DATASETS are the organised output of signal structuring — collections of data grouped by domain, subject class, or tracked activity type.",
-    methodology: "Domain grouping. Collection management. Analytical coverage.",
+    description: "Domain collections, structured data output, and coverage scope",
+    detail: "DATASETS are the organised output of the structuring process — collections of data grouped by domain, subject class, or tracked activity type. Each dataset defines a bounded operational coverage area.",
+    methodology: "Domain grouping. Collection management. Coverage boundaries.",
   },
   {
     label: "INDEX",
     path: "/records",
-    description: "Indexed records, structured entries, and searchable data layer",
-    detail: "The INDEX layer is the core of what this platform produces — a structured, searchable record of everything that has been monitored, classified, and committed.",
-    methodology: "Record structure. Search architecture. Data integrity.",
+    description: "Committed records, structured entries, and the searchable data layer",
+    detail: "The INDEX is the core record layer — a structured, searchable body of everything that has been monitored, classified, structured, and committed. The index is the operational output of the platform.",
+    methodology: "Record structure. Search architecture. Index integrity.",
   },
   {
     label: "METHOD",
     path: "/method",
-    description: "How Pacific Systems collects, classifies, structures, and synthesises",
-    detail: "METHOD explains the operational logic behind Pacific Systems — the discipline rules that govern signal intake, the classification logic that routes data into datasets, and the structuring process that builds records.",
-    methodology: "Collection discipline. Classification logic. Synthesis flow.",
+    description: "Collection discipline, classification logic, and operational standards",
+    detail: "METHOD defines the operational rules governing Pacific Systems — the discipline standards for signal intake, the classification logic that routes data into datasets, and the structuring protocol that produces records.",
+    methodology: "Collection discipline. Classification logic. Synthesis protocol.",
   },
   {
     label: "ACCESS",
     path: "/access",
-    description: "Controlled entry to deeper data layers and restricted environments",
-    detail: "ACCESS is the boundary between the public interface and the operational layer behind it. Deeper datasets, live signal feeds, and analytical tools exist behind this threshold.",
-    methodology: "Verified entry. Tier separation. Restricted data layer.",
+    description: "Operator entry and tier-controlled access to the data layer",
+    detail: "ACCESS is the boundary between the public layer and the operational environment behind it. Deeper datasets, live signal feeds, and analytical tools are available to verified operators only.",
+    methodology: "Verified entry. Tier separation. Restricted layer access.",
   },
 ];
 
@@ -435,10 +435,10 @@ export default function Home() {
               marginBottom: 44,
             }}>
               Pacific Systems is the structured data division of the RSR Intelligence Network.
-              It receives monitored signals, routes them through a defined structuring process,
-              assigns them to classified datasets, and commits them to a searchable record index.
-              Pacific Systems does not produce editorial content — it produces structured,
-              retrievable data infrastructure.
+              Monitored signals enter the intake layer, move through a defined structuring process,
+              and are committed as indexed, searchable records.
+              The platform does not produce editorial content.
+              It produces structured, retrievable data infrastructure.
             </p>
 
             {/* CTAs */}
@@ -491,9 +491,9 @@ export default function Home() {
             {/* Hierarchy breadcrumb */}
             <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 32, flexWrap: "wrap" }}>
               {[
-                { label: "RSR", sub: "Parent organisation", active: false, href: "https://www.rsrintel.com" },
-                { label: "RSR Intelligence Network", sub: "Intelligence division", active: false, href: "https://www.rsrintel.com" },
-                { label: "Pacific Systems", sub: "Data systems — this site", active: true, href: "/" },
+                { label: "RSR", sub: "Parent network", active: false, href: "https://www.rsrintel.com" },
+                { label: "RSR Intelligence Network", sub: "Intelligence branch", active: false, href: "https://www.rsrintel.com" },
+                { label: "Pacific Systems", sub: "Data Systems Division", active: true, href: "/" },
               ].map((node, i) => (
                 <div key={node.label} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
                   <a href={node.href} target={node.active ? "_self" : "_blank"} rel="noopener noreferrer"
@@ -577,10 +577,10 @@ export default function Home() {
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                   {[
                     "The structured data infrastructure of the RSR Intelligence Network",
-                    "A signal intake, classification, and record-indexing system",
-                    "A defined pipeline from raw input to structured, retrievable output",
-                    "A data operations layer with tiered access and version control",
-                    "The authoritative record layer for the broader RSR ecosystem",
+                    "A signal intake, classification, and indexing system",
+                    "A defined pipeline from monitored input to committed record",
+                    "A tiered data operations layer with access control and version history",
+                    "The authoritative record layer for the broader RSR Intelligence Network",
                   ].map((item, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                       <div style={{ width: 4, height: 4, borderRadius: "50%", background: C.borderAccentMid, flexShrink: 0, marginTop: 7 }} />
@@ -609,8 +609,8 @@ export default function Home() {
                   {[
                     "An editorial platform or press operation",
                     "A public-facing news or content system",
-                    "A standalone brand separate from the RSR network",
-                    "A commercial data marketplace or consumer service",
+                    "A standalone brand independent of the RSR Intelligence Network",
+                    "A commercial data marketplace or consumer product",
                     "A social platform, aggregator, or discovery tool",
                   ].map((item, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
@@ -649,17 +649,17 @@ export default function Home() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 12 }}>
               {[
                 { code: "DIV-01", name: "Signal Intake Office", path: "/signals",
-                  purpose: "Receives and validates incoming signals from monitored sources. Manages intake routing, source classification, and triage gate evaluation." },
+                  purpose: "First point of entry for monitored signals. Validates, classifies, and routes incoming input through the triage gate before structuring begins." },
                 { code: "DIV-02", name: "Data Structuring Division", path: "/datasets",
-                  purpose: "Transforms validated signals into structured data entries. Applies schema rules, field normalisation, and preliminary classification before dataset assignment." },
+                  purpose: "Transforms validated signals into structured data entries. Applies schema rules, field normalisation, and classification criteria before dataset assignment." },
                 { code: "DIV-03", name: "Dataset Operations", path: "/datasets",
-                  purpose: "Manages the domain dataset layer. Assigns structured entries to the correct collection, maintains dataset integrity, and enforces coverage boundaries." },
+                  purpose: "Manages the domain dataset layer. Routes structured entries to their designated collection and enforces dataset integrity and coverage scope." },
                 { code: "DIV-04", name: "Index & Retrieval Division", path: "/records",
-                  purpose: "Handles the commitment of structured entries into the searchable index. Manages record versioning, retrieval architecture, and index integrity." },
+                  purpose: "Commits structured entries to the searchable record index. Manages versioning, retrieval architecture, and index integrity across all committed data." },
                 { code: "DIV-05", name: "Access Control Office", path: "/access",
-                  purpose: "Governs tier-based access to the data layer. Manages operator authentication, public/restricted separation, and access provisioning." },
+                  purpose: "Governs access to the data layer. Manages operator authentication, tier separation, and access provisioning across public and restricted environments." },
                 { code: "DIV-06", name: "Methodology & Standards Unit", path: "/method",
-                  purpose: "Defines and maintains the operational standards governing all Pacific Systems activity — classification logic, collection discipline, and synthesis protocol." },
+                  purpose: "Defines and maintains the standards governing all Pacific Systems operations — classification logic, collection discipline, and synthesis protocol." },
               ].map((div) => (
                 <DivisionCard key={div.code} {...div} onClick={navigate} />
               ))}
@@ -681,11 +681,11 @@ export default function Home() {
             {/* Pipeline */}
             <div style={{ display: "flex", alignItems: "stretch", gap: 6, marginBottom: 28, overflowX: "auto" }}>
               {[
-                { number: "01", label: "SIGNAL INTAKE", desc: "Monitored sources deliver raw signals into the intake layer", active: networkLive },
-                { number: "02", label: "TRIAGE GATE", desc: "Signals validated against defined triage criteria before structuring", active: false },
-                { number: "03", label: "STRUCTURING", desc: "Validated signals structured into schema-compliant entries", active: false },
-                { number: "04", label: "DATASET ASSIGN", desc: "Structured entries routed to their domain dataset collection", active: false },
-                { number: "05", label: "INDEX COMMIT", desc: "Operator review and explicit commit to the record index", active: false },
+                { number: "01", label: "SIGNAL INTAKE", desc: "Raw signals from monitored sources enter the intake layer.", active: networkLive },
+                { number: "02", label: "TRIAGE GATE", desc: "Each signal is evaluated against defined criteria. Signals that do not meet threshold do not proceed.", active: false },
+                { number: "03", label: "STRUCTURING", desc: "Validated signals are structured into schema-compliant data entries.", active: false },
+                { number: "04", label: "DATASET ASSIGN", desc: "Each structured entry is assigned to its designated domain collection.", active: false },
+                { number: "05", label: "INDEX COMMIT", desc: "Reviewed entries are committed to the record index. The record is retrievable.", active: false },
               ].map((step, i, arr) => (
                 <div key={step.number} style={{ display: "flex", alignItems: "stretch", flex: 1, minWidth: 140 }}>
                   <PipelineStep {...step} />
@@ -710,7 +710,7 @@ export default function Home() {
                   INTAKE LAYER
                 </span>
                 <span style={{ color: networkLive ? C.accent : C.muted, fontSize: "11px", fontFamily: "'Share Tech Mono', monospace" }}>
-                  {networkLive ? `${platform.sourcesConnected} sources · ${platform.totalLiveItems} staged` : "Ready — awaiting source binding"}
+                  {networkLive ? `${platform.sourcesConnected} sources · ${platform.totalLiveItems} staged` : "Ready — awaiting source connection"}
                 </span>
               </div>
               <div style={{ width: 1, height: 14, background: C.border }} />
@@ -720,7 +720,7 @@ export default function Home() {
                   INDEX LAYER
                 </span>
                 <span style={{ color: C.mutedDim, fontSize: "11px", fontFamily: "'Share Tech Mono', monospace", fontStyle: "italic" }}>
-                  0 records committed — classification pending
+                  No records committed — index pending
                 </span>
               </div>
             </div>
@@ -738,10 +738,10 @@ export default function Home() {
                   Why Pacific Systems Exists
                 </h2>
                 <p style={{ color: C.body, fontSize: "17px", lineHeight: "1.94", fontFamily: "'Rajdhani', sans-serif", marginBottom: 20 }}>
-                  Intelligence networks accumulate large volumes of signal. Without a dedicated structuring and indexing layer, that volume remains operationally unusable — it cannot be retrieved, cross-referenced, or built upon systematically.
+                  Signal accumulation is not useful on its own. Without a structured layer, monitored input cannot be retrieved, cross-referenced, or built upon operationally. Volume is not infrastructure.
                 </p>
                 <p style={{ color: C.body, fontSize: "17px", lineHeight: "1.94", fontFamily: "'Rajdhani', sans-serif", marginBottom: 0 }}>
-                  Pacific Systems resolves this within the RSR Intelligence Network. It converts raw monitored input into structured, attributed, version-controlled records that can be retrieved, queried, and used as the data foundation for downstream analytical work across RSR's broader operations.
+                  Pacific Systems resolves this. It converts monitored input into attributed, version-controlled records — structured, indexed, and available to the RSR Intelligence Network as operational data infrastructure.
                 </p>
               </div>
 
@@ -750,17 +750,17 @@ export default function Home() {
                 {[
                   {
                     heading: "Structured over raw",
-                    body: "Every entry that enters Pacific Systems has been validated, classified, and structured against a defined schema. Raw signal volume does not equal usable data without this layer.",
+                    body: "Every entry in Pacific Systems has been validated, classified, and structured against a defined schema. Volume without structure is not data.",
                     accent: C.accent,
                   },
                   {
                     heading: "Attribution by design",
-                    body: "Every record carries source attribution, intake timestamp, classification status, and version history. Pacific Systems does not accept unattributed entries.",
+                    body: "Every record carries source attribution, intake timestamp, classification status, and version history. Unattributed entries are not committed.",
                     accent: C.accentBlue,
                   },
                   {
                     heading: "Retrieval-first architecture",
-                    body: "The index layer is built around retrieval — entries are indexed for search, cross-reference, and programmatic access from the moment they are committed.",
+                    body: "Entries are indexed for search, cross-reference, and programmatic access from the moment of commitment. The record layer exists to be retrieved.",
                     accent: C.accent,
                   },
                 ].map((principle) => (
@@ -792,7 +792,7 @@ export default function Home() {
               Navigate Pacific Systems
             </h2>
             <p style={{ color: C.muted, fontSize: "15px", lineHeight: "1.78", fontFamily: "'Rajdhani', sans-serif", maxWidth: 480, marginBottom: 48 }}>
-              Six public sectors. Hover to inspect scope. Click to enter.
+              Six public sectors. Each represents a defined stage of the architecture.
             </p>
 
             <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", gap: 48 }}>
@@ -863,14 +863,14 @@ export default function Home() {
                 name="RSR Press Corps"
                 code="RSR-PC"
                 role="EDITORIAL & PUBLICATION BRANCH"
-                desc="The editorial and publication arm of the RSR Intelligence Network. Responsible for analysis, reporting, and the conversion of structured intelligence into distributed content."
+                desc="The editorial and publication branch of the RSR Intelligence Network. Produces analysis, reporting, and distributed content from structured intelligence output."
                 href="https://www.rsrintel.com"
               />
               <BranchCard
                 name="Black Dog Security"
                 code="BDS"
                 role="SECURITY INTELLIGENCE BRANCH"
-                desc="The security intelligence division of the RSR network. Focused on threat assessment, vulnerability analysis, and operational security intelligence for network-wide operations."
+                desc="The security intelligence branch of the RSR Intelligence Network. Focused on threat assessment, vulnerability analysis, and operational security across the network."
                 href="https://www.rsrintel.com"
               />
             </div>
@@ -881,8 +881,8 @@ export default function Home() {
             }}>
               <div style={{ width: 4, height: 4, borderRadius: "50%", background: C.borderAccentMid, flexShrink: 0, marginTop: 5 }} />
               <p style={{ color: C.muted, fontFamily: "'Rajdhani', sans-serif", fontSize: "15px", lineHeight: "1.78", margin: 0 }}>
-                Pacific Systems provides the structured data layer that supports operations across all three RSR branches.
-                Data indexed here feeds directly into RSR Press Corps analysis and Black Dog Security intelligence assessments.
+                Pacific Systems provides the structured data layer underpinning operations across all three RSR branches.
+                Records committed here serve as the data foundation for RSR Press Corps analysis and Black Dog Security intelligence work.
               </p>
             </div>
           </div>
