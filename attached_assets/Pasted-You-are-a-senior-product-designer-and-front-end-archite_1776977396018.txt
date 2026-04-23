@@ -1,0 +1,198 @@
+You are a senior product designer and front-end architect.
+
+Redesign the INDEX page inside the RSR Intelligence Network.
+
+IMPORTANT:
+This is NOT a hacker dashboard.
+This is NOT a neon terminal toy.
+This is NOT a backend tool launcher.
+
+INDEX should feel like a serious, premium, corporate-intelligence web property inside the broader RSR Intelligence Network.
+
+━━━━━━━━━━━━━━━━━━━━
+CORE POSITIONING
+━━━━━━━━━━━━━━━━━━━━
+
+INDEX is the structured data division of the RSR Intelligence Network.
+
+It is the data systems layer that handles:
+- signal intake
+- data structuring
+- dataset assignment
+- record indexing
+- retrieval architecture
+- access control
+- standards / methodology
+
+It is NOT:
+- a newsroom
+- a press site
+- a cyberpunk HUD
+- a glowing green sci-fi terminal
+- a social platform
+- a random standalone brand
+
+It sits under the broader RSR Intelligence Network alongside:
+- RSR Press Corps
+- Black Dog Security
+- INDEX Data Network
+
+Within INDEX, use DIVISIONS — not subsidiaries.
+
+━━━━━━━━━━━━━━━━━━━━
+DESIGN GOAL
+━━━━━━━━━━━━━━━━━━━━
+
+Keep the intelligence feel, but move the page toward:
+- corporate
+- institutional
+- architectural
+- premium
+- calm
+- high-trust
+- black / graphite / steel
+- restrained green accents only
+
+Less “all-green command terminal”
+More “classified enterprise architecture website”
+
+━━━━━━━━━━━━━━━━━━━━
+VISUAL RULES
+━━━━━━━━━━━━━━━━━━━━
+
+Use:
+- matte black / charcoal background
+- very subtle steel-gray grid
+- soft white / light-gray body text
+- muted slate secondary text
+- restrained emerald green only for:
+  - active state
+  - selected tabs
+  - section accents
+  - small highlights
+- amber only for monitoring/warning states
+
+Avoid:
+- full green wash
+- overly bright neon
+- cluttered HUD overlays
+- gimmicky cyberpunk effects
+- oversized glowing borders
+- fake “system overload” visuals
+
+The page should feel:
+- elegant
+- disciplined
+- architectural
+- official
+- expensive
+
+━━━━━━━━━━━━━━━━━━━━
+INFORMATION ARCHITECTURE
+━━━━━━━━━━━━━━━━━━━━
+
+Build INDEX as a proper public-facing webpage, not a full-screen app panel.
+
+Use this structure:
+
+1. HERO SECTION
+- Title: INDEX
+- Subtitle: Data Systems Division
+- Parent label: RSR Intelligence Network
+- One strong paragraph explaining INDEX as the structured data layer of the network
+- 1–2 restrained CTA buttons max
+
+2. NETWORK POSITIONING STRIP
+Show hierarchy clearly:
+RSR → RSR Intelligence Network → INDEX Data Network
+
+Also show sibling branches:
+- RSR Press Corps
+- Black Dog Security
+
+3. WHAT INDEX IS / WHAT INDEX IS NOT
+Two clean side-by-side cards
+
+4. INDEX DIVISIONS
+Create a grid of six institutional division cards:
+- Signal Intake Office
+- Data Structuring Division
+- Dataset Operations
+- Index & Retrieval Division
+- Access Control Office
+- Methodology & Standards Unit
+
+Each card should have:
+- division name
+- one-line purpose
+- subtle status/meta styling
+
+5. SIGNAL-TO-RECORD PIPELINE
+Show a clean flow:
+Signal Intake → Structuring → Dataset Assignment → Index Commitment → Access / Retrieval
+
+This should be more web/architecture style, less arcade/HUD style.
+
+6. WHY INDEX MATTERS
+Short section explaining that INDEX is the data infrastructure layer behind RSR’s broader intelligence ecosystem.
+
+7. RELATED BRANCHES
+Cards linking visually to:
+- RSR Press Corps
+- Black Dog Security
+
+━━━━━━━━━━━━━━━━━━━━
+UX / LAYOUT DIRECTION
+━━━━━━━━━━━━━━━━━━━━
+
+Do NOT make the circular wheel the main hero.
+
+If you keep the radial/wheel concept at all, move it deeper into the page as a secondary interactive architecture module.
+
+Primary layout should be:
+- clean
+- grid-based
+- readable
+- web-page first
+- responsive
+- premium spacing
+- strong typography hierarchy
+
+━━━━━━━━━━━━━━━━━━━━
+TYPOGRAPHY / TONE
+━━━━━━━━━━━━━━━━━━━━
+
+Tone should read like:
+“serious intelligence architecture”
+not
+“video game terminal”
+
+Use crisp headings, uppercase micro-labels, clean body copy, tight spacing, and disciplined alignment.
+
+━━━━━━━━━━━━━━━━━━━━
+BUILD REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━
+
+- Build this as a polished React page/component
+- Use Tailwind CSS
+- Make it fully responsive
+- Keep motion subtle
+- No dead UI
+- No placeholder junk copy
+- Use real, finished section text based on the structure above
+- Make it production-quality, not mockup-quality
+
+━━━━━━━━━━━━━━━━━━━━
+FINAL OUTPUT
+━━━━━━━━━━━━━━━━━━━━
+
+Deliver:
+1. the redesigned INDEX page
+2. improved color system
+3. better information hierarchy
+4. division cards
+5. cleaner corporate-intelligence tone
+6. cross-linking space for Press Corps and Black Dog Security
+
+Do not give me a plan only.
+Implement the redesign directly.

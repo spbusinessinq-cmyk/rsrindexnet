@@ -37,7 +37,7 @@ See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and pa
 #### Architecture
 
 **Route structure**
-- `/` — Homepage (command wheel, 6-segment)
+- `/` — Homepage (corporate intelligence web-page layout, 7-section scroll; CommandWheel kept as secondary "Navigate the Architecture" interactive module)
 - `/overview` — What INDEX is + where it fits in RSR
 - `/signals` — Signal categories + live feed binding state
 - `/datasets` — Dataset domains + binding status
