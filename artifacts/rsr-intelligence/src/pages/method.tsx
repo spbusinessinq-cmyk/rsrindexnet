@@ -7,7 +7,7 @@ const PHASES = [
     id: "01",
     label: "Collection Discipline",
     headline: "Source selection is a decision, not a default.",
-    body: "INDEX does not monitor everything available. Collection discipline means defining which source categories are worth monitoring before monitoring begins. Sources are evaluated for reliability, recency, and relevance to defined analytical domains. High-volume sources that do not meet relevance thresholds are not added — regardless of availability.",
+    body: "Pacific Systems does not monitor everything available. Collection discipline means defining which source categories are worth monitoring before monitoring begins. Sources are evaluated for reliability, recency, and relevance to defined analytical domains. High-volume sources that do not meet relevance thresholds are not added — regardless of availability.",
     rules: [
       "Source inclusion requires a documented rationale",
       "Source reliability is scored and reviewed — not assumed",
@@ -20,7 +20,7 @@ const PHASES = [
     id: "02",
     label: "Signal Classification",
     headline: "Every signal must be classified before it enters the record.",
-    body: "Classification routes a signal into the INDEX architecture. It determines the signal's type, source category, domain assignment, and triage outcome. Unclassified signals are held in the staging queue — they do not auto-route. Classification decisions are logged, including dismissal reasons.",
+    body: "Classification routes a signal into the Pacific Systems architecture. It determines the signal's type, source category, domain assignment, and triage outcome. Unclassified signals are held in the staging queue — they do not auto-route. Classification decisions are logged, including dismissal reasons.",
     rules: [
       "Signals are not auto-committed without classification",
       "Classification includes source type, domain, and triage outcome",
@@ -59,14 +59,14 @@ const PHASES = [
     id: "05",
     label: "Index Commitment",
     headline: "Committed records are fixed entries in the searchable data layer.",
-    body: "When a structured, dataset-assigned entry meets all criteria, it is committed to the INDEX layer. Committed records are discrete, searchable entries with defined status. Once committed, records are not overwritten — revisions are versioned.",
+    body: "When a structured, dataset-assigned entry meets all criteria, it is committed to the record index layer. Committed records are discrete, searchable entries with defined status. Once committed, records are not overwritten — revisions are versioned.",
     rules: [
       "Committed records are not overwritten — revisions are versioned",
       "Each record carries a commit timestamp and source attribution",
       "Records with expired sources are flagged, not deleted",
     ],
     relatedPath: "/records",
-    relatedLabel: "INDEX",
+    relatedLabel: "RECORDS",
   },
   {
     id: "06",
@@ -79,7 +79,7 @@ const PHASES = [
       "Inference and sourced observation are kept in separate layers",
     ],
     relatedPath: "/records",
-    relatedLabel: "INDEX",
+    relatedLabel: "RECORDS",
   },
 ];
 
@@ -92,7 +92,7 @@ export default function MethodPage() {
         <PageHeader
           module="MODULE / METHOD"
           title="METHOD"
-          subtitle="How INDEX collects, classifies, structures, and synthesises — process architecture, not tool inventory"
+          subtitle="How Pacific Systems collects, classifies, structures, and synthesises — process architecture, not tool inventory"
           badge="6 PHASES"
           badgeActive={true}
         />
@@ -121,7 +121,7 @@ export default function MethodPage() {
             style={{ border: "1px solid rgba(127,174,158,0.1)", background: "rgba(0,0,0,0.2)" }}>
             <p className="font-mono-tactical leading-relaxed"
               style={{ color: "rgba(180,192,202,0.72)", lineHeight: "2.02", fontSize: "17px" }}>
-              INDEX operates a defined methodology for turning monitored signals into structured, indexed records.
+              Pacific Systems operates a defined methodology for turning monitored signals into structured, indexed records.
               Each phase has explicit rules — not guidelines. This page documents the process architecture.
               The six phases are sequential — signal classification cannot precede collection discipline;
               index commitment cannot precede structuring. The pipeline is ordered by design.
@@ -221,7 +221,7 @@ export default function MethodPage() {
               {[
                 { label: "SIGNALS",  path: "/signals",  note: "Intake layer" },
                 { label: "DATASETS", path: "/datasets", note: "Domain structure" },
-                { label: "INDEX",    path: "/records",  note: "Committed records" },
+                { label: "RECORDS",  path: "/records",  note: "Committed records" },
                 { label: "ACCESS",   path: "/access",   note: "Tier structure" },
               ].map((link) => (
                 <button key={link.path}

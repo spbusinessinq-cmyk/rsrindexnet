@@ -54,7 +54,7 @@ export default function LoginPage() {
         <div className="flex flex-col items-center">
           <span className="font-orbitron font-bold tracking-widest"
             style={{ color: "rgba(34,197,94,0.42)", fontSize: "11px", letterSpacing: "0.22em" }}>
-            INDEX DATA NETWORK
+            PACIFIC SYSTEMS
           </span>
           <span className="font-mono-tactical tracking-widest"
             style={{ color: "rgba(155,175,170,0.3)", fontSize: "8px", letterSpacing: "0.18em" }}>
@@ -79,8 +79,8 @@ export default function LoginPage() {
               RSR Intelligence Network
             </div>
             <div className="font-orbitron font-bold tracking-widest"
-              style={{ color: "#22c55e", fontSize: "28px", textShadow: "0 0 28px rgba(34,197,94,0.2)", letterSpacing: "0.08em" }}>
-              INDEX
+              style={{ color: "#22c55e", fontSize: "22px", textShadow: "0 0 28px rgba(34,197,94,0.2)", letterSpacing: "0.08em" }}>
+              PACIFIC SYSTEMS
             </div>
             <div className="font-mono-tactical tracking-widest"
               style={{ color: "rgba(155,175,170,0.45)", fontSize: "9px", letterSpacing: "0.2em" }}>
@@ -215,7 +215,7 @@ export default function LoginPage() {
           <div className="mt-6 text-center">
             <span className="font-mono-tactical"
               style={{ color: "rgba(155,175,170,0.25)", fontSize: "9px" }}>
-              INDEX Data Network — RSR Data Systems Division
+              Pacific Systems — RSR Data Systems Division
             </span>
           </div>
         </div>

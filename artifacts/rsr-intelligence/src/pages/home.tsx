@@ -27,10 +27,10 @@ export const SEGMENTS = [
     methodology: "Domain grouping. Collection management. Coverage boundaries.",
   },
   {
-    label: "INDEX",
+    label: "RECORDS",
     path: "/records",
-    description: "Committed records, structured entries, and the searchable data layer",
-    detail: "The INDEX is the core record layer — a structured, searchable body of everything that has been monitored, classified, structured, and committed. The index is the operational output of the platform.",
+    description: "Committed records, structured entries, and the searchable record layer",
+    detail: "The record index is the core layer — a structured, searchable body of everything that has been monitored, classified, structured, and committed. The record index is the operational output of the platform.",
     methodology: "Record structure. Search architecture. Index integrity.",
   },
   {
@@ -717,7 +717,7 @@ export default function Home() {
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: C.border }} />
                 <span style={{ color: C.mutedDim, fontSize: "16.5px", letterSpacing: "0.08em", fontFamily: "'Share Tech Mono', monospace" }}>
-                  INDEX LAYER
+                  RECORD LAYER
                 </span>
                 <span style={{ color: C.mutedDim, fontSize: "13.5px", fontFamily: "'Share Tech Mono', monospace", fontStyle: "italic" }}>
                   No records committed — index pending

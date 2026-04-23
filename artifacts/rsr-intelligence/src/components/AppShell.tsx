@@ -23,7 +23,7 @@ const NAV_LINKS = [
   { label: "OVERVIEW", path: "/overview" },
   { label: "SIGNALS",  path: "/signals"  },
   { label: "DATASETS", path: "/datasets" },
-  { label: "INDEX",    path: "/records"  },
+  { label: "RECORDS",  path: "/records"  },
   { label: "METHOD",   path: "/method"   },
 ];
 

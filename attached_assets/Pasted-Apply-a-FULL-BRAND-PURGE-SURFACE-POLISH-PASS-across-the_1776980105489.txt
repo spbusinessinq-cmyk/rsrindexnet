@@ -1,0 +1,270 @@
+Apply a FULL BRAND PURGE + SURFACE POLISH PASS across the entire Pacific Systems site.
+
+IMPORTANT:
+This is a major refinement pass.
+Do NOT partially patch one page.
+Do NOT leave old INDEX references behind.
+Do NOT only change headings.
+Do NOT preserve old box styling if it still feels flat, rigid, or legacy.
+
+━━━━━━━━━━━━━━━━━━━━
+CORE PROBLEM
+━━━━━━━━━━━━━━━━━━━━
+
+The site has been renamed to Pacific Systems, but many pages still contain old references to:
+- INDEX
+- INDEX Data Network
+- "What INDEX is"
+- "Where INDEX fits"
+- "INDEX operates"
+- old INDEX-era copy and labels
+
+This is not acceptable.
+
+Pacific Systems must now be the unified brand across the ENTIRE public-facing site.
+
+Also, many of the boxes/cards/panels still feel:
+- too flat
+- too stiff
+- too legacy-dashboard
+- not polished enough
+- not premium enough
+
+The site needs:
+1. a full INDEX reference cleanup
+2. stronger Pacific Systems language everywhere
+3. more polished, more attractive panel surfaces
+4. slightly glassier / softer / more dimensional cards
+5. while staying corporate, serious, and premium
+
+━━━━━━━━━━━━━━━━━━━━
+MANDATORY BRAND RULE
+━━━━━━━━━━━━━━━━━━━━
+
+Kill off old INDEX references across all public-facing copy unless “index” is being used ONLY as a technical internal layer term.
+
+Examples:
+- BAD: “What INDEX is”
+- BAD: “INDEX Data Network”
+- BAD: “Where INDEX fits”
+- BAD: “INDEX operates a defined methodology”
+- BAD: “INDEX is the structured data division”
+
+Replace these with Pacific Systems language.
+
+Correct framing:
+- Pacific Systems
+- Pacific Systems, the data systems division of the RSR Intelligence Network
+- Pacific Systems overview
+- Pacific Systems methodology
+- Pacific Systems signal architecture
+- Pacific Systems data layer
+- Pacific Systems access model
+
+Allowed limited use:
+If there is a true internal technical layer called “index” or “indexed record layer,” that is okay — but it must be clearly subordinate to Pacific Systems and never read like the old main brand.
+
+Example of acceptable use:
+- “Index & Retrieval Division”
+- “indexed records”
+- “record index layer”
+- “index commitment”
+
+But the site itself must NEVER feel like it is still branded as INDEX.
+
+━━━━━━━━━━━━━━━━━━━━
+FULL COPY CLEANUP
+━━━━━━━━━━━━━━━━━━━━
+
+Audit and update all public-facing pages/modules:
+- homepage
+- overview
+- signals
+- datasets
+- index page
+- method
+- access
+- any architecture cards
+- network positioning cards
+- section headings
+- card titles
+- card descriptions
+- helper text
+- metadata labels where needed
+
+Replace old INDEX-era copy with Pacific Systems copy consistently.
+
+Examples of required changes:
+- “What INDEX is” → “What Pacific Systems is”
+- “What INDEX is not” → “What Pacific Systems is not”
+- “Where INDEX fits” → “Where Pacific Systems fits”
+- “INDEX Data Network” → “Pacific Systems”
+- “INDEX operates...” → “Pacific Systems operates...”
+- “INDEX public interface” → “Pacific Systems public interface”
+
+Also rewrite any copy that still sounds like it came from the old naming system.
+
+━━━━━━━━━━━━━━━━━━━━
+SURFACE / PANEL POLISH PASS
+━━━━━━━━━━━━━━━━━━━━
+
+Improve all cards, panels, and content boxes site-wide.
+
+Current issue:
+they still feel too flat and too boxy.
+
+Goal:
+Make them feel more premium, slightly glassier, smoother, more dimensional, and more attractive —
+but still corporate and restrained.
+
+Desired feel:
+- polished
+- executive
+- subtle glass
+- soft depth
+- marine/steel/slate
+- expensive
+- calm
+- high-trust
+
+NOT:
+- overblown glassmorphism
+- bubbly toy UI
+- shiny startup cards
+- neon glow panels
+- candy-like surfaces
+
+━━━━━━━━━━━━━━━━━━━━
+SURFACE RULES
+━━━━━━━━━━━━━━━━━━━━
+
+Refine cards/panels using:
+- slightly softer corner radii
+- subtle translucency where appropriate
+- gentle layered backgrounds
+- soft inner highlights
+- restrained depth
+- better border hierarchy
+- cleaner shadows or ambient separation
+- improved hover states
+
+Target effect:
+“corporate glass / architectural surface”
+not
+“dribbble blob glassmorphism”
+
+Use subtle effects only.
+
+Recommended direction:
+- keep dark slate / marine surface tones
+- use faint transparency or layered gradients
+- use soft highlight at top edge
+- improve border treatment
+- make cards feel more deliberate and premium
+- preserve serious institutional tone
+
+━━━━━━━━━━━━━━━━━━━━
+BOX / CARD IMPROVEMENTS
+━━━━━━━━━━━━━━━━━━━━
+
+Apply across the site:
+1. Improve card background layering
+2. Add subtle depth to major panels
+3. Use slightly more refined radius
+4. Make borders cleaner and more elegant
+5. Make card interiors breathe more
+6. Improve card title spacing
+7. Improve section grouping
+8. Make information boxes feel more designed and less raw
+9. Make network architecture cards feel premium
+10. Make overview panels feel more presentable
+11. Make “What it is / is not” cards feel more polished
+12. Make methodology panels feel more intentional
+13. Make access cards feel less legacy-dashboard
+14. Make signals/datasets/index cards visually consistent
+
+━━━━━━━━━━━━━━━━━━━━
+STYLE RULES
+━━━━━━━━━━━━━━━━━━━━
+
+Keep the existing Pacific Systems direction:
+- lighter dark theme
+- steel / slate / marine palette
+- restrained green accents
+- high readability
+- corporate west coast systems feel
+
+But enhance it with:
+- better surfaces
+- more elegant cards
+- more premium section framing
+- cleaner presentation
+
+Do NOT revert to old terminal styling.
+Do NOT return to harsh green outlines everywhere.
+Do NOT keep ugly rigid boxes just because they are “technical.”
+
+━━━━━━━━━━━━━━━━━━━━
+CORPORATE GLASS DIRECTION
+━━━━━━━━━━━━━━━━━━━━
+
+You may introduce a slightly glassier quality, but keep it restrained.
+
+Think:
+- executive architecture interface
+- premium west coast systems brand
+- cold marine glass
+- subtle depth
+- controlled polish
+
+Not:
+- frosted bubble toy
+- transparent iOS gimmick
+- glass everywhere
+- over-soft consumer UI
+
+Use glass effects only where they improve sophistication.
+
+━━━━━━━━━━━━━━━━━━━━
+PAGE-BY-PAGE EXPECTATION
+━━━━━━━━━━━━━━━━━━━━
+
+OVERVIEW:
+- remove INDEX references
+- frame it clearly as Pacific Systems overview
+- improve cards and network positioning surfaces
+
+SIGNALS:
+- make it clearly Pacific Systems signal architecture
+- improve panel design
+
+DATASETS:
+- same treatment
+- cleaner and more premium
+
+INDEX PAGE:
+- if retained, frame it as the indexed record layer within Pacific Systems
+- do not let it read like the old product name
+- rename headings/copy accordingly if needed
+
+METHOD:
+- remove INDEX references
+- this is Pacific Systems methodology/process architecture
+
+ACCESS:
+- remove INDEX references
+- this is Pacific Systems access architecture
+
+━━━━━━━━━━━━━━━━━━━━
+FINAL STANDARD
+━━━━━━━━━━━━━━━━━━━━
+
+When finished:
+- no stray public-facing INDEX-brand references remain
+- Pacific Systems feels like the unified identity
+- the boxes/panels/cards feel more premium and more beautiful
+- the site feels glassier and smoother in a restrained corporate way
+- the site feels cohesive, expensive, and finished
+
+Implement the full pass directly in code now.
+Do not give me a plan only.

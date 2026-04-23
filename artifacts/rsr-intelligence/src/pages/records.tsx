@@ -51,8 +51,8 @@ export default function RecordsPage() {
     <AppShell>
       <div className="flex flex-col" style={{ minHeight: "calc(100vh - 84px)" }}>
         <PageHeader
-          module="MODULE / INDEX"
-          title="INDEX"
+          module="MODULE / RECORD INDEX"
+          title="RECORD INDEX"
           subtitle="Committed records in the searchable data layer — discrete, versioned entries with defined scope and source attribution"
           badge={hasStaged
             ? `${totalStaged} STAGED — 0 COMMITTED`
@@ -120,7 +120,7 @@ export default function RecordsPage() {
                       },
                       {
                         phase: "03",
-                        label: "INDEX",
+                        label: "RECORDS",
                         path: "/records",
                         value: "0 committed",
                         live: false,
@@ -355,7 +355,7 @@ export default function RecordsPage() {
                   {[
                     { label: "SIGNALS", note: "intake", current: false, live: pipelineActive },
                     { label: "DATASETS", note: "structure", current: false, live: platform.domainsBound > 0 },
-                    { label: "INDEX", note: "this layer", current: true, live: false },
+                    { label: "RECORDS", note: "this layer", current: true, live: false },
                   ].map((p) => (
                     <div key={p.label} className="flex items-center gap-2.5">
                       <div className="w-1 h-1 rounded-full flex-shrink-0"

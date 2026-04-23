@@ -8,7 +8,7 @@ const PIPELINE = [
     label: "Signal Intake",
     output: "Classified signal log",
     path: "/signals",
-    description: "Monitored sources deliver signals into INDEX. Sources are classified, signals are timestamped on arrival, and triage logic determines what moves forward.",
+    description: "Monitored sources deliver signals into Pacific Systems. Sources are classified, signals are timestamped on arrival, and triage logic determines what moves forward.",
   },
   {
     step: "02",
@@ -29,14 +29,14 @@ const PIPELINE = [
     label: "Index Commitment",
     output: "Indexed record",
     path: "/records",
-    description: "Finalised records are committed to the INDEX layer — the searchable, traversable core of the platform. Committed records are fixed; revisions are versioned.",
+    description: "Finalised records are committed to the record index layer — the searchable, traversable core of the platform. Committed records are fixed; revisions are versioned.",
   },
 ];
 
 const SECTORS = [
   { label: "SIGNALS",  path: "/signals",  description: "Signal categories, intake structure, and source classification" },
   { label: "DATASETS", path: "/datasets", description: "Organised data collections grouped by domain and tracked activity" },
-  { label: "INDEX",    path: "/records",  description: "Searchable indexed records — the structured output of the pipeline" },
+  { label: "RECORDS",  path: "/records",  description: "Searchable indexed records — the structured output of the pipeline" },
   { label: "METHOD",   path: "/method",   description: "Collection discipline, classification logic, and synthesis flow" },
   { label: "ACCESS",   path: "/access",   description: "Entry to restricted data layers and operational environments" },
 ];
@@ -66,7 +66,7 @@ export default function OverviewPage() {
         <PageHeader
           module="MODULE / OVERVIEW"
           title="OVERVIEW"
-          subtitle="What INDEX is, where it fits within the RSR Intelligence Network, and how the signal-to-structure pipeline works"
+          subtitle="What Pacific Systems is, where it fits within the RSR Intelligence Network, and how the signal-to-record pipeline works"
         />
 
         <div className="flex-1 p-6 md:p-8 space-y-6 max-w-4xl overflow-y-auto">
@@ -79,7 +79,7 @@ export default function OverviewPage() {
               <div className="w-1 h-1 rounded-full" style={{ background: "rgba(127,174,158,0.55)" }} />
               <span className="font-mono-tactical tracking-widest uppercase"
                 style={{ color: "rgba(127,174,158,0.55)", fontSize: "13px", letterSpacing: "0.2em" }}>
-                Where INDEX Fits
+                Where Pacific Systems Fits
               </span>
             </div>
             <div className="p-5">
@@ -125,7 +125,7 @@ export default function OverviewPage() {
                   </div>
                   <div className="font-orbitron font-bold tracking-wide"
                     style={{ color: "#7FAE9E", fontSize: "17px", textShadow: "0 0 12px rgba(127,174,158,0.12)" }}>
-                    INDEX Data Network
+                    Pacific Systems
                   </div>
                   <div className="font-mono-tactical"
                     style={{ color: "rgba(180,192,202,0.68)", fontSize: "15px", lineHeight: "2.02" }}>
@@ -150,7 +150,7 @@ export default function OverviewPage() {
               style={{ border: "1px solid rgba(127,174,158,0.12)", background: "rgba(13,21,32,0.28)" }}>
               <div className="font-orbitron text-xs font-bold tracking-wider pb-2"
                 style={{ color: "#7FAE9E", borderBottom: "1px solid rgba(127,174,158,0.08)" }}>
-                What INDEX is
+                What Pacific Systems Is
               </div>
               <div className="space-y-2">
                 {WHAT_IT_IS.map((item) => (
@@ -164,7 +164,7 @@ export default function OverviewPage() {
               </div>
               <p className="font-mono-tactical leading-relaxed pt-1"
                 style={{ color: "rgba(180,192,202,0.58)", lineHeight: "2.02", fontSize: "15px", borderTop: "1px solid rgba(127,174,158,0.07)" }}>
-                INDEX is not a newsroom and not an investigative unit. It is infrastructure — the analytical
+                Pacific Systems is not a newsroom and not an investigative unit. It is infrastructure — the analytical
                 data architecture behind RSR's broader intelligence operation.
               </p>
             </div>
@@ -172,7 +172,7 @@ export default function OverviewPage() {
               style={{ border: "1px solid rgba(127,174,158,0.08)", background: "rgba(13,21,32,0.18)" }}>
               <div className="font-orbitron text-xs font-bold tracking-wider pb-2"
                 style={{ color: "rgba(127,174,158,0.55)", borderBottom: "1px solid rgba(127,174,158,0.07)" }}>
-                What INDEX is not
+                What Pacific Systems Is Not
               </div>
               <div className="space-y-2">
                 {WHAT_IT_IS_NOT.map((item) => (

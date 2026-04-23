@@ -196,8 +196,8 @@ export default function OperatorPage() {
           <div className="w-1.5 h-1.5 rounded-full status-pulse"
             style={{ background: "#22c55e", boxShadow: "0 0 5px #22c55e" }} />
           <span className="font-orbitron font-bold tracking-widest"
-            style={{ color: "rgba(34,197,94,0.72)", fontSize: "11px", letterSpacing: "0.2em" }}>
-            INDEX
+            style={{ color: "rgba(127,174,158,0.72)", fontSize: "11px", letterSpacing: "0.2em" }}>
+            PACIFIC SYSTEMS
           </span>
           <div className="h-3.5 w-px" style={{ background: "rgba(34,197,94,0.2)" }} />
           <span className="font-mono-tactical tracking-widest uppercase"
@@ -504,7 +504,7 @@ export default function OperatorPage() {
       <div className="flex items-center justify-between px-5 py-1.5 shrink-0"
         style={{ borderTop: "1px solid rgba(34,197,94,0.06)" }}>
         <span className="font-mono-tactical" style={{ color: "rgba(155,175,170,0.22)", fontSize: "9px" }}>
-          INDEX DATA NETWORK — OPERATOR CONSOLE
+          PACIFIC SYSTEMS — OPERATOR CONSOLE
         </span>
         <span className="font-mono-tactical" style={{ color: "rgba(155,175,170,0.2)", fontSize: "9px" }}>
           RSR Data Systems Division — Restricted Layer

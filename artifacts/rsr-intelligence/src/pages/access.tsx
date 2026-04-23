@@ -9,7 +9,7 @@ const TIERS = [
     status: "ACTIVE",
     statusNote: "You are here",
     active: true,
-    description: "The INDEX public interface — this site. Documents the platform's structure, sector architecture, methodology, and analytical approach. No account. No restrictions. No gating.",
+    description: "The Pacific Systems public interface — this site. Documents the platform's structure, sector architecture, methodology, and analytical approach. No account. No restrictions. No gating.",
     scope: [
       "Platform overview and sector documentation",
       "Signal category definitions and intake structure",
@@ -161,8 +161,8 @@ export default function AccessPage() {
               style={{ border: "1px solid rgba(94,110,122,0.12)", background: "rgba(13,21,32,0.5)" }}>
               <p className="font-mono-tactical leading-relaxed"
                 style={{ color: "rgba(180,192,202,0.72)", lineHeight: "1.92", fontSize: "15.5px" }}>
-                INDEX operates three access tiers. The public layer — this site — is open and unrestricted.
-                It documents the architecture, methodology, and analytical structure of the INDEX Data Network
+                Pacific Systems operates three access tiers. The public layer — this site — is open and unrestricted.
+                It documents the architecture, methodology, and analytical structure of Pacific Systems
                 within the RSR Intelligence ecosystem. Restricted and operator access exist beyond this boundary.
                 They are controlled environments belonging to the RSR operational layer — not gated by a sign-up flow.
                 The distinction is intentional.
@@ -293,7 +293,7 @@ export default function AccessPage() {
                   style={{ border: "1px solid rgba(94,110,122,0.1)", background: "rgba(13,21,32,0.35)" }}>
                   {[
                     "This public interface documents architecture — it does not grant or manage access",
-                    "Restricted environments are controlled by RSR — not by INDEX's public layer",
+                    "Restricted environments are controlled by RSR — not by Pacific Systems' public interface",
                     "Operator access is provisioned internally — there is no application process here",
                     "The RSR Intelligence site is the appropriate point of contact for external enquiries",
                   ].map((note) => (
@@ -392,7 +392,7 @@ export default function AccessPage() {
             <p className="font-mono-tactical leading-relaxed"
               style={{ color: "rgba(180,192,202,0.65)", fontSize: "15px", lineHeight: "2.02" }}>
               This is not a waitlist. Restricted access is not queued. Deeper access is governed by RSR
-              — not INDEX's public interface. External enquiries via the RSR Intelligence site.
+              — not Pacific Systems' public interface. External enquiries via the RSR Intelligence site.
             </p>
 
             <div className="h-px" style={{ background: "rgba(94,110,122,0.07)" }} />

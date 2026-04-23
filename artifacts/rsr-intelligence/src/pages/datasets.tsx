@@ -100,7 +100,7 @@ export default function DatasetsPage() {
                 </div>
                 <p className="font-mono-tactical leading-relaxed"
                   style={{ color: "rgba(180,192,202,0.68)", lineHeight: "2.0", fontSize: "15.5px" }}>
-                  Dataset domains define the analytical coverage structure of INDEX. Each domain is a bounded collection —
+                  Dataset domains define the analytical coverage structure of Pacific Systems. Each domain is a bounded collection —
                   signals are classified into domains on intake, and records are appended as data is structured and committed.
                   {platform.domainsBound > 0
                     ? ` ${platform.domainsBound} domain${platform.domainsBound > 1 ? "s are" : " is"} currently source-bound with ${platform.totalLiveItems} items staged.`
@@ -165,7 +165,7 @@ export default function DatasetsPage() {
                 </div>
                 <p className="font-mono-tactical"
                   style={{ color: "rgba(180,192,202,0.62)", fontSize: "15.5px" }}>
-                  Structured dataset records commit to the INDEX — the searchable record layer.
+                  Structured dataset records commit to the record index — the searchable record layer.
                 </p>
               </div>
               <button onClick={() => setLocation("/records")}
@@ -174,7 +174,7 @@ export default function DatasetsPage() {
                   color: "rgba(127,174,158,0.58)", fontSize: "12.5px", letterSpacing: "0.1em",
                   border: "1px solid rgba(127,174,158,0.2)", background: "rgba(127,174,158,0.05)", cursor: "pointer",
                 }}>
-                INDEX →
+                RECORDS →
               </button>
             </div>
           </div>
@@ -290,7 +290,7 @@ export default function DatasetsPage() {
               <div className="space-y-1.5">
                 {[
                   { label: "SIGNALS",  path: "/signals",  note: "Source layer" },
-                  { label: "INDEX",    path: "/records",  note: "Committed records" },
+                  { label: "RECORDS",  path: "/records",  note: "Committed records" },
                   { label: "METHOD",   path: "/method",   note: "Classification logic" },
                 ].map((link) => (
                   <button key={link.path}
