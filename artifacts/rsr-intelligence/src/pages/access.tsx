@@ -53,15 +53,15 @@ const TIERS = [
 type TierStatus = "ACTIVE" | "CONTROLLED" | "RESTRICTED";
 
 const STATUS_COLORS: Record<TierStatus, { border: string; text: string; bg: string }> = {
-  ACTIVE:     { border: "rgba(127,174,158,0.35)", text: "rgba(127,174,158,0.92)",  bg: "rgba(127,174,158,0.07)" },
-  CONTROLLED: { border: "rgba(127,174,158,0.18)", text: "rgba(127,174,158,0.52)", bg: "rgba(127,174,158,0.035)" },
-  RESTRICTED: { border: "rgba(94,110,122,0.2)", text: "rgba(127,142,155,0.5)", bg: "rgba(0,0,0,0.2)" },
+  ACTIVE:     { border: "rgba(245,158,11,0.35)", text: "rgba(245,158,11,0.92)",  bg: "rgba(245,158,11,0.07)" },
+  CONTROLLED: { border: "rgba(245,158,11,0.18)", text: "rgba(245,158,11,0.52)", bg: "rgba(245,158,11,0.035)" },
+  RESTRICTED: { border: "rgba(80,88,96,0.2)", text: "rgba(127,142,155,0.5)", bg: "rgba(0,0,0,0.2)" },
 };
 
 const TIER_BORDERS: Record<TierStatus, string> = {
-  ACTIVE:     "rgba(127,174,158,0.25)",
-  CONTROLLED: "rgba(127,174,158,0.12)",
-  RESTRICTED: "rgba(94,110,122,0.15)",
+  ACTIVE:     "rgba(245,158,11,0.25)",
+  CONTROLLED: "rgba(245,158,11,0.12)",
+  RESTRICTED: "rgba(80,88,96,0.15)",
 };
 
 const TIER_BG: Record<TierStatus, string> = {
@@ -83,9 +83,9 @@ const SCOPE_COLORS: Record<TierStatus, string> = {
 };
 
 const DOT_COLORS: Record<TierStatus, string> = {
-  ACTIVE:     "rgba(127,174,158,0.72)",
-  CONTROLLED: "rgba(127,174,158,0.32)",
-  RESTRICTED: "rgba(94,110,122,0.3)",
+  ACTIVE:     "rgba(245,158,11,0.72)",
+  CONTROLLED: "rgba(245,158,11,0.32)",
+  RESTRICTED: "rgba(80,88,96,0.3)",
 };
 
 export default function AccessPage() {
@@ -104,17 +104,17 @@ export default function AccessPage() {
 
             {/* Tier overview block */}
             <div className="rounded"
-              style={{ border: "1px solid rgba(127,174,158,0.1)", background: "rgba(15,23,32,0.45)" }}>
+              style={{ border: "1px solid rgba(245,158,11,0.1)", background: "rgba(15,23,32,0.45)" }}>
               <div className="flex items-center gap-2.5 px-5 py-3"
-                style={{ borderBottom: "1px solid rgba(127,174,158,0.07)" }}>
-                <div className="w-1 h-1 rounded-full" style={{ background: "rgba(127,174,158,0.45)" }} />
+                style={{ borderBottom: "1px solid rgba(245,158,11,0.07)" }}>
+                <div className="w-1 h-1 rounded-full" style={{ background: "rgba(245,158,11,0.45)" }} />
                 <span className="font-mono-tactical tracking-widest uppercase"
-                  style={{ color: "rgba(127,174,158,0.5)", fontSize: "13px", letterSpacing: "0.18em" }}>
+                  style={{ color: "rgba(245,158,11,0.5)", fontSize: "13px", letterSpacing: "0.18em" }}>
                   Access Architecture — Three Tiers
                 </span>
               </div>
               <div className="flex items-stretch divide-x px-0 py-0"
-                style={{ borderColor: "rgba(127,174,158,0.07)" }}>
+                style={{ borderColor: "rgba(245,158,11,0.07)" }}>
                 {TIERS.map((tier, i) => {
                   const sc = STATUS_COLORS[tier.status as TierStatus];
                   return (
@@ -123,7 +123,7 @@ export default function AccessPage() {
                         <div className="w-1.5 h-1.5 rounded-full"
                           style={{
                             background: sc.text,
-                            boxShadow: tier.active ? `0 0 4px rgba(127,174,158,0.5)` : undefined,
+                            boxShadow: tier.active ? `0 0 4px rgba(245,158,11,0.5)` : undefined,
                           }} />
                         <span className="font-mono-tactical"
                           style={{ color: "rgba(127,142,155,0.38)", fontSize: "11.5px" }}>
@@ -131,7 +131,7 @@ export default function AccessPage() {
                         </span>
                       </div>
                       <div className="font-orbitron font-bold tracking-wide mb-1"
-                        style={{ color: tier.active ? "#7FAE9E" : "rgba(180,192,202,0.5)", fontSize: "14px" }}>
+                        style={{ color: tier.active ? "#F59E0B" : "rgba(180,192,202,0.5)", fontSize: "14px" }}>
                         {tier.label}
                       </div>
                       <div className="font-mono-tactical rounded px-2 py-0.5 inline-block"
@@ -146,7 +146,7 @@ export default function AccessPage() {
                       </div>
                       {tier.active && (
                         <div className="font-mono-tactical mt-1.5"
-                          style={{ color: "rgba(127,174,158,0.45)", fontSize: "17px", letterSpacing: "0.08em" }}>
+                          style={{ color: "rgba(245,158,11,0.45)", fontSize: "17px", letterSpacing: "0.08em" }}>
                           ← you are here
                         </div>
                       )}
@@ -158,7 +158,7 @@ export default function AccessPage() {
 
             {/* Context */}
             <div className="rounded p-5"
-              style={{ border: "1px solid rgba(94,110,122,0.12)", background: "rgba(13,21,32,0.5)" }}>
+              style={{ border: "1px solid rgba(80,88,96,0.12)", background: "rgba(13,21,32,0.5)" }}>
               <p className="font-mono-tactical leading-relaxed"
                 style={{ color: "rgba(180,192,202,0.72)", lineHeight: "1.92", fontSize: "15.5px" }}>
                 Pacific Systems operates three access tiers. The public layer — this site — is open and unrestricted.
@@ -183,30 +183,30 @@ export default function AccessPage() {
                   <div className="flex items-start justify-between gap-4 px-5 pt-4 pb-3.5"
                     style={{
                       borderBottom: `1px solid ${tb}`,
-                      background: tier.active ? "rgba(127,174,158,0.025)" : undefined,
+                      background: tier.active ? "rgba(245,158,11,0.025)" : undefined,
                     }}>
                     <div className="flex items-center gap-3">
                       <span className="font-mono-tactical flex-shrink-0"
-                        style={{ color: "rgba(94,110,122,0.4)", fontSize: "13px" }}>
+                        style={{ color: "rgba(80,88,96,0.4)", fontSize: "13px" }}>
                         {tier.id}
                       </span>
-                      <div className="w-px h-4 flex-shrink-0" style={{ background: "rgba(94,110,122,0.18)" }} />
+                      <div className="w-px h-4 flex-shrink-0" style={{ background: "rgba(80,88,96,0.18)" }} />
                       <div>
                         <div className="font-mono-tactical tracking-widest uppercase"
-                          style={{ color: "rgba(94,110,122,0.55)", fontSize: "12.5px", letterSpacing: "0.16em" }}>
+                          style={{ color: "rgba(80,88,96,0.55)", fontSize: "12.5px", letterSpacing: "0.16em" }}>
                           {tier.code}
                         </div>
                         <div className="flex items-center gap-2.5 mt-0.5">
                           <div className="font-orbitron font-bold tracking-wide"
-                            style={{ color: tier.active ? "#7FAE9E" : "rgba(180,192,202,0.52)", fontSize: "13px" }}>
+                            style={{ color: tier.active ? "#F59E0B" : "rgba(180,192,202,0.52)", fontSize: "13px" }}>
                             {tier.label}
                           </div>
                           {tier.active && (
                             <div className="flex items-center gap-1.5">
                               <div className="w-1.5 h-1.5 rounded-full"
-                                style={{ background: "#7FAE9E", boxShadow: "0 0 4px rgba(127,174,158,0.6)" }} />
+                                style={{ background: "#F59E0B", boxShadow: "0 0 4px rgba(245,158,11,0.6)" }} />
                               <span className="font-mono-tactical"
-                                style={{ color: "rgba(127,174,158,0.55)", fontSize: "11.5px", letterSpacing: "0.1em" }}>
+                                style={{ color: "rgba(245,158,11,0.55)", fontSize: "11.5px", letterSpacing: "0.1em" }}>
                                 ACTIVE — YOU ARE HERE
                               </span>
                             </div>
@@ -226,7 +226,7 @@ export default function AccessPage() {
                         {tier.status}
                       </div>
                       <span className="font-mono-tactical"
-                        style={{ color: "rgba(94,110,122,0.38)", fontSize: "12.5px" }}>
+                        style={{ color: "rgba(80,88,96,0.38)", fontSize: "12.5px" }}>
                         {tier.statusNote}
                       </span>
                     </div>
@@ -244,7 +244,7 @@ export default function AccessPage() {
                     </p>
                     <div>
                       <div className="font-mono-tactical tracking-widest uppercase mb-2.5"
-                        style={{ color: "rgba(94,110,122,0.42)", fontSize: "12.5px", letterSpacing: "0.14em" }}>
+                        style={{ color: "rgba(80,88,96,0.42)", fontSize: "12.5px", letterSpacing: "0.14em" }}>
                         Scope
                       </div>
                       <div className="space-y-1.5">
@@ -271,12 +271,12 @@ export default function AccessPage() {
 
             {/* Access structure note */}
             <div className="rounded"
-              style={{ border: "1px solid rgba(94,110,122,0.15)", background: "rgba(13,21,32,0.72)" }}>
+              style={{ border: "1px solid rgba(80,88,96,0.15)", background: "rgba(13,21,32,0.72)" }}>
               <div className="flex items-center gap-2.5 px-5 py-3"
-                style={{ borderBottom: "1px solid rgba(94,110,122,0.1)" }}>
-                <div className="w-1 h-1 rounded-full" style={{ background: "rgba(94,110,122,0.38)" }} />
+                style={{ borderBottom: "1px solid rgba(80,88,96,0.1)" }}>
+                <div className="w-1 h-1 rounded-full" style={{ background: "rgba(80,88,96,0.38)" }} />
                 <span className="font-mono-tactical tracking-widest uppercase"
-                  style={{ color: "rgba(94,110,122,0.52)", fontSize: "13px", letterSpacing: "0.18em" }}>
+                  style={{ color: "rgba(80,88,96,0.52)", fontSize: "13px", letterSpacing: "0.18em" }}>
                   Access Structure — RSR Operational Layer
                 </span>
               </div>
@@ -290,7 +290,7 @@ export default function AccessPage() {
                 </p>
 
                 <div className="rounded px-4 py-4 space-y-2.5"
-                  style={{ border: "1px solid rgba(94,110,122,0.1)", background: "rgba(13,21,32,0.35)" }}>
+                  style={{ border: "1px solid rgba(80,88,96,0.1)", background: "rgba(13,21,32,0.35)" }}>
                   {[
                     "This public interface documents architecture — it does not grant or manage access",
                     "Restricted environments are controlled by RSR — not by Pacific Systems' public interface",
@@ -299,7 +299,7 @@ export default function AccessPage() {
                   ].map((note) => (
                     <div key={note} className="flex items-start gap-2.5">
                       <span className="font-mono-tactical flex-shrink-0 mt-0.5"
-                        style={{ color: "rgba(94,110,122,0.42)", fontSize: "15px" }}>—</span>
+                        style={{ color: "rgba(80,88,96,0.42)", fontSize: "15px" }}>—</span>
                       <span className="font-mono-tactical"
                         style={{ color: "rgba(180,192,202,0.65)", fontSize: "15.5px", lineHeight: "1.8" }}>
                         {note}
@@ -309,14 +309,14 @@ export default function AccessPage() {
                 </div>
 
                 <div className="flex items-center justify-between pt-1"
-                  style={{ borderTop: "1px solid rgba(94,110,122,0.08)" }}>
+                  style={{ borderTop: "1px solid rgba(80,88,96,0.08)" }}>
                   <span className="font-mono-tactical italic"
-                    style={{ color: "rgba(94,110,122,0.45)", fontSize: "14px" }}>
+                    style={{ color: "rgba(80,88,96,0.45)", fontSize: "14px" }}>
                     External enquiries — RSR Intelligence Network
                   </span>
                   <a href="https://www.rsrintel.com" target="_blank" rel="noopener noreferrer"
                     className="font-mono-tactical tracking-widest"
-                    style={{ color: "rgba(127,174,158,0.48)", fontSize: "12.5px", letterSpacing: "0.12em", textDecoration: "none" }}>
+                    style={{ color: "rgba(245,158,11,0.48)", fontSize: "12.5px", letterSpacing: "0.12em", textDecoration: "none" }}>
                     RSRINTEL.COM ↗
                   </a>
                 </div>
@@ -326,10 +326,10 @@ export default function AccessPage() {
 
           {/* Side column */}
           <div className="w-60 xl:w-68 shrink-0 p-5 space-y-5 overflow-y-auto hidden lg:block"
-            style={{ borderLeft: "1px solid rgba(94,110,122,0.08)" }}>
+            style={{ borderLeft: "1px solid rgba(80,88,96,0.08)" }}>
             <div>
               <div className="font-mono-tactical tracking-widest uppercase mb-3"
-                style={{ color: "rgba(94,110,122,0.38)", fontSize: "13px", letterSpacing: "0.16em" }}>
+                style={{ color: "rgba(80,88,96,0.38)", fontSize: "13px", letterSpacing: "0.16em" }}>
                 Tier Summary
               </div>
               <div className="space-y-1.5">
@@ -338,8 +338,8 @@ export default function AccessPage() {
                   return (
                     <div key={tier.id} className="flex items-center gap-3 py-2 rounded px-2.5"
                       style={{
-                        border: tier.active ? "1px solid rgba(127,174,158,0.14)" : "1px solid rgba(94,110,122,0.07)",
-                        background: tier.active ? "rgba(127,174,158,0.04)" : "rgba(13,21,32,0.18)",
+                        border: tier.active ? "1px solid rgba(245,158,11,0.14)" : "1px solid rgba(80,88,96,0.07)",
+                        background: tier.active ? "rgba(245,158,11,0.04)" : "rgba(13,21,32,0.18)",
                       }}>
                       <div className="w-1 h-1 rounded-full flex-shrink-0"
                         style={{ background: sc.text }} />
@@ -357,11 +357,11 @@ export default function AccessPage() {
               </div>
             </div>
 
-            <div className="h-px" style={{ background: "rgba(94,110,122,0.08)" }} />
+            <div className="h-px" style={{ background: "rgba(80,88,96,0.08)" }} />
 
             <div>
               <div className="font-mono-tactical tracking-widest uppercase mb-3"
-                style={{ color: "rgba(94,110,122,0.38)", fontSize: "13px", letterSpacing: "0.16em" }}>
+                style={{ color: "rgba(80,88,96,0.38)", fontSize: "13px", letterSpacing: "0.16em" }}>
                 Access Model
               </div>
               <div className="space-y-2.5">
@@ -375,7 +375,7 @@ export default function AccessPage() {
                 ].map((item) => (
                   <div key={item.label} className="flex flex-col gap-0.5">
                     <span className="font-mono-tactical"
-                      style={{ fontSize: "11.5px", color: "rgba(94,110,122,0.32)", letterSpacing: "0.1em" }}>
+                      style={{ fontSize: "11.5px", color: "rgba(80,88,96,0.32)", letterSpacing: "0.1em" }}>
                       {item.label}
                     </span>
                     <span className="font-mono-tactical"
@@ -387,7 +387,7 @@ export default function AccessPage() {
               </div>
             </div>
 
-            <div className="h-px" style={{ background: "rgba(94,110,122,0.08)" }} />
+            <div className="h-px" style={{ background: "rgba(80,88,96,0.08)" }} />
 
             <p className="font-mono-tactical leading-relaxed"
               style={{ color: "rgba(180,192,202,0.65)", fontSize: "15px", lineHeight: "2.02" }}>
@@ -395,16 +395,16 @@ export default function AccessPage() {
               — not Pacific Systems' public interface. External enquiries via the RSR Intelligence site.
             </p>
 
-            <div className="h-px" style={{ background: "rgba(94,110,122,0.07)" }} />
+            <div className="h-px" style={{ background: "rgba(80,88,96,0.07)" }} />
 
             <div className="flex items-center justify-between">
               <span className="font-mono-tactical"
-                style={{ color: "rgba(94,110,122,0.32)", fontSize: "13px" }}>
+                style={{ color: "rgba(80,88,96,0.32)", fontSize: "13px" }}>
                 Already provisioned?
               </span>
               <a href="/login"
                 className="font-mono-tactical tracking-widest"
-                style={{ color: "rgba(127,174,158,0.45)", fontSize: "13px", letterSpacing: "0.12em", textDecoration: "none" }}>
+                style={{ color: "rgba(245,158,11,0.45)", fontSize: "13px", letterSpacing: "0.12em", textDecoration: "none" }}>
                 OPERATOR LOGIN →
               </a>
             </div>

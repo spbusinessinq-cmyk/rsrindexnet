@@ -1,0 +1,180 @@
+You are a senior front-end designer and React engineer.
+
+We are overhauling the existing Pacific Systems site.
+
+Current problem:
+The site looks too blue/cobalt and generic. It must be rebuilt around the official Pacific Systems logo aesthetic:
+- Black / near-black background
+- Amber / orange primary accent
+- White / off-white typography
+- Thin tactical lines
+- Circular data-infrastructure mark language
+- Premium intelligence-network feel
+- No cobalt blue
+- No SaaS dashboard feel
+- No soft bubbly UI
+
+BRAND DIRECTION:
+Pacific Systems is the Data Infrastructure Division of the RSR Intelligence Network.
+
+Tone:
+Structured. Tactical. Industrial. Quietly powerful. Federal/intelligence data infrastructure.
+
+Primary colors:
+- Background: #050607, #090B0D, #0E1114
+- Panel: #101418, #14191D
+- Border: rgba(255,255,255,0.10)
+- Primary amber: #F59E0B
+- Deep amber: #B86A00
+- Pale amber text: #FFD38A
+- White: #F4F6F8
+- Muted gray: #8D969E
+
+ABSOLUTE RULES:
+1. Remove all blue/cobalt/cyan styling.
+2. Replace all active states, buttons, glow, status lights, nav highlights, and metric accents with amber/orange.
+3. Keep the UI dark, sharp, thin-lined, and premium.
+4. Use the Pacific Systems logo prominently in the header and hero.
+5. Update the header brand lockup:
+   PACIFIC SYSTEMS
+   DATA INFRASTRUCTURE DIVISION
+   RSR INTELLIGENCE NETWORK
+6. The site should feel like a structured data command front-end, not a generic data page.
+
+LOGO:
+Use the existing Pacific Systems logo asset if it exists in the project.
+Search the repo for files containing:
+- pacific
+- logo
+- mark
+- brand
+- ps
+
+If no logo asset exists, create a clean temporary logo component in React:
+- Circular segmented ring
+- Stylized PS monogram
+- Amber dot/node
+- White/gray linework
+- Label text beneath or beside it
+
+UI OVERHAUL REQUIREMENTS:
+
+HEADER:
+- Dark black header
+- Left: logo mark + PACIFIC SYSTEMS
+- Subline: RSR INTELLIGENCE NETWORK // DATA INFRASTRUCTURE DIVISION
+- Center nav: OVERVIEW / SIGNALS / DATASETS / RECORDS / METHOD
+- Right: RSR INTEL ↗ and ACCESS button
+- Active/hover states amber only
+- Thin amber top border or small amber status node
+
+STATUS STRIP:
+Replace current blue metrics with amber/white:
+- INTAKE SOURCES 4/4
+- STAGED 35
+- COMMITTED 0
+- DOMAINS 2/6
+- SYNCED JUST NOW
+Use amber numbers, muted labels, thin separators.
+
+HERO:
+Create a stronger hero section:
+Left side:
+- Eyebrow: RSR INTELLIGENCE NETWORK — DATA SYSTEMS DIVISION
+- Huge title: PACIFIC SYSTEMS
+- Subtitle: Structured Data Infrastructure
+- Body copy:
+  “Pacific Systems is the structured data division of the RSR Intelligence Network. It receives monitored signals, organizes raw inputs, and commits verified material into searchable records, datasets, and infrastructure-ready intelligence objects.”
+- CTA buttons:
+  EXPLORE ARCHITECTURE
+  VIEW METHOD
+
+Right side:
+Add a premium tactical visual panel:
+- Large circular Pacific Systems logo/diagram
+- Rings, nodes, orbit lines, data-grid marks
+- Amber node highlights
+- Small telemetry labels:
+  INGEST
+  STRUCTURE
+  COMMIT
+  INDEX
+  RETRIEVE
+This should make the hero feel alive without using mock charts.
+
+SECTIONS:
+Add/upgrade these sections below hero:
+
+1. SYSTEM ARCHITECTURE
+Four cards:
+- INTAKE LAYER
+- STRUCTURING LAYER
+- RECORD LAYER
+- RETRIEVAL LAYER
+Each card should have:
+- amber icon/node
+- short description
+- thin border
+- hover amber border glow
+
+2. SIGNAL PIPELINE
+Horizontal/vertical pipeline:
+SOURCE → INTAKE → CLASSIFY → STRUCTURE → COMMIT → RECORD
+Use amber connecting lines and white labels.
+
+3. DATASETS
+Make dataset cards feel like classified records:
+- Dataset name
+- Domain
+- Status
+- Last sync
+- Record count
+No blue. Use amber status pills.
+
+4. METHOD
+Explain that Pacific Systems does not create editorial content. It structures data infrastructure:
+- Source traceability
+- Defined intake
+- Data normalization
+- Indexable records
+- Retrieval-ready output
+
+5. ACCESS / FOOTER
+End with a command-style access panel:
+“Pacific Systems is an infrastructure layer. Access is routed through the RSR Intelligence Network.”
+Buttons:
+- REQUEST ACCESS
+- RETURN TO RSR INTEL
+
+DESIGN LANGUAGE:
+- Add subtle grid background
+- Add faint amber radial glow behind hero logo
+- Add thin scanline overlays if lightweight
+- Use uppercase labels with letter spacing
+- Use hard rectangles, minimal rounding
+- Make the page feel premium and custom
+- Remove anything that looks Bootstrap/SaaS/dashboard generic
+
+TYPOGRAPHY:
+Use existing project fonts if already loaded.
+Prefer:
+- Orbitron or similar for major titles
+- IBM Plex Mono / monospace for labels and metrics
+- Clean sans for body copy
+
+TECHNICAL REQUIREMENTS:
+1. Do not break routing.
+2. Do not remove existing pages unless unnecessary.
+3. Preserve existing nav routes.
+4. Make the build pass.
+5. Run lint/build if available.
+6. Search for all cobalt/blue/cyan colors and replace them with amber/orange equivalents.
+7. Ensure responsive layout works on desktop and mobile.
+8. Commit-ready final result.
+
+IMPORTANT:
+After editing, give me:
+- Files changed
+- Commands run
+- Any remaining issues
+- Git commands to push live

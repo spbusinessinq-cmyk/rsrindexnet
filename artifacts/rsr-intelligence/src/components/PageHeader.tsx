@@ -8,14 +8,14 @@ interface PageHeaderProps {
 }
 
 const C = {
-  bg:           "#0D1520",
-  border:       "#2D3E4E",
-  heading:      "#EEF3F7",
-  body:         "#B4C0CA",
-  muted:        "#7F8E9B",
-  mutedDim:     "#5E6E7A",
-  accent:       "#7FAE9E",
-  accentBlue:   "#7C95AD",
+  bg:       "#080A0C",
+  border:   "rgba(255,255,255,0.07)",
+  heading:  "#F4F6F8",
+  body:     "#B8C2CC",
+  muted:    "#8D969E",
+  mutedDim: "#545E66",
+  accent:   "#F59E0B",
+  accentPale: "#FFD38A",
 };
 
 export default function PageHeader({
@@ -38,7 +38,7 @@ export default function PageHeader({
         <div className="min-w-0">
           <div
             className="font-mono-tactical tracking-widest uppercase mb-2"
-            style={{ color: C.mutedDim, letterSpacing: "0.22em", fontSize: "15px" }}
+            style={{ color: C.mutedDim, letterSpacing: "0.22em", fontSize: "13px" }}
           >
             {module}
           </div>
@@ -54,7 +54,7 @@ export default function PageHeader({
           <p
             className="mt-3 font-mono-tactical"
             style={{
-              color: "rgba(180,192,202,0.68)",
+              color: "rgba(184,194,204,0.68)",
               lineHeight: "1.88",
               maxWidth: 560,
               fontSize: "15px",
@@ -66,31 +66,32 @@ export default function PageHeader({
         <div className="flex items-center gap-3 flex-shrink-0 flex-wrap">
           {badge && (
             <div
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded font-mono-tactical tracking-widest"
+              className="inline-flex items-center gap-2 px-3 py-1.5 font-mono-tactical tracking-widest"
               style={{
                 border: `1px solid ${
                   badgeActive
-                    ? "rgba(127,174,158,0.3)"
-                    : "rgba(127,174,158,0.12)"
+                    ? "rgba(245,158,11,0.35)"
+                    : "rgba(245,158,11,0.12)"
                 }`,
                 color: badgeActive
-                  ? "rgba(127,174,158,0.85)"
-                  : "rgba(127,174,158,0.4)",
+                  ? "rgba(245,158,11,0.9)"
+                  : "rgba(245,158,11,0.4)",
                 background: badgeActive
-                  ? "rgba(127,174,158,0.06)"
-                  : "rgba(13,21,32,0.4)",
+                  ? "rgba(245,158,11,0.06)"
+                  : "rgba(8,12,16,0.4)",
                 letterSpacing: "0.12em",
-                fontSize: "15px",
+                fontSize: "13px",
+                borderRadius: 2,
               }}
             >
               <div
                 className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                 style={{
                   background: badgeActive
-                    ? "rgba(127,174,158,0.75)"
-                    : "rgba(127,174,158,0.28)",
+                    ? "rgba(245,158,11,0.85)"
+                    : "rgba(245,158,11,0.28)",
                   boxShadow: badgeActive
-                    ? "0 0 5px rgba(127,174,158,0.5)"
+                    ? "0 0 5px rgba(245,158,11,0.5)"
                     : undefined,
                   animation: badgeActive
                     ? "status-pulse 2.4s ease-in-out infinite"

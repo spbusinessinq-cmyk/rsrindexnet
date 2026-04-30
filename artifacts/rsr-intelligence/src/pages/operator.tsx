@@ -196,7 +196,7 @@ export default function OperatorPage() {
           <div className="w-1.5 h-1.5 rounded-full status-pulse"
             style={{ background: "#22c55e", boxShadow: "0 0 5px #22c55e" }} />
           <span className="font-orbitron font-bold tracking-widest"
-            style={{ color: "rgba(127,174,158,0.72)", fontSize: "11px", letterSpacing: "0.2em" }}>
+            style={{ color: "rgba(245,158,11,0.72)", fontSize: "11px", letterSpacing: "0.2em" }}>
             PACIFIC SYSTEMS
           </span>
           <div className="h-3.5 w-px" style={{ background: "rgba(34,197,94,0.2)" }} />

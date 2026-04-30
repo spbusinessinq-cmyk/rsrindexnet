@@ -52,48 +52,48 @@
 }
 
 :root {
-  --button-outline: rgba(127, 174, 158, 0.12);
-  --badge-outline: rgba(127, 174, 158, 0.06);
+  --button-outline: rgba(245, 158, 11, 0.12);
+  --badge-outline: rgba(245, 158, 11, 0.06);
   --opaque-button-border-intensity: -8;
-  --elevate-1: rgba(127, 174, 158, 0.04);
-  --elevate-2: rgba(127, 174, 158, 0.08);
+  --elevate-1: rgba(245, 158, 11, 0.04);
+  --elevate-2: rgba(245, 158, 11, 0.08);
 
-  --background: 0 0% 3%;
-  --foreground: 165 18% 82%;
+  --background: 210 20% 2%;
+  --foreground: 30 15% 88%;
 
-  --border: 200 18% 16%;
-  --input: 200 18% 16%;
-  --ring: 165 28% 60%;
+  --border: 210 15% 12%;
+  --input: 210 15% 12%;
+  --ring: 38 96% 54%;
 
-  --card: 205 22% 10%;
-  --card-foreground: 165 18% 82%;
-  --card-border: 200 18% 14%;
+  --card: 210 20% 6%;
+  --card-foreground: 30 15% 88%;
+  --card-border: 210 15% 10%;
 
-  --popover: 205 22% 10%;
-  --popover-foreground: 165 18% 82%;
-  --popover-border: 200 18% 14%;
+  --popover: 210 20% 6%;
+  --popover-foreground: 30 15% 88%;
+  --popover-border: 210 15% 10%;
 
-  --primary: 165 28% 60%;
+  --primary: 38 96% 54%;
   --primary-foreground: 0 0% 4%;
-  --primary-border: hsl(165 28% 48%);
+  --primary-border: hsl(38 96% 44%);
 
-  --secondary: 0 0% 10%;
-  --secondary-foreground: 165 18% 82%;
-  --secondary-border: hsl(0 0% 16%);
+  --secondary: 0 0% 8%;
+  --secondary-foreground: 30 15% 88%;
+  --secondary-border: hsl(0 0% 14%);
 
-  --muted: 0 0% 8%;
-  --muted-foreground: 200 12% 42%;
-  --muted-border: hsl(200 12% 12%);
+  --muted: 0 0% 6%;
+  --muted-foreground: 210 8% 52%;
+  --muted-border: hsl(210 8% 10%);
 
-  --accent: 165 22% 18%;
-  --accent-foreground: 165 28% 72%;
-  --accent-border: hsl(165 22% 14%);
+  --accent: 38 96% 20%;
+  --accent-foreground: 38 96% 75%;
+  --accent-border: hsl(38 96% 16%);
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
   --destructive-border: hsl(0 84% 50%);
 
-  --radius: 0.5rem;
+  --radius: 0.25rem;
 
   --app-font-sans: 'Rajdhani', sans-serif;
   --app-font-serif: 'Rajdhani', sans-serif;
@@ -107,13 +107,13 @@
   }
 
   body {
-    background-color: hsl(var(--background));
+    background-color: #050607;
     color: hsl(var(--foreground));
   }
 
   ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+    width: 3px;
+    height: 3px;
   }
 
   ::-webkit-scrollbar-track {
@@ -121,12 +121,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(127, 174, 158, 0.14);
+    background: rgba(245, 158, 11, 0.18);
     border-radius: 2px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(127, 174, 158, 0.26);
+    background: rgba(245, 158, 11, 0.32);
   }
 }
 
@@ -153,14 +153,6 @@
     background-color: var(--elevate-2);
   }
 
-  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
-  .border.active-elevate:not(.no-active-interaction-elevate)::after,
-  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
-  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
-  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
-    inset: -1px;
-  }
-
   .font-orbitron {
     font-family: 'Orbitron', sans-serif;
   }
@@ -176,23 +168,27 @@
     background-size: 52px 52px;
   }
 
-  .glow-teal {
-    box-shadow: 0 0 12px rgba(127, 174, 158, 0.22), 0 0 24px rgba(127, 174, 158, 0.09);
+  /* ── Amber glow utilities ───────────────────────────────── */
+  .glow-amber {
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.28), 0 0 28px rgba(245, 158, 11, 0.10);
   }
 
-  .glow-teal-text {
-    text-shadow: 0 0 8px rgba(127, 174, 158, 0.45);
+  .glow-amber-text {
+    text-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
   }
 
-  .glow-teal-border {
-    border-color: rgba(127, 174, 158, 0.45);
-    box-shadow: 0 0 8px rgba(127, 174, 158, 0.18), inset 0 0 8px rgba(127, 174, 158, 0.04);
+  .glow-amber-border {
+    border-color: rgba(245, 158, 11, 0.5);
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.2), inset 0 0 8px rgba(245, 158, 11, 0.05);
   }
 
-  /* Legacy aliases kept for compatibility */
-  .glow-green { box-shadow: 0 0 12px rgba(127, 174, 158, 0.22), 0 0 24px rgba(127, 174, 158, 0.09); }
-  .glow-green-text { text-shadow: 0 0 8px rgba(127, 174, 158, 0.45); }
-  .glow-green-border { border-color: rgba(127, 174, 158, 0.45); box-shadow: 0 0 8px rgba(127, 174, 158, 0.18), inset 0 0 8px rgba(127, 174, 158, 0.04); }
+  /* Legacy green aliases remapped to amber */
+  .glow-green { box-shadow: 0 0 12px rgba(245, 158, 11, 0.28), 0 0 28px rgba(245, 158, 11, 0.10); }
+  .glow-green-text { text-shadow: 0 0 8px rgba(245, 158, 11, 0.5); }
+  .glow-green-border { border-color: rgba(245, 158, 11, 0.5); box-shadow: 0 0 8px rgba(245, 158, 11, 0.2); }
+  .glow-teal { box-shadow: 0 0 12px rgba(245, 158, 11, 0.28), 0 0 28px rgba(245, 158, 11, 0.10); }
+  .glow-teal-text { text-shadow: 0 0 8px rgba(245, 158, 11, 0.5); }
+  .glow-teal-border { border-color: rgba(245, 158, 11, 0.5); }
 
   .status-pulse {
     animation: status-pulse 2.4s ease-in-out infinite;
@@ -298,33 +294,32 @@
     to { opacity: 1; transform: translateX(0); }
   }
 
-  /* ── Corporate glass card — base surface ──────────────────── */
+  /* ── Tactical card surface ──────────────────────────────── */
   .idx-card {
-    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-    border-radius: 8px !important;
+    transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    border-radius: 2px !important;
     box-shadow:
-      0 2px 16px rgba(0, 0, 0, 0.28),
-      0 1px 4px rgba(0, 0, 0, 0.18),
-      inset 0 1px 0 rgba(255, 255, 255, 0.025);
+      0 2px 12px rgba(0, 0, 0, 0.4),
+      0 1px 3px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.02);
   }
 
   .idx-card:hover {
-    border-color: rgba(127, 174, 158, 0.3) !important;
-    background: rgba(127, 174, 158, 0.042) !important;
+    border-color: rgba(245, 158, 11, 0.35) !important;
+    background: rgba(245, 158, 11, 0.03) !important;
     box-shadow:
-      0 4px 28px rgba(0, 0, 0, 0.4),
-      0 1px 6px rgba(0, 0, 0, 0.22),
-      inset 0 1px 0 rgba(255, 255, 255, 0.035),
-      0 0 0 1px rgba(127, 174, 158, 0.06);
+      0 4px 24px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(245, 158, 11, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.03);
   }
 
-  /* ── Glass panel — outer section containers ───────────────── */
+  /* ── Tactical panel ────────────────────────────────────── */
   .glass-panel {
-    border-radius: 10px;
+    border-radius: 2px;
     box-shadow:
-      0 4px 32px rgba(0, 0, 0, 0.35),
-      0 1px 6px rgba(0, 0, 0, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      0 4px 32px rgba(0, 0, 0, 0.5),
+      0 1px 4px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.02);
     transition: box-shadow 0.2s ease;
   }
 
@@ -333,8 +328,8 @@
   }
 
   .idx-nav-item:hover:not(.idx-nav-active) {
-    background: rgba(127, 174, 158, 0.04) !important;
-    border-left-color: rgba(127, 174, 158, 0.25) !important;
+    background: rgba(245, 158, 11, 0.04) !important;
+    border-left-color: rgba(245, 158, 11, 0.3) !important;
   }
 
   .idx-filter-btn {
@@ -342,9 +337,9 @@
   }
 
   .idx-filter-btn:hover {
-    border-color: rgba(127, 174, 158, 0.32) !important;
-    color: rgba(127, 174, 158, 0.78) !important;
-    background: rgba(127, 174, 158, 0.05) !important;
+    border-color: rgba(245, 158, 11, 0.38) !important;
+    color: rgba(245, 158, 11, 0.85) !important;
+    background: rgba(245, 158, 11, 0.05) !important;
   }
 
   .access-tier-restricted {
@@ -352,13 +347,13 @@
   }
 
   .access-tier-restricted:hover {
-    border-color: rgba(127, 174, 158, 0.18) !important;
-    box-shadow: 0 0 24px rgba(0, 0, 0, 0.5) inset;
+    border-color: rgba(245, 158, 11, 0.18) !important;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.6) inset;
   }
 
   .idx-divider {
     height: 1px;
-    background: rgba(127, 174, 158, 0.07);
+    background: rgba(245, 158, 11, 0.07);
   }
 
   .idx-col-header {
@@ -397,4 +392,8 @@
   .idx-page-enter > *:nth-child(4) { animation-delay: 0.12s; }
   .idx-page-enter > *:nth-child(5) { animation-delay: 0.16s; }
   .idx-page-enter > *:nth-child(6) { animation-delay: 0.20s; }
+
+  @media (max-width: 860px) {
+    .hidden-mobile { display: none !important; }
+  }
 }

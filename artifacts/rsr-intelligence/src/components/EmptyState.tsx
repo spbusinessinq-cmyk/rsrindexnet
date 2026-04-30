@@ -25,7 +25,7 @@ export default function EmptyState({
         className="font-mono-tactical mb-4 select-none"
         style={{
           fontSize: compact ? 22 : 28,
-          color: "rgba(127,174,158,0.22)",
+          color: "rgba(245,158,11,0.22)",
           letterSpacing: "0.04em",
         }}
       >
@@ -35,7 +35,7 @@ export default function EmptyState({
         className="font-orbitron tracking-widest uppercase mb-2"
         style={{
           fontSize: compact ? "9.5px" : "10.5px",
-          color: "rgba(127,174,158,0.55)",
+          color: "rgba(245,158,11,0.55)",
           letterSpacing: "0.2em",
         }}
       >
@@ -61,7 +61,7 @@ export default function EmptyState({
         >
           <div
             className="w-1 h-1 rounded-full"
-            style={{ background: "rgba(127,174,158,0.32)" }}
+            style={{ background: "rgba(245,158,11,0.32)" }}
           />
           {statusLine}
         </div>

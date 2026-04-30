@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import CommandWheel from "@/components/CommandWheel";
 import { useFeed0, useFeed1, useFeed2, useFeed3 } from "@/hooks/useFeed";
 import { derivePlatformState, fmtRelative } from "@/lib/runtime";
+import { PacificSystemsMark, TacticalHeroDiagram } from "@/components/PacificSystemsMark";
 
 export const SEGMENTS = [
   {
@@ -49,28 +50,28 @@ export const SEGMENTS = [
   },
 ];
 
-/* ── Design tokens — marine steel / graphite / slate ─────────── */
+/* ── Design tokens — near-black / amber / white ───────────────── */
 const C = {
-  bg:             "#121922",
-  bgSection:      "#0F1720",
-  bgCard:         "#1C2A35",
-  bgCardHover:    "#243240",
-  bgStrip:        "#0D1520",
-  border:         "#2D3E4E",
-  borderMid:      "#3B4E5E",
-  borderAccent:   "rgba(127,174,158,0.32)",
-  borderAccentMid:"rgba(127,174,158,0.5)",
-  heading:        "#EEF3F7",
-  headingDim:     "#C8D4DC",
-  body:           "#B4C0CA",
-  muted:          "#7F8E9B",
-  mutedDim:       "#5E6E7A",
-  accent:         "#7FAE9E",
-  accentHover:    "#95C2B2",
-  accentBlue:     "#7C95AD",
-  accentBlueDim:  "#5A7A96",
-  amber:          "#C7A56A",
-  amberDim:       "#A8864E",
+  bg:             "#050607",
+  bgSection:      "#090B0D",
+  bgCard:         "#101418",
+  bgCardHover:    "#14191D",
+  bgStrip:        "#080A0C",
+  border:         "rgba(255,255,255,0.07)",
+  borderMid:      "rgba(255,255,255,0.13)",
+  borderAccent:   "rgba(245,158,11,0.28)",
+  borderAccentMid:"rgba(245,158,11,0.50)",
+  heading:        "#F4F6F8",
+  headingDim:     "#C8CFD6",
+  body:           "#B8C2CC",
+  muted:          "#8D969E",
+  mutedDim:       "#545E66",
+  accent:         "#F59E0B",
+  accentHover:    "#D97706",
+  accentBlue:     "#FFD38A",
+  accentBlueDim:  "#B45309",
+  amber:          "#F59E0B",
+  amberDim:       "#B45309",
 };
 
 /* ── Shared micro-label ────────────────────────────────────────── */
@@ -290,22 +291,25 @@ export default function Home() {
       backgroundSize: "60px 60px",
     }}>
 
+      {/* ── AMBER ACCENT LINE ────────────────────────────────────── */}
+      <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(245,158,11,0.6) 40%, rgba(245,158,11,0.6) 60%, transparent)", flexShrink: 0 }} />
+
       {/* ── NAV ─────────────────────────────────────────────────── */}
       <header style={{
         borderBottom: `1px solid ${C.border}`,
         background: C.bgStrip,
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "0 2.5rem", minHeight: 56, flexShrink: 0, position: "sticky", top: 0, zIndex: 20,
+        padding: "0 2.5rem", minHeight: 58, flexShrink: 0, position: "sticky", top: 1, zIndex: 20,
       }}>
-        {/* Left: brand */}
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <StatusDot live={networkLive} />
+        {/* Left: brand lockup */}
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <PacificSystemsMark size={34} />
           <div>
-            <div style={{ color: C.body, fontSize: "18.5px", letterSpacing: "0.16em", fontFamily: "'Orbitron', sans-serif", fontWeight: 700, lineHeight: 1 }}>
+            <div style={{ color: C.heading, fontSize: "13.5px", letterSpacing: "0.18em", fontFamily: "'Orbitron', sans-serif", fontWeight: 700, lineHeight: 1.1 }}>
               PACIFIC SYSTEMS
             </div>
-            <div style={{ color: C.mutedDim, fontSize: "18.5px", letterSpacing: "0.12em", fontFamily: "'Share Tech Mono', monospace", marginTop: 4 }}>
-              RSR INTELLIGENCE NETWORK
+            <div style={{ color: C.mutedDim, fontSize: "10px", letterSpacing: "0.14em", fontFamily: "'Share Tech Mono', monospace", marginTop: 3 }}>
+              DATA INFRASTRUCTURE // RSR INTEL
             </div>
           </div>
         </div>
@@ -389,97 +393,108 @@ export default function Home() {
       <div style={{ flex: 1, overflowY: "auto" }}>
 
         {/* ── HERO ─────────────────────────────────────────────── */}
-        <section style={{ borderBottom: `1px solid ${C.border}`, padding: "6rem 2.5rem 5rem" }}>
-          <div style={{ maxWidth: 960 }}>
-            {/* Parent label */}
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
-              <div style={{ width: 28, height: 1, background: C.borderAccentMid }} />
-              <span style={{ color: C.accent, fontSize: "16.5px", letterSpacing: "0.22em", fontFamily: "'Share Tech Mono', monospace" }}>
-                RSR INTELLIGENCE NETWORK — DATA SYSTEMS DIVISION
-              </span>
+        <section style={{ borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem 5rem" }}>
+          <div style={{ maxWidth: 1200, display: "grid", gridTemplateColumns: "1fr auto", gap: "3rem", alignItems: "center" }}>
+
+            {/* Left: text */}
+            <div>
+              {/* Eyebrow */}
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
+                <div style={{ width: 28, height: 1, background: C.borderAccentMid }} />
+                <span style={{ color: C.accent, fontSize: "13px", letterSpacing: "0.22em", fontFamily: "'Share Tech Mono', monospace" }}>
+                  RSR INTELLIGENCE NETWORK — DATA SYSTEMS DIVISION
+                </span>
+              </div>
+
+              {/* Title */}
+              <h1 style={{
+                color: C.heading,
+                fontFamily: "'Orbitron', sans-serif",
+                fontWeight: 800,
+                fontSize: "clamp(44px, 7vw, 80px)",
+                letterSpacing: "0.04em",
+                lineHeight: 1.02,
+                marginBottom: 16,
+              }}>
+                PACIFIC<br />SYSTEMS
+              </h1>
+
+              {/* Subtitle */}
+              <div style={{
+                color: C.accentBlue,
+                fontFamily: "'Orbitron', sans-serif",
+                fontWeight: 500,
+                fontSize: "clamp(14px, 1.8vw, 20px)",
+                letterSpacing: "0.14em",
+                marginBottom: 32,
+              }}>
+                Structured Data Infrastructure
+              </div>
+
+              {/* Description */}
+              <p style={{
+                color: C.body,
+                fontSize: "clamp(15px, 1.5vw, 18px)",
+                lineHeight: "1.95",
+                maxWidth: 620,
+                fontFamily: "'Rajdhani', sans-serif",
+                fontWeight: 400,
+                marginBottom: 44,
+              }}>
+                Pacific Systems is the structured data division of the RSR Intelligence Network.
+                It receives monitored signals, organizes raw inputs, and commits verified material
+                into searchable records, datasets, and infrastructure-ready intelligence objects.
+                The platform does not produce editorial content — it produces structured, retrievable
+                data infrastructure.
+              </p>
+
+              {/* CTAs */}
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <button onClick={() => navigate("/overview")}
+                  style={{
+                    background: C.accent,
+                    border: `1px solid ${C.accent}`,
+                    color: "#050607",
+                    fontFamily: "'Orbitron', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "12.5px",
+                    letterSpacing: "0.14em",
+                    padding: "13px 30px",
+                    borderRadius: 2,
+                    cursor: "pointer",
+                    transition: "all 0.18s",
+                  }}
+                  onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.background = C.accentHover; (e.currentTarget as HTMLElement).style.borderColor = C.accentHover; }}
+                  onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.background = C.accent; (e.currentTarget as HTMLElement).style.borderColor = C.accent; }}>
+                  EXPLORE ARCHITECTURE
+                </button>
+                <button onClick={() => navigate("/method")}
+                  style={{
+                    background: "transparent",
+                    border: `1px solid ${C.borderMid}`,
+                    color: C.body,
+                    fontFamily: "'Orbitron', sans-serif",
+                    fontWeight: 600,
+                    fontSize: "12.5px",
+                    letterSpacing: "0.14em",
+                    padding: "13px 30px",
+                    borderRadius: 2,
+                    cursor: "pointer",
+                    transition: "all 0.18s",
+                  }}
+                  onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.borderColor = C.borderAccent; (e.currentTarget as HTMLElement).style.color = C.heading; }}
+                  onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.borderColor = C.borderMid; (e.currentTarget as HTMLElement).style.color = C.body; }}>
+                  VIEW METHOD
+                </button>
+              </div>
             </div>
 
-            {/* Title */}
-            <h1 style={{
-              color: C.heading,
-              fontFamily: "'Orbitron', sans-serif",
-              fontWeight: 800,
-              fontSize: "clamp(44px, 7vw, 80px)",
-              letterSpacing: "0.04em",
-              lineHeight: 1.02,
-              marginBottom: 16,
-            }}>
-              PACIFIC<br />SYSTEMS
-            </h1>
-
-            {/* Subtitle */}
-            <div style={{
-              color: C.accentBlue,
-              fontFamily: "'Orbitron', sans-serif",
-              fontWeight: 500,
-              fontSize: "clamp(15px, 2vw, 21px)",
-              letterSpacing: "0.14em",
-              marginBottom: 32,
-            }}>
-              Structured Data Infrastructure
+            {/* Right: Tactical diagram */}
+            <div style={{ width: 420, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}
+              className="hidden-mobile">
+              <TacticalHeroDiagram />
             </div>
 
-            {/* Description */}
-            <p style={{
-              color: C.body,
-              fontSize: "clamp(16px, 1.6vw, 19px)",
-              lineHeight: "2.0",
-              maxWidth: 700,
-              fontFamily: "'Rajdhani', sans-serif",
-              fontWeight: 400,
-              marginBottom: 44,
-            }}>
-              Pacific Systems is the structured data division of the RSR Intelligence Network.
-              Monitored signals enter the intake layer, move through a defined structuring process,
-              and are committed as indexed, searchable records.
-              The platform does not produce editorial content.
-              It produces structured, retrievable data infrastructure.
-            </p>
-
-            {/* CTAs */}
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <button onClick={() => navigate("/overview")}
-                style={{
-                  background: C.accent,
-                  border: `1px solid ${C.accent}`,
-                  color: "#0D1520",
-                  fontFamily: "'Orbitron', sans-serif",
-                  fontWeight: 700,
-                  fontSize: "13.5px",
-                  letterSpacing: "0.14em",
-                  padding: "14px 32px",
-                  borderRadius: 3,
-                  cursor: "pointer",
-                  transition: "all 0.18s",
-                }}
-                onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.background = C.accentHover; (e.currentTarget as HTMLElement).style.borderColor = C.accentHover; }}
-                onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.background = C.accent; (e.currentTarget as HTMLElement).style.borderColor = C.accent; }}>
-                EXPLORE ARCHITECTURE
-              </button>
-              <button onClick={() => navigate("/method")}
-                style={{
-                  background: "transparent",
-                  border: `1px solid ${C.borderMid}`,
-                  color: C.body,
-                  fontFamily: "'Orbitron', sans-serif",
-                  fontWeight: 600,
-                  fontSize: "13.5px",
-                  letterSpacing: "0.14em",
-                  padding: "14px 32px",
-                  borderRadius: 3,
-                  cursor: "pointer",
-                  transition: "all 0.18s",
-                }}
-                onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.borderColor = C.borderAccent; (e.currentTarget as HTMLElement).style.color = C.heading; }}
-                onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.borderColor = C.borderMid; (e.currentTarget as HTMLElement).style.color = C.body; }}>
-                METHODOLOGY
-              </button>
-            </div>
           </div>
         </section>
 
