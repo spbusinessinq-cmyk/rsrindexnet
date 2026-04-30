@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import CommandWheel from "@/components/CommandWheel";
 import { useFeed0, useFeed1, useFeed2, useFeed3 } from "@/hooks/useFeed";
 import { derivePlatformState, fmtRelative } from "@/lib/runtime";
-import logoUrl from "@assets/Screenshot_2026-04-30_122604_1777577950541.png";
+import PacificLogoMark, { PacificLogoMarkHero } from "@/components/PacificLogoMark";
 
 export const SEGMENTS = [
   {
@@ -302,23 +302,13 @@ export default function Home() {
         padding: "0 2.5rem", minHeight: 58, flexShrink: 0, position: "sticky", top: 1, zIndex: 20,
       }}>
         {/* Left: brand lockup */}
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{
-            width: 38, height: 38, borderRadius: "50%", overflow: "hidden", flexShrink: 0,
-            border: "1px solid rgba(245,158,11,0.35)",
-            background: "#050607",
-          }}>
-            <img src={logoUrl} alt="Pacific Systems" style={{
-              width: "160%", height: "130%",
-              objectFit: "cover", objectPosition: "center 12%",
-              marginLeft: "-30%", display: "block",
-            }} />
-          </div>
-          <div>
-            <div style={{ color: C.heading, fontSize: "13.5px", letterSpacing: "0.18em", fontFamily: "'Orbitron', sans-serif", fontWeight: 700, lineHeight: 1.1 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <PacificLogoMark size={38} />
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <div style={{ color: C.heading, fontSize: "13.5px", letterSpacing: "0.18em", fontFamily: "'Orbitron', sans-serif", fontWeight: 700, lineHeight: 1.15 }}>
               PACIFIC SYSTEMS
             </div>
-            <div style={{ color: C.mutedDim, fontSize: "10px", letterSpacing: "0.14em", fontFamily: "'Share Tech Mono', monospace", marginTop: 3 }}>
+            <div style={{ color: C.mutedDim, fontSize: "10px", letterSpacing: "0.14em", fontFamily: "'Share Tech Mono', monospace", marginTop: 2 }}>
               DATA INFRASTRUCTURE // RSR INTEL
             </div>
           </div>
@@ -499,38 +489,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Official logo */}
-            <div style={{ width: 360, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}
+            {/* Right: Circular PS mark */}
+            <div style={{ width: 320, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}
               className="hidden-mobile">
-              <div style={{
-                position: "relative",
-                border: "1px solid rgba(245,158,11,0.22)",
-                background: "rgba(245,158,11,0.03)",
-                padding: "32px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}>
-                {/* Corner marks */}
-                {[
-                  { top: -1, left: -1, borderTop: "2px solid rgba(245,158,11,0.7)", borderLeft: "2px solid rgba(245,158,11,0.7)" },
-                  { top: -1, right: -1, borderTop: "2px solid rgba(245,158,11,0.7)", borderRight: "2px solid rgba(245,158,11,0.7)" },
-                  { bottom: -1, left: -1, borderBottom: "2px solid rgba(245,158,11,0.7)", borderLeft: "2px solid rgba(245,158,11,0.7)" },
-                  { bottom: -1, right: -1, borderBottom: "2px solid rgba(245,158,11,0.7)", borderRight: "2px solid rgba(245,158,11,0.7)" },
-                ].map((s, i) => (
-                  <div key={i} style={{ position: "absolute", width: 14, height: 14, ...s }} />
-                ))}
-                <img
-                  src={logoUrl}
-                  alt="Pacific Systems — Data Infrastructure Division"
-                  style={{
-                    width: 260,
-                    height: "auto",
-                    display: "block",
-                    filter: "drop-shadow(0 0 28px rgba(245,158,11,0.18))",
-                  }}
-                />
-              </div>
+              <PacificLogoMarkHero size={230} />
             </div>
 
           </div>

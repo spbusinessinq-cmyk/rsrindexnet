@@ -1,0 +1,74 @@
+Small Pacific Systems logo polish pass.
+
+Repo:
+https://github.com/spbusinessinq-cmyk/rsrindexnet.git
+Branch: main
+
+Issues to fix:
+1. Header top-left logo is not vertically centered/aligned cleanly with the PACIFIC SYSTEMS text.
+2. Hero logo should NOT show the full rectangular uploaded image. It should show only the circular PS mark/logo portion.
+
+Tasks:
+
+HEADER FIX:
+- In AppShell.tsx and home.tsx, adjust the brand lockup layout.
+- Logo should be vertically centered with the text block.
+- Use flex items-center gap-3.
+- Logo container should be a fixed square, around 40px x 40px.
+- Image should be centered inside it with object-cover or object-contain depending on crop.
+- Text block should align center vertically, not sit too high or low.
+- Keep amber border/glow subtle.
+
+HERO LOGO FIX:
+- Replace the full rectangular logo display with a circular cropped mark.
+- Use the existing uploaded logo asset, but mask/crop it so only the circle PS emblem appears.
+- Make a reusable component if helpful: PacificLogoMark.
+- The crop should hide the bottom “PACIFIC SYSTEMS / DATA INFRASTRUCTURE DIVISION” text from the image.
+- Use CSS object-position/object-fit or a wrapper with overflow-hidden.
+- If object-position is not enough, use background-image with background-size and background-position to isolate the circle.
+- Desired look:
+  - Large circular emblem only
+  - Center/right hero panel
+  - Amber ring/bracket frame around it
+  - No rectangular screenshot box
+  - No visible logo text inside the hero image besides the PS mark itself
+
+Suggested CSS approach:
+Create a div like:
+.logoCrop {
+  width: 220px;
+  height: 220px;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 1px solid rgba(245,158,11,.65);
+  background: radial-gradient(circle, rgba(245,158,11,.12), transparent 60%);
+}
+Inside it:
+<img src={logo} className="..." />
+
+If using img:
+- width larger than container
+- height larger than container
+- object-fit: cover
+- object-position tuned to center the PS circle
+
+Alternative:
+Use background-image:
+background-image: url(...)
+background-size: 175%;
+background-position: center 34%;
+background-repeat: no-repeat;
+
+Also:
+- Remove the rectangular hero image frame if it still shows the whole uploaded screenshot.
+- Keep the amber corner brackets around the circular mark or redesign them to fit the circle.
+
+After edits:
+- Run build:
+pnpm --filter @workspace/rsr-intelligence run build
+
+Final response include:
+- Files changed
+- Exact crop values used
+- Build result
+- Git commands to push
