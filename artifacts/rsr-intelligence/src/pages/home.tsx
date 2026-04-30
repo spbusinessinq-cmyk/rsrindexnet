@@ -3,7 +3,8 @@ import { useLocation } from "wouter";
 import CommandWheel from "@/components/CommandWheel";
 import { useFeed0, useFeed1, useFeed2, useFeed3 } from "@/hooks/useFeed";
 import { derivePlatformState, fmtRelative } from "@/lib/runtime";
-import PacificLogoMark, { PacificLogoMarkHero } from "@/components/PacificLogoMark";
+import PacificLogoMark from "@/components/PacificLogoMark";
+import PacificDataCore from "@/components/PacificDataCore";
 
 export const SEGMENTS = [
   {
@@ -489,10 +490,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Circular PS mark */}
-            <div style={{ width: 320, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}
+            {/* Right: Tactical data core diagram */}
+            <div style={{ width: 420, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}
               className="hidden-mobile">
-              <PacificLogoMarkHero size={230} />
+              <PacificDataCore />
             </div>
 
           </div>
