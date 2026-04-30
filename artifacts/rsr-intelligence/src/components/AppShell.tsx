@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
-import { PacificSystemsMark } from "./PacificSystemsMark";
+import logoUrl from "@assets/Screenshot_2026-04-30_122604_1777577950541.png";
 
 const C = {
   bg:              "#050607",
@@ -89,10 +89,26 @@ export default function AppShell({ children }: AppShellProps) {
           onClick={() => navigate("/")}
           style={{
             background: "none", border: "none", cursor: "pointer",
-            display: "flex", alignItems: "center", gap: 12,
+            display: "flex", alignItems: "center", gap: 10,
             padding: 0,
           }}>
-          <PacificSystemsMark size={34} />
+          <div style={{
+            width: 38, height: 38, borderRadius: "50%", overflow: "hidden", flexShrink: 0,
+            border: "1px solid rgba(245,158,11,0.35)",
+            background: "#050607",
+          }}>
+            <img
+              src={logoUrl}
+              alt="Pacific Systems"
+              style={{
+                width: "160%", height: "130%",
+                objectFit: "cover",
+                objectPosition: "center 12%",
+                marginLeft: "-30%",
+                display: "block",
+              }}
+            />
+          </div>
           <div>
             <div style={{
               color: C.heading, fontSize: "13.5px", letterSpacing: "0.18em",
@@ -264,7 +280,16 @@ export default function AppShell({ children }: AppShellProps) {
         <div style={{
           display: "flex", alignItems: "center", gap: 10,
         }}>
-          <PacificSystemsMark size={20} />
+          <div style={{
+            width: 22, height: 22, borderRadius: "50%", overflow: "hidden", flexShrink: 0,
+            border: "1px solid rgba(245,158,11,0.28)",
+          }}>
+            <img src={logoUrl} alt="Pacific Systems" style={{
+              width: "160%", height: "130%",
+              objectFit: "cover", objectPosition: "center 12%",
+              marginLeft: "-30%", display: "block",
+            }} />
+          </div>
           <div style={{
             color: C.mutedDim, fontFamily: "'Orbitron', sans-serif",
             fontWeight: 700, fontSize: "11px", letterSpacing: "0.16em",
