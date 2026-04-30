@@ -6,9 +6,9 @@ interface StatusPillProps {
 }
 
 const config: Record<StatusVariant, { color: string; bg: string; pulse: boolean; text: string }> = {
-  nominal:  { color: "#22c55e", bg: "rgba(34,197,94,0.1)",  pulse: true,  text: "NOMINAL" },
-  active:   { color: "#22c55e", bg: "rgba(34,197,94,0.1)",  pulse: true,  text: "ACTIVE" },
-  ready:    { color: "#22c55e", bg: "rgba(34,197,94,0.08)", pulse: false, text: "READY" },
+  nominal:  { color: "#F59E0B", bg: "rgba(245,158,11,0.1)",  pulse: true,  text: "NOMINAL" },
+  active:   { color: "#F59E0B", bg: "rgba(245,158,11,0.1)",  pulse: true,  text: "ACTIVE" },
+  ready:    { color: "#F59E0B", bg: "rgba(245,158,11,0.08)", pulse: false, text: "READY" },
   standby:  { color: "#94a3b8", bg: "rgba(148,163,184,0.1)",pulse: false, text: "STANDBY" },
   pending:  { color: "#f59e0b", bg: "rgba(245,158,11,0.1)", pulse: true,  text: "PENDING" },
   offline:  { color: "#ef4444", bg: "rgba(239,68,68,0.1)",  pulse: false, text: "OFFLINE" },

@@ -1,0 +1,124 @@
+Hard fix required: eliminate ALL green from the Pacific Systems navigation wheel.
+
+Problem:
+The circular navigation wheel is still using legacy INDEX styling (green palette).
+This conflicts with Pacific Systems branding (amber/orange only).
+
+Goal:
+Convert the entire wheel component to the Pacific Systems amber system.
+
+━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — LOCATE COMPONENT
+━━━━━━━━━━━━━━━━━━━━━━━
+
+Find the wheel component. Search for:
+- "INDEX"
+- "Navigate Pacific Systems"
+- circular nav / radial / wheel
+- canvas / svg / conic-gradient
+
+Likely files:
+- components/*
+- pages/*
+- or a dedicated RadialNav / SystemWheel component
+
+━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — REMOVE GREEN COMPLETELY
+━━━━━━━━━━━━━━━━━━━━━━━
+
+Search project-wide for:
+- #00ff
+- #00cc
+- #00e
+- #0f0
+- green
+- rgb(0,255,0)
+- any neon green variables
+
+Replace ALL with amber system:
+
+PRIMARY:
+#F59E0B
+
+GLOW:
+rgba(245,158,11,0.6)
+
+SOFT:
+rgba(245,158,11,0.15)
+
+DIM TEXT:
+#FFD38A
+
+━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — FIX SVG / CANVAS COLORS
+━━━━━━━━━━━━━━━━━━━━━━━
+
+If the wheel is SVG:
+- Replace all stroke="green" with stroke="#F59E0B"
+- Replace fill greens with rgba(245,158,11,0.08–0.15)
+- Replace glow filters to amber
+
+If canvas:
+- Replace strokeStyle and fillStyle values
+
+If CSS gradients:
+- Replace conic-gradient greens with amber tones
+
+━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4 — CENTER TEXT ("INDEX")
+━━━━━━━━━━━━━━━━━━━━━━━
+
+Replace center label:
+"INDEX" → "PACIFIC SYSTEMS" OR just "PS"
+
+Style:
+- White or pale amber
+- Subtle glow, NOT neon
+
+━━━━━━━━━━━━━━━━━━━━━━━
+STEP 5 — INTERACTION STATES
+━━━━━━━━━━━━━━━━━━━━━━━
+
+Hover:
+- Segment highlight = amber glow
+- Border brighten
+- No green flashes
+
+Idle:
+- Very dim amber/gray
+
+Active:
+- Strong amber ring or pulse
+
+━━━━━━━━━━━━━━━━━━━━━━━
+STEP 6 — OPTIONAL UPGRADE (DO THIS IF EASY)
+━━━━━━━━━━━━━━━━━━━━━━━
+
+Add:
+- subtle radial amber pulse
+- thin rotating ring (very slow)
+- small node dots on edges
+
+Keep it minimal. No flashy animations.
+
+━━━━━━━━━━━━━━━━━━━━━━━
+STEP 7 — VERIFY
+━━━━━━━━━━━━━━━━━━━━━━━
+
+Run:
+pnpm --filter @workspace/rsr-intelligence run build
+
+Confirm:
+- ZERO green anywhere
+- Wheel matches hero branding
+- Looks integrated, not imported
+
+━━━━━━━━━━━━━━━━━━━━━━━
+FINAL OUTPUT
+━━━━━━━━━━━━━━━━━━━━━━━
+
+Return:
+- File where wheel lives
+- What colors were replaced
+- Any remaining legacy styling (if found)
+- Build result

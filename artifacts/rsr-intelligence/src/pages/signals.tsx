@@ -345,7 +345,7 @@ export default function SignalsPage() {
                   <div className="w-1.5 h-1.5 rounded-full"
                     style={{
                       background: connectedCount > 0 ? "#F59E0B" : "rgba(127,142,155,0.28)",
-                      boxShadow: connectedCount > 0 ? "0 0 4px #22c55e" : undefined,
+                      boxShadow: connectedCount > 0 ? "0 0 4px #F59E0B" : undefined,
                     }} />
                   <span className="font-mono-tactical tracking-widest uppercase"
                     style={{ color: "rgba(245,158,11,0.55)", fontSize: "13px", letterSpacing: "0.16em" }}>

@@ -83,32 +83,32 @@ export default function RightPanel({ hoveredSegment, segments, platform }: Right
 
   return (
     <div className="hidden lg:flex flex-col shrink-0"
-      style={{ borderLeft: "1px solid rgba(34,197,94,0.08)", width: 284, background: "rgba(0,0,0,0.12)" }}>
+      style={{ borderLeft: "1px solid rgba(245,158,11,0.08)", width: 284, background: "rgba(0,0,0,0.12)" }}>
 
       {activeSegment && sectorDetail ? (
         /* ── Sector inspection panel ──────────────────────────── */
         <div key={activeSegment.label} className="panel-fade-in flex flex-col h-full">
           {/* Header */}
-          <div className="px-6 pt-5 pb-4" style={{ borderBottom: "1px solid rgba(34,197,94,0.08)" }}>
+          <div className="px-6 pt-5 pb-4" style={{ borderBottom: "1px solid rgba(245,158,11,0.08)" }}>
             <div className="flex items-center gap-2 mb-2">
               <div className="font-mono-tactical tracking-widest uppercase"
-                style={{ color: "rgba(34,197,94,0.45)", fontSize: "8px", letterSpacing: "0.22em" }}>
+                style={{ color: "rgba(245,158,11,0.45)", fontSize: "8px", letterSpacing: "0.22em" }}>
                 Sector
               </div>
-              <div className="flex-1 h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
+              <div className="flex-1 h-px" style={{ background: "rgba(245,158,11,0.06)" }} />
               {isLiveSector && networkIsLive && (
                 <div className="flex items-center gap-1.5">
                   <div className="w-1 h-1 rounded-full"
-                    style={{ background: "rgba(34,197,94,0.65)", boxShadow: "0 0 3px rgba(34,197,94,0.5)" }} />
+                    style={{ background: "rgba(245,158,11,0.65)", boxShadow: "0 0 3px rgba(245,158,11,0.5)" }} />
                   <span className="font-mono-tactical"
-                    style={{ color: "rgba(34,197,94,0.5)", fontSize: "7.5px", letterSpacing: "0.1em" }}>
+                    style={{ color: "rgba(245,158,11,0.5)", fontSize: "7.5px", letterSpacing: "0.1em" }}>
                     LIVE
                   </span>
                 </div>
               )}
             </div>
             <div className="font-orbitron text-base font-bold tracking-wide leading-snug mb-1"
-              style={{ color: "#22c55e", textShadow: "0 0 14px rgba(34,197,94,0.12)" }}>
+              style={{ color: "#F59E0B", textShadow: "0 0 14px rgba(245,158,11,0.12)" }}>
               {activeSegment.label}
             </div>
             <div className="font-mono-tactical italic"
@@ -127,15 +127,15 @@ export default function RightPanel({ hoveredSegment, segments, platform }: Right
             )}
 
             <div className="rounded px-3.5 py-3.5 space-y-2.5"
-              style={{ border: "1px solid rgba(34,197,94,0.08)", background: "rgba(0,0,0,0.22)" }}>
+              style={{ border: "1px solid rgba(245,158,11,0.08)", background: "rgba(0,0,0,0.22)" }}>
               <div className="font-mono-tactical tracking-widest uppercase mb-2"
-                style={{ color: "rgba(34,197,94,0.38)", fontSize: "7.5px", letterSpacing: "0.16em" }}>
+                style={{ color: "rgba(245,158,11,0.38)", fontSize: "7.5px", letterSpacing: "0.16em" }}>
                 Key Points
               </div>
               {sectorDetail.points.map((point, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
-                    style={{ background: "rgba(34,197,94,0.45)" }} />
+                    style={{ background: "rgba(245,158,11,0.45)" }} />
                   <span className="font-mono-tactical leading-relaxed"
                     style={{ color: "rgba(185,205,200,0.72)", lineHeight: "1.85", fontSize: "10px" }}>
                     {point}
@@ -146,13 +146,13 @@ export default function RightPanel({ hoveredSegment, segments, platform }: Right
 
             {activeSegment.methodology && (
               <div className="rounded px-3.5 py-2.5"
-                style={{ border: "1px solid rgba(34,197,94,0.07)", background: "rgba(34,197,94,0.025)" }}>
+                style={{ border: "1px solid rgba(245,158,11,0.07)", background: "rgba(245,158,11,0.025)" }}>
                 <div className="font-mono-tactical tracking-widest uppercase mb-1.5"
-                  style={{ color: "rgba(34,197,94,0.38)", fontSize: "7.5px", letterSpacing: "0.14em" }}>
+                  style={{ color: "rgba(245,158,11,0.38)", fontSize: "7.5px", letterSpacing: "0.14em" }}>
                   Methodology
                 </div>
                 <div className="font-mono-tactical italic"
-                  style={{ color: "rgba(34,197,94,0.55)", fontSize: "10px", lineHeight: "1.7" }}>
+                  style={{ color: "rgba(245,158,11,0.55)", fontSize: "10px", lineHeight: "1.7" }}>
                   {activeSegment.methodology}
                 </div>
               </div>
@@ -160,16 +160,16 @@ export default function RightPanel({ hoveredSegment, segments, platform }: Right
           </div>
 
           {/* Enter CTA */}
-          <div className="px-6 py-4 shrink-0" style={{ borderTop: "1px solid rgba(34,197,94,0.08)" }}>
+          <div className="px-6 py-4 shrink-0" style={{ borderTop: "1px solid rgba(245,158,11,0.08)" }}>
             <button onClick={() => setLocation(activeSegment.path)}
               className="w-full rounded px-4 py-3 flex items-center justify-between"
-              style={{ border: "1px solid rgba(34,197,94,0.28)", background: "rgba(34,197,94,0.08)", cursor: "pointer" }}>
+              style={{ border: "1px solid rgba(245,158,11,0.28)", background: "rgba(245,158,11,0.08)", cursor: "pointer" }}>
               <span className="font-orbitron font-bold tracking-wider"
-                style={{ color: "rgba(34,197,94,0.82)", fontSize: "8.5px", letterSpacing: "0.14em" }}>
+                style={{ color: "rgba(245,158,11,0.82)", fontSize: "8.5px", letterSpacing: "0.14em" }}>
                 ENTER {activeSegment.label}
               </span>
               <span className="font-mono-tactical"
-                style={{ color: "rgba(34,197,94,0.52)", fontSize: "11px" }}>
+                style={{ color: "rgba(245,158,11,0.52)", fontSize: "11px" }}>
                 →
               </span>
             </button>
@@ -179,13 +179,13 @@ export default function RightPanel({ hoveredSegment, segments, platform }: Right
         /* ── Default panel ────────────────────────────────────── */
         <div className="flex flex-col h-full overflow-y-auto">
           {/* Default header */}
-          <div className="px-6 pt-5 pb-4" style={{ borderBottom: "1px solid rgba(34,197,94,0.08)" }}>
+          <div className="px-6 pt-5 pb-4" style={{ borderBottom: "1px solid rgba(245,158,11,0.08)" }}>
             <div className="font-mono-tactical tracking-widest uppercase mb-2"
-              style={{ color: "rgba(34,197,94,0.42)", fontSize: "8.5px", letterSpacing: "0.22em" }}>
+              style={{ color: "rgba(245,158,11,0.42)", fontSize: "8.5px", letterSpacing: "0.22em" }}>
               Network Architecture
             </div>
             <div className="font-orbitron text-sm font-bold tracking-wide leading-snug"
-              style={{ color: "rgba(34,197,94,0.72)" }}>
+              style={{ color: "rgba(245,158,11,0.72)" }}>
               INDEX — data layer of the RSR Intelligence Network
             </div>
           </div>
@@ -197,17 +197,17 @@ export default function RightPanel({ hoveredSegment, segments, platform }: Right
               or investigative arm. It handles signal intake, dataset structuring, and record indexing.
             </p>
 
-            <div className="h-px" style={{ background: "rgba(34,197,94,0.07)" }} />
+            <div className="h-px" style={{ background: "rgba(245,158,11,0.07)" }} />
 
             {/* Pipeline state */}
             {platform && (
               <div>
                 <div className="font-mono-tactical tracking-widest uppercase mb-2.5"
-                  style={{ color: "rgba(34,197,94,0.45)", fontSize: "8.5px", letterSpacing: "0.18em" }}>
+                  style={{ color: "rgba(245,158,11,0.45)", fontSize: "8.5px", letterSpacing: "0.18em" }}>
                   Pipeline State
                 </div>
                 <div className="rounded"
-                  style={{ border: "1px solid rgba(34,197,94,0.09)", background: "rgba(0,0,0,0.25)" }}>
+                  style={{ border: "1px solid rgba(245,158,11,0.09)", background: "rgba(0,0,0,0.25)" }}>
                   {[
                     {
                       phase: "01",
@@ -233,14 +233,14 @@ export default function RightPanel({ hoveredSegment, segments, platform }: Right
                     },
                   ].map((p, idx, arr) => (
                     <div key={p.phase} className="flex items-center gap-3 px-4 py-3"
-                      style={{ borderBottom: idx < arr.length - 1 ? "1px solid rgba(34,197,94,0.05)" : undefined }}>
+                      style={{ borderBottom: idx < arr.length - 1 ? "1px solid rgba(245,158,11,0.05)" : undefined }}>
                       <span className="font-mono-tactical flex-shrink-0"
-                        style={{ color: "rgba(34,197,94,0.22)", fontSize: "8px", width: 16 }}>
+                        style={{ color: "rgba(245,158,11,0.22)", fontSize: "8px", width: 16 }}>
                         {p.phase}
                       </span>
                       <div className="flex-1 min-w-0">
                         <div className="font-mono-tactical font-semibold"
-                          style={{ color: p.live ? "rgba(34,197,94,0.72)" : "rgba(155,175,170,0.45)", fontSize: "9.5px" }}>
+                          style={{ color: p.live ? "rgba(245,158,11,0.72)" : "rgba(155,175,170,0.45)", fontSize: "9.5px" }}>
                           {p.label}
                         </div>
                         <div className="font-mono-tactical"
@@ -250,8 +250,8 @@ export default function RightPanel({ hoveredSegment, segments, platform }: Right
                       </div>
                       <div className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                         style={{
-                          background: p.live ? "#22c55e" : "rgba(155,175,170,0.18)",
-                          boxShadow: p.live ? "0 0 5px rgba(34,197,94,0.55)" : undefined,
+                          background: p.live ? "#F59E0B" : "rgba(155,175,170,0.18)",
+                          boxShadow: p.live ? "0 0 5px rgba(245,158,11,0.55)" : undefined,
                         }} />
                     </div>
                   ))}
@@ -259,12 +259,12 @@ export default function RightPanel({ hoveredSegment, segments, platform }: Right
               </div>
             )}
 
-            <div className="h-px" style={{ background: "rgba(34,197,94,0.07)" }} />
+            <div className="h-px" style={{ background: "rgba(245,158,11,0.07)" }} />
 
             {/* Sector index */}
             <div>
               <div className="font-mono-tactical tracking-widest uppercase mb-3"
-                style={{ color: "rgba(34,197,94,0.45)", fontSize: "8.5px", letterSpacing: "0.18em" }}>
+                style={{ color: "rgba(245,158,11,0.45)", fontSize: "8.5px", letterSpacing: "0.18em" }}>
                 Sector Index
               </div>
               <div className="space-y-0.5">
@@ -277,19 +277,19 @@ export default function RightPanel({ hoveredSegment, segments, platform }: Right
                         background: "none", border: "none", cursor: "pointer",
                         transition: "background 0.12s ease",
                       }}
-                      onMouseOver={(e) => (e.currentTarget.style.background = "rgba(34,197,94,0.04)")}
+                      onMouseOver={(e) => (e.currentTarget.style.background = "rgba(245,158,11,0.04)")}
                       onMouseOut={(e) => (e.currentTarget.style.background = "none")}>
                       <span className="font-mono-tactical flex-shrink-0"
                         style={{ color: "rgba(155,175,170,0.3)", fontSize: "8px", width: 16 }}>
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <div className="flex-1 h-px" style={{ background: "rgba(34,197,94,0.06)" }} />
+                      <div className="flex-1 h-px" style={{ background: "rgba(245,158,11,0.06)" }} />
                       {isLive && (
                         <div className="w-1 h-1 rounded-full flex-shrink-0"
-                          style={{ background: "rgba(34,197,94,0.65)", boxShadow: "0 0 3px rgba(34,197,94,0.5)" }} />
+                          style={{ background: "rgba(245,158,11,0.65)", boxShadow: "0 0 3px rgba(245,158,11,0.5)" }} />
                       )}
                       <span className="font-orbitron font-semibold tracking-wider flex-shrink-0"
-                        style={{ color: isLive ? "rgba(34,197,94,0.75)" : "rgba(34,197,94,0.48)", fontSize: "8.5px" }}>
+                        style={{ color: isLive ? "rgba(245,158,11,0.75)" : "rgba(245,158,11,0.48)", fontSize: "8.5px" }}>
                         {seg.label}
                       </span>
                     </button>
@@ -298,13 +298,13 @@ export default function RightPanel({ hoveredSegment, segments, platform }: Right
               </div>
             </div>
 
-            <div className="h-px" style={{ background: "rgba(34,197,94,0.07)" }} />
+            <div className="h-px" style={{ background: "rgba(245,158,11,0.07)" }} />
 
             {/* Hover hint */}
             <div className="rounded px-3.5 py-3 flex items-center gap-2.5"
-              style={{ border: "1px solid rgba(34,197,94,0.07)", background: "rgba(0,0,0,0.18)" }}>
+              style={{ border: "1px solid rgba(245,158,11,0.07)", background: "rgba(0,0,0,0.18)" }}>
               <div className="w-1 h-1 rounded-full flex-shrink-0"
-                style={{ background: "rgba(34,197,94,0.3)" }} />
+                style={{ background: "rgba(245,158,11,0.3)" }} />
               <span className="font-mono-tactical italic"
                 style={{ color: "rgba(155,175,170,0.42)", fontSize: "9.5px", lineHeight: "1.7" }}>
                 Hover a sector on the wheel for details. Click to enter.

@@ -101,12 +101,12 @@ export const FEED_STATE_LABELS: Record<FeedState, string> = {
 };
 
 export const FEED_STATE_COLORS: Record<FeedState, string> = {
-  connected:         "rgba(34,197,94,0.82)",
+  connected:         "rgba(245,158,11,0.82)",
   disconnected:      "rgba(155,175,170,0.38)",
-  staged:            "rgba(34,197,94,0.52)",
+  staged:            "rgba(245,158,11,0.52)",
   error:             "rgba(220,80,80,0.65)",
   unbound:           "rgba(155,175,170,0.28)",
-  loading:           "rgba(34,197,94,0.38)",
+  loading:           "rgba(245,158,11,0.38)",
   "cors-restricted": "rgba(220,160,50,0.65)",
 };
 
