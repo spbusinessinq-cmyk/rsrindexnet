@@ -395,7 +395,7 @@ export default function Home() {
 
         {/* ── HERO ─────────────────────────────────────────────── */}
         <section style={{ borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem 5rem" }}>
-          <div style={{ maxWidth: 1200, display: "grid", gridTemplateColumns: "1fr auto", gap: "3rem", alignItems: "center" }}>
+          <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr auto", gap: "3rem", alignItems: "center" }}>
 
             {/* Left: text */}
             <div>
@@ -501,7 +501,7 @@ export default function Home() {
 
         {/* ── NETWORK POSITIONING ───────────────────────────────── */}
         <section style={{ background: C.bgSection, borderBottom: `1px solid ${C.border}`, padding: "3.5rem 2.5rem" }}>
-          <div style={{ maxWidth: 1100 }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <SectionLabel>Network Architecture</SectionLabel>
 
             {/* Hierarchy breadcrumb */}
@@ -570,7 +570,7 @@ export default function Home() {
 
         {/* ── SCOPE DEFINITION ──────────────────────────────────── */}
         <section style={{ borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem" }}>
-          <div style={{ maxWidth: 1100 }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <SectionLabel>Scope Definition</SectionLabel>
             <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "24px", letterSpacing: "0.07em", marginBottom: 28 }}>
               What Pacific Systems Is
@@ -644,7 +644,7 @@ export default function Home() {
 
         {/* ── DIVISIONS ─────────────────────────────────────────── */}
         <section style={{ background: C.bgSection, borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem" }}>
-          <div style={{ maxWidth: 1100 }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <SectionLabel>Organisational Structure</SectionLabel>
             <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 28, flexWrap: "wrap", gap: 12 }}>
               <div>
@@ -685,7 +685,7 @@ export default function Home() {
 
         {/* ── SIGNAL-TO-RECORD PIPELINE ─────────────────────────── */}
         <section style={{ borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem" }}>
-          <div style={{ maxWidth: 1100 }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <SectionLabel accent>Data Architecture</SectionLabel>
             <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "24px", letterSpacing: "0.07em", marginBottom: 12 }}>
               Signal-to-Record Pipeline
@@ -745,7 +745,7 @@ export default function Home() {
 
         {/* ── WHY IT MATTERS ───────────────────────────────────── */}
         <section style={{ background: C.bgSection, borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem" }}>
-          <div style={{ maxWidth: 1100 }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <SectionLabel>Institutional Context</SectionLabel>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))", gap: 60, alignItems: "start" }}>
               {/* Left — narrative */}
@@ -802,7 +802,7 @@ export default function Home() {
 
         {/* ── NAVIGATE THE ARCHITECTURE ─────────────────────────── */}
         <section style={{ borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem" }}>
-          <div style={{ maxWidth: 1100 }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <SectionLabel>Interactive Architecture</SectionLabel>
             <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "24px", letterSpacing: "0.07em", marginBottom: 12 }}>
               Navigate Pacific Systems
@@ -866,7 +866,7 @@ export default function Home() {
 
         {/* ── RELATED BRANCHES ──────────────────────────────────── */}
         <section style={{ background: C.bgSection, borderBottom: `1px solid ${C.border}`, padding: "5rem 2.5rem" }}>
-          <div style={{ maxWidth: 1100 }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <SectionLabel>RSR Intelligence Network</SectionLabel>
             <h2 style={{ color: C.heading, fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "24px", letterSpacing: "0.07em", marginBottom: 12 }}>
               Related Branches

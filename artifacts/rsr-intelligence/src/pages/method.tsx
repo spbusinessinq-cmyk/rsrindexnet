@@ -117,7 +117,7 @@ export default function MethodPage() {
 
         <div className="flex-1 p-6 md:p-7 space-y-4 overflow-y-auto">
           {/* Context block */}
-          <div className="rounded p-5 max-w-4xl"
+          <div className="rounded p-5 max-w-4xl mx-auto"
             style={{ border: "1px solid rgba(245,158,11,0.1)", background: "rgba(0,0,0,0.2)" }}>
             <p className="font-mono-tactical leading-relaxed"
               style={{ color: "rgba(180,192,202,0.72)", lineHeight: "2.02", fontSize: "17px" }}>
@@ -129,7 +129,7 @@ export default function MethodPage() {
           </div>
 
           {/* Phase cards */}
-          <div className="space-y-3 max-w-4xl">
+          <div className="space-y-3 max-w-4xl mx-auto">
             {PHASES.map((phase) => (
               <div key={phase.id} className="rounded idx-card"
                 style={{ border: "1px solid rgba(245,158,11,0.1)", background: "rgba(0,0,0,0.2)" }}>
@@ -207,7 +207,7 @@ export default function MethodPage() {
           </div>
 
           {/* Follow the Pipeline footer */}
-          <div className="max-w-4xl rounded"
+          <div className="max-w-4xl mx-auto rounded"
             style={{ border: "1px solid rgba(245,158,11,0.1)", background: "rgba(0,0,0,0.2)" }}>
             <div className="flex items-center gap-2.5 px-5 py-3"
               style={{ borderBottom: "1px solid rgba(245,158,11,0.07)" }}>

@@ -1,0 +1,65 @@
+Fix Pacific Systems deployed layout width issue.
+
+Problem:
+On the live/deployed site, all page content is squeezed to the left with a huge empty gap on the right. This appears across multiple pages. The layout should use the full viewport width properly and center/max-width content cleanly.
+
+Repo:
+https://github.com/spbusinessinq-cmyk/rsrindexnet.git
+Branch: main
+
+Tasks:
+1. Inspect global layout wrappers:
+   - AppShell.tsx
+   - home.tsx
+   - all page wrappers
+   - index.css
+   - root App layout
+   - any .container, .page, .shell, .content, .max-w-* classes
+
+2. Find what is constraining content to the left:
+   - wrong max-width
+   - missing mx-auto
+   - fixed width
+   - grid column too small
+   - body/root not full width
+   - overflow or transform issue
+   - deployed-only viewport sizing issue
+
+3. Fix global layout:
+   - html, body, #root should be width: 100%; min-height: 100%;
+   - main/page wrappers should be width: 100%;
+   - content should be centered using max-width with mx-auto
+   - desktop content max width should be around 1440px or 1500px
+   - full-width sections should span 100vw when intended
+   - no page should be stuck to left unless intentionally aligned inside a centered shell
+
+4. Fix hero:
+   - Hero should be a balanced two-column layout on desktop
+   - Left text and right visual should sit inside a centered max-width container
+   - Do not let the right side create a giant dead empty area
+   - Ensure the hero title is not clipped by the fixed header
+   - Add proper top padding below header/status bar
+
+5. Fix all pages:
+   - overview
+   - signals
+   - datasets
+   - records
+   - method
+   - access
+   Make their main content align consistently with the centered shell.
+
+6. Preserve branding:
+   - black/amber Pacific Systems aesthetic
+   - no blue/cyan/green
+   - keep header logo and nav
+   - keep current content
+
+7. Run:
+pnpm --filter @workspace/rsr-intelligence run build
+
+8. Final response must include:
+- Root cause of left-squeezed layout
+- Files changed
+- Build result
+- Exact git shell commands to push

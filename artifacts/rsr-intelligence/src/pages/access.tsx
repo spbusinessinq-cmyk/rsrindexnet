@@ -100,7 +100,7 @@ export default function AccessPage() {
 
         <div className="flex flex-1 overflow-hidden">
           {/* Main content */}
-          <div className="flex-1 p-6 md:p-8 space-y-4 overflow-y-auto max-w-3xl">
+          <div className="flex-1 p-6 md:p-8 space-y-4 overflow-y-auto">
 
             {/* Tier overview block */}
             <div className="rounded"

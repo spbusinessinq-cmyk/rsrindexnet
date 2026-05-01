@@ -106,9 +106,22 @@
     border-color: hsl(var(--border));
   }
 
+  html {
+    width: 100%;
+    min-height: 100%;
+  }
+
   body {
+    width: 100%;
+    min-height: 100vh;
     background-color: #050607;
     color: hsl(var(--foreground));
+    overflow-x: hidden;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
   }
 
   ::-webkit-scrollbar {

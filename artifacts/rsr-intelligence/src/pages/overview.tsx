@@ -69,7 +69,7 @@ export default function OverviewPage() {
           subtitle="What Pacific Systems is, where it fits within the RSR Intelligence Network, and how the signal-to-record pipeline works"
         />
 
-        <div className="flex-1 p-6 md:p-8 space-y-6 max-w-4xl overflow-y-auto">
+        <div className="flex-1 p-6 md:p-8 space-y-6 max-w-4xl mx-auto overflow-y-auto">
 
           {/* Where INDEX fits — flagship block */}
           <div className="rounded"
